@@ -1,0 +1,762 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DCD28408B6A00FEB138 /* EndTicketApp.swift */; };
+		06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD128408B6C00FEB138 /* Assets.xcassets */; };
+		06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD428408B6C00FEB138 /* Preview Assets.xcassets */; };
+		06717DDF28408B6D00FEB138 /* EndTicketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DDE28408B6D00FEB138 /* EndTicketTests.swift */; };
+		06717DE928408B6D00FEB138 /* EndTicketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DE828408B6D00FEB138 /* EndTicketUITests.swift */; };
+		06717DEB28408B6D00FEB138 /* EndTicketUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DEA28408B6D00FEB138 /* EndTicketUITestsLaunchTests.swift */; };
+		06717DF828408E5E00FEB138 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 06717DF728408E5E00FEB138 /* .gitignore */; };
+		06717DFB28408E9D00FEB138 /* Credential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06717DFA28408E9D00FEB138 /* Credential.plist */; };
+		06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DFD2840905500FEB138 /* OnBoardingView.swift */; };
+		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
+		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
+		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06717DDB28408B6D00FEB138 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06717DC228408B6A00FEB138 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06717DC928408B6A00FEB138;
+			remoteInfo = EndTicket;
+		};
+		06717DE528408B6D00FEB138 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06717DC228408B6A00FEB138 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06717DC928408B6A00FEB138;
+			remoteInfo = EndTicket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02F79F4514709AAE5461FDC5 /* Pods-EndTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket.release.xcconfig"; path = "Target Support Files/Pods-EndTicket/Pods-EndTicket.release.xcconfig"; sourceTree = "<group>"; };
+		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
+		06717DD128408B6C00FEB138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06717DD428408B6C00FEB138 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		06717DDA28408B6D00FEB138 /* EndTicketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EndTicketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06717DDE28408B6D00FEB138 /* EndTicketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketTests.swift; sourceTree = "<group>"; };
+		06717DE428408B6D00FEB138 /* EndTicketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EndTicketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06717DE828408B6D00FEB138 /* EndTicketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketUITests.swift; sourceTree = "<group>"; };
+		06717DEA28408B6D00FEB138 /* EndTicketUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		06717DF728408E5E00FEB138 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		06717DF928408E8700FEB138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		06717DFA28408E9D00FEB138 /* Credential.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Credential.plist; sourceTree = "<group>"; };
+		06717DFD2840905500FEB138 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicketTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA11A7A6BDE91D2AE8CE4E4 /* Pods-EndTicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket/Pods-EndTicket.debug.xcconfig"; sourceTree = "<group>"; };
+		A424A128C7CBF7BE5918C0BE /* Pods-EndTicketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicketTests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicketTests/Pods-EndTicketTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7F12F4C1300E17F747FABB /* Pods-EndTicketTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicketTests.release.xcconfig"; path = "Target Support Files/Pods-EndTicketTests/Pods-EndTicketTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06717DC728408B6A00FEB138 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06717DD728408B6D00FEB138 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06717DE128408B6D00FEB138 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06717DC128408B6A00FEB138 = {
+			isa = PBXGroup;
+			children = (
+				06717DF728408E5E00FEB138 /* .gitignore */,
+				06717DCC28408B6A00FEB138 /* EndTicket */,
+				06717DDD28408B6D00FEB138 /* EndTicketTests */,
+				06717DE728408B6D00FEB138 /* EndTicketUITests */,
+				06717DCB28408B6A00FEB138 /* Products */,
+				8A463F1CB07FD806BE1578D5 /* Pods */,
+				D64EF9CC25A1E634073F1093 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		06717DCB28408B6A00FEB138 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06717DCA28408B6A00FEB138 /* EndTicket.app */,
+				06717DDA28408B6D00FEB138 /* EndTicketTests.xctest */,
+				06717DE428408B6D00FEB138 /* EndTicketUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06717DCC28408B6A00FEB138 /* EndTicket */ = {
+			isa = PBXGroup;
+			children = (
+				06717DFC2840903400FEB138 /* OnBoarding */,
+				06717DFA28408E9D00FEB138 /* Credential.plist */,
+				06717DF928408E8700FEB138 /* Info.plist */,
+				06717DCD28408B6A00FEB138 /* EndTicketApp.swift */,
+				06717DD128408B6C00FEB138 /* Assets.xcassets */,
+				06717DD328408B6C00FEB138 /* Preview Content */,
+			);
+			path = EndTicket;
+			sourceTree = "<group>";
+		};
+		06717DD328408B6C00FEB138 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				06717DD428408B6C00FEB138 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		06717DDD28408B6D00FEB138 /* EndTicketTests */ = {
+			isa = PBXGroup;
+			children = (
+				06717DDE28408B6D00FEB138 /* EndTicketTests.swift */,
+			);
+			path = EndTicketTests;
+			sourceTree = "<group>";
+		};
+		06717DE728408B6D00FEB138 /* EndTicketUITests */ = {
+			isa = PBXGroup;
+			children = (
+				06717DE828408B6D00FEB138 /* EndTicketUITests.swift */,
+				06717DEA28408B6D00FEB138 /* EndTicketUITestsLaunchTests.swift */,
+			);
+			path = EndTicketUITests;
+			sourceTree = "<group>";
+		};
+		06717DFC2840903400FEB138 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				06717DFD2840905500FEB138 /* OnBoardingView.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		8A463F1CB07FD806BE1578D5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FA11A7A6BDE91D2AE8CE4E4 /* Pods-EndTicket.debug.xcconfig */,
+				02F79F4514709AAE5461FDC5 /* Pods-EndTicket.release.xcconfig */,
+				0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */,
+				2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */,
+				A424A128C7CBF7BE5918C0BE /* Pods-EndTicketTests.debug.xcconfig */,
+				FA7F12F4C1300E17F747FABB /* Pods-EndTicketTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D64EF9CC25A1E634073F1093 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */,
+				5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */,
+				73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06717DC928408B6A00FEB138 /* EndTicket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06717DEE28408B6D00FEB138 /* Build configuration list for PBXNativeTarget "EndTicket" */;
+			buildPhases = (
+				08E8B53E5A67FFBBE2175B6C /* [CP] Check Pods Manifest.lock */,
+				06717DC628408B6A00FEB138 /* Sources */,
+				06717DC728408B6A00FEB138 /* Frameworks */,
+				06717DC828408B6A00FEB138 /* Resources */,
+				0F685D21596655132182BF80 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EndTicket;
+			productName = EndTicket;
+			productReference = 06717DCA28408B6A00FEB138 /* EndTicket.app */;
+			productType = "com.apple.product-type.application";
+		};
+		06717DD928408B6D00FEB138 /* EndTicketTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06717DF128408B6D00FEB138 /* Build configuration list for PBXNativeTarget "EndTicketTests" */;
+			buildPhases = (
+				A173E30E90F5D68994CECB80 /* [CP] Check Pods Manifest.lock */,
+				06717DD628408B6D00FEB138 /* Sources */,
+				06717DD728408B6D00FEB138 /* Frameworks */,
+				06717DD828408B6D00FEB138 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06717DDC28408B6D00FEB138 /* PBXTargetDependency */,
+			);
+			name = EndTicketTests;
+			productName = EndTicketTests;
+			productReference = 06717DDA28408B6D00FEB138 /* EndTicketTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		06717DE328408B6D00FEB138 /* EndTicketUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06717DF428408B6D00FEB138 /* Build configuration list for PBXNativeTarget "EndTicketUITests" */;
+			buildPhases = (
+				19D7F9C6A7DB57B65EFCB10A /* [CP] Check Pods Manifest.lock */,
+				06717DE028408B6D00FEB138 /* Sources */,
+				06717DE128408B6D00FEB138 /* Frameworks */,
+				06717DE228408B6D00FEB138 /* Resources */,
+				A5534F8D2FED12342FFDE572 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06717DE628408B6D00FEB138 /* PBXTargetDependency */,
+			);
+			name = EndTicketUITests;
+			productName = EndTicketUITests;
+			productReference = 06717DE428408B6D00FEB138 /* EndTicketUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06717DC228408B6A00FEB138 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					06717DC928408B6A00FEB138 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					06717DD928408B6D00FEB138 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 06717DC928408B6A00FEB138;
+					};
+					06717DE328408B6D00FEB138 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 06717DC928408B6A00FEB138;
+					};
+				};
+			};
+			buildConfigurationList = 06717DC528408B6A00FEB138 /* Build configuration list for PBXProject "EndTicket" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 06717DC128408B6A00FEB138;
+			productRefGroup = 06717DCB28408B6A00FEB138 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06717DC928408B6A00FEB138 /* EndTicket */,
+				06717DD928408B6D00FEB138 /* EndTicketTests */,
+				06717DE328408B6D00FEB138 /* EndTicketUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06717DC828408B6A00FEB138 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */,
+				06717DFB28408E9D00FEB138 /* Credential.plist in Resources */,
+				06717DF828408E5E00FEB138 /* .gitignore in Resources */,
+				06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06717DD828408B6D00FEB138 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06717DE228408B6D00FEB138 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08E8B53E5A67FFBBE2175B6C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EndTicket-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F685D21596655132182BF80 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EndTicket/Pods-EndTicket-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EndTicket/Pods-EndTicket-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EndTicket/Pods-EndTicket-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		19D7F9C6A7DB57B65EFCB10A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EndTicket-EndTicketUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A173E30E90F5D68994CECB80 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EndTicketTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5534F8D2FED12342FFDE572 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06717DC628408B6A00FEB138 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */,
+				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06717DD628408B6D00FEB138 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06717DDF28408B6D00FEB138 /* EndTicketTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06717DE028408B6D00FEB138 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06717DEB28408B6D00FEB138 /* EndTicketUITestsLaunchTests.swift in Sources */,
+				06717DE928408B6D00FEB138 /* EndTicketUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		06717DDC28408B6D00FEB138 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06717DC928408B6A00FEB138 /* EndTicket */;
+			targetProxy = 06717DDB28408B6D00FEB138 /* PBXContainerItemProxy */;
+		};
+		06717DE628408B6D00FEB138 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06717DC928408B6A00FEB138 /* EndTicket */;
+			targetProxy = 06717DE528408B6D00FEB138 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		06717DEC28408B6D00FEB138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		06717DED28408B6D00FEB138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		06717DEF28408B6D00FEB138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FA11A7A6BDE91D2AE8CE4E4 /* Pods-EndTicket.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EndTicket/Preview Content\"";
+				DEVELOPMENT_TEAM = 687R8W5T99;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EndTicket/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		06717DF028408B6D00FEB138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02F79F4514709AAE5461FDC5 /* Pods-EndTicket.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EndTicket/Preview Content\"";
+				DEVELOPMENT_TEAM = 687R8W5T99;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EndTicket/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		06717DF228408B6D00FEB138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A424A128C7CBF7BE5918C0BE /* Pods-EndTicketTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 687R8W5T99;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EndTicket.app/EndTicket";
+			};
+			name = Debug;
+		};
+		06717DF328408B6D00FEB138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA7F12F4C1300E17F747FABB /* Pods-EndTicketTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 687R8W5T99;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EndTicket.app/EndTicket";
+			};
+			name = Release;
+		};
+		06717DF528408B6D00FEB138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 687R8W5T99;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EndTicket;
+			};
+			name = Debug;
+		};
+		06717DF628408B6D00FEB138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 687R8W5T99;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EndTicket;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06717DC528408B6A00FEB138 /* Build configuration list for PBXProject "EndTicket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06717DEC28408B6D00FEB138 /* Debug */,
+				06717DED28408B6D00FEB138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06717DEE28408B6D00FEB138 /* Build configuration list for PBXNativeTarget "EndTicket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06717DEF28408B6D00FEB138 /* Debug */,
+				06717DF028408B6D00FEB138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06717DF128408B6D00FEB138 /* Build configuration list for PBXNativeTarget "EndTicketTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06717DF228408B6D00FEB138 /* Debug */,
+				06717DF328408B6D00FEB138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06717DF428408B6D00FEB138 /* Build configuration list for PBXNativeTarget "EndTicketUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06717DF528408B6D00FEB138 /* Debug */,
+				06717DF628408B6D00FEB138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06717DC228408B6A00FEB138 /* Project object */;
+}
