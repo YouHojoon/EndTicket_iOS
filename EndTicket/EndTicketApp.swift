@@ -11,6 +11,7 @@ import KakaoSDKCommon
 
 @main
 struct EndTicketApp: App {
+
     init(){
         guard let cetentialListFile = Bundle.main.url(forResource: "Credential", withExtension: "plist"), let credentialList = NSDictionary(contentsOf: cetentialListFile) else{
             fatalError("SNS Login을 위한 Credential.plist가 존재하지 않습니다.")
@@ -23,7 +24,7 @@ struct EndTicketApp: App {
     
     var body: some Scene {
         WindowGroup {
-            OnBoardingView()
+            LoginView()
         }
     }
 }

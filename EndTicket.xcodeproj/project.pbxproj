@@ -16,6 +16,10 @@
 		06717DF828408E5E00FEB138 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 06717DF728408E5E00FEB138 /* .gitignore */; };
 		06717DFB28408E9D00FEB138 /* Credential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06717DFA28408E9D00FEB138 /* Credential.plist */; };
 		06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DFD2840905500FEB138 /* OnBoardingView.swift */; };
+		06717E01284096B700FEB138 /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06717E00284096B700FEB138 /* GmarketSansMedium.otf */; };
+		06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E0528409F6D00FEB138 /* OnBoarding.swift */; };
+		06717E092840A05300FEB138 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E082840A05300FEB138 /* View + Extension.swift */; };
+		06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E0B2840AE0700FEB138 /* LoginView.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -53,6 +57,10 @@
 		06717DF928408E8700FEB138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		06717DFA28408E9D00FEB138 /* Credential.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Credential.plist; sourceTree = "<group>"; };
 		06717DFD2840905500FEB138 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		06717E00284096B700FEB138 /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
+		06717E0528409F6D00FEB138 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
+		06717E082840A05300FEB138 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
+		06717E0B2840AE0700FEB138 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +125,9 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
+				06717E0A2840ADF600FEB138 /* Login */,
+				06717E072840A04500FEB138 /* Extension */,
+				06717DFF284096AE00FEB138 /* Font */,
 				06717DFC2840903400FEB138 /* OnBoarding */,
 				06717DFA28408E9D00FEB138 /* Credential.plist */,
 				06717DF928408E8700FEB138 /* Info.plist */,
@@ -155,9 +166,42 @@
 		06717DFC2840903400FEB138 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				06717E0428409F5B00FEB138 /* Enum */,
 				06717DFD2840905500FEB138 /* OnBoardingView.swift */,
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		06717DFF284096AE00FEB138 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				06717E00284096B700FEB138 /* GmarketSansMedium.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		06717E0428409F5B00FEB138 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				06717E0528409F6D00FEB138 /* OnBoarding.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		06717E072840A04500FEB138 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				06717E082840A05300FEB138 /* View + Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		06717E0A2840ADF600FEB138 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				06717E0B2840AE0700FEB138 /* LoginView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		8A463F1CB07FD806BE1578D5 /* Pods */ = {
@@ -296,6 +340,7 @@
 				06717DFB28408E9D00FEB138 /* Credential.plist in Resources */,
 				06717DF828408E5E00FEB138 /* .gitignore in Resources */,
 				06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */,
+				06717E01284096B700FEB138 /* GmarketSansMedium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +469,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */,
+				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
+				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
+				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,7 +559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -565,7 +613,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
