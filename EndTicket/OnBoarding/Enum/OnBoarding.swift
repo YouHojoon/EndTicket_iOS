@@ -13,7 +13,7 @@ import SwiftUI
     case home
     case futureOfMe
     case recommendationGoal
-
+    
     var title: String{
         switch self {
         case .home:
@@ -24,14 +24,14 @@ import SwiftUI
             return "어떤걸 해야할 지 생각이 안난다면\n추천목표를 통해 다른 사람들의 목표를 참고해봐요!"
         }
     }
-
+    
     @ViewBuilder
     var view: some View{
         OnBoardingView(title){
             nextView
         }
     }
-
+    
     @ViewBuilder
     var nextView: some View{
         switch self {
@@ -40,7 +40,11 @@ import SwiftUI
         case .futureOfMe:
             OnBoarding.recommendationGoal.view.eraseToAnyView()
         case .recommendationGoal:
-            Text("aa").eraseToAnyView()
+            Color.clear.onAppear{
+                withAnimation{
+                    UserDefaults.standard.setValue(false, forKey: "isFirstStart")
+                }
+            }.eraseToAnyView()
         }
     }
 }

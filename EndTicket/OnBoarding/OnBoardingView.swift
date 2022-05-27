@@ -13,7 +13,7 @@ struct OnBoardingView<NextView:View>: View {
     private let title:String
     private let font = Font.custom("GmarketSansMedium", size: 20)
     private let nextView:NextView
-    @Namespace private var animation
+    
     @State private var shouldShowNextView = false
     init(_ title:String, @ViewBuilder nextView: ()-> NextView){
         self.title = title
@@ -46,8 +46,6 @@ struct OnBoardingView<NextView:View>: View {
                     .cornerRadius(8)
                     .padding(.trailing, 15)
                     .padding(.bottom, 54)
-                    
-                    
             }
         }.padding(.horizontal, 25)
             .padding(.top, 107)
