@@ -7,12 +7,22 @@
 
 import SwiftUI
 
-struct OnBoardingHomeView: View {
-    let font = Font.custom("GmarketSansMedium", size: 20)
+//MARK: - OnBoarding 통합 뷰
+struct OnBoardingView<NextView:View>: View {
+    
+    private let title:String
+    private let font = Font.custom("GmarketSansMedium", size: 20)
+    private let nextView:NextView
+    @Namespace private var animation
+    @State private var shouldShowNextView = false
+    init(_ title:String, @ViewBuilder nextView: ()-> NextView){
+        self.title = title
+        self.nextView = nextView()
+    }
     
     var body: some View {
         VStack{
-            Text("티켓을 터치할 때마다 목적지에\n가까워질 수 있어요!\n티켓을 만들어보고 목표를 달성해보세요.")
+            Text(title)
                 .kerning(-0.54)
                 .font(font)
                 .multilineTextAlignment(.center)
@@ -23,7 +33,9 @@ struct OnBoardingHomeView: View {
                 RoundedRectangle(cornerRadius: 17)
                     .foregroundColor(.gray.opacity(0.5))
                 Button{
-                    
+                    withAnimation(.easeInOut){
+                        shouldShowNextView = true
+                    }
                 }label: {
                     Text("다음")
                         .font(font)
@@ -34,14 +46,14 @@ struct OnBoardingHomeView: View {
                     .cornerRadius(8)
                     .padding(.trailing, 15)
                     .padding(.bottom, 54)
+                    
+                    
             }
         }.padding(.horizontal, 25)
             .padding(.top, 107)
-    }
-}
-
-struct OnBoardingHomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnBoardingHomeView()
+            .background(Color.white)
+            .overlay(shouldShowNextView ? nextView.transition(.opacity): nil)
+            
+            
     }
 }

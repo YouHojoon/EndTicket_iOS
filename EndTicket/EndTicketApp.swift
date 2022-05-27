@@ -23,7 +23,7 @@ struct EndTicketApp: App {
     
     var body: some Scene {
         WindowGroup {
-            OnBoardingHomeView()
+            OnBoarding.home.view
         }
     }
 }
