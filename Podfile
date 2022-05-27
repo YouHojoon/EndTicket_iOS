@@ -11,7 +11,7 @@ target 'EndTicket' do
   pod 'GoogleSignInSwiftSupport'
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
-  #pod 'SwiftyJSON'
+  pod 'SwiftyJSON'
 
   target 'EndTicketTests' do
     inherit! :search_paths

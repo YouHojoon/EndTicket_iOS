@@ -27,6 +27,7 @@ PODS:
     - KakaoSDKCommon/Common (= 2.10.0)
   - KakaoSDKUser (2.10.0):
     - KakaoSDKAuth (= 2.10.0)
+  - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - GoogleSignInSwiftSupport
   - KakaoSDKAuth
   - KakaoSDKUser
+  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
@@ -46,6 +48,7 @@ SPEC REPOS:
     - KakaoSDKAuth
     - KakaoSDKCommon
     - KakaoSDKUser
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
@@ -57,7 +60,8 @@ SPEC CHECKSUMS:
   KakaoSDKAuth: 94cdbd864a6e1b5691c11aba09d769ea91be107a
   KakaoSDKCommon: 9edbf77ef59c8594412908e023e64ef07f75db08
   KakaoSDKUser: 7969a38f9ccfd788140fa799b6bbaa223f62683e
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 4dabd5a8589a224d419ba5a7bf9b4de4381d8b10
+PODFILE CHECKSUM: 52a496f13ba82bcf1d93f5cd43c3a76897033f55
 
 COCOAPODS: 1.11.2
