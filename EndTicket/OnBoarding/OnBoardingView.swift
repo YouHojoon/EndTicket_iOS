@@ -11,7 +11,6 @@ import SwiftUI
 struct OnBoardingView<NextView:View>: View {
     
     private let title:String
-    private let font = Font.custom("GmarketSansMedium", size: 20)
     private let nextView:NextView
     
     @State private var shouldShowNextView = false
@@ -24,7 +23,7 @@ struct OnBoardingView<NextView:View>: View {
         VStack{
             Text(title)
                 .kerning(-0.54)
-                .font(font)
+                .font(.gmarketSansMeidum(size: 20))
                 .multilineTextAlignment(.center)
                 .lineSpacing(10)
                 .padding(.bottom, 92)
@@ -38,7 +37,7 @@ struct OnBoardingView<NextView:View>: View {
                     }
                 }label: {
                     Text("다음")
-                        .font(font)
+                        .font(.gmarketSansMeidum(size: 20))
                         .foregroundColor(.white)
                 }.padding()
                     .frame(width:100, height: 56)
