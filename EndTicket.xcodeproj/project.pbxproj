@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061F79D92844B4220095AEAD /* Credential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 061F79D82844B4220095AEAD /* Credential.plist */; };
+		061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DC2844B4870095AEAD /* LoginViewModel.swift */; };
+		061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DF2844B7E70095AEAD /* SignUpView.swift */; };
 		06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DCD28408B6A00FEB138 /* EndTicketApp.swift */; };
 		06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD128408B6C00FEB138 /* Assets.xcassets */; };
 		06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD428408B6C00FEB138 /* Preview Assets.xcassets */; };
@@ -14,7 +17,6 @@
 		06717DE928408B6D00FEB138 /* EndTicketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DE828408B6D00FEB138 /* EndTicketUITests.swift */; };
 		06717DEB28408B6D00FEB138 /* EndTicketUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DEA28408B6D00FEB138 /* EndTicketUITestsLaunchTests.swift */; };
 		06717DF828408E5E00FEB138 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 06717DF728408E5E00FEB138 /* .gitignore */; };
-		06717DFB28408E9D00FEB138 /* Credential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06717DFA28408E9D00FEB138 /* Credential.plist */; };
 		06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DFD2840905500FEB138 /* OnBoardingView.swift */; };
 		06717E01284096B700FEB138 /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06717E00284096B700FEB138 /* GmarketSansMedium.otf */; };
 		06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E0528409F6D00FEB138 /* OnBoarding.swift */; };
@@ -46,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		02F79F4514709AAE5461FDC5 /* Pods-EndTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket.release.xcconfig"; path = "Target Support Files/Pods-EndTicket/Pods-EndTicket.release.xcconfig"; sourceTree = "<group>"; };
+		061F79D82844B4220095AEAD /* Credential.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credential.plist; sourceTree = "<group>"; };
+		061F79DC2844B4870095AEAD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		061F79DF2844B7E70095AEAD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		061F79E12844BA040095AEAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
 		06717DD128408B6C00FEB138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,8 +62,6 @@
 		06717DE828408B6D00FEB138 /* EndTicketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketUITests.swift; sourceTree = "<group>"; };
 		06717DEA28408B6D00FEB138 /* EndTicketUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		06717DF728408E5E00FEB138 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		06717DF928408E8700FEB138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		06717DFA28408E9D00FEB138 /* Credential.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Credential.plist; sourceTree = "<group>"; };
 		06717DFD2840905500FEB138 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		06717E00284096B700FEB138 /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
 		06717E0528409F6D00FEB138 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
@@ -104,6 +108,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		061F79DA2844B4720095AEAD /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				06717E0B2840AE0700FEB138 /* LoginView.swift */,
+				06717E152840C54600FEB138 /* LoginButtonModifier.swift */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		061F79DB2844B47B0095AEAD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				061F79DC2844B4870095AEAD /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		061F79DE2844B7D90095AEAD /* SIgnUp */ = {
+			isa = PBXGroup;
+			children = (
+				061F79DF2844B7E70095AEAD /* SignUpView.swift */,
+			);
+			path = SIgnUp;
+			sourceTree = "<group>";
+		};
 		06717DC128408B6A00FEB138 = {
 			isa = PBXGroup;
 			children = (
@@ -130,13 +159,14 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
+				061F79E12844BA040095AEAD /* Info.plist */,
+				061F79DE2844B7D90095AEAD /* SIgnUp */,
+				061F79D82844B4220095AEAD /* Credential.plist */,
 				06717E142840BC3800FEB138 /* EndTicket.entitlements */,
 				06717E0A2840ADF600FEB138 /* Login */,
 				06717E072840A04500FEB138 /* Extension */,
 				06717DFF284096AE00FEB138 /* Font */,
 				06717DFC2840903400FEB138 /* OnBoarding */,
-				06717DFA28408E9D00FEB138 /* Credential.plist */,
-				06717DF928408E8700FEB138 /* Info.plist */,
 				06717DCD28408B6A00FEB138 /* EndTicketApp.swift */,
 				06717DD128408B6C00FEB138 /* Assets.xcassets */,
 				06717DD328408B6C00FEB138 /* Preview Content */,
@@ -206,8 +236,8 @@
 		06717E0A2840ADF600FEB138 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				06717E0B2840AE0700FEB138 /* LoginView.swift */,
-				06717E152840C54600FEB138 /* LoginButtonModifier.swift */,
+				061F79DB2844B47B0095AEAD /* ViewModel */,
+				061F79DA2844B4720095AEAD /* VIew */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -349,9 +379,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */,
-				06717DFB28408E9D00FEB138 /* Credential.plist in Resources */,
 				06717DF828408E5E00FEB138 /* .gitignore in Resources */,
 				06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */,
+				061F79D92844B4220095AEAD /* Credential.plist in Resources */,
 				06717E01284096B700FEB138 /* GmarketSansMedium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,8 +514,10 @@
 				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
 				06717E132840B86D00FEB138 /* Font.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
+				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
+				061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */,
 				06717E162840C54600FEB138 /* LoginButtonModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,6 +605,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = EndTicket/Info.plist;
+				"INFOPLIST_FILE[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -627,6 +661,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = EndTicket/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

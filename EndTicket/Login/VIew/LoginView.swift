@@ -9,11 +9,9 @@ import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
 struct LoginView: View {
-    @AppStorage("isFirstStart") private var isFirstStart:Bool = false
-    let gidConfig: GIDConfiguration
-    init(googleClientId:String){
-        gidConfig = GIDConfiguration(clientID: googleClientId)
-    }
+    @AppStorage("isFirstStart") private var isFirstStart:Bool = true
+    @EnvironmentObject private var viewModel:LoginViewModel
+    
     var body: some View {
         VStack(spacing:12){
             Rectangle()
@@ -22,7 +20,9 @@ struct LoginView: View {
                 .padding(.bottom, 151)
             
             Button{
-                
+                viewModel.googleLogin{
+                    print($0)
+                }
             }label: {
                 HStack{
                     Image("google_button_symbol")
@@ -39,13 +39,15 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 4))
             Button{
-                
+                viewModel.kakaoLogin{
+                    print($0)
+                }
             }label: {
                 HStack(spacing:0){
                     Image("kakao_button_symbol")
                         .resizable()
                         .frame(width: 18, height: 18)
-                        .padding(.trailing, 24)
+                        .padding(.trailing, 20)
                     Text("Kakao로 로그인")
                         .font(.gmarketSansMeidum(size: 15))
                         .kerning(-0.48)
@@ -69,12 +71,20 @@ struct LoginView: View {
         .padding(.horizontal, 30)
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .overlay(isFirstStart ? OnBoarding.home.view.transition(.opacity) : nil)
+        .onAppear{
+            viewModel.restorePreviousGoogleSignIn{
+                print($0)
+            }
+            viewModel.restoreKakaoLogin{
+                print($0)
+            }
+        }
     }
 }
 
 
 struct LoginView_Previews:PreviewProvider{
     static var previews: some View{
-        LoginView(googleClientId: "tet")
+        LoginView().environmentObject(LoginViewModel(googleClientId: "test"))
     }
 }
