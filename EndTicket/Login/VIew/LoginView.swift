@@ -8,12 +8,11 @@
 import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
+
 struct LoginView: View {
-    @AppStorage("isFirstStart") private var isFirstStart:Bool = false
-    let gidConfig: GIDConfiguration
-    init(googleClientId:String){
-        gidConfig = GIDConfiguration(clientID: googleClientId)
-    }
+    @AppStorage("isFirstStart") private var isFirstStart:Bool = true
+    @EnvironmentObject private var viewModel:LoginViewModel
+    
     var body: some View {
         VStack(spacing:12){
             Rectangle()
@@ -22,7 +21,7 @@ struct LoginView: View {
                 .padding(.bottom, 151)
             
             Button{
-                
+                viewModel.googleSignIn()
             }label: {
                 HStack{
                     Image("google_button_symbol")
@@ -39,20 +38,20 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 4))
             Button{
-                
+                viewModel.kakaoSignIn()
             }label: {
                 HStack(spacing:0){
                     Image("kakao_button_symbol")
                         .resizable()
                         .frame(width: 18, height: 18)
-                        .padding(.trailing, 24)
+                        .padding(.trailing, 20)
                     Text("Kakao로 로그인")
                         .font(.gmarketSansMeidum(size: 15))
                         .kerning(-0.48)
                 }
             }.modifier(LoginButtonModifier(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1))))
             Button{
-                
+                viewModel.appleSignIn()
             }label: {
                 HStack(spacing:0){
                     Image("apple_button_symbol")
@@ -69,12 +68,16 @@ struct LoginView: View {
         .padding(.horizontal, 30)
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .overlay(isFirstStart ? OnBoarding.home.view.transition(.opacity) : nil)
+        .onAppear{
+            viewModel.restorePreviousSignIn()
+        }
+        .overlay(viewModel.isSignIn ? SignUpView() : nil)
     }
 }
 
 
 struct LoginView_Previews:PreviewProvider{
     static var previews: some View{
-        LoginView(googleClientId: "tet")
+        LoginView().environmentObject(LoginViewModel(googleClientId: "test"))
     }
 }

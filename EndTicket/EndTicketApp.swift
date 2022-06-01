@@ -8,6 +8,8 @@
 import SwiftUI
 import GoogleSignIn
 import KakaoSDKCommon
+import KakaoSDKAuth
+import KakaoSDKUser
 
 @main
 struct EndTicketApp: App {
@@ -25,7 +27,15 @@ struct EndTicketApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginView(googleClientId: googleClientId)
+            LoginView().onOpenURL{
+                if AuthApi.isKakaoTalkLoginUrl($0){
+                    AuthController.handleOpenUrl(url: $0)
+                }
+                else{
+                    GIDSignIn.sharedInstance.handle($0)
+                }
+            }
+                .environmentObject(LoginViewModel(googleClientId: googleClientId))
         }
     }
 }
