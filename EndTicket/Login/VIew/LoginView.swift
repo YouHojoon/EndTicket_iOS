@@ -8,6 +8,7 @@
 import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
+
 struct LoginView: View {
     @AppStorage("isFirstStart") private var isFirstStart:Bool = true
     @EnvironmentObject private var viewModel:LoginViewModel
@@ -20,9 +21,7 @@ struct LoginView: View {
                 .padding(.bottom, 151)
             
             Button{
-                viewModel.googleLogin{
-                    print($0)
-                }
+                viewModel.googleSignIn()
             }label: {
                 HStack{
                     Image("google_button_symbol")
@@ -39,9 +38,7 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 4))
             Button{
-                viewModel.kakaoLogin{
-                    print($0)
-                }
+                viewModel.kakaoSignIn()
             }label: {
                 HStack(spacing:0){
                     Image("kakao_button_symbol")
@@ -54,7 +51,7 @@ struct LoginView: View {
                 }
             }.modifier(LoginButtonModifier(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1))))
             Button{
-                
+                viewModel.appleSignIn()
             }label: {
                 HStack(spacing:0){
                     Image("apple_button_symbol")
@@ -72,13 +69,9 @@ struct LoginView: View {
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .overlay(isFirstStart ? OnBoarding.home.view.transition(.opacity) : nil)
         .onAppear{
-            viewModel.restorePreviousGoogleSignIn{
-                print($0)
-            }
-            viewModel.restoreKakaoLogin{
-                print($0)
-            }
+            viewModel.restorePreviousSignIn()
         }
+        .overlay(viewModel.isSignIn ? SignUpView() : nil)
     }
 }
 

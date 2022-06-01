@@ -10,6 +10,8 @@
 		061F79D92844B4220095AEAD /* Credential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 061F79D82844B4220095AEAD /* Credential.plist */; };
 		061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DC2844B4870095AEAD /* LoginViewModel.swift */; };
 		061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DF2844B7E70095AEAD /* SignUpView.swift */; };
+		061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E528478BCC0095AEAD /* KeyChainManager.swift */; };
+		061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */; };
 		06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DCD28408B6A00FEB138 /* EndTicketApp.swift */; };
 		06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD128408B6C00FEB138 /* Assets.xcassets */; };
 		06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD428408B6C00FEB138 /* Preview Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		061F79DC2844B4870095AEAD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		061F79DF2844B7E70095AEAD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		061F79E12844BA040095AEAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		061F79E528478BCC0095AEAD /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASAuthorizationControllerDelgateImpl.swift; sourceTree = "<group>"; };
 		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
 		06717DD128408B6C00FEB138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +137,15 @@
 			path = SIgnUp;
 			sourceTree = "<group>";
 		};
+		061F79E428478BA70095AEAD /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				061F79E528478BCC0095AEAD /* KeyChainManager.swift */,
+				061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		06717DC128408B6A00FEB138 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,7 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
+				061F79E428478BA70095AEAD /* Class */,
 				061F79E12844BA040095AEAD /* Info.plist */,
 				061F79DE2844B7D90095AEAD /* SIgnUp */,
 				061F79D82844B4220095AEAD /* Credential.plist */,
@@ -512,11 +526,13 @@
 			files = (
 				06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */,
 				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
+				061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */,
 				06717E132840B86D00FEB138 /* Font.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
+				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
 				061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */,
 				06717E162840C54600FEB138 /* LoginButtonModifier.swift in Sources */,
 			);

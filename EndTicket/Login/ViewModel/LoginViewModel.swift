@@ -11,15 +11,110 @@ import Combine
 import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
+import AuthenticationServices
 
-final class LoginViewModel: ObservableObject{
+final class LoginViewModel: NSObject, ObservableObject{
+    @Published var isSignIn = false
+    
     private let gidConfig: GIDConfiguration
+    private var asAuthDelegate:ASAuthorizationControllerDelegate?
     
     init(googleClientId:String){
         gidConfig = GIDConfiguration(clientID: googleClientId)
     }
+    //MARK: - SNS 로그인
+    func kakaoSignIn(){
+        UserApi.shared.loginWithKakaoTalk{
+            guard $1 == nil else{
+                print($1!.localizedDescription)
+                self.isSignIn = false
+                return
+            }
+            guard let _ = $0 else{
+                self.isSignIn = false
+                return
+            }
+            self.isSignIn = true
+        }
+    }
     
-    func restorePreviousGoogleSignIn(completion: ((Bool)->Void)? = nil){
+    func appleSignIn(){
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        asAuthDelegate = ASAuthorizationControllerDelgateImpl{
+            self.isSignIn = $0
+        }
+        controller.delegate = asAuthDelegate
+        controller.performRequests()
+    }
+    
+    func googleSignIn(completion: ((Bool)->Void)? = nil){
+        guard let rootController = UIApplication.shared.windows.first?.rootViewController else{
+            self.isSignIn = false
+            return
+        }
+        
+        GIDSignIn.sharedInstance.signIn(with: gidConfig, presenting: rootController){
+            guard $1 == nil else{
+                print($1!.localizedDescription)
+                self.isSignIn = false
+                return
+            }
+            guard let _ = $0 else{
+                self.isSignIn = false
+                return
+            }
+            self.isSignIn = true
+        }
+    }
+    
+    //MARK: - 자동 로그인 관련
+    //처리가 끝났다는 것을 알기 위해서 completion 사용
+    func restorePreviousSignIn(){
+        restorePreviousAppleSignIn{
+            print("apple \($0)")
+            //애플 로그인
+            if !$0{
+                self.restorePreviousGoogleSignIn{
+                    //구글 로그인
+                    print("google \($0)")
+                    if !$0{
+                        self.restorePreviousKakaoSignIn{
+                            print("kakao \($0)")
+                            self.isSignIn = $0
+                        }
+                    }
+                    else{
+                        self.isSignIn = true
+                    }
+                }
+            }
+            else{
+                self.isSignIn = true
+            }
+        }
+    }
+    
+    private func restorePreviousAppleSignIn(completion: ((Bool)->Void)? = nil){
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        guard let userId = KeyChainManager.readUserInKeyChain() else{
+            completion?(false)
+            return
+        }
+        
+        appleIDProvider.getCredentialState(forUserID: userId) { (credentialState, error) in
+            switch credentialState {
+            case .authorized:
+                completion?(true)
+            case .revoked, .notFound:
+                completion?(false)
+            default:
+                completion?(false)
+            }
+        }
+    }
+    
+    private func restorePreviousGoogleSignIn(completion: ((Bool)->Void)? = nil){
         GIDSignIn.sharedInstance.restorePreviousSignIn {
             guard $1 == nil else{
                 print($1!.localizedDescription)
@@ -34,26 +129,7 @@ final class LoginViewModel: ObservableObject{
         }
     }
     
-    func googleLogin(completion: ((Bool)->Void)? = nil){
-        guard let rootController = UIApplication.shared.windows.first?.rootViewController else{
-            completion?(false)
-            return
-        }
-        GIDSignIn.sharedInstance.signIn(with: gidConfig, presenting: rootController){
-            guard $1 == nil else{
-                print($1!.localizedDescription)
-                completion?(false)
-                return
-            }
-            guard let _ = $0 else{
-                completion?(false)
-                return
-            }
-            completion?(true)
-        }
-    }
-    
-    func restoreKakaoLogin(completion: ((Bool)->Void)? = nil){
+    private func restorePreviousKakaoSignIn(completion: ((Bool)->Void)? = nil){
         if AuthApi.hasToken() {
             UserApi.shared.accessTokenInfo { (_, error) in
                 if let error = error {
@@ -78,19 +154,5 @@ final class LoginViewModel: ObservableObject{
             completion?(false)
         }
     }
-    
-    func kakaoLogin(completion: ((Bool)->Void)? = nil){
-        UserApi.shared.loginWithKakaoTalk{
-            guard $1 == nil else{
-                print($1!.localizedDescription)
-                completion?(false)
-                return
-            }
-            guard let _ = $0 else{
-                completion?(false)
-                return
-            }
-            completion?(true)
-        }
-    }
 }
+
