@@ -26,6 +26,7 @@
 		06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E0B2840AE0700FEB138 /* LoginView.swift */; };
 		06717E132840B86D00FEB138 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E122840B86D00FEB138 /* Font.swift */; };
 		06717E162840C54600FEB138 /* LoginButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E152840C54600FEB138 /* LoginButtonModifier.swift */; };
+		06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -74,6 +75,7 @@
 		06717E122840B86D00FEB138 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		06717E142840BC3800FEB138 /* EndTicket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EndTicket.entitlements; sourceTree = "<group>"; };
 		06717E152840C54600FEB138 /* LoginButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonModifier.swift; sourceTree = "<group>"; };
+		06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingButtonModifier.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,8 +218,8 @@
 		06717DFC2840903400FEB138 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				06717E172849BEC700FEB138 /* View */,
 				06717E0428409F5B00FEB138 /* Enum */,
-				06717DFD2840905500FEB138 /* OnBoardingView.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -254,6 +256,15 @@
 				061F79DA2844B4720095AEAD /* VIew */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		06717E172849BEC700FEB138 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06717DFD2840905500FEB138 /* OnBoardingView.swift */,
+				06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8A463F1CB07FD806BE1578D5 /* Pods */ = {
@@ -527,6 +538,7 @@
 				06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */,
 				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
 				061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */,
+				06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */,
 				06717E132840B86D00FEB138 /* Font.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
