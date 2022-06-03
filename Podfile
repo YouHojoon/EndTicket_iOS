@@ -7,7 +7,7 @@ target 'EndTicket' do
 
   # Pods for EndTicket
   pod 'Alamofire'
-  pod 'GoogleSignIn'
+  pod 'GoogleSignIn','6.2.1'
   pod 'GoogleSignInSwiftSupport'
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
