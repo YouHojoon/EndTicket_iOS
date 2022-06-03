@@ -35,7 +35,7 @@ struct EndTicketApp: App {
                     GIDSignIn.sharedInstance.handle($0)
                 }
             }
-                .environmentObject(LoginViewModel(googleClientId: googleClientId))
+            .environmentObject(LoginViewModel(googleClientId: googleClientId))
         }
     }
 }

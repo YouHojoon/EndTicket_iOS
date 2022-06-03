@@ -7,6 +7,7 @@
 
 import Foundation
 import GoogleSignIn
+
 import Combine
 import KakaoSDKAuth
 import KakaoSDKUser
@@ -53,7 +54,6 @@ final class LoginViewModel: NSObject, ObservableObject{
             self.isSignIn = false
             return
         }
-        
         GIDSignIn.sharedInstance.signIn(with: gidConfig, presenting: rootController){
             guard $1 == nil else{
                 print($1!.localizedDescription)
@@ -121,7 +121,7 @@ final class LoginViewModel: NSObject, ObservableObject{
                 completion?(false)
                 return
             }
-            guard $0 == nil else{
+            guard $0 != nil else{
                 completion?(false)
                 return
             }
