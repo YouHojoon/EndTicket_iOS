@@ -71,7 +71,10 @@ struct LoginView: View {
         .onAppear{
             viewModel.restorePreviousSignIn()
         }
-        .overlay(viewModel.isSignIn ? SignUpView() : nil)
+        .overlay(viewModel.isSignIn ? SignUpView()
+            .transition(.opacity)
+            .background(Color.white)
+            .environmentObject(SignUpViewModel()) : nil)
     }
 }
 
