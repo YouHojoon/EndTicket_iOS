@@ -20,9 +20,7 @@ struct SignUpView: View {
     @State private var isKeyboardShow = false
     @FocusState private var isTextFieldFocus
 
-    
     var body: some View {
-    
             VStack(spacing: 0){
                 Text("별명을 지어주세요").kerning(-0.43).font(.gmarketSansMeidum(size: 16)).padding(.bottom, 7)
                     .frame(width: 284,alignment: .leading)
@@ -37,6 +35,7 @@ struct SignUpView: View {
                     .frame(width: 284, height: 48)
                     .background(
                         Color.white.onTapGesture {
+                            //TextField 터치 가능 영역을 넓히기 위함
                             isTextFieldFocus = true
                         }
                     )
@@ -45,7 +44,7 @@ struct SignUpView: View {
                         isTextFieldNormalBorder = $0
                         isTextFieldMessageHidden = false
                     }
-                
+                //MARK: - 닉네임 관련 알림
                 if !isTextFieldMessageHidden{
                     Text(isTextFieldNormalBorder ? "멋진 별명이네요!" : "별명을 다시 한 번 확인해주세요.")
                         .kerning(-0.54)
