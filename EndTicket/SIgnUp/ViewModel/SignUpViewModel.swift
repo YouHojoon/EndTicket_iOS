@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
-class SignUpViewModel:ObservableObject{
+final class SignUpViewModel:ObservableObject{
     private let nicknameFormat = "^[A-Za-z0-9가-힣]{3,8}$"
     @Published var nickname = ""
     lazy var isNicknameStatisfied:AnyPublisher<Bool, Never> = $nickname.map{$0.range(of: self.nicknameFormat,options:.regularExpression) != nil}.eraseToAnyPublisher()
