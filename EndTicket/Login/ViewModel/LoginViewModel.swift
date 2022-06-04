@@ -13,6 +13,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
 import AuthenticationServices
+import SwiftUI
 
 final class LoginViewModel: NSObject, ObservableObject{
     @Published var isSignIn = false
@@ -35,15 +36,19 @@ final class LoginViewModel: NSObject, ObservableObject{
                 self.isSignIn = false
                 return
             }
-            self.isSignIn = true
+            withAnimation(.easeInOut){
+                self.isSignIn = true
+            }
         }
     }
     
     func appleSignIn(){
         let request = ASAuthorizationAppleIDProvider().createRequest()
         let controller = ASAuthorizationController(authorizationRequests: [request])
-        asAuthDelegate = ASAuthorizationControllerDelgateImpl{
-            self.isSignIn = $0
+        asAuthDelegate = ASAuthorizationControllerDelgateImpl{result in
+            withAnimation(.easeInOut){
+                self.isSignIn = result
+            }
         }
         controller.delegate = asAuthDelegate
         controller.performRequests()
@@ -64,7 +69,9 @@ final class LoginViewModel: NSObject, ObservableObject{
                 self.isSignIn = false
                 return
             }
-            self.isSignIn = true
+            withAnimation(.easeInOut){
+                self.isSignIn = true
+            }
         }
     }
     
@@ -79,18 +86,25 @@ final class LoginViewModel: NSObject, ObservableObject{
                     //구글 로그인
                     print("google \($0)")
                     if !$0{
-                        self.restorePreviousKakaoSignIn{
-                            print("kakao \($0)")
-                            self.isSignIn = $0
+                        self.restorePreviousKakaoSignIn{result in
+                            print("kakao \(result)")
+                            withAnimation(.easeInOut){
+                                self.isSignIn = result
+                            }
                         }
                     }
                     else{
-                        self.isSignIn = true
+                        withAnimation(.easeInOut){
+                            self.isSignIn = true
+                        }
+                        
                     }
                 }
             }
             else{
-                self.isSignIn = true
+                withAnimation(.easeInOut){
+                    self.isSignIn = true
+                }
             }
         }
     }
