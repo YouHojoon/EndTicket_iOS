@@ -12,6 +12,10 @@
 		061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DF2844B7E70095AEAD /* SignUpView.swift */; };
 		061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E528478BCC0095AEAD /* KeyChainManager.swift */; };
 		061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */; };
+		064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E4284E3A1B000EEF62 /* TicketView.swift */; };
+		064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E6284E43E9000EEF62 /* HomeView.swift */; };
+		064B50E9284E4CB6000EEF62 /* GmarketSansLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */; };
+		064B50EC284E4E41000EEF62 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50EB284E4E41000EEF62 /* Ticket.swift */; };
 		06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DCD28408B6A00FEB138 /* EndTicketApp.swift */; };
 		06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD128408B6C00FEB138 /* Assets.xcassets */; };
 		06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD428408B6C00FEB138 /* Preview Assets.xcassets */; };
@@ -58,6 +62,10 @@
 		061F79E12844BA040095AEAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		061F79E528478BCC0095AEAD /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASAuthorizationControllerDelgateImpl.swift; sourceTree = "<group>"; };
+		064B50E4284E3A1B000EEF62 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
+		064B50E6284E43E9000EEF62 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansLight.otf; sourceTree = "<group>"; };
+		064B50EB284E4E41000EEF62 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
 		06717DD128408B6C00FEB138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +159,31 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		064B50E2284E3A09000EEF62 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				064B50E3284E3A0E000EEF62 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		064B50E3284E3A0E000EEF62 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				064B50E4284E3A1B000EEF62 /* TicketView.swift */,
+				064B50E6284E43E9000EEF62 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		064B50EA284E4E2B000EEF62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				064B50EB284E4E41000EEF62 /* Ticket.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		06717DC128408B6A00FEB138 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +210,7 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
+				064B50EA284E4E2B000EEF62 /* Model */,
 				061F79E428478BA70095AEAD /* Class */,
 				061F79E12844BA040095AEAD /* Info.plist */,
 				061F79DE2844B7D90095AEAD /* SIgnUp */,
@@ -186,8 +220,9 @@
 				06717E072840A04500FEB138 /* Extension */,
 				06717DFF284096AE00FEB138 /* Font */,
 				06717DFC2840903400FEB138 /* OnBoarding */,
-				06717DCD28408B6A00FEB138 /* EndTicketApp.swift */,
+				064B50E2284E3A09000EEF62 /* Home */,
 				06717DD128408B6C00FEB138 /* Assets.xcassets */,
+				06717DCD28408B6A00FEB138 /* EndTicketApp.swift */,
 				06717DD328408B6C00FEB138 /* Preview Content */,
 			);
 			path = EndTicket;
@@ -230,6 +265,7 @@
 		06717DFF284096AE00FEB138 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */,
 				06717E00284096B700FEB138 /* GmarketSansMedium.otf */,
 			);
 			path = Font;
@@ -423,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */,
+				064B50E9284E4CB6000EEF62 /* GmarketSansLight.otf in Resources */,
 				06717DF828408E5E00FEB138 /* .gitignore in Resources */,
 				06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */,
 				061F79D92844B4220095AEAD /* Credential.plist in Resources */,
@@ -557,6 +594,7 @@
 				06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */,
 				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
 				061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */,
+				064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */,
 				06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */,
 				06717E132840B86D00FEB138 /* Font.swift in Sources */,
 				06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */,
@@ -564,6 +602,8 @@
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
+				064B50EC284E4E41000EEF62 /* Ticket.swift in Sources */,
+				064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */,
 				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
 				061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */,
 				06717E162840C54600FEB138 /* LoginButtonModifier.swift in Sources */,
