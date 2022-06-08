@@ -18,8 +18,9 @@ struct SignUpView: View {
     @State private var isButtonEnable = true
     @State private var isTextFieldMessageHidden = true
     @State private var isKeyboardShow = false
+    @State private var shouldShowNextView = false
     @FocusState private var isTextFieldFocus
-
+    
     var body: some View {
             VStack(spacing: 0){
                 Text("별명을 지어주세요").kerning(-0.43).font(.gmarketSansMeidum(size: 16)).padding(.bottom, 7)
@@ -54,6 +55,9 @@ struct SignUpView: View {
                 Spacer()
                 Button{
                     isTextFieldFocus = false
+                    withAnimation(.easeInOut){
+                        shouldShowNextView = true
+                    }
                 }label: {
                     Text("등록하기")
                         .foregroundColor(.white)
@@ -76,6 +80,9 @@ struct SignUpView: View {
                 }.background(Color.white.ignoresSafeArea().onTapGesture {
                     isTextFieldFocus = false
                 })
+                .overlay{
+                    shouldShowNextView ? EndTicketTabView().background(Color.white).transition(.move(edge: .trailing)) : nil
+                }
     }
 }
 
