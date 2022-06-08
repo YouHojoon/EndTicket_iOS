@@ -47,7 +47,7 @@ struct HomeView: View {
                 
             
             ScrollView(showsIndicators: false){
-                VStack{
+                LazyVStack{
                     ForEach(0 ..< 5){
                         TicketView(Ticket.getDummys()[$0])
                         .foregroundColor(color[$0])
