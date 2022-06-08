@@ -1,0 +1,11 @@
+<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="5.4" y="2.9" width="15.2" height="18.2" rx="1.1" stroke="#C1C1C1" stroke-width="1.8"/>
+<mask id="path-2-inside-1_6_1409" fill="white">
+<path d="M8.5 3C8.5 1.89543 9.39543 1 10.5 1H15.5C16.6046 1 17.5 1.89543 17.5 3V6H8.5V3Z"/>
+</mask>
+<path d="M8.5 3C8.5 1.89543 9.39543 1 10.5 1H15.5C16.6046 1 17.5 1.89543 17.5 3V6H8.5V3Z" fill="white"/>
+<path d="M17.5 6V7.8H19.3V6H17.5ZM8.5 6H6.7V7.8H8.5V6ZM10.5 2.8H15.5V-0.8H10.5V2.8ZM15.7 3V6H19.3V3H15.7ZM17.5 4.2H8.5V7.8H17.5V4.2ZM10.3 6V3H6.7V6H10.3ZM15.5 2.8C15.6105 2.8 15.7 2.88954 15.7 3H19.3C19.3 0.901318 17.5987 -0.8 15.5 -0.8V2.8ZM10.5 -0.8C8.40132 -0.8 6.7 0.901318 6.7 3H10.3C10.3 2.88954 10.3895 2.8 10.5 2.8V-0.8Z" fill="#C1C1C1" mask="url(#path-2-inside-1_6_1409)"/>
+<line x1="9.4" y1="9" x2="9.4" y2="18" stroke="#C1C1C1" stroke-width="1.8"/>
+<line x1="13.4" y1="13" x2="13.4" y2="18" stroke="#C1C1C1" stroke-width="1.8"/>
+<line x1="17.4" y1="12" x2="17.4" y2="18" stroke="#C1C1C1" stroke-width="1.8"/>
+</svg>

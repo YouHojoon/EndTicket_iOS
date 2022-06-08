@@ -32,6 +32,8 @@
 		06717E162840C54600FEB138 /* LoginButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E152840C54600FEB138 /* LoginButtonModifier.swift */; };
 		06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */; };
 		06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */; };
+		06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2128504D5E00FEB138 /* EndTicketTabView.swift */; };
+		06717E242850618800FEB138 /* InterSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06717E232850618800FEB138 /* InterSemiBold.ttf */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -86,6 +88,8 @@
 		06717E152840C54600FEB138 /* LoginButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonModifier.swift; sourceTree = "<group>"; };
 		06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingButtonModifier.swift; sourceTree = "<group>"; };
 		06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		06717E2128504D5E00FEB138 /* EndTicketTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketTabView.swift; sourceTree = "<group>"; };
+		06717E232850618800FEB138 /* InterSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InterSemiBold.ttf; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +214,7 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
+				06717E2028504D4C00FEB138 /* Tab */,
 				064B50EA284E4E2B000EEF62 /* Model */,
 				061F79E428478BA70095AEAD /* Class */,
 				061F79E12844BA040095AEAD /* Info.plist */,
@@ -265,6 +270,7 @@
 		06717DFF284096AE00FEB138 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				06717E232850618800FEB138 /* InterSemiBold.ttf */,
 				064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */,
 				06717E00284096B700FEB138 /* GmarketSansMedium.otf */,
 			);
@@ -320,6 +326,14 @@
 				06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		06717E2028504D4C00FEB138 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				06717E2128504D5E00FEB138 /* EndTicketTabView.swift */,
+			);
+			path = Tab;
 			sourceTree = "<group>";
 		};
 		8A463F1CB07FD806BE1578D5 /* Pods */ = {
@@ -464,6 +478,7 @@
 				06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */,
 				061F79D92844B4220095AEAD /* Credential.plist in Resources */,
 				06717E01284096B700FEB138 /* GmarketSansMedium.otf in Resources */,
+				06717E242850618800FEB138 /* InterSemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +617,7 @@
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
+				06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */,
 				064B50EC284E4E41000EEF62 /* Ticket.swift in Sources */,
 				064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */,
 				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
