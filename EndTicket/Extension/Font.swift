@@ -11,5 +11,10 @@ extension Font{
     static func gmarketSansMeidum(size:CGFloat) -> Font{
         return Font.custom("GmarketSansMedium", size: size)
     }
-    
+    static func gmarketSansLight(size:CGFloat) -> Font{
+        return Font.custom("GmarketSansLight", size: size)
+    }
+    static func appleSDGothicBold(size: CGFloat) -> Font{
+        return Font.custom("Apple SD Gothic Neo Bold", size: size)
+    }
 }
