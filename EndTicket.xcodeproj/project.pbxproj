@@ -34,7 +34,6 @@
 		06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */; };
 		06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2128504D5E00FEB138 /* EndTicketTabView.swift */; };
 		06717E242850618800FEB138 /* InterSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06717E232850618800FEB138 /* InterSemiBold.ttf */; };
-
 		06717E2628506D5D00FEB138 /* TicketBodyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2528506D5D00FEB138 /* TicketBodyShape.swift */; };
 		06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E272850774300FEB138 /* TicketTrailingShape.swift */; };
 		06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2B2850CE5500FEB138 /* FutureOfMeView.swift */; };
@@ -191,6 +190,8 @@
 			children = (
 				064B50E4284E3A1B000EEF62 /* TicketView.swift */,
 				064B50E6284E43E9000EEF62 /* HomeView.swift */,
+				06717E2528506D5D00FEB138 /* TicketBodyShape.swift */,
+				06717E272850774300FEB138 /* TicketTrailingShape.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -660,10 +661,12 @@
 				06717E132840B86D00FEB138 /* Font.swift in Sources */,
 				06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */,
 				06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */,
+				06717E2628506D5D00FEB138 /* TicketBodyShape.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
 				06717E352851BF5B00FEB138 /* Imagine.swift in Sources */,
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
+				06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
 				06717E302851B11D00FEB138 /* ImagineView.swift in Sources */,
 				06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */,
