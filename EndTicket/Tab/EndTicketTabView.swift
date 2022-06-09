@@ -81,7 +81,7 @@ struct EndTicketTabView: View {
         case .futureOfMe:
             FutureOfMeView().environmentObject(ImagineViewModel())
         case .history:
-            Text("기록")
+            HistoryHomeView()
         case .myPage:
             Text("마이")
         }
