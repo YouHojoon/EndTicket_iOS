@@ -28,7 +28,7 @@
 		06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E0528409F6D00FEB138 /* OnBoarding.swift */; };
 		06717E092840A05300FEB138 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E082840A05300FEB138 /* View + Extension.swift */; };
 		06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E0B2840AE0700FEB138 /* LoginView.swift */; };
-		06717E132840B86D00FEB138 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E122840B86D00FEB138 /* Font.swift */; };
+		06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E122840B86D00FEB138 /* Font + Extension.swift */; };
 		06717E162840C54600FEB138 /* LoginButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E152840C54600FEB138 /* LoginButtonModifier.swift */; };
 		06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */; };
 		06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */; };
@@ -44,6 +44,7 @@
 		06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E382851DBFD00FEB138 /* HistoryHomeView.swift */; };
 		06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */; };
 		06717E3F2851E78600FEB138 /* MyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3E2851E78600FEB138 /* MyHomeView.swift */; };
+		06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E402851FC4000FEB138 /* Color + Extension.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -93,7 +94,7 @@
 		06717E0528409F6D00FEB138 /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		06717E082840A05300FEB138 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
 		06717E0B2840AE0700FEB138 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		06717E122840B86D00FEB138 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		06717E122840B86D00FEB138 /* Font + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Extension.swift"; sourceTree = "<group>"; };
 		06717E142840BC3800FEB138 /* EndTicket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EndTicket.entitlements; sourceTree = "<group>"; };
 		06717E152840C54600FEB138 /* LoginButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonModifier.swift; sourceTree = "<group>"; };
 		06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingButtonModifier.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		06717E382851DBFD00FEB138 /* HistoryHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeView.swift; sourceTree = "<group>"; };
 		06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeContentView.swift; sourceTree = "<group>"; };
 		06717E3E2851E78600FEB138 /* MyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeView.swift; sourceTree = "<group>"; };
+		06717E402851FC4000FEB138 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -303,7 +305,8 @@
 			isa = PBXGroup;
 			children = (
 				06717E082840A05300FEB138 /* View + Extension.swift */,
-				06717E122840B86D00FEB138 /* Font.swift */,
+				06717E122840B86D00FEB138 /* Font + Extension.swift */,
+				06717E402851FC4000FEB138 /* Color + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */,
+				06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */,
 				06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */,
 				06717E332851BF3400FEB138 /* ImagineViewModel.swift in Sources */,
 				06717E3F2851E78600FEB138 /* MyHomeView.swift in Sources */,
@@ -677,7 +681,7 @@
 				061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */,
 				064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */,
 				06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */,
-				06717E132840B86D00FEB138 /* Font.swift in Sources */,
+				06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */,
 				06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */,
 				06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */,
 				06717E2628506D5D00FEB138 /* TicketBodyShape.swift in Sources */,
