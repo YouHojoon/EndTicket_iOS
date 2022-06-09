@@ -10,61 +10,73 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 struct LoginView: View {
-    @AppStorage("isFirstStart") private var isFirstStart:Bool = true
+    @AppStorage("isFirstStart") private var isFirstStart:Bool = false
     @EnvironmentObject private var viewModel:LoginViewModel
     
     var body: some View {
         VStack(spacing:12){
-            Rectangle()
+            Image("logo")
+                .resizable()
                 .foregroundColor(.gray.opacity(0.5))
                 .frame(width:203, height: 203)
-                .padding(.bottom, 151)
+                .padding(.bottom, 121)
             
-            Button{
-                viewModel.googleSignIn()
-            }label: {
-                HStack{
-                    Image("google_button_symbol")
-                        .resizable()
-                        .frame(width: 18, height: 18)
-                        .padding(.trailing, 10)
-                    Text("Google로 로그인")
-                        .font(.gmarketSansMeidum(size: 15))
-                        .kerning(-0.48)
-                        .frame(height:27)
+            //MARK: - 로그인 버튼
+            Group{
+                Button{
+                    viewModel.googleSignIn()
+                }label: {
+                    HStack(spacing:21){
+                        Image("google_button_symbol")
+                            .resizable()
+                            .frame(width:18, height: 18)
+                        Text("Google로 로그인").kerning(-0.48)
+                        Spacer().frame(width:18)
+                    }
+                   
+        
+                }.modifier(LoginButtonModifier())
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray300,lineWidth: 1))
+                Button{
+                    viewModel.kakaoSignIn()
+                }label: {
+                    HStack(spacing:21){
+                        Image("kakao_button_symbol")
+                            .resizable()
+                            .frame(width:18,height: 18)
+                        Text("Kakao로 로그인")
+                            .kerning(-0.48)
+                        Spacer()
+                            .frame(width:18)
+                    }
+                }.modifier(LoginButtonModifier(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1))))
+                Button{
+                    viewModel.appleSignIn()
+                }label: {
+                    HStack(spacing:21){
+                            Image("apple_button_symbol")
+                            Text("Apple로 로그인")
+                            .kerning(-0.48)
+                            Spacer()
+                            .frame(width:24)
+                        //애플 기본 로고 크기가 24
+                    }
                 }
-            }.modifier(LoginButtonModifier())
-                .background(RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(.white)
-                    .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 4))
-            Button{
-                viewModel.kakaoSignIn()
-            }label: {
-                HStack(spacing:0){
-                    Image("kakao_button_symbol")
-                        .resizable()
-                        .frame(width: 18, height: 18)
-                        .padding(.trailing, 20)
-                    Text("Kakao로 로그인")
-                        .font(.gmarketSansMeidum(size: 15))
-                        .kerning(-0.48)
-                }
-            }.modifier(LoginButtonModifier(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1))))
-            Button{
-                viewModel.appleSignIn()
-            }label: {
-                HStack(spacing:0){
-                    Image("apple_button_symbol")
-                        .frame(maxHeight:56)
-                    Text("Apple로 로그인")
-                        .font(.gmarketSansMeidum(size: 15))
-                        .kerning(-0.48)
-                    Spacer().frame(width:24)
-                }
+                .foregroundColor(.white)
+                .modifier(LoginButtonModifier(.black))
             }
-            .foregroundColor(.white)
-            .modifier(LoginButtonModifier(.black))
+            
+            HStack(spacing:10){
+                Text("회원가입")
+                Divider()
+                    .background(Color.black)
+                    .frame(height:10)
+                Text("문의하기")
+            }.foregroundColor(.gray500)
+                .padding(.top, 8)
         }
+        .font(.appleSDGothicBold(size: 15))
         .padding(.horizontal, 30)
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .overlay(isFirstStart ? OnBoarding.home.view.transition(.opacity) : nil)

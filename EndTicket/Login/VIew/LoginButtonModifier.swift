@@ -20,8 +20,8 @@ struct LoginButtonModifier: ViewModifier{
         content
             .padding()
             .foregroundColor(.black)
-            .frame(maxWidth:328, maxHeight: 56)
+            .frame(maxWidth:335, maxHeight: 50)
             .background(color)
-            .cornerRadius(12)
+            .cornerRadius(10)
     }
 }
