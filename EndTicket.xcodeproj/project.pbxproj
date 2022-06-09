@@ -41,6 +41,8 @@
 		06717E302851B11D00FEB138 /* ImagineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2F2851B11D00FEB138 /* ImagineView.swift */; };
 		06717E332851BF3400FEB138 /* ImagineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E322851BF3400FEB138 /* ImagineViewModel.swift */; };
 		06717E352851BF5B00FEB138 /* Imagine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E342851BF5B00FEB138 /* Imagine.swift */; };
+		06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E382851DBFD00FEB138 /* HistoryHomeView.swift */; };
+		06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -104,6 +106,8 @@
 		06717E2F2851B11D00FEB138 /* ImagineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineView.swift; sourceTree = "<group>"; };
 		06717E322851BF3400FEB138 /* ImagineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineViewModel.swift; sourceTree = "<group>"; };
 		06717E342851BF5B00FEB138 /* Imagine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imagine.swift; sourceTree = "<group>"; };
+		06717E382851DBFD00FEB138 /* HistoryHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeView.swift; sourceTree = "<group>"; };
+		06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeContentView.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,13 +235,11 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
+				06717E362851DB9F00FEB138 /* HIstory */,
 				06717E2028504D4C00FEB138 /* Tab */,
 				064B50EA284E4E2B000EEF62 /* Model */,
 				061F79E428478BA70095AEAD /* Class */,
-				061F79E12844BA040095AEAD /* Info.plist */,
 				061F79DE2844B7D90095AEAD /* SIgnUp */,
-				061F79D82844B4220095AEAD /* Credential.plist */,
-				06717E142840BC3800FEB138 /* EndTicket.entitlements */,
 				06717E0A2840ADF600FEB138 /* Login */,
 				06717E072840A04500FEB138 /* Extension */,
 				06717DFF284096AE00FEB138 /* Font */,
@@ -246,6 +248,9 @@
 				06717E292850CE2900FEB138 /* FutureOfMe */,
 				06717DD128408B6C00FEB138 /* Assets.xcassets */,
 				06717DCD28408B6A00FEB138 /* EndTicketApp.swift */,
+				06717E142840BC3800FEB138 /* EndTicket.entitlements */,
+				061F79D82844B4220095AEAD /* Credential.plist */,
+				061F79E12844BA040095AEAD /* Info.plist */,
 				06717DD328408B6C00FEB138 /* Preview Content */,
 			);
 			path = EndTicket;
@@ -379,6 +384,23 @@
 				06717E322851BF3400FEB138 /* ImagineViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		06717E362851DB9F00FEB138 /* HIstory */ = {
+			isa = PBXGroup;
+			children = (
+				06717E372851DBAE00FEB138 /* View */,
+			);
+			path = HIstory;
+			sourceTree = "<group>";
+		};
+		06717E372851DBAE00FEB138 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06717E382851DBFD00FEB138 /* HistoryHomeView.swift */,
+				06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8A463F1CB07FD806BE1578D5 /* Pods */ = {
@@ -651,6 +673,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */,
 				06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */,
 				06717E332851BF3400FEB138 /* ImagineViewModel.swift in Sources */,
 				06717DFE2840905500FEB138 /* OnBoardingView.swift in Sources */,
@@ -664,6 +687,7 @@
 				06717E2628506D5D00FEB138 /* TicketBodyShape.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
 				06717E352851BF5B00FEB138 /* Imagine.swift in Sources */,
+				06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */,
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
 				06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */,
