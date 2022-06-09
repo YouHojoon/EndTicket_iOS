@@ -59,9 +59,7 @@ struct SignUpView: View {
                 Spacer()
                 Button{
                     isTextFieldFocus = false
-                    withAnimation(.easeInOut){
-                        shouldShowNextView = true
-                    }
+                    viewModel.signUp()
                 }label: {
                     Text("등록하기")
                         .foregroundColor(.white)
@@ -83,6 +81,13 @@ struct SignUpView: View {
                 })
                 .overlay{
                     shouldShowNextView ? EndTicketTabView().background(Color.white).transition(.move(edge: .trailing)) : nil
+                }
+                .onReceive(viewModel.$isSuccessSignUp.dropFirst()){
+                    if $0{
+                        withAnimation(.easeInOut){
+                            shouldShowNextView = true
+                        }
+                    }
                 }
     }
 }

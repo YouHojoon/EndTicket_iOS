@@ -13,6 +13,8 @@
 		061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E528478BCC0095AEAD /* KeyChainManager.swift */; };
 		061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */; };
 		063634E028520C3000856928 /* InterSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 063634DF28520C2F00856928 /* InterSemiBold.ttf */; };
+		063634E82852119600856928 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634E72852119600856928 /* SignUpRouter.swift */; };
+		063634EA2852132E00856928 /* SignUpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634E92852132E00856928 /* SignUpApi.swift */; };
 		064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E4284E3A1B000EEF62 /* TicketView.swift */; };
 		064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E6284E43E9000EEF62 /* HomeView.swift */; };
 		064B50E9284E4CB6000EEF62 /* GmarketSansLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */; };
@@ -76,6 +78,8 @@
 		061F79E528478BCC0095AEAD /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASAuthorizationControllerDelgateImpl.swift; sourceTree = "<group>"; };
 		063634DF28520C2F00856928 /* InterSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InterSemiBold.ttf; sourceTree = "<group>"; };
+		063634E72852119600856928 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
+		063634E92852132E00856928 /* SignUpApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpApi.swift; sourceTree = "<group>"; };
 		064B50E4284E3A1B000EEF62 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		064B50E6284E43E9000EEF62 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansLight.otf; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 		061F79DE2844B7D90095AEAD /* SIgnUp */ = {
 			isa = PBXGroup;
 			children = (
+				063634E62852118700856928 /* Network */,
 				06717E1C2849D77300FEB138 /* View */,
 				06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */,
 			);
@@ -175,6 +180,15 @@
 				061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		063634E62852118700856928 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				063634E72852119600856928 /* SignUpRouter.swift */,
+				063634E92852132E00856928 /* SignUpApi.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		064B50E2284E3A09000EEF62 /* Home */ = {
@@ -231,9 +245,9 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
-				06717E2028504D4C00FEB138 /* Tab */,
 				064B50EA284E4E2B000EEF62 /* Model */,
 				061F79E428478BA70095AEAD /* Class */,
+				06717E2028504D4C00FEB138 /* Tab */,
 				061F79DE2844B7D90095AEAD /* SIgnUp */,
 				06717E0A2840ADF600FEB138 /* Login */,
 				06717E072840A04500FEB138 /* Extension */,
@@ -685,6 +699,7 @@
 				06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */,
 				06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */,
 				06717E2628506D5D00FEB138 /* TicketBodyShape.swift in Sources */,
+				063634EA2852132E00856928 /* SignUpApi.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
 				06717E352851BF5B00FEB138 /* Imagine.swift in Sources */,
 				06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */,
@@ -699,6 +714,7 @@
 				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
 				061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */,
 				06717E162840C54600FEB138 /* LoginButtonModifier.swift in Sources */,
+				063634E82852119600856928 /* SignUpRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
