@@ -68,7 +68,7 @@
 /* Begin PBXFileReference section */
 		02F79F4514709AAE5461FDC5 /* Pods-EndTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket.release.xcconfig"; path = "Target Support Files/Pods-EndTicket/Pods-EndTicket.release.xcconfig"; sourceTree = "<group>"; };
 		061F79D82844B4220095AEAD /* Credential.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credential.plist; sourceTree = "<group>"; };
-		061F79DC2844B4870095AEAD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		061F79DC2844B4870095AEAD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ViewModel/LoginViewModel.swift; sourceTree = "<group>"; };
 		061F79DF2844B7E70095AEAD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		061F79E12844BA040095AEAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		061F79E528478BCC0095AEAD /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		06717E142840BC3800FEB138 /* EndTicket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EndTicket.entitlements; sourceTree = "<group>"; };
 		06717E152840C54600FEB138 /* LoginButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonModifier.swift; sourceTree = "<group>"; };
 		06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingButtonModifier.swift; sourceTree = "<group>"; };
-		06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = ViewModel/SignUpViewModel.swift; sourceTree = "<group>"; };
 		06717E2128504D5E00FEB138 /* EndTicketTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketTabView.swift; sourceTree = "<group>"; };
 		06717E232850618800FEB138 /* InterSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InterSemiBold.ttf; sourceTree = "<group>"; };
 		06717E2528506D5D00FEB138 /* TicketBodyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketBodyShape.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		06717E2B2850CE5500FEB138 /* FutureOfMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMeView.swift; sourceTree = "<group>"; };
 		06717E2D2851A2EE00FEB138 /* FutureOfMeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMeProfileView.swift; sourceTree = "<group>"; };
 		06717E2F2851B11D00FEB138 /* ImagineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineView.swift; sourceTree = "<group>"; };
-		06717E322851BF3400FEB138 /* ImagineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineViewModel.swift; sourceTree = "<group>"; };
+		06717E322851BF3400FEB138 /* ImagineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineViewModel.swift; path = ViewModel/ImagineViewModel.swift; sourceTree = "<group>"; };
 		06717E342851BF5B00FEB138 /* Imagine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imagine.swift; sourceTree = "<group>"; };
 		06717E382851DBFD00FEB138 /* HistoryHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeView.swift; sourceTree = "<group>"; };
 		06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeContentView.swift; sourceTree = "<group>"; };
@@ -155,19 +155,11 @@
 			path = VIew;
 			sourceTree = "<group>";
 		};
-		061F79DB2844B47B0095AEAD /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				061F79DC2844B4870095AEAD /* LoginViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		061F79DE2844B7D90095AEAD /* SIgnUp */ = {
 			isa = PBXGroup;
 			children = (
-				06717E1D2849D77600FEB138 /* ViewModel */,
 				06717E1C2849D77300FEB138 /* View */,
+				06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */,
 			);
 			path = SIgnUp;
 			sourceTree = "<group>";
@@ -320,8 +312,8 @@
 		06717E0A2840ADF600FEB138 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				061F79DB2844B47B0095AEAD /* ViewModel */,
 				061F79DA2844B4720095AEAD /* VIew */,
+				061F79DC2844B4870095AEAD /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -343,14 +335,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		06717E1D2849D77600FEB138 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		06717E2028504D4C00FEB138 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,8 +346,8 @@
 		06717E292850CE2900FEB138 /* FutureOfMe */ = {
 			isa = PBXGroup;
 			children = (
-				06717E312851BF2300FEB138 /* ViewModel */,
 				06717E2A2850CE4A00FEB138 /* View */,
+				06717E322851BF3400FEB138 /* ImagineViewModel.swift */,
 			);
 			path = FutureOfMe;
 			sourceTree = "<group>";
@@ -376,14 +360,6 @@
 				06717E2F2851B11D00FEB138 /* ImagineView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		06717E312851BF2300FEB138 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				06717E322851BF3400FEB138 /* ImagineViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		06717E362851DB9F00FEB138 /* HIstory */ = {
