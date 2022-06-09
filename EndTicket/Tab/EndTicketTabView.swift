@@ -14,7 +14,6 @@ struct EndTicketTabView: View {
         GeometryReader{proxy in
             ZStack(alignment:.bottom){
                 content.position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
-                    .padding(.top, 20)
                     
                 HStack(spacing:0){
                     VStack(spacing:4){
@@ -80,7 +79,7 @@ struct EndTicketTabView: View {
         case .home:
             HomeView()
         case .futureOfMe:
-            Text("미래의 나")
+            FutureOfMeView().environmentObject(ImagineViewModel())
         case .history:
             Text("기록")
         case .myPage:
