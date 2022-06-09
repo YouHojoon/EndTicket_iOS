@@ -23,8 +23,12 @@ struct SignUpView: View {
     
     var body: some View {
             VStack(spacing: 0){
-                Text("별명을 지어주세요").kerning(-0.43).font(.gmarketSansMeidum(size: 16)).padding(.bottom, 7)
-                    .frame(width: 284,alignment: .leading)
+                Text("별명을 지어주세요!")
+                    .kerning(-0.5)
+                    .font(.interSemiBold(size: 14))
+                    .padding(.bottom, 10)
+                    .foregroundColor(.gray900)
+                    .frame(width: 335,height: 25,alignment: .leading)
                     
                 TextField("한글, 영어, 숫자를 포함한 8자 까지만 가능합니다:)", text: $viewModel.nickname, onCommit: {
                     isTextFieldFocus = false
@@ -33,14 +37,14 @@ struct SignUpView: View {
                     .font(.gmarketSansMeidum(size: 10))
                     .focused($isTextFieldFocus)
                     .padding()
-                    .frame(width: 284, height: 48)
+                    .frame(width: 335, height: 50)
                     .background(
                         Color.white.onTapGesture {
                             //TextField 터치 가능 영역을 넓히기 위함
                             isTextFieldFocus = true
                         }
                     )
-                    .background(RoundedRectangle(cornerRadius: 4).stroke(isTextFieldNormalBorder ? textFieldNormalBorderColor : textFieldWarningBoarderColor))
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(isTextFieldNormalBorder ? textFieldNormalBorderColor : textFieldWarningBoarderColor))
                     .onReceive(viewModel.isNicknameStatisfied.dropFirst()){
                         isTextFieldNormalBorder = $0
                         isTextFieldMessageHidden = false
@@ -73,11 +77,8 @@ struct SignUpView: View {
             }
             .padding(.top,157)
                 .padding(.horizontal, 30)
-                .onReceive(NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)){_ in
-                    isKeyboardShow = true
-                } .onReceive(NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)){_ in
-                    isKeyboardShow = false
-                }.background(Color.white.ignoresSafeArea().onTapGesture {
+                .listenKeyBoardShowAndHide($isKeyboardShow)
+                .background(Color.white.ignoresSafeArea().onTapGesture {
                     isTextFieldFocus = false
                 })
                 .overlay{
