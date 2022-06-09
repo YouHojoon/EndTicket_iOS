@@ -83,7 +83,7 @@ struct EndTicketTabView: View {
         case .history:
             HistoryHomeView()
         case .myPage:
-            Text("마이")
+            MyHomeView()
         }
     }
     
