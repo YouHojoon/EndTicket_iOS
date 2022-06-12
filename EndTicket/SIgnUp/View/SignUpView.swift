@@ -54,7 +54,7 @@ struct SignUpView: View {
                     Text(isTextFieldNormalBorder ? "멋진 별명이네요!" : "별명을 다시 한 번 확인해주세요.")
                         .kerning(-0.54)
                         .font(.gmarketSansMeidum(size: 10))
-                        .frame(width: 254, height: 30, alignment: .leading).foregroundColor(isTextFieldNormalBorder ? enabledButtonColor : textFieldWarningBoarderColor)
+                        .frame(width: 335, height: 30, alignment: .leading).foregroundColor(isTextFieldNormalBorder ? enabledButtonColor : textFieldWarningBoarderColor)
                 }
                 Spacer()
                 Button{
