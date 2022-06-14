@@ -13,6 +13,18 @@ struct OnBoardingView: View {
     var body: some View {
         VStack{
             Spacer()
+            Text("skip")
+                .underline()
+                .foregroundColor(Color.gray500)
+                .font(.system(size:13,weight: .medium))
+                .padding(.bottom,55)
+                .frame(width:335,alignment: .trailing)
+                .onTapGesture{
+                    withAnimation{
+                        UserDefaults.standard.setValue(false, forKey: "isFirstStart")
+                    }
+                }
+            
             ZStack{//opacity가 변하면서 바뀌는 것을 원해서 ZStack으로
                 ForEach(OnBoarding.allCases, id:\.self){onBoarding in
                     VStack{
@@ -26,6 +38,7 @@ struct OnBoardingView: View {
                             .font(.gmarketSansMeidum(size: 20))
                             .multilineTextAlignment(.center)
                             .lineSpacing(10)
+                            .frame(minHeight:81)
                     }.opacity(index == onBoarding.index ? 1 : 0)
                 }
             }.padding(.bottom,110)
