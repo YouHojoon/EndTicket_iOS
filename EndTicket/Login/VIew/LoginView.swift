@@ -10,7 +10,7 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 struct LoginView: View {
-    @AppStorage("isFirstStart") private var isFirstStart:Bool = false
+    @AppStorage("isFirstStart") private var isFirstStart:Bool = true
     @EnvironmentObject private var viewModel:LoginViewModel
     
     var body: some View {
@@ -79,7 +79,7 @@ struct LoginView: View {
         .font(.appleSDGothicBold(size: 15))
         .padding(.horizontal, 30)
         .frame(maxWidth:.infinity, maxHeight: .infinity)
-        .overlay(isFirstStart ? OnBoarding.home.view.transition(.opacity) : nil)
+        .overlay(isFirstStart ? OnBoardingView() : nil)
         .onAppear{
             viewModel.restorePreviousSignIn()
         }

@@ -8,63 +8,61 @@
 import SwiftUI
 
 //MARK: - OnBoarding 통합 뷰
-struct OnBoardingView<NextView:View>: View {
-    
-    private let title:String
-    private let nextView:NextView
-    
-    @State private var shouldShowNextView = false
-    init(_ title:String, @ViewBuilder nextView: ()-> NextView){
-        self.title = title
-        self.nextView = nextView()
-    }
-    
+struct OnBoardingView: View {
+    @State private var index = 0
     var body: some View {
         VStack{
-            Text(title)
-                .kerning(-0.54)
-                .font(.gmarketSansMeidum(size: 20))
-                .multilineTextAlignment(.center)
-                .lineSpacing(10)
-                .padding(.bottom, 92)
-                
-            ZStack(alignment:.bottomTrailing){
-                RoundedRectangle(cornerRadius: 17)
-                    .foregroundColor(.gray.opacity(0.5))
-                
-                HStack{
-                    Button{
-                        withAnimation(.easeInOut){
-                            UserDefaults.standard.setValue(false, forKey: "isFirstStart")
-                        }
-                    }label: {
-                        Text("건너뛰기")
-                            .font(.gmarketSansMeidum(size: 20))
+            Spacer()
+            ZStack{//opacity가 변하면서 바뀌는 것을 원해서 ZStack으로
+                ForEach(OnBoarding.allCases, id:\.self){onBoarding in
+                    VStack{
+                        onBoarding.image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:350,height: 300)
+                            
+                        Text(onBoarding.title)
                             .kerning(-0.54)
-                            .foregroundColor(.white)
-                            .frame(width:100, height: 56)
-                    }.modifier(OnBoardingButtonModifier())
-                    Spacer()
-                    Button{
-                        withAnimation(.easeInOut){
-                            shouldShowNextView = true
-                        }
-                    }label: {
-                        Text("다음")
                             .font(.gmarketSansMeidum(size: 20))
-                            .kerning(-0.54)
-                            .foregroundColor(.white)
-                            .frame(width:100, height: 56)
-                    }.modifier(OnBoardingButtonModifier())
-                }.padding(.horizontal, 15)
-                    .padding(.bottom, 54)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(10)
+                    }.opacity(index == onBoarding.index ? 1 : 0)
+                }
+            }.padding(.bottom,110)
+            
+            Button{
+                if index != OnBoarding.allCases.count - 1{
+                    withAnimation{
+                        index += 1
+                    }
+                }
+                else{
+                    withAnimation{
+                        UserDefaults.standard.setValue(false, forKey: "isFirstStart")
+                    }
+                }
+            }label: {
+                OnBoarding.allCases[index]
+                    .buttonLabel
+                    .foregroundColor(.white)
+                    .font(.appleSDGothicBold(size: 15))
+                    .frame(width:335, height: 50)
             }
+            .animation(nil, value: index)
+            .background(Color.mainColor)
+            .cornerRadius(10)
+            .padding(.bottom, 20)
+            
+            HStack{
+                ForEach(0 ..< OnBoarding.allCases.count){
+                    Capsule()
+                        .frame(width: $0 == index ? 40 : 10, height: 10)
+                        .foregroundColor(Color.mainColor)
+                }
+            }.padding(.bottom,60)
         }.padding(.horizontal, 25)
-            .padding(.top, 107)
-            .background(Color.white)
-            .overlay(shouldShowNextView ? nextView.transition(.opacity): nil)
-            
-            
+        .padding(.top, 107)
+        .background(Color.white)
     }
 }
 struct OnBoarding_Previews:PreviewProvider{
