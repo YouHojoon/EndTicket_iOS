@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 //MARK: - OnBoardingView 관련 정리
-@frozen enum OnBoarding{
+@frozen enum OnBoarding: CaseIterable{
     case home
     case futureOfMe
     case recommendationGoal
@@ -25,27 +25,32 @@ import SwiftUI
         }
     }
     
-    @ViewBuilder
-    var view: some View{
-        OnBoardingView(title){
-            nextView
+    var image: Image{
+        switch self{
+        case .home:
+            return Image("on_boarding_1")
+        case .futureOfMe:
+            return  Image("on_boarding_2")
+        case .recommendationGoal:
+            return  Image("on_boarding_3")
         }
     }
     
     @ViewBuilder
-    var nextView: some View{
-        switch self {
-        case .home:
-            OnBoarding.futureOfMe.view.eraseToAnyView()
-        case .futureOfMe:
-            OnBoarding.recommendationGoal.view.eraseToAnyView()
-        case .recommendationGoal:
-            Color.clear.onAppear{
-                withAnimation{
-                    UserDefaults.standard.setValue(false, forKey: "isFirstStart")
-                }
-            }.eraseToAnyView()
+    var buttonLabel: some View{
+        if self.index == OnBoarding.allCases.count - 1{
+            Text("시작하기")
         }
+        else{
+            HStack{
+                Text("다음")
+                Image(systemName: "chevron.forward")
+            }
+        }
+    }
+    
+    var index: Int{
+        return Self.allCases.firstIndex{$0 == self}!
     }
 }
 
