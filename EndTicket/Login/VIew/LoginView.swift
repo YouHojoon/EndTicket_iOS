@@ -10,17 +10,27 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 struct LoginView: View {
-    @AppStorage("isFirstStart") private var isFirstStart:Bool = true
+    @AppStorage("isFirstStart") private var isFirstStart:Bool = false
     @EnvironmentObject private var viewModel:LoginViewModel
     
     var body: some View {
         VStack(spacing:12){
             Image("logo")
                 .resizable()
-                .foregroundColor(.gray.opacity(0.5))
+                .aspectRatio(contentMode: .fit)
                 .frame(width:203, height: 203)
+                .overlay(
+                    Image("logo_label")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:78,height: 41)
+                        .offset(y:21)
+                ,alignment: .bottom)
                 .padding(.bottom, 121)
+                
+                
             
+                        
             //MARK: - 로그인 버튼
             Group{
                 Button{
