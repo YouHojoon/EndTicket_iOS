@@ -10,7 +10,7 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 struct LoginView: View {
-    @AppStorage("isFirstStart") private var isFirstStart:Bool = false
+    @AppStorage("isFirstStart") private var isFirstStart:Bool = true
     @EnvironmentObject private var viewModel:LoginViewModel
     
     var body: some View {

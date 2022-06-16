@@ -14,7 +14,7 @@ enum SignUpRouter: URLRequestConvertible{
     var endPoint: String{
         switch self {
         case .signUp(_):
-            return "users/nickname"
+            return "auth/nickname"
         }
     }
     
@@ -22,7 +22,7 @@ enum SignUpRouter: URLRequestConvertible{
         switch self {
         case .signUp(let nickname):
             return [
-                "parameters": nickname
+                "nickname": nickname
             ]
         }
     }
@@ -30,13 +30,14 @@ enum SignUpRouter: URLRequestConvertible{
     var method: HTTPMethod{
         switch self {
         case .signUp(_):
-            return .post
+            return .patch
         }
     }
     
     func asURLRequest() throws -> URLRequest {
         let url = URL(string: EndTicketApp.baseUrl)!.appendingPathComponent(endPoint)
         var request = URLRequest(url: url)
+        request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
         request.method = method
         return request
     }
