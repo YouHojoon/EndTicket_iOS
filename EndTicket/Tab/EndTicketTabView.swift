@@ -13,7 +13,9 @@ struct EndTicketTabView: View {
     var body: some View {
         GeometryReader{proxy in
             ZStack(alignment:.bottom){
-                content.position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
+                content
+                    .padding(.bottom,56)
+                    .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
                     
                 HStack(spacing:0){
                     VStack(spacing:4){
@@ -68,7 +70,7 @@ struct EndTicketTabView: View {
                 }
                 .font(.interSemiBold(size: 10))
                 .frame(width:proxy.size.width, height: 56).background(Color.white.edgesIgnoringSafeArea(.bottom))
-            }
+            }.frame(maxWidth:.infinity)
         }
     }
     
@@ -79,7 +81,8 @@ struct EndTicketTabView: View {
         case .home:
             HomeView()
         case .futureOfMe:
-            FutureOfMeView().environmentObject(ImagineViewModel())
+            FutureOfMeView()
+                .environmentObject(ImagineViewModel())
         case .history:
             HistoryHomeView()
         case .myPage:

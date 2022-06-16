@@ -17,74 +17,78 @@ struct SignUpView: View {
     @FocusState private var isTextFieldFocus
     
     var body: some View {
-            VStack(spacing: 0){
-                Text("별명을 지어주세요!")
-                    .kerning(-0.5)
-                    .font(.interSemiBold(size: 18))
-                    .padding(.bottom, 10)
-                    .foregroundColor(.gray900)
-                    .frame(width: 335,height: 25,alignment: .leading)
-                    
-                TextField("한글, 영어, 숫자를 포함한 8자 까지만 가능합니다:)", text: $viewModel.nickname, onCommit: {
-                    isTextFieldFocus = false
-                }).autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .font(.appleSDGothicBold(size: 14))
-                    .focused($isTextFieldFocus)
-                    .padding()
-                    .frame(width: 335, height: 50)
-                    .background(
-                        Color.white.onTapGesture {
-                            //TextField 터치 가능 영역을 넓히기 위함
-                            isTextFieldFocus = true
-                        }
-                    )
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(isTextFieldNormalBorder ? Color.gray100 : Color.red))
-                    .onReceive(viewModel.isNicknameStatisfied.dropFirst()){
-                        isTextFieldNormalBorder = $0
-                        isTextFieldMessageHidden = false
+        VStack(spacing: 0){
+            Text("별명을 지어주세요!")
+                .kerning(-0.5)
+                .font(.interSemiBold(size: 18))
+                .padding(.bottom, 10)
+                .foregroundColor(.gray900)
+                .frame(width: 335,height: 25,alignment: .leading)
+            
+            TextField("한글, 영어, 숫자를 포함한 8자 까지만 가능합니다:)", text: $viewModel.nickname, onCommit: {
+                isTextFieldFocus = false
+            }).autocapitalization(.none)
+                .disableAutocorrection(true)
+                .font(.appleSDGothicBold(size: 14))
+                .focused($isTextFieldFocus)
+                .padding()
+                .frame(width: 335, height: 50)
+                .background(
+                    Color.white.onTapGesture {
+                        //TextField 터치 가능 영역을 넓히기 위함
+                        isTextFieldFocus = true
                     }
-                    .padding(.bottom,10)
-                //MARK: - 닉네임 관련 알림
-                if !isTextFieldMessageHidden{
-                    Text(isTextFieldNormalBorder ? "멋진 별명이네요!" : "별명을 다시 한 번 확인해주세요.")
-                        .kerning(-0.54)
-                        .font(.gmarketSansMeidum(size: 14))
-                        .frame(width: 335, height: 30, alignment: .leading).foregroundColor(isTextFieldNormalBorder ? .mainColor : .red)
+                )
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(isTextFieldNormalBorder ? Color.gray100 : Color.red))
+                .onReceive(viewModel.isNicknameStatisfied.dropFirst()){
+                    isTextFieldNormalBorder = $0
+                    isTextFieldMessageHidden = false
                 }
-                Spacer()
-                Button{
-                    isTextFieldFocus = false
-                    viewModel.signUp()
-                }label: {
-                    Text("등록하기")
-                        .foregroundColor(.white)
-                        .font(.appleSDGothicBold(size: 15))
-                        .frame(maxWidth: 335, maxHeight: 56)
-                }.background(isButtonEnable ? Color.mainColor : Color.gray300)
-                    .cornerRadius(10)
-                    .padding(.bottom, isKeyboardShow ? 15 : 0)
-                    .onReceive(viewModel.isNicknameStatisfied){
-                        isButtonEnable = $0
-                    }
-                    .disabled(!isButtonEnable)
+                .padding(.bottom,10)
+            //MARK: - 닉네임 관련 알림
+            if !isTextFieldMessageHidden{
+                Text(isTextFieldNormalBorder ? "멋진 별명이네요!" : "별명을 다시 한 번 확인해주세요.")
+                    .kerning(-0.54)
+                    .font(.gmarketSansMeidum(size: 14))
+                    .frame(width: 335, height: 30, alignment: .leading).foregroundColor(isTextFieldNormalBorder ? .mainColor : .red)
             }
-            .padding(.top,144)
-                .padding(.horizontal, 30)
-                .listenKeyBoardShowAndHide($isKeyboardShow)
-                .background(Color.white.ignoresSafeArea().onTapGesture {
-                    isTextFieldFocus = false
-                })
-                .overlay{
-                    shouldShowNextView ? EndTicketTabView().background(Color.white).transition(.move(edge: .trailing)) : nil
+            Spacer()
+            Button{
+                isTextFieldFocus = false
+                viewModel.signUp()
+            }label: {
+                Text("등록하기")
+                    .foregroundColor(.white)
+                    .font(.appleSDGothicBold(size: 15))
+                    .frame(maxWidth: 335, maxHeight: 56)
+            }.background(isButtonEnable ? Color.mainColor : Color.gray300)
+                .cornerRadius(10)
+                .padding(.bottom, isKeyboardShow ? 15 : 0)
+                .onReceive(viewModel.isNicknameStatisfied){
+                    isButtonEnable = $0
                 }
-                .onReceive(viewModel.$isSuccessSignUp.dropFirst()){
-                    if $0{
-                        withAnimation(.easeInOut){
-                            shouldShowNextView = true
-                        }
-                    }
+                .disabled(!isButtonEnable)
+        }
+        
+        .padding(.top,144)
+        .padding(.horizontal, 30)
+        .frame(maxWidth:.infinity)
+        .overlay{
+            shouldShowNextView ?
+                EndTicketTabView()
+                .transition(.move(edge: .trailing)) :  nil
+        }
+        .listenKeyBoardShowAndHide($isKeyboardShow)
+        .background(Color.white.ignoresSafeArea().onTapGesture {
+            isTextFieldFocus = false
+        })
+        .onReceive(viewModel.$isSuccessSignUp.dropFirst()){
+            if $0{
+                withAnimation(.easeInOut){
+                    shouldShowNextView = true
                 }
+            }
+        }
     }
 }
 

@@ -53,7 +53,7 @@ struct HomeView: View {
                             .foregroundColor(color[$0])
                             .shadow(color: .white.opacity(0.15), radius: 12, x: 0, y: 0)
                     }
-                }.padding(.top, 30)
+                }.padding(.vertical, 30)
             }
             .background(Color.gray50.edgesIgnoringSafeArea([.horizontal,.bottom]))
         }
