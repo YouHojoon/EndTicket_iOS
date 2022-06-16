@@ -18,6 +18,6 @@ extension Font{
         return Font.custom("Apple SD Gothic Neo Bold", size: size)
     }
     static func interSemiBold(size: CGFloat) -> Font{
-        return Font.custom("InterSemiBold", size: size)
+        return Font.custom("Inter-SemiBold", size: size)
     }
 }

@@ -12,7 +12,7 @@
 		061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DF2844B7E70095AEAD /* SignUpView.swift */; };
 		061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E528478BCC0095AEAD /* KeyChainManager.swift */; };
 		061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */; };
-		063634E028520C3000856928 /* InterSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 063634DF28520C2F00856928 /* InterSemiBold.ttf */; };
+		063634E028520C3000856928 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 063634DF28520C2F00856928 /* Inter-SemiBold.ttf */; };
 		063634E82852119600856928 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634E72852119600856928 /* SignUpRouter.swift */; };
 		063634EA2852132E00856928 /* SignUpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634E92852132E00856928 /* SignUpApi.swift */; };
 		063634EC285869F600856928 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634EB285869F600856928 /* OnBoardingView.swift */; };
@@ -80,7 +80,7 @@
 		061F79E12844BA040095AEAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		061F79E528478BCC0095AEAD /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASAuthorizationControllerDelgateImpl.swift; sourceTree = "<group>"; };
-		063634DF28520C2F00856928 /* InterSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = InterSemiBold.ttf; sourceTree = "<group>"; };
+		063634DF28520C2F00856928 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		063634E72852119600856928 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
 		063634E92852132E00856928 /* SignUpApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpApi.swift; sourceTree = "<group>"; };
 		063634EB285869F600856928 /* OnBoardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -309,7 +309,7 @@
 		06717DFF284096AE00FEB138 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				063634DF28520C2F00856928 /* InterSemiBold.ttf */,
+				063634DF28520C2F00856928 /* Inter-SemiBold.ttf */,
 				064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */,
 				06717E00284096B700FEB138 /* GmarketSansMedium.otf */,
 			);
@@ -566,7 +566,7 @@
 				06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */,
 				061F79D92844B4220095AEAD /* Credential.plist in Resources */,
 				06717E01284096B700FEB138 /* GmarketSansMedium.otf in Resources */,
-				063634E028520C3000856928 /* InterSemiBold.ttf in Resources */,
+				063634E028520C3000856928 /* Inter-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
