@@ -63,7 +63,8 @@ struct TicketView: View {
                     }
                     .foregroundColor(.gray)
                 }
-        }.frame(height:167)
+        }
+        .frame(width:335,height:167)
             .cornerRadius(10)
         
     }
