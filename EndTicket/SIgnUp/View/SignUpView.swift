@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct SignUpView: View {
-    private let textFieldNormalBorderColor = Color(#colorLiteral(red: 0.9150597453, green: 0.9150596857, blue: 0.9150597453, alpha: 1))
-    private let textFieldWarningBoarderColor = Color(#colorLiteral(red: 0.9989913106, green: 0.5363228321, blue: 0.5204564333, alpha: 1))
-    private let disabledButtonColor = Color(#colorLiteral(red:0.758,green:0.758,blue:0.758,alpha:1))
-    private let enabledButtonColor = Color(#colorLiteral(red: 0.3407235146, green: 0.4472774267, blue: 1, alpha: 1))
-    
     @EnvironmentObject private var viewModel:SignUpViewModel
     @State private var isTextFieldNormalBorder = true
     @State private var isButtonEnable = true
@@ -25,7 +20,7 @@ struct SignUpView: View {
             VStack(spacing: 0){
                 Text("별명을 지어주세요!")
                     .kerning(-0.5)
-                    .font(.interSemiBold(size: 14))
+                    .font(.interSemiBold(size: 18))
                     .padding(.bottom, 10)
                     .foregroundColor(.gray900)
                     .frame(width: 335,height: 25,alignment: .leading)
@@ -34,7 +29,7 @@ struct SignUpView: View {
                     isTextFieldFocus = false
                 }).autocapitalization(.none)
                     .disableAutocorrection(true)
-                    .font(.gmarketSansMeidum(size: 10))
+                    .font(.appleSDGothicBold(size: 14))
                     .focused($isTextFieldFocus)
                     .padding()
                     .frame(width: 335, height: 50)
@@ -44,17 +39,18 @@ struct SignUpView: View {
                             isTextFieldFocus = true
                         }
                     )
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(isTextFieldNormalBorder ? textFieldNormalBorderColor : textFieldWarningBoarderColor))
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(isTextFieldNormalBorder ? Color.gray100 : Color.red))
                     .onReceive(viewModel.isNicknameStatisfied.dropFirst()){
                         isTextFieldNormalBorder = $0
                         isTextFieldMessageHidden = false
                     }
+                    .padding(.bottom,10)
                 //MARK: - 닉네임 관련 알림
                 if !isTextFieldMessageHidden{
                     Text(isTextFieldNormalBorder ? "멋진 별명이네요!" : "별명을 다시 한 번 확인해주세요.")
                         .kerning(-0.54)
-                        .font(.gmarketSansMeidum(size: 10))
-                        .frame(width: 335, height: 30, alignment: .leading).foregroundColor(isTextFieldNormalBorder ? enabledButtonColor : textFieldWarningBoarderColor)
+                        .font(.gmarketSansMeidum(size: 14))
+                        .frame(width: 335, height: 30, alignment: .leading).foregroundColor(isTextFieldNormalBorder ? .mainColor : .red)
                 }
                 Spacer()
                 Button{
@@ -63,9 +59,9 @@ struct SignUpView: View {
                 }label: {
                     Text("등록하기")
                         .foregroundColor(.white)
-                        .font(.gmarketSansMeidum(size: 20))
-                        .frame(maxWidth:.infinity, maxHeight: 56)
-                }.background(isButtonEnable ? enabledButtonColor : disabledButtonColor)
+                        .font(.appleSDGothicBold(size: 15))
+                        .frame(maxWidth: 335, maxHeight: 56)
+                }.background(isButtonEnable ? Color.mainColor : Color.gray300)
                     .cornerRadius(10)
                     .padding(.bottom, isKeyboardShow ? 15 : 0)
                     .onReceive(viewModel.isNicknameStatisfied){
@@ -73,7 +69,7 @@ struct SignUpView: View {
                     }
                     .disabled(!isButtonEnable)
             }
-            .padding(.top,157)
+            .padding(.top,144)
                 .padding(.horizontal, 30)
                 .listenKeyBoardShowAndHide($isKeyboardShow)
                 .background(Color.white.ignoresSafeArea().onTapGesture {
