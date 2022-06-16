@@ -39,7 +39,7 @@
 		06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */; };
 		06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */; };
 		06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2128504D5E00FEB138 /* EndTicketTabView.swift */; };
-		06717E2628506D5D00FEB138 /* TicketBodyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2528506D5D00FEB138 /* TicketBodyShape.swift */; };
+		06717E2628506D5D00FEB138 /* TicketLeadingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2528506D5D00FEB138 /* TicketLeadingShape.swift */; };
 		06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E272850774300FEB138 /* TicketTrailingShape.swift */; };
 		06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2B2850CE5500FEB138 /* FutureOfMeView.swift */; };
 		06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2D2851A2EE00FEB138 /* FutureOfMeProfileView.swift */; };
@@ -111,7 +111,7 @@
 		06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingButtonModifier.swift; sourceTree = "<group>"; };
 		06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = ViewModel/SignUpViewModel.swift; sourceTree = "<group>"; };
 		06717E2128504D5E00FEB138 /* EndTicketTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketTabView.swift; sourceTree = "<group>"; };
-		06717E2528506D5D00FEB138 /* TicketBodyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketBodyShape.swift; sourceTree = "<group>"; };
+		06717E2528506D5D00FEB138 /* TicketLeadingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketLeadingShape.swift; sourceTree = "<group>"; };
 		06717E272850774300FEB138 /* TicketTrailingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTrailingShape.swift; sourceTree = "<group>"; };
 		06717E2B2850CE5500FEB138 /* FutureOfMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMeView.swift; sourceTree = "<group>"; };
 		06717E2D2851A2EE00FEB138 /* FutureOfMeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMeProfileView.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			children = (
 				064B50E4284E3A1B000EEF62 /* TicketView.swift */,
 				064B50E6284E43E9000EEF62 /* HomeView.swift */,
-				06717E2528506D5D00FEB138 /* TicketBodyShape.swift */,
+				06717E2528506D5D00FEB138 /* TicketLeadingShape.swift */,
 				06717E272850774300FEB138 /* TicketTrailingShape.swift */,
 			);
 			path = View;
@@ -707,7 +707,7 @@
 				06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */,
 				06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */,
 				06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */,
-				06717E2628506D5D00FEB138 /* TicketBodyShape.swift in Sources */,
+				06717E2628506D5D00FEB138 /* TicketLeadingShape.swift in Sources */,
 				063634EA2852132E00856928 /* SignUpApi.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
 				06717E352851BF5B00FEB138 /* Imagine.swift in Sources */,

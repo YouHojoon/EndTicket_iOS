@@ -21,7 +21,6 @@ struct HomeView: View {
             }
             .padding(.bottom,26)
             
-            
             RoundedRectangle(cornerRadius: 10)
                 .frame(width: 335, height: 46)
                 .overlay{
