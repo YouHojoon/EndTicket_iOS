@@ -13,7 +13,6 @@ final class SignUpViewModel:ObservableObject{
     @Published var nickname = ""
     @Published var isSuccessSignUp = false
    
-    
     private let nicknameFormat = "^[A-Za-z0-9가-힣]{3,8}$"
     private var subscriptions = Set<AnyCancellable>()
     
@@ -23,12 +22,14 @@ final class SignUpViewModel:ObservableObject{
             .sink(receiveCompletion: {
                 switch $0{
                 case .finished:
-                    self.isSuccessSignUp = true
+                    break
                 case .failure(let error):
                     print("닉네임 등록 실패 : \(error.localizedDescription)")
                     self.isSuccessSignUp = false
                 }
-            }, receiveValue: {})
+            }, receiveValue: {
+                self.isSuccessSignUp = $0
+            })
             .store(in: &subscriptions)
     }
 }

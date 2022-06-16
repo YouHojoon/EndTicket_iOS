@@ -9,16 +9,18 @@ import Foundation
 import Combine
 import Alamofire
 
-final class SignUpApi{
+final class SignUpApi: BaseApi{
     static let shared = SignUpApi()
-    private init(){}
-    
-    func signUp(nickname: String) -> AnyPublisher<Void,AFError>{
-        return AF.request(SignUpRouter.signUp(nickname))
-            .validate(statusCode: 200..<300)
-            .publishData()
-            .value()
-            .flatMap{_ -> Combine.Empty in Combine.Empty<Void,AFError>(completeImmediately: true)}
-            .eraseToAnyPublisher()
+    override private init(){
+        super.init()
     }
+    
+    func signUp(nickname: String) -> AnyPublisher<Bool,AFError>{
+        return session.request(SignUpRouter.signUp(nickname))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type:SignUpResponse.self)
+            .value()
+            .map{$0.isSuccess}
+            .eraseToAnyPublisher()
+        }
 }

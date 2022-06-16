@@ -9,7 +9,7 @@ import Foundation
 import AuthenticationServices
 
 //MARK: - Apple 로그인 키체인 저장을 도우기 위한 클래스
-class KeyChainManager{
+final class KeyChainManager{
     static private let baseQuery: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
                             kSecAttrService: Bundle.main.bundleIdentifier!,
                             kSecAttrAccount: "userIdentifier",
