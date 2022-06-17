@@ -52,7 +52,7 @@
 		06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E402851FC4000FEB138 /* Color + Extension.swift */; };
 		06B26288285B13A500722A52 /* TicketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26287285B13A500722A52 /* TicketApi.swift */; };
 		06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26289285B14AD00722A52 /* TicketRouter.swift */; };
-		06B2628D285B15B500722A52 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2628C285B15B500722A52 /* RouterProtocol.swift */; };
+		06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2628C285B15B500722A52 /* BaseRouter.swift */; };
 		06B2628F285B1C9D00722A52 /* GetTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2628E285B1C9D00722A52 /* GetTicketResponse.swift */; };
 		06B26291285B1D0800722A52 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26290285B1D0800722A52 /* BaseResponse.swift */; };
 		06B26293285B26BB00722A52 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26292285B26BB00722A52 /* TicketViewModel.swift */; };
@@ -131,7 +131,7 @@
 		06717E402851FC4000FEB138 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		06B26287285B13A500722A52 /* TicketApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketApi.swift; sourceTree = "<group>"; };
 		06B26289285B14AD00722A52 /* TicketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRouter.swift; sourceTree = "<group>"; };
-		06B2628C285B15B500722A52 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		06B2628C285B15B500722A52 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		06B2628E285B1C9D00722A52 /* GetTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketResponse.swift; sourceTree = "<group>"; };
 		06B26290285B1D0800722A52 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		06B26292285B26BB00722A52 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
@@ -455,7 +455,7 @@
 		06B2628B285B15AB00722A52 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				06B2628C285B15B500722A52 /* RouterProtocol.swift */,
+				06B2628C285B15B500722A52 /* BaseRouter.swift */,
 				06B26290285B1D0800722A52 /* BaseResponse.swift */,
 			);
 			path = Protocol;
@@ -750,7 +750,7 @@
 				063634EA2852132E00856928 /* SignUpApi.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
 				06717E352851BF5B00FEB138 /* Imagine.swift in Sources */,
-				06B2628D285B15B500722A52 /* RouterProtocol.swift in Sources */,
+				06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */,
 				063634F02858B56E00856928 /* AuthInterceptor.swift in Sources */,
 				06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */,
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
