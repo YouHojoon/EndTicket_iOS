@@ -14,7 +14,7 @@ import KakaoSDKUser
 import KakaoSDKCommon
 import AuthenticationServices
 import SwiftUI
-
+import UIKit
 final class LoginViewModel: NSObject, ObservableObject{
     @Published var isSignIn = false
     
@@ -55,22 +55,31 @@ final class LoginViewModel: NSObject, ObservableObject{
     }
     
     func googleSignIn(completion: ((Bool)->Void)? = nil){
-        guard let rootController = UIApplication.shared.windows.first?.rootViewController else{
-            self.isSignIn = false
+        guard let windowScenes = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let rootController = windowScenes.windows.first?.rootViewController else{
+            DispatchQueue.main.async {
+                self.isSignIn = false
+            }
             return
         }
         GIDSignIn.sharedInstance.signIn(with: gidConfig, presenting: rootController){
             guard $1 == nil else{
                 print($1!.localizedDescription)
-                self.isSignIn = false
+                DispatchQueue.main.async {
+                    self.isSignIn = false
+                }
                 return
             }
             guard let _ = $0 else{
-                self.isSignIn = false
+                DispatchQueue.main.async {
+                    self.isSignIn = false
+                }
                 return
             }
             withAnimation(.easeInOut){
-                self.isSignIn = true
+                DispatchQueue.main.async {
+                    self.isSignIn = true
+                }
             }
         }
     }
@@ -89,13 +98,17 @@ final class LoginViewModel: NSObject, ObservableObject{
                         self.restorePreviousKakaoSignIn{result in
                             print("kakao \(result)")
                             withAnimation(.easeInOut){
-                                self.isSignIn = result
+                                DispatchQueue.main.async {
+                                    self.isSignIn = result
+                                }
                             }
                         }
                     }
                     else{
                         withAnimation(.easeInOut){
-                            self.isSignIn = true
+                            DispatchQueue.main.async{
+                                self.isSignIn = true
+                            }
                         }
                         
                     }
@@ -103,7 +116,9 @@ final class LoginViewModel: NSObject, ObservableObject{
             }
             else{
                 withAnimation(.easeInOut){
-                    self.isSignIn = true
+                    DispatchQueue.main.async{
+                        self.isSignIn = true
+                    }
                 }
             }
         }
