@@ -9,14 +9,20 @@ import SwiftUI
 
 struct EndTicketTabView: View {
     @State private var tabIndex: TabIndex = .home
+    @State private var shouldShowTicketFormView = false
     private let itemColor = Color(#colorLiteral(red: 0.758, green:0.758, blue: 0.758, alpha: 1))
     var body: some View {
         GeometryReader{proxy in
             ZStack(alignment:.bottom){
                 content
+                    .fullScreenCoverWithTransition(transition: .move(edge: .trailing), isPresented: $shouldShowTicketFormView){
+                        TicketFormView()
+//                            .padding(.top,30)
+                    }
                     .padding(.bottom,56)
                     .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
                     
+                
                 HStack(spacing:0){
                     VStack(spacing:4){
                         Image("home_icon")
@@ -38,14 +44,19 @@ struct EndTicketTabView: View {
                         .onTapGesture {
                             tabIndex = .futureOfMe
                         }
-
+                    
                     ZStack{
-                        Circle().frame(width: 36, height: 36).foregroundColor(itemColor)
+                        Circle().frame(width: 36, height: 36).foregroundColor(.black)
                         Image(systemName: "plus")
                             .font(.system(size: 14, weight: .bold))
-                            .foregroundColor(Color(#colorLiteral(red: 0.5406724811, green: 0.5406724811, blue: 0.5406724811, alpha: 1)))
+                            .foregroundColor(.white)
                     }.frame(width:proxy.size.width / 5)
-
+                        .onTapGesture {
+                            withAnimation{
+                                shouldShowTicketFormView = true
+                            }
+                        }
+                    
                     VStack(spacing:4){
                         Image("history_icon")
                             .resizable()
@@ -56,7 +67,7 @@ struct EndTicketTabView: View {
                         .onTapGesture {
                             tabIndex = .history
                         }
-
+                    
                     VStack(spacing:4){
                         Image("my_page_icon")
                             .resizable()
@@ -69,7 +80,8 @@ struct EndTicketTabView: View {
                         }
                 }
                 .font(.interSemiBold(size: 10))
-                .frame(width:proxy.size.width, height: 56).background(Color.white.edgesIgnoringSafeArea(.bottom))
+                .frame(width:proxy.size.width, height: 56)
+                .background(Color.white.edgesIgnoringSafeArea(.bottom))
             }.frame(maxWidth:.infinity)
         }
     }
@@ -95,11 +107,5 @@ struct EndTicketTabView: View {
         case futureOfMe
         case history
         case myPage
-    }
-}
-    
-struct EndTicketTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        EndTicketTabView()
     }
 }

@@ -20,4 +20,8 @@ extension Font{
     static func interSemiBold(size: CGFloat) -> Font{
         return Font.custom("Inter-SemiBold", size: size)
     }
+    static func interMedium(size: CGFloat) -> Font{
+        return Font.custom("Inter-Medium", size: size)
+    }
+
 }
