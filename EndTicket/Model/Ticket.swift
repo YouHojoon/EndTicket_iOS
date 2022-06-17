@@ -30,7 +30,7 @@ struct Ticket: Identifiable{
     }
     
     
-    enum Category: String{
+    enum Category: String, CaseIterable{
         case health = "건강"
         case personality = "성격"
         case value = "가치관"

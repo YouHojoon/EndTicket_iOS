@@ -17,14 +17,28 @@ final class TicketApi: BaseApi{
         super.init()
     }
     
-    var tets = Set<AnyCancellable>()
-    func getTicket() -> AnyPublisher<[Ticket], AFError>{
+    func getTickets() -> AnyPublisher<[Ticket], AFError>{
         return session.request(TicketRouter.getTicket)
             .validate(statusCode: 200..<300)
             .publishDecodable(type:GetTicketResponse.self)
             .value()
             .map{
                 $0.result.ticket.map{$0.ticketResponseToTicket()}
+            }.eraseToAnyPublisher()
+    }
+    
+    func postTicket(_ ticket: Ticket) -> AnyPublisher<TicketResponse?, AFError>{
+        return session.request(TicketRouter.postTicket(ticket))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type:PostTicketResponse.self)
+            .value()
+            .map{
+                if $0.isSuccess{
+                    return $0.result
+                }
+                else{
+                    return nil
+                }
             }.eraseToAnyPublisher()
     }
 }
