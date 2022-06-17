@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol RouterProtocol: URLRequestConvertible{
+protocol BaseRouter: URLRequestConvertible{
     var endPoint:String {get}
     var parameters:Parameters {get}
     var method: HTTPMethod {get}
