@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-enum TicketRouter: RouterProtocol{
+enum TicketRouter: BaseRouter{
     case getTicket
     case postTicket(Ticket)
     case deleteTicket

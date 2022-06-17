@@ -6,13 +6,13 @@
 //
 
 import Foundation
-struct SignUpResponse: Codable{
+struct SignUpResponse: BaseResponse{
     let isSuccess: Bool
     let code: Int
     let message: String
-    let result: SignUpResponseResult
+    let result: Result
     
-    struct SignUpResponseResult: Codable{
+    struct Result: Codable{
         let nickname: String
     }
 }

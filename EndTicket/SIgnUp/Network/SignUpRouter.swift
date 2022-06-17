@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-enum SignUpRouter: URLRequestConvertible{
+enum SignUpRouter: BaseRouter{
     case signUp(String)
     
     var endPoint: String{
