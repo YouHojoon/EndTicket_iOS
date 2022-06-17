@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    private let color:[Color] = [.blue, .purple, .green, .brown, .indigo]
+    @EnvironmentObject private var viewModel: TicketViewModel
     
     var body: some View {
         VStack(spacing:0){
@@ -48,20 +48,21 @@ struct HomeView: View {
                 .padding(.top, 12)
             ScrollView(showsIndicators: false){
                 LazyVStack(spacing:20){
-                    ForEach(0 ..< 5){
-                        TicketView(Ticket.getDummys()[$0])
-                            .foregroundColor(color[$0])
-                            .shadow(color: .white.opacity(0.15), radius: 12, x: 0, y: 0)
+                    ForEach(viewModel.tickets,id: \.id){
+                        TicketView($0)
                     }
                 }.padding(.vertical, 30)
             }
             .background(Color.gray50.edgesIgnoringSafeArea([.horizontal,.bottom]))
+            .onAppear{
+                viewModel.fetchTicket()
+            }
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(TicketViewModel())
     }
 }

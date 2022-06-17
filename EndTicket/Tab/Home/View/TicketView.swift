@@ -26,7 +26,7 @@ struct TicketView: View {
                             Capsule()
                                 .frame(width:31,height: 15)
                                 .overlay{
-                                    Text(ticket.type.description)
+                                    Text(ticket.category.rawValue)
                                         .font(.appleSDGothicBold(size: 8))
                                         .foregroundColor(.gray600)
                                         .background()
@@ -36,11 +36,11 @@ struct TicketView: View {
                         Text("시작역")
                             .font(.appleSDGothicBold(size: 8))
                             .frame(height:8)
-                        Text(ticket.startStation).font(.appleSDGothicBold(size: 12))
+                        Text(ticket.start).font(.appleSDGothicBold(size: 12))
                             .frame(height:20)
                             .padding(.bottom,16)
                         Text("종착역").font(.appleSDGothicBold(size: 8))
-                        Text(ticket.endStation).font(.appleSDGothicBold(size: 12))
+                        Text(ticket.end).font(.appleSDGothicBold(size: 12))
                             .frame(height:20)
                     }.foregroundColor(.white)
                         .padding([.leading,.top], 24)
@@ -65,7 +65,8 @@ struct TicketView: View {
                 }
         }
         .frame(width:335,height:167)
-            .cornerRadius(10)
+        .cornerRadius(10)
+        .foregroundColor(ticket.color)
         
     }
     
