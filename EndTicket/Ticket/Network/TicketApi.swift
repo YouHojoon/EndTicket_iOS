@@ -26,20 +26,17 @@ final class TicketApi: BaseApi{
                 $0.result.ticket.map{$0.ticketResponseToTicket()}
             }.eraseToAnyPublisher()
     }
+
     func postTicket(_ ticket: Ticket) -> AnyPublisher<Ticket?, AFError>{
         return session.request(TicketRouter.postTicket(ticket))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:PostOrModifyTicketResponse.self)
             .value()
             .map{
-                if $0.isSuccess{
-                    return $0.result.ticketResponseToTicket()
-                }
-                else{
-                    return nil
-                }
+                $0.result.ticketResponseToTicket()
             }.eraseToAnyPublisher()
     }
+
     func deleteTicket(id: Int) -> AnyPublisher<Bool, AFError>{
         return session.request(TicketRouter.deleteTicket(id)).validate(statusCode: 200..<300)
             .publishDecodable(type:DeleteTicketResponse.self)
@@ -49,6 +46,7 @@ final class TicketApi: BaseApi{
             }
             .eraseToAnyPublisher()
     }
+
     func modifyTicket(_ ticket: Ticket) -> AnyPublisher<Ticket?, AFError>{// 미완
         return session.request(TicketRouter.modifyTicket(ticket))
             .validate(statusCode: 200..<300)

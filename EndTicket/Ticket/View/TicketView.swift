@@ -70,8 +70,6 @@ struct TicketView: View {
         .frame(width:335,height:height)
         .cornerRadius(10)
         .foregroundColor(ticket.color)
-        
-        
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
