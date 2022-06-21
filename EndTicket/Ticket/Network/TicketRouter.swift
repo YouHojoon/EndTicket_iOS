@@ -11,7 +11,7 @@ import Alamofire
 enum TicketRouter: BaseRouter{
     case getTicket
     case postTicket(Ticket)
-    case deleteTicket
+    case deleteTicket(Int)
     case ticketTouch(Int)
     case modifyTicket(Int)
     case getWeekendGoal
@@ -20,8 +20,10 @@ enum TicketRouter: BaseRouter{
         let baseEndPoint = "ticket"
         
         switch self {
-        case .getTicket, .postTicket, .deleteTicket:
+        case .getTicket, .postTicket:
             return "\(baseEndPoint)"
+        case .deleteTicket(let ticketId):
+            return "\(baseEndPoint)/\(ticketId)"
         case .ticketTouch(let ticketId):
             return "\(baseEndPoint)/touch/\(ticketId)"
         case .modifyTicket(let ticketId):
