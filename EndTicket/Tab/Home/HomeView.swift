@@ -55,7 +55,7 @@ struct HomeView: View {
             }
             .background(Color.gray50.edgesIgnoringSafeArea([.horizontal,.bottom]))
             .onAppear{
-                viewModel.fetchTicket()
+                viewModel.fetchTickets()
             }
         }
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+
 extension View{
     func eraseToAnyView() -> AnyView{
         return AnyView(self)
@@ -17,6 +18,19 @@ extension View{
             isKeyboardShow.wrappedValue = true
         }.onReceive(NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)){_ in
             isKeyboardShow.wrappedValue = false
+        }
+    }
+    
+    
+    
+    func fullScreenCoverWithTransition<Content>(transition: AnyTransition, isPresented:Binding<Bool>, content: () -> Content) -> some View where Content: View{
+        return self.overlay{
+            isPresented.wrappedValue ?
+                content()
+//                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .transition(transition)
+                .environment(\.fullScreenDismiss, isPresented)
+                :  nil
         }
     }
 }
