@@ -53,7 +53,7 @@
 		06B26288285B13A500722A52 /* TicketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26287285B13A500722A52 /* TicketApi.swift */; };
 		06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26289285B14AD00722A52 /* TicketRouter.swift */; };
 		06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2628C285B15B500722A52 /* BaseRouter.swift */; };
-		06B2628F285B1C9D00722A52 /* GetTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2628E285B1C9D00722A52 /* GetTicketResponse.swift */; };
+		06B2628F285B1C9D00722A52 /* TicketListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2628E285B1C9D00722A52 /* TicketListResponse.swift */; };
 		06B26291285B1D0800722A52 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26290285B1D0800722A52 /* BaseResponse.swift */; };
 		06B26293285B26BB00722A52 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26292285B26BB00722A52 /* TicketViewModel.swift */; };
 		06B26295285B29C500722A52 /* TicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26294285B29C500722A52 /* TicketResponse.swift */; };
@@ -64,7 +64,8 @@
 		06B262A0285C568B00722A52 /* TicketColorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629F285C568B00722A52 /* TicketColorSelectView.swift */; };
 		06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */; };
 		06B262A4285C6AF600722A52 /* EnvironmentValues + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A3285C6AF600722A52 /* EnvironmentValues + Extension.swift */; };
-		06B262A8285C718B00722A52 /* PostTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* PostTicketResponse.swift */; };
+		06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */; };
+		06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -140,7 +141,7 @@
 		06B26287285B13A500722A52 /* TicketApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketApi.swift; sourceTree = "<group>"; };
 		06B26289285B14AD00722A52 /* TicketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRouter.swift; sourceTree = "<group>"; };
 		06B2628C285B15B500722A52 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
-		06B2628E285B1C9D00722A52 /* GetTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketResponse.swift; sourceTree = "<group>"; };
+		06B2628E285B1C9D00722A52 /* TicketListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListResponse.swift; sourceTree = "<group>"; };
 		06B26290285B1D0800722A52 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		06B26292285B26BB00722A52 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
 		06B26294285B29C500722A52 /* TicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketResponse.swift; sourceTree = "<group>"; };
@@ -151,7 +152,8 @@
 		06B2629F285C568B00722A52 /* TicketColorSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketColorSelectView.swift; sourceTree = "<group>"; };
 		06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTouchCountSelectView.swift; sourceTree = "<group>"; };
 		06B262A3285C6AF600722A52 /* EnvironmentValues + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues + Extension.swift"; sourceTree = "<group>"; };
-		06B262A7285C718B00722A52 /* PostTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTicketResponse.swift; sourceTree = "<group>"; };
+		06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTicketResponse.swift; sourceTree = "<group>"; };
+		06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTicketResponse.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -465,11 +467,9 @@
 		06B26286285B139300722A52 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				06B262AB2861A98E00722A52 /* Response */,
 				06B26287285B13A500722A52 /* TicketApi.swift */,
 				06B26289285B14AD00722A52 /* TicketRouter.swift */,
-				06B2628E285B1C9D00722A52 /* GetTicketResponse.swift */,
-				06B26294285B29C500722A52 /* TicketResponse.swift */,
-				06B262A7285C718B00722A52 /* PostTicketResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -491,6 +491,17 @@
 				06B26292285B26BB00722A52 /* TicketViewModel.swift */,
 			);
 			path = Ticket;
+			sourceTree = "<group>";
+		};
+		06B262AB2861A98E00722A52 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				06B2628E285B1C9D00722A52 /* TicketListResponse.swift */,
+				06B26294285B29C500722A52 /* TicketResponse.swift */,
+				06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */,
+				06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		8A463F1CB07FD806BE1578D5 /* Pods */ = {
@@ -792,7 +803,7 @@
 				06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */,
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
-				06B262A8285C718B00722A52 /* PostTicketResponse.swift in Sources */,
+				06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */,
 				06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
 				06B262A0285C568B00722A52 /* TicketColorSelectView.swift in Sources */,
@@ -807,8 +818,9 @@
 				063634EE2858B49F00856928 /* BaseApi.swift in Sources */,
 				064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */,
 				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
+				06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */,
 				061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */,
-				06B2628F285B1C9D00722A52 /* GetTicketResponse.swift in Sources */,
+				06B2628F285B1C9D00722A52 /* TicketListResponse.swift in Sources */,
 				06717E162840C54600FEB138 /* LoginButtonModifier.swift in Sources */,
 				063634E82852119600856928 /* SignUpRouter.swift in Sources */,
 			);

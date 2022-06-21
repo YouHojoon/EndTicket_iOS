@@ -41,9 +41,25 @@ final class TicketViewModel:ObservableObject{
                 self.isPostTicketSuccess.send(false)
                 return
             }
-            let color = Color(hex:$0!.color)
-            self.tickets.append(Ticket(title: $0!.title, category: Ticket.Category(rawValue: $0!.category)!, start: $0!.start, end: $0!.end, color: color, touchCount: $0!.touchCount, currentCount: 0, id: 60606060))
+          
+            self.tickets.append($0!)
             self.isPostTicketSuccess.send(true)
+        }).store(in: &subscriptions)
+    }
+    
+    func deleteTicket(_ ticket: Ticket){
+        TicketApi.shared.deleteTicket(ticket).receive(on: DispatchQueue.main).sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("ticket 삭제 실패 : \(error.localizedDescription)")
+            }
+        }, receiveValue: {
+            if $0{
+                let index = self.tickets.firstIndex(where: {$0.id == ticket.id})!
+                self.tickets.remove(at: index)
+            }
         }).store(in: &subscriptions)
     }
 }
