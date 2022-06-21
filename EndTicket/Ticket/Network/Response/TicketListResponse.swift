@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct GetTicketResponse: BaseResponse{
+struct TicketListResponse: BaseResponse{
     var isSuccess: Bool
     var code: Int
     var message: String
