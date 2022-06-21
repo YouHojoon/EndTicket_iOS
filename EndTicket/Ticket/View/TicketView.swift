@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TicketView: View {
     private let ticket: Ticket
+    @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
         self.ticket = ticket
     }
@@ -67,6 +68,13 @@ struct TicketView: View {
         .frame(width:335,height:167)
         .cornerRadius(10)
         .foregroundColor(ticket.color)
+        .contextMenu(ContextMenu(menuItems: {
+            Button{
+                viewModel.deleteTicket(ticket)
+            }label: {
+                Text("삭제")
+            }
+        }))
         
     }
     
