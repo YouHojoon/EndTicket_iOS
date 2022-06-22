@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TicketFormView: View {
-    @Environment(\.fullScreenDismiss) var fullScreenDismiss
-    @EnvironmentObject var viewModel: TicketViewModel
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var viewModel: TicketViewModel
     
     @State private var title: String = ""
     @State private var start: String = ""
@@ -18,8 +18,24 @@ struct TicketFormView: View {
     @State private var color: Color = .ticketRed1
     @State private var touchCount: Int = 5
     
+    private let buttonType:ButtonType
+    
+    
     init(){
         UIScrollView.appearance().bounces = false
+        buttonType = .add
+    }
+    
+    //MARK: - 수정을 위한 생성자
+    init(_ ticket: Ticket){
+        UIScrollView.appearance().bounces = false
+        buttonType = .modify
+        title = ticket.title
+        start = ticket.start
+        end = ticket.end
+        category = ticket.category
+        color = ticket.color
+        touchCount = ticket.touchCount
     }
     
     var body: some View {
@@ -30,26 +46,16 @@ struct TicketFormView: View {
                     .padding(.trailing,13)
                     .onTapGesture {
                         withAnimation{
-                            fullScreenDismiss.wrappedValue = false
+                            dismiss()
                         }
                     }
                 Text("티켓 추가하기")
                     .font(.interSemiBold(size: 20))
                 Spacer()
-                Text("등록")
-                    .font(.interMedium(size: 13))
-                    .underline()
-                    .onTapGesture {
-                        viewModel.postTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
-                    }
-                    .onReceive(viewModel.isPostTicketSuccess){result in
-                        withAnimation{
-                            fullScreenDismiss.wrappedValue = !result
-                        }
-                    }
+                addOrModifyButton
             }.padding(.horizontal, 20)
-            .padding(.vertical,18)
-            .background(Color.white)
+                .padding(.vertical,18)
+                .background(Color.white)
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
@@ -62,17 +68,54 @@ struct TicketFormView: View {
                     TicketTouchCountSelectView(selected: $touchCount)
                 }
             }
-           .padding(.horizontal, 20)
-           .padding(.top, 30)
+            .padding(.horizontal, 20)
+            .padding(.top, 30)
             
             Spacer()
         }
         .background(Color.gray50.ignoresSafeArea())
+        .onAppear{
+            
+        }
+    }
+    
+    
+    @ViewBuilder
+    var addOrModifyButton: some View{
+        switch buttonType {
+        case .add:
+            Text("등록")
+                .font(.interMedium(size: 13))
+                .underline()
+                .onTapGesture {
+                    viewModel.postTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
+                }
+                .onReceive(viewModel.isPostTicketSuccess){result in
+                    withAnimation{
+                        dismiss()
+                    }
+                }
+        case .modify:
+            Text("수정")
+                .font(.interMedium(size: 13))
+                .underline()
+                .onTapGesture {
+                    viewModel.postTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
+                }
+                .onReceive(viewModel.isPostTicketSuccess){result in
+                    
+                }
+        }
+    }
+    
+    
+    private enum  ButtonType {
+        case add, modify
     }
 }
 
-struct TicketFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        TicketFormView()
-    }
-}
+//struct TicketFormView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TicketFormView()
+//    }
+//}
