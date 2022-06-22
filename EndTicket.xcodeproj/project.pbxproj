@@ -63,7 +63,11 @@
 		06B2629D285C4D5800722A52 /* TicketFormCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */; };
 		06B262A0285C568B00722A52 /* TicketColorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629F285C568B00722A52 /* TicketColorSelectView.swift */; };
 		06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */; };
+<<<<<<< HEAD
 		06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */; };
+=======
+		06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */; };
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
 		06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */; };
 		06B262B92864307400722A52 /* TouchTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262B82864307400722A52 /* TouchTicketResponse.swift */; };
 		06B262BB28644C3000722A52 /* CancelTouchTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262BA28644C3000722A52 /* CancelTouchTicket.swift */; };
@@ -152,7 +156,11 @@
 		06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketFormCategoryView.swift; sourceTree = "<group>"; };
 		06B2629F285C568B00722A52 /* TicketColorSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketColorSelectView.swift; sourceTree = "<group>"; };
 		06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTouchCountSelectView.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrModifyTicketResponse.swift; sourceTree = "<group>"; };
+=======
+		06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTicketResponse.swift; sourceTree = "<group>"; };
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
 		06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTicketResponse.swift; sourceTree = "<group>"; };
 		06B262B82864307400722A52 /* TouchTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchTicketResponse.swift; sourceTree = "<group>"; };
 		06B262BA28644C3000722A52 /* CancelTouchTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTouchTicket.swift; sourceTree = "<group>"; };

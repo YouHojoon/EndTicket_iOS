@@ -48,9 +48,14 @@ final class TicketViewModel:ObservableObject{
             self.isPostTicketSuccess.send(true)
         }).store(in: &subscriptions)
     }
+<<<<<<< HEAD
 
     func deleteTicket(id: Int){
         TicketApi.shared.deleteTicket(id:id).receive(on: DispatchQueue.main).sink(receiveCompletion: {
+=======
+    func deleteTicket(_ ticket: Ticket){
+        TicketApi.shared.deleteTicket(ticket).receive(on: DispatchQueue.main).sink(receiveCompletion: {
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
             switch $0{
             case .finished:
                 break

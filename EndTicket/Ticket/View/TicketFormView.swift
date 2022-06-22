@@ -19,17 +19,25 @@ struct TicketFormView: View {
     @State private var touchCount: Int = 5
     
     private let buttonType:ButtonType
+<<<<<<< HEAD
     private let ticketId: Int?
+=======
+    
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
     
     init(){
         UIScrollView.appearance().bounces = false
         buttonType = .add
+<<<<<<< HEAD
         ticketId = nil
+=======
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
     }
     
     //MARK: - 수정을 위한 생성자
     init(_ ticket: Ticket){
         UIScrollView.appearance().bounces = false
+<<<<<<< HEAD
         ticketId = ticket.id
         buttonType = .modify
         _title = State(initialValue: ticket.title)
@@ -39,6 +47,15 @@ struct TicketFormView: View {
         _color = State(initialValue: ticket.color)
         _touchCount = State(initialValue: ticket.touchCount)
         
+=======
+        buttonType = .modify
+        title = ticket.title
+        start = ticket.start
+        end = ticket.end
+        category = ticket.category
+        color = ticket.color
+        touchCount = ticket.touchCount
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
     }
     
     var body: some View {
@@ -73,7 +90,11 @@ struct TicketFormView: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 30)
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
             Spacer()
         }
         .background(Color.gray50.ignoresSafeArea())
@@ -103,12 +124,19 @@ struct TicketFormView: View {
                 .font(.interMedium(size: 13))
                 .underline()
                 .onTapGesture {
+<<<<<<< HEAD
                     viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
                 }
                 .onReceive(viewModel.isModifyTicketSuccess){result in
                     withAnimation{
                         dismiss()
                     }
+=======
+                    viewModel.postTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
+                }
+                .onReceive(viewModel.isPostTicketSuccess){result in
+                    
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
                 }
         }
     }

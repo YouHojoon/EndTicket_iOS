@@ -11,10 +11,15 @@ struct TicketView: View {
     private let ticket: Ticket
     @State private var shouldShowModifyForm = false
     @EnvironmentObject private var viewModel: TicketViewModel
+<<<<<<< HEAD
     @State private var height: CGFloat = 167
 
+=======
+    
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
     init(_ ticket: Ticket){
         self.ticket = ticket
+   
     }
     var body: some View{
         HStack(spacing:1){
@@ -91,6 +96,19 @@ struct TicketView: View {
                     height = 0
                 }
             }
+<<<<<<< HEAD
+=======
+            
+            Button{
+                withAnimation{
+                    shouldShowModifyForm = true
+                }
+            }label: {
+                Text("수정")
+            }
+        })).fullScreenCover(isPresented:$shouldShowModifyForm){
+            TicketFormView(ticket)
+>>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
         }
     }
 }
