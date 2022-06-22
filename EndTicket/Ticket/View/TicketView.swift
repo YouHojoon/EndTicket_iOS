@@ -9,9 +9,12 @@ import SwiftUI
 
 struct TicketView: View {
     private let ticket: Ticket
+    @State private var shouldShowModifyForm = false
     @EnvironmentObject private var viewModel: TicketViewModel
+    
     init(_ ticket: Ticket){
         self.ticket = ticket
+   
     }
     
     var body: some View{
@@ -74,17 +77,24 @@ struct TicketView: View {
             }label: {
                 Text("삭제")
             }
-        }))
-        
+            
+            Button{
+                withAnimation{
+                    shouldShowModifyForm = true
+                }
+            }label: {
+                Text("수정")
+            }
+        })).fullScreenCover(isPresented:$shouldShowModifyForm){
+            TicketFormView(ticket)
+        }
     }
-    
-    
 }
 
-struct TicketView_Previews: PreviewProvider {
-    static var previews: some View {
-        TicketView(Ticket.getDummys()[0])
-            .foregroundColor(.blue)
-        
-    }
-}
+//struct TicketView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TicketView(Ticket.getDummys()[0])
+//            .foregroundColor(.blue)
+//
+//    }
+//}

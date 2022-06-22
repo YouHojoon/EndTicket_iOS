@@ -63,7 +63,6 @@
 		06B2629D285C4D5800722A52 /* TicketFormCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */; };
 		06B262A0285C568B00722A52 /* TicketColorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629F285C568B00722A52 /* TicketColorSelectView.swift */; };
 		06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */; };
-		06B262A4285C6AF600722A52 /* EnvironmentValues + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A3285C6AF600722A52 /* EnvironmentValues + Extension.swift */; };
 		06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */; };
 		06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
@@ -151,7 +150,6 @@
 		06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketFormCategoryView.swift; sourceTree = "<group>"; };
 		06B2629F285C568B00722A52 /* TicketColorSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketColorSelectView.swift; sourceTree = "<group>"; };
 		06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTouchCountSelectView.swift; sourceTree = "<group>"; };
-		06B262A3285C6AF600722A52 /* EnvironmentValues + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues + Extension.swift"; sourceTree = "<group>"; };
 		06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTicketResponse.swift; sourceTree = "<group>"; };
 		06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTicketResponse.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -295,6 +293,7 @@
 				061F79E428478BA70095AEAD /* Class */,
 				06B2629E285C563700722A52 /* Ticket */,
 				06717E2028504D4C00FEB138 /* Tab */,
+				06717E0A2840ADF600FEB138 /* Login */,
 				061F79DE2844B7D90095AEAD /* SIgnUp */,
 				06717E072840A04500FEB138 /* Extension */,
 				06717DFC2840903400FEB138 /* OnBoarding */,
@@ -368,7 +367,6 @@
 				06717E082840A05300FEB138 /* View + Extension.swift */,
 				06717E122840B86D00FEB138 /* Font + Extension.swift */,
 				06717E402851FC4000FEB138 /* Color + Extension.swift */,
-				06B262A3285C6AF600722A52 /* EnvironmentValues + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -405,7 +403,6 @@
 				064B50E2284E3A09000EEF62 /* Home */,
 				06717E292850CE2900FEB138 /* FutureOfMe */,
 				06717E362851DB9F00FEB138 /* HIstory */,
-				06717E0A2840ADF600FEB138 /* Login */,
 				06717E3C2851E76F00FEB138 /* My */,
 				06717E2128504D5E00FEB138 /* EndTicketTabView.swift */,
 			);
@@ -778,7 +775,6 @@
 				06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */,
 				06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */,
 				06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */,
-				06B262A4285C6AF600722A52 /* EnvironmentValues + Extension.swift in Sources */,
 				06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */,
 				063634EC285869F600856928 /* OnBoardingView.swift in Sources */,
 				06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */,
