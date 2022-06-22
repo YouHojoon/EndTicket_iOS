@@ -97,5 +97,6 @@ struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView().environmentObject(SignUpViewModel())
             .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))
+    
     }
 }

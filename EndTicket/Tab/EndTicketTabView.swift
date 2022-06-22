@@ -15,9 +15,8 @@ struct EndTicketTabView: View {
         GeometryReader{proxy in
             ZStack(alignment:.bottom){
                 content
-                    .fullScreenCoverWithTransition(transition: .move(edge: .trailing), isPresented: $shouldShowTicketFormView){
+                    .fullScreenCover(isPresented: $shouldShowTicketFormView){
                         TicketFormView()
-//                            .padding(.top,30)
                     }
                     .padding(.bottom,56)
                     .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
