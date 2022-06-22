@@ -20,17 +20,4 @@ extension View{
             isKeyboardShow.wrappedValue = false
         }
     }
-    
-    
-    
-    func fullScreenCoverWithTransition<Content>(transition: AnyTransition, isPresented:Binding<Bool>, content: () -> Content) -> some View where Content: View{
-        return self.overlay{
-            isPresented.wrappedValue ?
-                content()
-//                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                .transition(transition)
-                .environment(\.fullScreenDismiss, isPresented)
-                :  nil
-        }
-    }
 }
