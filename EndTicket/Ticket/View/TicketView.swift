@@ -12,11 +12,16 @@ struct TicketView: View {
     @State private var shouldShowModifyForm = false
     @EnvironmentObject private var viewModel: TicketViewModel
 <<<<<<< HEAD
+<<<<<<< HEAD
     @State private var height: CGFloat = 167
 
 =======
     
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
+=======
+    @State private var height: CGFloat = 167
+
+>>>>>>> 44afafa (fix:TicketView)
     init(_ ticket: Ticket){
         self.ticket = ticket
     }
@@ -75,6 +80,7 @@ struct TicketView: View {
         .cornerRadius(10)
         .foregroundColor(ticket.color)
 <<<<<<< HEAD
+<<<<<<< HEAD
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
@@ -114,17 +120,33 @@ struct TicketView: View {
                 Text("수정")
             }
         }))
+=======
+        
+        
+>>>>>>> 44afafa (fix:TicketView)
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
+        }
+        .onTapGesture(count: 4){
+            viewModel.deleteTicket(id: ticket.id)
+        }
+        .onTapGesture(count: 3){
+            shouldShowModifyForm = true
         }
         .onTapGesture(count: 2){
             viewModel.cancelTouchTicket(id: ticket.id)
         }
         .onTapGesture {
-            viewModel.touchTicket(id: ticket.id)
+                viewModel.touchTicket(id: ticket.id)
         }
-        
+        .onReceive(viewModel.isDeleteTicketSuccess){
+            if $0 == ticket.id && $1{
+                withAnimation(.easeInOut){
+                    height = 0
+                }
+            }
+        }
     }
 }
 

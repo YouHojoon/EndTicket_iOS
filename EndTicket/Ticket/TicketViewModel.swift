@@ -18,6 +18,7 @@ final class TicketViewModel:ObservableObject{
     let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isDeleteTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
+<<<<<<< HEAD
 =======
     let isTicketTouchSuccess = PassthroughSubject<Bool,Never>()
     
@@ -26,6 +27,8 @@ final class TicketViewModel:ObservableObject{
     let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
 >>>>>>> 0a3f104 (add:티켓 터치 취소 기능)
+=======
+>>>>>>> 44afafa (fix:TicketView)
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchTickets(){
