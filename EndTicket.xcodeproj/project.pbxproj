@@ -64,10 +64,14 @@
 		06B262A0285C568B00722A52 /* TicketColorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629F285C568B00722A52 /* TicketColorSelectView.swift */; };
 		06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */; };
 =======
 		06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */; };
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
+=======
+		06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */; };
+>>>>>>> 781b4c9 (rename:DefaultTicketResponse를 PostOrModifyTicketResponse로 변경)
 		06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */; };
 		06B262B92864307400722A52 /* TouchTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262B82864307400722A52 /* TouchTicketResponse.swift */; };
 <<<<<<< HEAD
@@ -164,10 +168,14 @@
 		06B2629F285C568B00722A52 /* TicketColorSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketColorSelectView.swift; sourceTree = "<group>"; };
 		06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTouchCountSelectView.swift; sourceTree = "<group>"; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrModifyTicketResponse.swift; sourceTree = "<group>"; };
 =======
 		06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTicketResponse.swift; sourceTree = "<group>"; };
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
+=======
+		06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrModifyTicketResponse.swift; sourceTree = "<group>"; };
+>>>>>>> 781b4c9 (rename:DefaultTicketResponse를 PostOrModifyTicketResponse로 변경)
 		06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTicketResponse.swift; sourceTree = "<group>"; };
 		06B262B82864307400722A52 /* TouchTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchTicketResponse.swift; sourceTree = "<group>"; };
 <<<<<<< HEAD
@@ -521,8 +529,11 @@
 			children = (
 				06B2628E285B1C9D00722A52 /* TicketListResponse.swift */,
 				06B26294285B29C500722A52 /* TicketResponse.swift */,
+<<<<<<< HEAD
 				06B262B82864307400722A52 /* TouchTicketResponse.swift */,
 				06B262BA28644C3000722A52 /* CancelTouchTicket.swift */,
+=======
+>>>>>>> 781b4c9 (rename:DefaultTicketResponse를 PostOrModifyTicketResponse로 변경)
 				06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */,
 				06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */,
 				06B262B82864307400722A52 /* TouchTicketResponse.swift */,
@@ -839,7 +850,10 @@
 				061F79DD2844B4870095AEAD /* LoginViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* LoginView.swift in Sources */,
 				06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */,
+<<<<<<< HEAD
 				06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */,
+=======
+>>>>>>> 781b4c9 (rename:DefaultTicketResponse를 PostOrModifyTicketResponse로 변경)
 				06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
 				06B262A0285C568B00722A52 /* TicketColorSelectView.swift in Sources */,

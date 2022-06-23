@@ -34,6 +34,7 @@ final class TicketApi: BaseApi{
         return session.request(TicketRouter.postTicket(ticket))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:PostOrModifyTicketResponse.self)
+<<<<<<< HEAD
             .value()
             .map{
                 $0.result.ticketResponseToTicket()
@@ -54,6 +55,8 @@ final class TicketApi: BaseApi{
         return session.request(TicketRouter.modifyTicket(ticket))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:PostOrModifyTicketResponse.self)
+=======
+>>>>>>> 781b4c9 (rename:DefaultTicketResponse를 PostOrModifyTicketResponse로 변경)
             .value()
             .map{
                 if $0.isSuccess{
@@ -89,7 +92,7 @@ final class TicketApi: BaseApi{
     func modifyTicket(_ ticket: Ticket) -> AnyPublisher<Ticket?, AFError>{// 미완
         return session.request(TicketRouter.modifyTicket(ticket))
             .validate(statusCode: 200..<300)
-            .publishDecodable(type:DefaultTicketResponse.self)
+            .publishDecodable(type:PostOrModifyTicketResponse.self)
             .value()
             .map{
                 if $0.isSuccess{
