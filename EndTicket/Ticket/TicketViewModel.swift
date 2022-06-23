@@ -27,7 +27,6 @@ final class TicketViewModel:ObservableObject{
             self.tickets = $0
         }).store(in: &subscriptions)
     }
-    
     func postTicket(_ ticket: Ticket){
         TicketApi.shared.postTicket(ticket).receive(on:DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
@@ -46,7 +45,6 @@ final class TicketViewModel:ObservableObject{
             self.isPostTicketSuccess.send(true)
         }).store(in: &subscriptions)
     }
-    
     func deleteTicket(_ ticket: Ticket){
         TicketApi.shared.deleteTicket(ticket).receive(on: DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
