@@ -15,6 +15,7 @@ final class TicketViewModel:ObservableObject{
     let isModifyTicketSuccess = PassthroughSubject<Bool,Never>()
     let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
+    let isDeleteTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchTickets(){
@@ -56,6 +57,7 @@ final class TicketViewModel:ObservableObject{
                 print("ticket 삭제 실패 : \(error.localizedDescription)")
             }
         }, receiveValue: {
+            self.isDeleteTicketSuccess.send((id,$0))
             if $0{
                 let index = self.tickets.firstIndex(where: {$0.id == id})!
                 self.tickets.remove(at: index)
