@@ -29,7 +29,7 @@ final class TicketApi: BaseApi{
     func postTicket(_ ticket: Ticket) -> AnyPublisher<Ticket?, AFError>{
         return session.request(TicketRouter.postTicket(ticket))
             .validate(statusCode: 200..<300)
-            .publishDecodable(type:DefaultTicketResponse.self)
+            .publishDecodable(type:PostOrModifyTicketResponse.self)
             .value()
             .map{
                 if $0.isSuccess{
@@ -52,7 +52,7 @@ final class TicketApi: BaseApi{
     func modifyTicket(_ ticket: Ticket) -> AnyPublisher<Ticket?, AFError>{// 미완
         return session.request(TicketRouter.modifyTicket(ticket))
             .validate(statusCode: 200..<300)
-            .publishDecodable(type:DefaultTicketResponse.self)
+            .publishDecodable(type:PostOrModifyTicketResponse.self)
             .value()
             .map{
                 if $0.isSuccess{
