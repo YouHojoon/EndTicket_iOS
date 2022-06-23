@@ -73,6 +73,7 @@ enum TicketRouter: BaseRouter{
 
     func asURLRequest() throws -> URLRequest {
         let url = URL(string: EndTicketApp.baseUrl)!.appendingPathComponent(endPoint)
+
         var request = URLRequest(url: url)
         request.method = method
         

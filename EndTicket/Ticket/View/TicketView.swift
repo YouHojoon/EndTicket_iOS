@@ -125,12 +125,21 @@ struct TicketView: View {
         
 >>>>>>> 44afafa (fix:TicketView)
         .fullScreenCover(isPresented:$shouldShowModifyForm){
+<<<<<<< HEAD
             TicketFormView(ticket)
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
         }
         .onTapGesture(count: 4){
             viewModel.deleteTicket(id: ticket.id)
+=======
+            TicketFormView(ticket).onAppear{
+                print(ticket)
+            }
+>>>>>>> 5a6aee1 (fix:티켓 수정 완성)
         }
+//        .onTapGesture(count: 4){
+//            viewModel.deleteTicket(id: ticket.id)
+//        }
         .onTapGesture(count: 3){
             shouldShowModifyForm = true
         }

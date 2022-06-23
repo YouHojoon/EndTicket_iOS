@@ -101,6 +101,7 @@ final class TicketApi: BaseApi{
                 else{
                     return nil
                 }
+                return nil
             }.eraseToAnyPublisher()
     }
     func touchTicket(id: Int) -> AnyPublisher<Bool, AFError>{

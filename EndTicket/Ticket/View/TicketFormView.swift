@@ -150,6 +150,7 @@ struct TicketFormView: View {
                 .onTapGesture {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
                 }
                 .onReceive(viewModel.isModifyTicketSuccess){result in
@@ -164,6 +165,9 @@ struct TicketFormView: View {
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
 =======
                     viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
+=======
+                    viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount, id:ticketId!))
+>>>>>>> 5a6aee1 (fix:티켓 수정 완성)
                 }
                 .onReceive(viewModel.isModifyTicketSuccess){result in
                     withAnimation{
