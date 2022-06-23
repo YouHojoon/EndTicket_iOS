@@ -74,8 +74,11 @@ struct TicketFormView: View {
         _category = State(initialValue: ticket.category)
         _color = State(initialValue: ticket.color)
         _touchCount = State(initialValue: ticket.touchCount)
+<<<<<<< HEAD
         
 >>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
+=======
+>>>>>>> 4cc7ccc (fix: 티켓 수정화면에서 티켓 색이 선택이 안되어 있는 문제 수정)
     }
     
     var body: some View {

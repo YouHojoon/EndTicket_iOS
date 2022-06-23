@@ -126,6 +126,7 @@ struct TicketView: View {
 >>>>>>> 44afafa (fix:TicketView)
         .fullScreenCover(isPresented:$shouldShowModifyForm){
 <<<<<<< HEAD
+<<<<<<< HEAD
             TicketFormView(ticket)
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
         }
@@ -136,10 +137,17 @@ struct TicketView: View {
                 print(ticket)
             }
 >>>>>>> 5a6aee1 (fix:티켓 수정 완성)
+=======
+            TicketFormView(ticket)
+>>>>>>> 4cc7ccc (fix: 티켓 수정화면에서 티켓 색이 선택이 안되어 있는 문제 수정)
         }
 //        .onTapGesture(count: 4){
 //            viewModel.deleteTicket(id: ticket.id)
 //        }
+<<<<<<< HEAD
+=======
+         
+>>>>>>> 4cc7ccc (fix: 티켓 수정화면에서 티켓 색이 선택이 안되어 있는 문제 수정)
         .onTapGesture(count: 3){
             shouldShowModifyForm = true
         }
