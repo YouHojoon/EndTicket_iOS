@@ -13,9 +13,14 @@ final class TicketViewModel:ObservableObject{
     @Published var tickets:[Ticket] = []
     let isPostTicketSuccess = PassthroughSubject<Bool,Never>()
     let isModifyTicketSuccess = PassthroughSubject<Bool,Never>()
+<<<<<<< HEAD
     let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isDeleteTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
+=======
+    let isTicketTouchSuccess = PassthroughSubject<Bool,Never>()
+    
+>>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchTickets(){
@@ -49,6 +54,7 @@ final class TicketViewModel:ObservableObject{
         }).store(in: &subscriptions)
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     func deleteTicket(id: Int){
         TicketApi.shared.deleteTicket(id:id).receive(on: DispatchQueue.main).sink(receiveCompletion: {
@@ -56,6 +62,10 @@ final class TicketViewModel:ObservableObject{
     func deleteTicket(_ ticket: Ticket){
         TicketApi.shared.deleteTicket(ticket).receive(on: DispatchQueue.main).sink(receiveCompletion: {
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
+=======
+    func deleteTicket(id: Int){
+        TicketApi.shared.deleteTicket(id:id).receive(on: DispatchQueue.main).sink(receiveCompletion: {
+>>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
             switch $0{
             case .finished:
                 break
@@ -70,7 +80,10 @@ final class TicketViewModel:ObservableObject{
             }
         }).store(in: &subscriptions)
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
     
     func modifyTicket(_ ticket: Ticket){
         TicketApi.shared.modifyTicket(ticket).receive(on:DispatchQueue.main).sink(receiveCompletion: {
@@ -91,7 +104,11 @@ final class TicketViewModel:ObservableObject{
         }).store(in: &subscriptions)
     }
     
+<<<<<<< HEAD
     func touchTicket(id: Int){
+=======
+    func ticketTouch(id: Int){
+>>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
         TicketApi.shared.touchTicket(id: id).receive(on: DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
             case .finished:
@@ -102,6 +119,7 @@ final class TicketViewModel:ObservableObject{
         }, receiveValue: {
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount+=1
+<<<<<<< HEAD
             self.isTouchTicketSuccess.send($0)
         }).store(in: &subscriptions)
     }
@@ -118,6 +136,9 @@ final class TicketViewModel:ObservableObject{
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount-=1
             self.isCancelTouchTicketSuccess.send($0)
+=======
+            self.isTicketTouchSuccess.send($0)
+>>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
         }).store(in: &subscriptions)
     }
 }

@@ -19,7 +19,6 @@ struct TicketView: View {
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
     init(_ ticket: Ticket){
         self.ticket = ticket
-   
     }
     var body: some View{
         HStack(spacing:1){
@@ -75,6 +74,7 @@ struct TicketView: View {
         .frame(width:335,height:height)
         .cornerRadius(10)
         .foregroundColor(ticket.color)
+<<<<<<< HEAD
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
@@ -95,6 +95,13 @@ struct TicketView: View {
                 withAnimation(.easeInOut){
                     height = 0
                 }
+=======
+        .contextMenu(ContextMenu(menuItems: {
+            Button{
+                viewModel.deleteTicket(id:ticket.id)
+            }label: {
+                Text("삭제")
+>>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
             }
 <<<<<<< HEAD
 =======
@@ -106,9 +113,13 @@ struct TicketView: View {
             }label: {
                 Text("수정")
             }
-        })).fullScreenCover(isPresented:$shouldShowModifyForm){
+        }))
+        .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
+        }
+        .onTapGesture {
+            viewModel.ticketTouch(id: ticket.id)
         }
     }
 }
