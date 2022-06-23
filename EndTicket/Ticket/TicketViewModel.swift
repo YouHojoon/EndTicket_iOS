@@ -13,8 +13,8 @@ final class TicketViewModel:ObservableObject{
     @Published var tickets:[Ticket] = []
     let isPostTicketSuccess = PassthroughSubject<Bool,Never>()
     let isModifyTicketSuccess = PassthroughSubject<Bool,Never>()
-    let isTicketTouchSuccess = PassthroughSubject<Bool,Never>()
-    
+    let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
+    let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchTickets(){
@@ -82,7 +82,7 @@ final class TicketViewModel:ObservableObject{
         }).store(in: &subscriptions)
     }
     
-    func ticketTouch(id: Int){
+    func touchTicket(id: Int){
         TicketApi.shared.touchTicket(id: id).receive(on: DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
             case .finished:
@@ -93,7 +93,22 @@ final class TicketViewModel:ObservableObject{
         }, receiveValue: {
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount+=1
-            self.isTicketTouchSuccess.send($0)
+            self.isTouchTicketSuccess.send($0)
+        }).store(in: &subscriptions)
+    }
+    
+    func cancelTouchTicket(id:Int){
+        TicketApi.shared.canelTouchTicket(id: id).receive(on:DispatchQueue.main).sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("ticket 터치 실패 : \(error.localizedDescription)")
+            }
+        }, receiveValue: {
+            let index = self.tickets.firstIndex(where: {$0.id == id})!
+            self.tickets[index].currentCount-=1
+            self.isCancelTouchTicketSuccess.send($0)
         }).store(in: &subscriptions)
     }
 }
