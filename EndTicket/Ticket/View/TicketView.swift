@@ -88,9 +88,13 @@ struct TicketView: View {
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
-        .onTapGesture {
-            viewModel.ticketTouch(id: ticket.id)
+        .onTapGesture(count: 2){
+            viewModel.cancelTouchTicket(id: ticket.id)
         }
+        .onTapGesture {
+            viewModel.touchTicket(id: ticket.id)
+        }
+        
     }
 }
 

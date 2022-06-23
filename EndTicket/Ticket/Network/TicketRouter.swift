@@ -15,6 +15,7 @@ enum TicketRouter: BaseRouter{
     case ticketTouch(Int)
     case modifyTicket(Ticket)
     case getWeekendGoal
+    case canelTouchTicket(Int)
     
     var endPoint: String{
         let baseEndPoint = "ticket"
@@ -30,6 +31,8 @@ enum TicketRouter: BaseRouter{
             return "\(baseEndPoint)/\(ticket.id)"
         case .getWeekendGoal:
             return "\(baseEndPoint)/goal"
+        case .canelTouchTicket(let ticketId):
+            return "\(baseEndPoint)/\(ticketId)"
         }
     }
     
@@ -63,6 +66,8 @@ enum TicketRouter: BaseRouter{
             return .patch
         case .getWeekendGoal:
             return .get
+        case .canelTouchTicket:
+            return .delete
         }
     }
 
