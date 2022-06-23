@@ -14,6 +14,7 @@ final class TicketViewModel:ObservableObject{
     let isPostTicketSuccess = PassthroughSubject<Bool,Never>()
     let isModifyTicketSuccess = PassthroughSubject<Bool,Never>()
 <<<<<<< HEAD
+<<<<<<< HEAD
     let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isDeleteTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
@@ -21,6 +22,10 @@ final class TicketViewModel:ObservableObject{
     let isTicketTouchSuccess = PassthroughSubject<Bool,Never>()
     
 >>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
+=======
+    let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
+    let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
+>>>>>>> 0a3f104 (add:티켓 터치 취소 기능)
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchTickets(){
@@ -105,10 +110,14 @@ final class TicketViewModel:ObservableObject{
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     func touchTicket(id: Int){
 =======
     func ticketTouch(id: Int){
 >>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
+=======
+    func touchTicket(id: Int){
+>>>>>>> 0a3f104 (add:티켓 터치 취소 기능)
         TicketApi.shared.touchTicket(id: id).receive(on: DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
             case .finished:
@@ -120,6 +129,9 @@ final class TicketViewModel:ObservableObject{
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount+=1
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0a3f104 (add:티켓 터치 취소 기능)
             self.isTouchTicketSuccess.send($0)
         }).store(in: &subscriptions)
     }
@@ -136,9 +148,12 @@ final class TicketViewModel:ObservableObject{
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount-=1
             self.isCancelTouchTicketSuccess.send($0)
+<<<<<<< HEAD
 =======
             self.isTicketTouchSuccess.send($0)
 >>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
+=======
+>>>>>>> 0a3f104 (add:티켓 터치 취소 기능)
         }).store(in: &subscriptions)
     }
 }

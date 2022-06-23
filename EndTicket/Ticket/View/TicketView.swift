@@ -118,9 +118,13 @@ struct TicketView: View {
             TicketFormView(ticket)
 >>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
         }
-        .onTapGesture {
-            viewModel.ticketTouch(id: ticket.id)
+        .onTapGesture(count: 2){
+            viewModel.cancelTouchTicket(id: ticket.id)
         }
+        .onTapGesture {
+            viewModel.touchTicket(id: ticket.id)
+        }
+        
     }
 }
 
