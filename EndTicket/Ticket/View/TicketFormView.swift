@@ -38,7 +38,6 @@ struct TicketFormView: View {
         _category = State(initialValue: ticket.category)
         _color = State(initialValue: ticket.color)
         _touchCount = State(initialValue: ticket.touchCount)
-        
     }
     
     var body: some View {
@@ -102,8 +101,8 @@ struct TicketFormView: View {
             Text("수정")
                 .font(.interMedium(size: 13))
                 .underline()
-                .onTapGesture {
-                    viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
+                .onTapGesture{
+                    viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount, id:ticketId!))
                 }
                 .onReceive(viewModel.isModifyTicketSuccess){result in
                     withAnimation{
