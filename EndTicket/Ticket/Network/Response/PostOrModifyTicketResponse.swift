@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct DefaultTicketResponse: BaseResponse{
+struct PostOrModifyTicketResponse: BaseResponse{
     typealias Result = TicketResponse
     
     var isSuccess: Bool
