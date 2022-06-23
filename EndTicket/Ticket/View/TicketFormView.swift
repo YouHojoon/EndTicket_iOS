@@ -103,7 +103,7 @@ struct TicketFormView: View {
                 .font(.interMedium(size: 13))
                 .underline()
                 .onTapGesture {
-                    viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
+                    viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount, id:ticketId!))
                 }
                 .onReceive(viewModel.isModifyTicketSuccess){result in
                     withAnimation{
