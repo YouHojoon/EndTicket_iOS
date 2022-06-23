@@ -14,7 +14,6 @@ struct TicketView: View {
     
     init(_ ticket: Ticket){
         self.ticket = ticket
-   
     }
     
     var body: some View{
@@ -54,13 +53,13 @@ struct TicketView: View {
                 .frame(width:77)
                 .overlay{
                     VStack(spacing:5){
-                        Text("0")
+                        Text("\(ticket.currentCount)")
                             .font(.appleSDGothicBold(size: 10))
                             .foregroundColor(.gray500)
                             .frame(height: 8)
                         Capsule()
                             .frame(width: 8, height: 78)
-                        Text("15")
+                        Text("\(ticket.touchCount)")
                             .font(.appleSDGothicBold(size: 10))
                             .foregroundColor(.gray500)
                             .frame(height: 8)
@@ -73,7 +72,7 @@ struct TicketView: View {
         .foregroundColor(ticket.color)
         .contextMenu(ContextMenu(menuItems: {
             Button{
-                viewModel.deleteTicket(ticket)
+                viewModel.deleteTicket(id:ticket.id)
             }label: {
                 Text("삭제")
             }
@@ -85,8 +84,12 @@ struct TicketView: View {
             }label: {
                 Text("수정")
             }
-        })).fullScreenCover(isPresented:$shouldShowModifyForm){
+        }))
+        .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
+        }
+        .onTapGesture {
+            viewModel.ticketTouch(id: ticket.id)
         }
     }
 }

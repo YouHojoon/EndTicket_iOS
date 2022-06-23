@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 struct TicketResponse:Codable{
-    let id: Int
+    var id: Int?
     let title: String
     let category: String
     let start: String
@@ -21,6 +21,6 @@ struct TicketResponse:Codable{
     
     func ticketResponseToTicket() -> Ticket{
         let color = Color(hex: color)
-        return Ticket(title: title, category: Ticket.Category.init(rawValue: category)!, start: start, end: end, color: color, touchCount: touchCount, currentCount: Int(currentCount ?? "0")!, id: id)
+        return Ticket(title: title, category: Ticket.Category.init(rawValue: category)!, start: start, end: end, color: color, touchCount: touchCount, currentCount: Int(currentCount ?? "0")!, id: id ?? 99999)
     }
 }
