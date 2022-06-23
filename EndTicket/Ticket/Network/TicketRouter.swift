@@ -13,8 +13,9 @@ enum TicketRouter: BaseRouter{
     case postTicket(Ticket)
     case deleteTicket(Int)
     case ticketTouch(Int)
-    case modifyTicket(Int)
+    case modifyTicket(Ticket)
     case getWeekendGoal
+    case canelTouchTicket(Int)
     
     var endPoint: String{
         let baseEndPoint = "ticket"
@@ -26,16 +27,18 @@ enum TicketRouter: BaseRouter{
             return "\(baseEndPoint)/\(ticketId)"
         case .ticketTouch(let ticketId):
             return "\(baseEndPoint)/touch/\(ticketId)"
-        case .modifyTicket(let ticketId):
-            return "\(baseEndPoint)/\(ticketId)"
+        case .modifyTicket(let ticket):
+            return "\(baseEndPoint)/\(ticket.id)"
         case .getWeekendGoal:
             return "\(baseEndPoint)/goal"
+        case .canelTouchTicket(let ticketId):
+            return "\(baseEndPoint)/\(ticketId)"
         }
     }
     
     var parameters: Parameters{
         switch self {
-        case .postTicket(let ticket):
+        case .postTicket(let ticket), .modifyTicket(let ticket):
             return [
                 "title" : ticket.title,
                 "start" : ticket.start,
@@ -63,6 +66,8 @@ enum TicketRouter: BaseRouter{
             return .patch
         case .getWeekendGoal:
             return .get
+        case .canelTouchTicket:
+            return .delete
         }
     }
 
@@ -71,14 +76,10 @@ enum TicketRouter: BaseRouter{
         var request = URLRequest(url: url)
         request.method = method
         
-        switch method{
-        case .get,.delete:
-            break
-        default:
+        if !parameters.isEmpty{
             request.httpBody = try! JSONEncoding.default.encode(request,with: parameters).httpBody
         }
-        
-        
+    
         return request
     }
     
