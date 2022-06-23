@@ -73,11 +73,8 @@ struct SignUpView: View {
         .padding(.top,144)
         .padding(.horizontal, 30)
         .frame(maxWidth:.infinity)
-        .overlay{
-            shouldShowNextView ?
-                EndTicketTabView()
-                .transition(.move(edge: .trailing))
-                .environmentObject(TicketViewModel()):  nil
+        .fullScreenCover(isPresented: $shouldShowNextView){
+            EndTicketTabView().environmentObject(TicketViewModel())
         }
         .listenKeyBoardShowAndHide($isKeyboardShow)
         .background(Color.white.ignoresSafeArea().onTapGesture {
