@@ -73,18 +73,12 @@ struct TicketView: View {
         
         
         .fullScreenCover(isPresented:$shouldShowModifyForm){
-            TicketFormView(ticket).onAppear{
-                print(ticket)
-            }
+            TicketFormView(ticket)
         }
 //        .onTapGesture(count: 4){
 //            viewModel.deleteTicket(id: ticket.id)
 //        }
-            TicketFormView(ticket)
-        }
-        .onTapGesture(count: 4){
-            viewModel.deleteTicket(id: ticket.id)
-        }
+         
         .onTapGesture(count: 3){
             shouldShowModifyForm = true
         }

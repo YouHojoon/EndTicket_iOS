@@ -38,7 +38,6 @@ struct TicketFormView: View {
         _category = State(initialValue: ticket.category)
         _color = State(initialValue: ticket.color)
         _touchCount = State(initialValue: ticket.touchCount)
-        
     }
     
     var body: some View {
