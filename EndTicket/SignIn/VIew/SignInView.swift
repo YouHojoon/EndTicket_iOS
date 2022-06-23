@@ -9,9 +9,9 @@ import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
 
-struct LoginView: View {
+struct SignInView: View {
     @AppStorage("isFirstStart") private var isFirstStart:Bool = true
-    @EnvironmentObject private var viewModel:LoginViewModel
+    @EnvironmentObject private var viewModel:SignInViewModel
     
     var body: some View {
         VStack(spacing:12){
@@ -34,7 +34,7 @@ struct LoginView: View {
             //MARK: - 로그인 버튼
             Group{
                 Button{
-                    viewModel.googleSignIn()
+                    viewModel.socialSignIn(.google)
                 }label: {
                     HStack(spacing:21){
                         Image("google_button_symbol")
@@ -45,11 +45,11 @@ struct LoginView: View {
                     }
                    
         
-                }.modifier(LoginButtonModifier())
+                }.modifier(SignInButtonModifier())
                     .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray300,lineWidth: 1))
                 Button{
-                    viewModel.kakaoSignIn()
+                    viewModel.socialSignIn(.kakao)
                 }label: {
                     HStack(spacing:21){
                         Image("kakao_button_symbol")
@@ -60,9 +60,9 @@ struct LoginView: View {
                         Spacer()
                             .frame(width:18)
                     }
-                }.modifier(LoginButtonModifier(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1))))
+                }.modifier(SignInButtonModifier(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1))))
                 Button{
-                    viewModel.appleSignIn()
+                    viewModel.socialSignIn(.apple)
                 }label: {
                     HStack(spacing:21){
                             Image("apple_button_symbol")
@@ -74,7 +74,7 @@ struct LoginView: View {
                     }
                 }
                 .foregroundColor(.white)
-                .modifier(LoginButtonModifier(.black))
+                .modifier(SignInButtonModifier(.black))
             }
             
             HStack(spacing:10){
@@ -104,8 +104,8 @@ struct LoginView: View {
 }
 
 
-struct LoginView_Previews:PreviewProvider{
+struct SignInView_Previews:PreviewProvider{
     static var previews: some View{
-        LoginView().environmentObject(LoginViewModel(googleClientId: "test"))
+        SignInView().environmentObject(SignInViewModel(googleClientId: "test"))
     }
 }

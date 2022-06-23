@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 //MARK: - 로그인 버튼 공통 속성
-struct LoginButtonModifier: ViewModifier{
+struct SignInButtonModifier: ViewModifier{
     let color: Color
     
     init(_ color: Color = .white){

@@ -15,17 +15,31 @@ import KakaoSDKCommon
 import AuthenticationServices
 import SwiftUI
 import UIKit
-final class LoginViewModel: NSObject, ObservableObject{
+final class SignInViewModel: NSObject, ObservableObject{
     @Published var isSignIn = false
     
     private let gidConfig: GIDConfiguration
+    private var subscriptions = Set<AnyCancellable>()
     private var asAuthDelegate:ASAuthorizationControllerDelegate?
     
     init(googleClientId:String){
         gidConfig = GIDConfiguration(clientID: googleClientId)
     }
+    
+    func socialSignIn(_ type: SocialType){
+        switch type {
+        case .google:
+            googleSignIn()
+        case .kakao:
+            kakaoSignIn()
+        case .apple:
+            appleSignIn()
+        }
+    }
+    
+    
     //MARK: - SNS 로그인
-    func kakaoSignIn(){
+    private func kakaoSignIn(){
         UserApi.shared.loginWithKakaoTalk{
             guard $1 == nil else{
                 print($1!.localizedDescription)
@@ -42,7 +56,7 @@ final class LoginViewModel: NSObject, ObservableObject{
         }
     }
     
-    func appleSignIn(){
+    private func appleSignIn(){
         let request = ASAuthorizationAppleIDProvider().createRequest()
         let controller = ASAuthorizationController(authorizationRequests: [request])
         asAuthDelegate = ASAuthorizationControllerDelgateImpl{result in
@@ -54,7 +68,7 @@ final class LoginViewModel: NSObject, ObservableObject{
         controller.performRequests()
     }
     
-    func googleSignIn(completion: ((Bool)->Void)? = nil){
+    private func googleSignIn(completion: ((Bool)->Void)? = nil){
         guard let windowScenes = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                 let rootController = windowScenes.windows.first?.rootViewController else{
             DispatchQueue.main.async {
@@ -76,11 +90,25 @@ final class LoginViewModel: NSObject, ObservableObject{
                 }
                 return
             }
-            withAnimation(.easeInOut){
+            
+//            SignInApi.shared.socialSignIn(.google,token: $0!.authentication.idToken!)
+//                .sink(receiveCompletion: {
+//                    switch $0{
+//                    case .finished:
+//                        break
+//                    case .failure(let error):
+//                        print(error.localizedDescription)
+//                    }
+//                }, receiveValue: {
+//                    print("aa")
+//                    print($0)
+//                }).store(in: &self.subscriptions)
+            withAnimation{
                 DispatchQueue.main.async {
                     self.isSignIn = true
                 }
             }
+           
         }
     }
     
