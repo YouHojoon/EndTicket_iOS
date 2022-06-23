@@ -16,7 +16,7 @@ struct Ticket: Identifiable{
     let end: String
     let color: Color
     let touchCount: Int
-    let currentCount: Int
+    var currentCount: Int
     
     init(title:String, category: Category, start: String, end: String, color: Color,touchCount: Int, currentCount:Int = 0, id:Int = 0){
         self.title = title
