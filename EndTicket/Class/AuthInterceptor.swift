@@ -16,7 +16,12 @@ final class AuthInterceptor: Interceptor{
         }
         
         urlRequest.headers.add(name: "Content-Type", value: "application/json; charset=UTF-8")
-        urlRequest.headers.add(name: "x-access-token", value: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJzdWIiOjEsImlhdCI6MTY1NTE2MTYzNCwiZXhwIjoxNjg2NzE5MjM0fQ.go4zOhwNGjNsL9-7G3jfVbbIWgICq1aYw6SBJSFKIQ0")
+        guard let token = KeyChainManager.readInKeyChain(key: "token") else{
+            completion(.failure(NoTokenError()))
+            return
+        }
+        print(token)
+        urlRequest.headers.add(name: "x-access-token", value: token)
         completion(.success(urlRequest))
     }
     override func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
