@@ -14,5 +14,5 @@ struct PostOrModifyTicketResponse: BaseResponse{
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: Result
+    var result: Result?
 }

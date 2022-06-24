@@ -11,5 +11,5 @@ protocol BaseResponse: Codable{
     var isSuccess: Bool {get}
     var code: Int {get}
     var message: String {get}
-    var result: Result {get}
+    var result: Result? {get}
 }

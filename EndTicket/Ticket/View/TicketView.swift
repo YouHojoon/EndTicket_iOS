@@ -11,17 +11,8 @@ struct TicketView: View {
     private let ticket: Ticket
     @State private var shouldShowModifyForm = false
     @EnvironmentObject private var viewModel: TicketViewModel
-<<<<<<< HEAD
-<<<<<<< HEAD
     @State private var height: CGFloat = 167
-
-=======
     
->>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
-=======
-    @State private var height: CGFloat = 167
-
->>>>>>> 44afafa (fix:TicketView)
     init(_ ticket: Ticket){
         self.ticket = ticket
     }
@@ -79,8 +70,6 @@ struct TicketView: View {
         .frame(width:335,height:height)
         .cornerRadius(10)
         .foregroundColor(ticket.color)
-<<<<<<< HEAD
-<<<<<<< HEAD
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
@@ -94,68 +83,7 @@ struct TicketView: View {
             viewModel.cancelTouchTicket(id: ticket.id)
         }
         .onTapGesture {
-                viewModel.touchTicket(id: ticket.id)
-        }
-        .onReceive(viewModel.isDeleteTicketSuccess){
-            if $0 == ticket.id && $1{
-                withAnimation(.easeInOut){
-                    height = 0
-                }
-=======
-        .contextMenu(ContextMenu(menuItems: {
-            Button{
-                viewModel.deleteTicket(id:ticket.id)
-            }label: {
-                Text("삭제")
->>>>>>> 29eefd1 (add:수정 서버 통신, 터치 기능)
-            }
-<<<<<<< HEAD
-=======
-            
-            Button{
-                withAnimation{
-                    shouldShowModifyForm = true
-                }
-            }label: {
-                Text("수정")
-            }
-        }))
-=======
-        
-        
->>>>>>> 44afafa (fix:TicketView)
-        .fullScreenCover(isPresented:$shouldShowModifyForm){
-<<<<<<< HEAD
-<<<<<<< HEAD
-            TicketFormView(ticket)
->>>>>>> 8ee2460 (delete:fullScreenCoverWithTransiton, add:티켓 수정 화면)
-        }
-        .onTapGesture(count: 4){
-            viewModel.deleteTicket(id: ticket.id)
-=======
-            TicketFormView(ticket).onAppear{
-                print(ticket)
-            }
->>>>>>> 5a6aee1 (fix:티켓 수정 완성)
-=======
-            TicketFormView(ticket)
->>>>>>> 4cc7ccc (fix: 티켓 수정화면에서 티켓 색이 선택이 안되어 있는 문제 수정)
-        }
-//        .onTapGesture(count: 4){
-//            viewModel.deleteTicket(id: ticket.id)
-//        }
-<<<<<<< HEAD
-=======
-         
->>>>>>> 4cc7ccc (fix: 티켓 수정화면에서 티켓 색이 선택이 안되어 있는 문제 수정)
-        .onTapGesture(count: 3){
-            shouldShowModifyForm = true
-        }
-        .onTapGesture(count: 2){
-            viewModel.cancelTouchTicket(id: ticket.id)
-        }
-        .onTapGesture {
-                viewModel.touchTicket(id: ticket.id)
+            viewModel.touchTicket(id: ticket.id)
         }
         .onReceive(viewModel.isDeleteTicketSuccess){
             if $0 == ticket.id && $1{
