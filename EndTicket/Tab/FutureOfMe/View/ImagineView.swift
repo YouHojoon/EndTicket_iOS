@@ -38,11 +38,11 @@ struct ImagineView: View {
             }
             
             VStack(alignment: .leading, spacing:3){
-                Text(viewModel.imagines[index].goal).font(.gmarketSansMeidum(size: 16))
+                Text(viewModel.imagines[index].goal).font(.system(size:16,weight: .bold))
                     .strikethrough(isCompleted)
                     .frame(height:20)
                 Text(viewModel.imagines[index].desciption)
-                    .font(.gmarketSansMeidum(size: 12))
+                    .font(.system(size: 12,weight: .regular))
                     .strikethrough(isCompleted)
                     .foregroundColor(Color(#colorLiteral(red: 0.404, green: 0.404, blue: 0.404, alpha: 1)))
                     .frame(height:20)

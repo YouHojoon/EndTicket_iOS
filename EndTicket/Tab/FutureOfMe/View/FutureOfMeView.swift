@@ -23,7 +23,7 @@ struct FutureOfMeView: View {
             Group{
                 HStack{
                     Text("상상해보기")
-                        .font(.gmarketSansMeidum(size: 15))
+                        .font(.appleSDGothicBold(size: 16))
                     Spacer()
                     Button{
                         
