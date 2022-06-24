@@ -15,6 +15,7 @@ struct TicketView: View {
 
     init(_ ticket: Ticket){
         self.ticket = ticket
+   
     }
     var body: some View{
         HStack(spacing:1){

@@ -29,6 +29,7 @@ final class TicketApi: BaseApi{
                 return result.ticket.map{$0.ticketResponseToTicket()}
             }.eraseToAnyPublisher()
     }
+
     func postTicket(_ ticket: Ticket) -> AnyPublisher<Ticket?, AFError>{
         return session.request(TicketRouter.postTicket(ticket))
             .validate(statusCode: 200..<300)

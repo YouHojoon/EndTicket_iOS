@@ -80,6 +80,6 @@ struct OnBoardingView: View {
 }
 struct OnBoarding_Previews:PreviewProvider{
     static var previews: some View{
-        LoginView_Previews.previews
+        SignInView_Previews.previews
     }
 }

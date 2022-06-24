@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 struct TicketResponse:Codable{
-    var id: Int
+    let id: Int
     let title: String
     let category: String
     let start: String

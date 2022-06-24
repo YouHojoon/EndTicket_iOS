@@ -14,7 +14,8 @@ import KakaoSDKUser
 @main
 struct EndTicketApp: App {
     private let googleClientId: String
-    static let baseUrl = "https://dev.endticket.shop"
+    static let baseUrl = "https://dev.endticket.shop/"
+
     init(){
         guard let cetentialListFile = Bundle.main.url(forResource: "Credential", withExtension: "plist"), let credentialList = NSDictionary(contentsOf: cetentialListFile) else{
             fatalError("SNS Login을 위한 Credential.plist가 존재하지 않습니다.")
@@ -28,7 +29,7 @@ struct EndTicketApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginView().onOpenURL{
+            SignInView().onOpenURL{
                 if AuthApi.isKakaoTalkLoginUrl($0){
                     AuthController.handleOpenUrl(url: $0)
                 }
@@ -36,7 +37,7 @@ struct EndTicketApp: App {
                     GIDSignIn.sharedInstance.handle($0)
                 }
             }
-            .environmentObject(LoginViewModel(googleClientId: googleClientId))
+            .environmentObject(SignInViewModel(googleClientId: googleClientId))
         }
     }
 }
