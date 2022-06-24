@@ -20,7 +20,7 @@ final class AuthInterceptor: Interceptor{
             completion(.failure(NoTokenError()))
             return
         }
-        print(token)
+  
         urlRequest.headers.add(name: "x-access-token", value: token)
         completion(.success(urlRequest))
     }
