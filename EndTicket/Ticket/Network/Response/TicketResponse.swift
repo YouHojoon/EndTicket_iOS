@@ -17,7 +17,7 @@ struct TicketResponse:Codable{
     let touchCount: Int
     let isSuccess: String?
     let currentCount: String?
-    let userId: Int?
+    let userId: String?
     
     func ticketResponseToTicket() -> Ticket{
         let color = Color(hex: color)
