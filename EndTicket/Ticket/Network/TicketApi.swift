@@ -23,7 +23,10 @@ final class TicketApi: BaseApi{
             .publishDecodable(type:TicketListResponse.self)
             .value()
             .map{
-                $0.result.ticket.map{$0.ticketResponseToTicket()}
+                guard let result = $0.result else{
+                    return []
+                }
+                return result.ticket.map{$0.ticketResponseToTicket()}
             }.eraseToAnyPublisher()
     }
     func postTicket(_ ticket: Ticket) -> AnyPublisher<Ticket?, AFError>{
@@ -31,15 +34,16 @@ final class TicketApi: BaseApi{
             .validate(statusCode: 200..<300)
             .publishDecodable(type:PostOrModifyTicketResponse.self)
             .value()
-            .map{
+            .map{        
                 if $0.isSuccess{
-                    return $0.result.ticketResponseToTicket()
+                    return $0.result?.ticketResponseToTicket()
                 }
                 else{
                     return nil
                 }
             }.eraseToAnyPublisher()
     }
+
     func deleteTicket(id: Int) -> AnyPublisher<Bool, AFError>{
         return session.request(TicketRouter.deleteTicket(id)).validate(statusCode: 200..<300)
             .publishDecodable(type:DeleteTicketResponse.self)
@@ -49,6 +53,7 @@ final class TicketApi: BaseApi{
             }
             .eraseToAnyPublisher()
     }
+
     func modifyTicket(_ ticket: Ticket) -> AnyPublisher<Ticket?, AFError>{// 미완
         return session.request(TicketRouter.modifyTicket(ticket))
             .validate(statusCode: 200..<300)
@@ -56,14 +61,14 @@ final class TicketApi: BaseApi{
             .value()
             .map{
                 if $0.isSuccess{
-                    return $0.result.ticketResponseToTicket()
+                    return $0.result?.ticketResponseToTicket()
                 }
                 else{
                     return nil
                 }
-                return nil
             }.eraseToAnyPublisher()
     }
+
     func touchTicket(id: Int) -> AnyPublisher<Bool, AFError>{
         return session.request(TicketRouter.ticketTouch(id)).validate(statusCode: 200..<300)
             .publishDecodable(type:TouchTicketResponse.self)

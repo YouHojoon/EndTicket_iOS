@@ -70,15 +70,12 @@ struct TicketView: View {
         .frame(width:335,height:height)
         .cornerRadius(10)
         .foregroundColor(ticket.color)
-        
-        
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
 //        .onTapGesture(count: 4){
 //            viewModel.deleteTicket(id: ticket.id)
-//        }
-         
+//      }
         .onTapGesture(count: 3){
             shouldShowModifyForm = true
         }
@@ -86,7 +83,7 @@ struct TicketView: View {
             viewModel.cancelTouchTicket(id: ticket.id)
         }
         .onTapGesture {
-                viewModel.touchTicket(id: ticket.id)
+            viewModel.touchTicket(id: ticket.id)
         }
         .onReceive(viewModel.isDeleteTicketSuccess){
             if $0 == ticket.id && $1{

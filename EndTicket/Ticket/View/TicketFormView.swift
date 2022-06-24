@@ -20,7 +20,7 @@ struct TicketFormView: View {
     
     private let buttonType:ButtonType
     private let ticketId: Int?
-    
+
     init(){
         UIScrollView.appearance().bounces = false
         buttonType = .add
@@ -72,13 +72,9 @@ struct TicketFormView: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 30)
-
             Spacer()
         }
         .background(Color.gray50.ignoresSafeArea())
-        .onAppear{
-            
-        }
     }
     
     

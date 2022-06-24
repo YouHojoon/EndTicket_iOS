@@ -14,6 +14,7 @@ final class SignUpApi: BaseApi{
     override private init(){
         super.init()
     }
+    private var test = Set<AnyCancellable>()
     
     func signUp(nickname: String) -> AnyPublisher<Bool,AFError>{
         

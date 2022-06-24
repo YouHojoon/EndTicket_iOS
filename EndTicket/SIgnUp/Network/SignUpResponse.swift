@@ -10,10 +10,10 @@ struct SignUpResponse: BaseResponse{
     let isSuccess: Bool
     let code: Int
     let message: String
-    let result: Result
+    let result: Result?
     
     struct Result: Codable{
-        let nickname: String
+        let nickname: String?
     }
 }
 

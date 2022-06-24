@@ -10,7 +10,7 @@ struct DeleteTicketResponse: BaseResponse{
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: Result
+    var result: Result?
     
     struct Result: Codable{
         let ticketId: String
