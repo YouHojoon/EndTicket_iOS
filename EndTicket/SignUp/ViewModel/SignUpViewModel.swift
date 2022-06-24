@@ -22,13 +22,14 @@ final class SignUpViewModel:ObservableObject{
             .sink(receiveCompletion: {
                 switch $0{
                 case .finished:
+                    self.isSuccessSignUp = true
                     break
                 case .failure(let error):
                     print("닉네임 등록 실패 : \(error.localizedDescription)")
                     self.isSuccessSignUp = false
                 }
-            }, receiveValue: {
-                self.isSuccessSignUp = $0
+            }, receiveValue: {_ in
+              
             })
             .store(in: &subscriptions)
     }

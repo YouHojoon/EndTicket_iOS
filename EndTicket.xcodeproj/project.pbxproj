@@ -63,15 +63,15 @@
 		06B2629D285C4D5800722A52 /* TicketFormCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */; };
 		06B262A0285C568B00722A52 /* TicketColorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629F285C568B00722A52 /* TicketColorSelectView.swift */; };
 		06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */; };
-    06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */; };
+		06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */; };
+		06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */; };
 		06B262B02864032200722A52 /* SignInApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262AF2864032200722A52 /* SignInApi.swift */; };
 		06B262B22864046D00722A52 /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262B12864046D00722A52 /* SignInRouter.swift */; };
 		06B262B4286404F800722A52 /* SocialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262B3286404F800722A52 /* SocialType.swift */; };
 		06B262B72864082700722A52 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262B62864082700722A52 /* SignInResponse.swift */; };
-		06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */; };
-		06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */; };
 		06B262B92864307400722A52 /* TouchTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262B82864307400722A52 /* TouchTicketResponse.swift */; };
 		06B262BB28644C3000722A52 /* CancelTouchTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262BA28644C3000722A52 /* CancelTouchTicket.swift */; };
+		06B262CA2865898F00722A52 /* NoTokenError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262C92865898F00722A52 /* NoTokenError.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -157,15 +157,15 @@
 		06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketFormCategoryView.swift; sourceTree = "<group>"; };
 		06B2629F285C568B00722A52 /* TicketColorSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketColorSelectView.swift; sourceTree = "<group>"; };
 		06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTouchCountSelectView.swift; sourceTree = "<group>"; };
+		06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrModifyTicketResponse.swift; sourceTree = "<group>"; };
 		06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTicketResponse.swift; sourceTree = "<group>"; };
 		06B262AF2864032200722A52 /* SignInApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInApi.swift; sourceTree = "<group>"; };
 		06B262B12864046D00722A52 /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
 		06B262B3286404F800722A52 /* SocialType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialType.swift; sourceTree = "<group>"; };
 		06B262B62864082700722A52 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
-		06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrModifyTicketResponse.swift; sourceTree = "<group>"; };
-		06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTicketResponse.swift; sourceTree = "<group>"; };
 		06B262B82864307400722A52 /* TouchTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchTicketResponse.swift; sourceTree = "<group>"; };
 		06B262BA28644C3000722A52 /* CancelTouchTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTouchTicket.swift; sourceTree = "<group>"; };
+		06B262C92865898F00722A52 /* NoTokenError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTokenError.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,14 +213,14 @@
 			path = VIew;
 			sourceTree = "<group>";
 		};
-		061F79DE2844B7D90095AEAD /* SIgnUp */ = {
+		061F79DE2844B7D90095AEAD /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
 				063634E62852118700856928 /* Network */,
 				06717E1C2849D77300FEB138 /* View */,
 				06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */,
 			);
-			path = SIgnUp;
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		061F79E428478BA70095AEAD /* Class */ = {
@@ -302,13 +302,14 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
+				06B262C82865898900722A52 /* Struct */,
 				06B2628B285B15AB00722A52 /* Protocol */,
 				064B50EA284E4E2B000EEF62 /* Model */,
 				061F79E428478BA70095AEAD /* Class */,
 				06B2629E285C563700722A52 /* Ticket */,
 				06717E2028504D4C00FEB138 /* Tab */,
 				06717E0A2840ADF600FEB138 /* SignIn */,
-				061F79DE2844B7D90095AEAD /* SIgnUp */,
+				061F79DE2844B7D90095AEAD /* SignUp */,
 				06717E072840A04500FEB138 /* Extension */,
 				06717DFC2840903400FEB138 /* OnBoarding */,
 				06717DFF284096AE00FEB138 /* Font */,
@@ -511,10 +512,6 @@
 			children = (
 				06B2628E285B1C9D00722A52 /* TicketListResponse.swift */,
 				06B26294285B29C500722A52 /* TicketResponse.swift */,
-				06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */,
-				06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */,
-				06B262B82864307400722A52 /* TouchTicketResponse.swift */,
-				06B262BA28644C3000722A52 /* CancelTouchTicket.swift */,
 				06B262A7285C718B00722A52 /* PostOrModifyTicketResponse.swift */,
 				06B262AC2861AF6E00722A52 /* DeleteTicketResponse.swift */,
 				06B262B82864307400722A52 /* TouchTicketResponse.swift */,
@@ -539,6 +536,14 @@
 				06B262B3286404F800722A52 /* SocialType.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		06B262C82865898900722A52 /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				06B262C92865898F00722A52 /* NoTokenError.swift */,
+			);
+			path = Struct;
 			sourceTree = "<group>";
 		};
 		8A463F1CB07FD806BE1578D5 /* Pods */ = {
@@ -832,6 +837,7 @@
 				06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */,
 				06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */,
 				06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */,
+				06B262CA2865898F00722A52 /* NoTokenError.swift in Sources */,
 				06B2629D285C4D5800722A52 /* TicketFormCategoryView.swift in Sources */,
 				06717E2628506D5D00FEB138 /* TicketLeadingShape.swift in Sources */,
 				063634EA2852132E00856928 /* SignUpApi.swift in Sources */,
@@ -843,7 +849,7 @@
 				06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */,
 				061F79DD2844B4870095AEAD /* SignInViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* SignInView.swift in Sources */,
-				06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */,
+				06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */,
 				06B262B02864032200722A52 /* SignInApi.swift in Sources */,
 				06B262A8285C718B00722A52 /* PostOrModifyTicketResponse.swift in Sources */,
 				06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */,

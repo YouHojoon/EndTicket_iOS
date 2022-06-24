@@ -110,7 +110,7 @@ final class TicketViewModel:ObservableObject{
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount-=1
             self.isCancelTouchTicketSuccess.send($0)
-            self.isTicketTouchSuccess.send($0)
+            self.isTouchTicketSuccess.send($0)
         }).store(in: &subscriptions)
     }
 
