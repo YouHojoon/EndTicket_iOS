@@ -35,7 +35,8 @@ final class TicketApi: BaseApi{
             .validate(statusCode: 200..<300)
             .publishDecodable(type:PostOrModifyTicketResponse.self)
             .value()
-            .map{        
+            .map{
+                print($0)
                 if $0.isSuccess{
                     return $0.result?.ticketResponseToTicket()
                 }
@@ -78,6 +79,7 @@ final class TicketApi: BaseApi{
                 $0.isSuccess
             }.eraseToAnyPublisher()
     }
+    
     func canelTouchTicket(id: Int) -> AnyPublisher<Bool,AFError>{
         return session.request(TicketRouter.canelTouchTicket(id)).validate(statusCode: 200..<300)
             .publishDecodable(type:CancelTouchTicket.self)

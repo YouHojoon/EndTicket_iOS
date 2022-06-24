@@ -10,13 +10,14 @@ import SwiftUI
 struct EndTicketTabView: View {
     @State private var tabIndex: TabIndex = .home
     @State private var shouldShowTicketFormView = false
-    
+    let ticketViewModel = TicketViewModel()
     var body: some View {
         GeometryReader{proxy in
             ZStack(alignment:.bottom){
                 content
                     .fullScreenCover(isPresented: $shouldShowTicketFormView){
                         TicketFormView()
+                            .environmentObject(ticketViewModel)
                     }
                     .padding(.bottom,56)
                     .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
@@ -87,7 +88,7 @@ struct EndTicketTabView: View {
         switch tabIndex {
         case .home:
             HomeView()
-                .environmentObject(TicketViewModel())
+                .environmentObject(ticketViewModel)
         case .futureOfMe:
             FutureOfMeView()
                 .environmentObject(ImagineViewModel())
