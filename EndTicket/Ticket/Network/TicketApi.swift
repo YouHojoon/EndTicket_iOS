@@ -34,8 +34,13 @@ final class TicketApi: BaseApi{
             .validate(statusCode: 200..<300)
             .publishDecodable(type:PostOrModifyTicketResponse.self)
             .value()
-            .map{
-                $0.result?.ticketResponseToTicket()
+            .map{        
+                if $0.isSuccess{
+                    return $0.result?.ticketResponseToTicket()
+                }
+                else{
+                    return nil
+                }
             }.eraseToAnyPublisher()
     }
 

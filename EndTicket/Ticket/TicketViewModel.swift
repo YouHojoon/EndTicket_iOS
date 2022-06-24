@@ -16,8 +16,6 @@ final class TicketViewModel:ObservableObject{
     let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isDeleteTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
-    let isTicketTouchSuccess = PassthroughSubject<Bool,Never>()
-    
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchTickets(){

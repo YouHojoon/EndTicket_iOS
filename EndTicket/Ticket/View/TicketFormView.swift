@@ -20,6 +20,7 @@ struct TicketFormView: View {
     
     private let buttonType:ButtonType
     private let ticketId: Int?
+
     init(){
         UIScrollView.appearance().bounces = false
         buttonType = .add
@@ -96,14 +97,13 @@ struct TicketFormView: View {
             Text("수정")
                 .font(.interMedium(size: 13))
                 .underline()
-                .onTapGesture {
+                .onTapGesture{
                     viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount, id:ticketId!))
                 }
                 .onReceive(viewModel.isModifyTicketSuccess){result in
                     withAnimation{
                         dismiss()
                     }
-                    
                 }
         }
     }

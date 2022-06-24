@@ -12,7 +12,7 @@ struct TicketView: View {
     @State private var shouldShowModifyForm = false
     @EnvironmentObject private var viewModel: TicketViewModel
     @State private var height: CGFloat = 167
-    
+
     init(_ ticket: Ticket){
         self.ticket = ticket
     }
@@ -73,9 +73,9 @@ struct TicketView: View {
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
-        .onTapGesture(count: 4){
-            viewModel.deleteTicket(id: ticket.id)
-        }
+//        .onTapGesture(count: 4){
+//            viewModel.deleteTicket(id: ticket.id)
+//      }
         .onTapGesture(count: 3){
             shouldShowModifyForm = true
         }
