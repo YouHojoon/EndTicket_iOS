@@ -15,6 +15,7 @@ import KakaoSDKUser
 struct EndTicketApp: App {
     private let googleClientId: String
     static let baseUrl = "https://dev.endticket.shop/"
+
     init(){
         guard let cetentialListFile = Bundle.main.url(forResource: "Credential", withExtension: "plist"), let credentialList = NSDictionary(contentsOf: cetentialListFile) else{
             fatalError("SNS Login을 위한 Credential.plist가 존재하지 않습니다.")

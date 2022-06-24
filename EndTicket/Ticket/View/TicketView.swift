@@ -11,12 +11,12 @@ struct TicketView: View {
     private let ticket: Ticket
     @State private var shouldShowModifyForm = false
     @EnvironmentObject private var viewModel: TicketViewModel
-    
+    @State private var height: CGFloat = 167
+
     init(_ ticket: Ticket){
         self.ticket = ticket
    
     }
-    
     var body: some View{
         HStack(spacing:1){
             TicketLeadingShape()
@@ -54,13 +54,13 @@ struct TicketView: View {
                 .frame(width:77)
                 .overlay{
                     VStack(spacing:5){
-                        Text("0")
+                        Text("\(ticket.currentCount)")
                             .font(.appleSDGothicBold(size: 10))
                             .foregroundColor(.gray500)
                             .frame(height: 8)
                         Capsule()
                             .frame(width: 8, height: 78)
-                        Text("15")
+                        Text("\(ticket.touchCount)")
                             .font(.appleSDGothicBold(size: 10))
                             .foregroundColor(.gray500)
                             .frame(height: 8)
@@ -68,25 +68,30 @@ struct TicketView: View {
                     .foregroundColor(.gray)
                 }
         }
-        .frame(width:335,height:167)
+        .frame(width:335,height:height)
         .cornerRadius(10)
         .foregroundColor(ticket.color)
-        .contextMenu(ContextMenu(menuItems: {
-            Button{
-                viewModel.deleteTicket(ticket)
-            }label: {
-                Text("삭제")
-            }
-            
-            Button{
-                withAnimation{
-                    shouldShowModifyForm = true
-                }
-            }label: {
-                Text("수정")
-            }
-        })).fullScreenCover(isPresented:$shouldShowModifyForm){
+        .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
+        }
+//        .onTapGesture(count: 4){
+//            viewModel.deleteTicket(id: ticket.id)
+//      }
+        .onTapGesture(count: 3){
+            shouldShowModifyForm = true
+        }
+        .onTapGesture(count: 2){
+            viewModel.cancelTouchTicket(id: ticket.id)
+        }
+        .onTapGesture {
+            viewModel.touchTicket(id: ticket.id)
+        }
+        .onReceive(viewModel.isDeleteTicketSuccess){
+            if $0 == ticket.id && $1{
+                withAnimation(.easeInOut){
+                    height = 0
+                }
+            }
         }
     }
 }

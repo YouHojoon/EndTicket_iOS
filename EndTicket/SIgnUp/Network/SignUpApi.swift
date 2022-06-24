@@ -14,8 +14,25 @@ final class SignUpApi: BaseApi{
     override private init(){
         super.init()
     }
+    private var test = Set<AnyCancellable>()
     
     func signUp(nickname: String) -> AnyPublisher<Bool,AFError>{
+        
+        session.request(SignUpRouter.signUp(nickname))
+            .validate(statusCode: 200..<300)
+            .publishData()
+            .value()
+            .map{
+                
+                
+                
+                print(String(data:$0,encoding: .utf8)!)
+            }
+            .eraseToAnyPublisher()
+        
+        
+        
+        
         return session.request(SignUpRouter.signUp(nickname))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignUpResponse.self)

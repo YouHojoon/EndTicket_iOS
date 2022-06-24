@@ -19,23 +19,25 @@ struct TicketFormView: View {
     @State private var touchCount: Int = 5
     
     private let buttonType:ButtonType
-    
-    
+    private let ticketId: Int?
+
     init(){
         UIScrollView.appearance().bounces = false
         buttonType = .add
+        ticketId = nil
     }
     
     //MARK: - 수정을 위한 생성자
     init(_ ticket: Ticket){
         UIScrollView.appearance().bounces = false
+        ticketId = ticket.id
         buttonType = .modify
-        title = ticket.title
-        start = ticket.start
-        end = ticket.end
-        category = ticket.category
-        color = ticket.color
-        touchCount = ticket.touchCount
+        _title = State(initialValue: ticket.title)
+        _start = State(initialValue: ticket.start)
+        _end = State(initialValue: ticket.end)
+        _category = State(initialValue: ticket.category)
+        _color = State(initialValue: ticket.color)
+        _touchCount = State(initialValue: ticket.touchCount)
     }
     
     var body: some View {
@@ -70,13 +72,9 @@ struct TicketFormView: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 30)
-            
             Spacer()
         }
         .background(Color.gray50.ignoresSafeArea())
-        .onAppear{
-            
-        }
     }
     
     
@@ -99,11 +97,13 @@ struct TicketFormView: View {
             Text("수정")
                 .font(.interMedium(size: 13))
                 .underline()
-                .onTapGesture {
-                    viewModel.postTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
+                .onTapGesture{
+                    viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount, id:ticketId!))
                 }
-                .onReceive(viewModel.isPostTicketSuccess){result in
-                    
+                .onReceive(viewModel.isModifyTicketSuccess){result in
+                    withAnimation{
+                        dismiss()
+                    }
                 }
         }
     }
