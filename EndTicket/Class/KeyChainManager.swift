@@ -10,13 +10,36 @@ import AuthenticationServices
 
 //MARK: - Apple 로그인 키체인 저장을 도우기 위한 클래스
 final class KeyChainManager{
-    static private let baseQuery: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
-                            kSecAttrService: Bundle.main.bundleIdentifier!,
-                            kSecAttrAccount: "userIdentifier",
-                                ]
     
-    static func readUserInKeyChain() -> String?{
-        var query = baseQuery
+    static func getBaseQuery(key: String) -> [CFString:Any]{
+        return [kSecClass: kSecClassGenericPassword,
+          kSecAttrService: Bundle.main.bundleIdentifier!,
+          kSecAttrAccount: key,
+        ]
+    }
+    
+    static func saveInKeyChain(key:String, data: String) -> Bool{
+        var query = getBaseQuery(key: key)
+        let encodedData = data.data(using: .utf8)!
+        let status:OSStatus
+        
+        if let _ = readInKeyChain(key: key){
+            status = SecItemUpdate(query as CFDictionary, [kSecValueData: encodedData] as CFDictionary)
+        }
+        else{
+            query[kSecValueData] = encodedData
+            status = SecItemAdd(query as CFDictionary, nil)
+        }
+        
+
+        guard status == noErr else{
+            return false
+        }
+        return true
+    }
+    
+    static func readInKeyChain(key:String) -> String?{
+        var query = getBaseQuery(key: key)
         query[kSecMatchLimit] = kSecMatchLimitOne
         query[kSecReturnAttributes] = kCFBooleanTrue
         query[kSecReturnData] = kCFBooleanTrue
@@ -36,31 +59,21 @@ final class KeyChainManager{
         
         // Parse the password string from the query result.
         guard let existingItem = queryResult as? [String: AnyObject],
-              let passwordData = existingItem[kSecValueData as String] as? Data,
-              let password = String(data: passwordData, encoding: .utf8)
+              let data = existingItem[kSecValueData as String] as? Data,
+              let dataString = String(data: data, encoding: .utf8)
         else {
             return nil
         }
         
-        return password
+        return dataString
     }
     
     static func saveUserInKeyChain(credential:ASAuthorizationAppleIDCredential) -> Bool{
-        var query = baseQuery
-        let encodedUser = credential.user.data(using: .utf8)!
-        let status:OSStatus
-        
-        if let _ = readUserInKeyChain(){
-            status = SecItemUpdate(query as CFDictionary, [kSecValueData: encodedUser] as CFDictionary)
-        }
-        else{
-            query[kSecValueData] = encodedUser
-            status = SecItemAdd(query as CFDictionary, nil)
-        }
-        
-        guard status == noErr else{
-            return false
-        }
-        return true
+        return saveInKeyChain(key: "userIdentifier", data: credential.user)
     }
+    
+    static func readUserInKeyChain() -> String?{
+        return readInKeyChain(key: "userIdentifier")
+    }
+    
 }

@@ -70,7 +70,7 @@ final class SignInViewModel: NSObject, ObservableObject{
     
     private func googleSignIn(completion: ((Bool)->Void)? = nil){
         guard let windowScenes = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                let rootController = windowScenes.windows.first?.rootViewController else{
+              let rootController = windowScenes.windows.first?.rootViewController else{
             DispatchQueue.main.async {
                 self.isSignIn = false
             }
@@ -90,26 +90,29 @@ final class SignInViewModel: NSObject, ObservableObject{
                 }
                 return
             }
-            
-//            SignInApi.shared.socialSignIn(.google,token: $0!.authentication.idToken!)
-//                .sink(receiveCompletion: {
-//                    switch $0{
-//                    case .finished:
-//                        break
-//                    case .failure(let error):
-//                        print(error.localizedDescription)
-//                    }
-//                }, receiveValue: {
-//                    print("aa")
-//                    print($0)
-//                }).store(in: &self.subscriptions)
-            withAnimation{
+            self.signInToServer(.google, idToken: $0!.authentication.idToken!){result in
                 DispatchQueue.main.async {
-                    self.isSignIn = true
+                    withAnimation{
+                        self.isSignIn = result
+                    }
                 }
             }
-           
         }
+    }
+    
+    private func signInToServer(_ type: SocialType, idToken:String, completion: ((Bool) -> Void)?){
+        SignInApi.shared.socialSignIn(type,token: idToken)
+            .sink(receiveCompletion: {
+                switch $0{
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("로그인 실패 : \(error.localizedDescription)")
+                }
+            }, receiveValue: {token in
+                let saveResult = KeyChainManager.saveInKeyChain(key: "token", data: token)
+                completion?(saveResult)
+            }).store(in: &self.subscriptions)
     }
     
     //MARK: - 자동 로그인 관련
@@ -151,7 +154,7 @@ final class SignInViewModel: NSObject, ObservableObject{
             }
         }
     }
-    
+        
     private func restorePreviousAppleSignIn(completion: ((Bool)->Void)? = nil){
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         guard let userId = KeyChainManager.readUserInKeyChain() else{
@@ -182,7 +185,10 @@ final class SignInViewModel: NSObject, ObservableObject{
                 completion?(false)
                 return
             }
-            completion?(true)
+            self.signInToServer(.google, idToken: $0!.authentication.idToken!){
+                print($0)
+               completion?($0)
+            }
         }
     }
     

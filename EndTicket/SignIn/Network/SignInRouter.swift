@@ -15,7 +15,7 @@ enum SignInRouter:BaseRouter{
         let baseEndPoint = "auth"
         switch self {
         case .signIn(let socialType, _):
-            return "\(baseEndPoint)/\(socialType.rawValue)"
+            return "\(baseEndPoint)/ios/\(socialType.rawValue)"
         }
     }
     

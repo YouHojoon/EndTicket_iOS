@@ -27,10 +27,9 @@ final class SignInApi:BaseApi{
     private func googleSignin(token:String) -> AnyPublisher<String,AFError>{
         return session.request(SignInRouter.signIn(.google, token))
             .validate(statusCode: 200..<300)
-            .publishData()
+            .publishDecodable(type:SignInResponse.self)
             .value().map{
-                let json = String(data: $0, encoding: .utf8)!
-                return ""
+                $0.token
             }.eraseToAnyPublisher()
     }
 }

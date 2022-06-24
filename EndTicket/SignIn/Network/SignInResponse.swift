@@ -7,3 +7,7 @@
 
 import Foundation
 
+struct SignInResponse:Codable{
+    let id: String
+    let token: String
+}
