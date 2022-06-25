@@ -36,7 +36,6 @@ final class TicketApi: BaseApi{
             .publishDecodable(type:PostOrModifyTicketResponse.self)
             .value()
             .map{
-                print($0)
                 if $0.isSuccess{
                     return $0.result?.ticketResponseToTicket()
                 }

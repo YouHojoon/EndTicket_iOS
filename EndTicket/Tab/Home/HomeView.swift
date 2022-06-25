@@ -9,7 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
-    
+    @Binding private var shouldShowTicketFormView: Bool
+    init(shouldShowTicketFormView:Binding<Bool>){
+        _shouldShowTicketFormView = shouldShowTicketFormView
+        UIScrollView.appearance().bounces = true
+    }
     var body: some View {
         VStack(spacing:0){
             Group{
@@ -47,50 +51,45 @@ struct HomeView: View {
                 .padding(.horizontal,20)
                 .padding(.top, 12)
             ZStack(alignment:.top){
-                    Color
-                        .gray50
-                        .edgesIgnoringSafeArea([.horizontal,.bottom])
-                    if viewModel.tickets.isEmpty{
-                        VStack(spacing:0){
-                            Image("on_boarding_1")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 230, height: 230)
-                                .padding(.bottom, 5)
-                            Text("새로운 종착지를 설정해주세요!")
-                                .font(.interSemiBold(size: 14))
-                                .padding(.bottom, 10)
-                            Button{
-                                
-                            }label:{
-                                Text("새로운 티켓 만들기")
-                                    .font(.system(size:15,weight: .bold))
-                                    .foregroundColor(.white)
-                                    .frame(width:295, height: 50)
-                            }.background(Color.mainColor)
+                Color
+                    .gray50
+                    .edgesIgnoringSafeArea([.horizontal,.bottom])
+                if viewModel.tickets.isEmpty{
+                    VStack(spacing:0){
+                        Image("on_boarding_1")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 230, height: 230)
+                            .padding(.bottom, 5)
+                        Text("새로운 종착지를 설정해주세요!")
+                            .font(.interSemiBold(size: 14))
+                            .padding(.bottom, 10)
+                        Button{
+                            shouldShowTicketFormView = true
+                        }label:{
+                            Text("새로운 티켓 만들기")
+                                .font(.system(size:15,weight: .bold))
+                                .foregroundColor(.white)
+                                .frame(width:295, height: 50)
+                        }.background(Color.mainColor)
                             .cornerRadius(30)
-                           
-                        }
-                        .frame(width:335,height: 335)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .padding(.top,30)
+                        
                     }
-                    else{
-                        ScrollView(showsIndicators: false){
-                            
+                    .frame(width:335,height: 335)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .padding(.top,30)
+                }
+                else{
+                    ScrollView(showsIndicators: false){
                         LazyVStack(spacing:20){
                             ForEach(viewModel.tickets,id: \.id){
                                 TicketView($0)
                             }
                         }.padding(.vertical, 30)
-                        }
                     }
                 }
-               
-           
-            
-           
+            }
             .onAppear{
                 viewModel.fetchTickets()
             }
@@ -101,6 +100,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(TicketViewModel())
+        EndTicketTabView()
     }
 }

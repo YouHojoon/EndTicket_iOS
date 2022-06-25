@@ -13,6 +13,6 @@ struct DeleteTicketResponse: BaseResponse{
     var result: Result?
     
     struct Result: Codable{
-        let ticketId: String
+        let ticketId: Int
     }
 }

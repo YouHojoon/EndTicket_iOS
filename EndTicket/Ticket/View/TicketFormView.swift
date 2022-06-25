@@ -51,7 +51,7 @@ struct TicketFormView: View {
                             dismiss()
                         }
                     }
-                Text("티켓 추가하기")
+                Text(ticketId == nil ? "티켓 추가하기" : "티켓 수정하기")
                     .font(.interSemiBold(size: 20))
                 Spacer()
                 addOrModifyButton

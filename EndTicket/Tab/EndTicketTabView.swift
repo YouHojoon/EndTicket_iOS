@@ -87,7 +87,7 @@ struct EndTicketTabView: View {
     private var content:some View{
         switch tabIndex {
         case .home:
-            HomeView()
+            HomeView(shouldShowTicketFormView: $shouldShowTicketFormView)
                 .environmentObject(ticketViewModel)
         case .futureOfMe:
             FutureOfMeView()
