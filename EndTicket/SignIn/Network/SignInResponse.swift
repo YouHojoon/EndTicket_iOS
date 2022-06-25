@@ -7,7 +7,16 @@
 
 import Foundation
 
-struct SignInResponse:Codable{
-    let id: String
-    let token: String
+struct SignInResponse:BaseResponse{
+    let isSuccess: Bool
+    let code: Int
+    let message: String
+    let result: Result?
+    
+    struct Result: Codable{
+        let id:String
+        let user: String?
+        let token:String
+    }
 }
+
