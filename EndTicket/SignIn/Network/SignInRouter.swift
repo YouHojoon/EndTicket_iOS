@@ -36,10 +36,17 @@ enum SignInRouter:BaseRouter{
         }
     }
     
+    var headers: HTTPHeaders{
+        return [
+            "Content-Type": "application/json; charset=UTF-8"
+        ]
+    }
+    
     func asURLRequest() throws -> URLRequest {
         let url = URL(string: EndTicketApp.baseUrl)!.appendingPathComponent(endPoint)
         var requset = URLRequest(url: url)
         requset.method = method
+        requset.headers = headers
         requset.httpBody = try! JSONEncoding.default.encode(requset, with: parameters).httpBody
         return requset
     }

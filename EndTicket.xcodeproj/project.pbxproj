@@ -23,6 +23,7 @@
 		064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E6284E43E9000EEF62 /* HomeView.swift */; };
 		064B50E9284E4CB6000EEF62 /* GmarketSansLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */; };
 		064B50EC284E4E41000EEF62 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50EB284E4E41000EEF62 /* Ticket.swift */; };
+		0670ACB52866FA1700E4D091 /* SignInStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670ACB42866FA1700E4D091 /* SignInStatus.swift */; };
 		06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DCD28408B6A00FEB138 /* EndTicketApp.swift */; };
 		06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD128408B6C00FEB138 /* Assets.xcassets */; };
 		06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD428408B6C00FEB138 /* Preview Assets.xcassets */; };
@@ -113,6 +114,7 @@
 		064B50E6284E43E9000EEF62 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansLight.otf; sourceTree = "<group>"; };
 		064B50EB284E4E41000EEF62 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		0670ACB42866FA1700E4D091 /* SignInStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStatus.swift; sourceTree = "<group>"; };
 		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
 		06717DD128408B6C00FEB138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				06B262B3286404F800722A52 /* SocialType.swift */,
+				0670ACB42866FA1700E4D091 /* SignInStatus.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				06717E2628506D5D00FEB138 /* TicketLeadingShape.swift in Sources */,
 				063634EA2852132E00856928 /* SignUpApi.swift in Sources */,
 				06B262B4286404F800722A52 /* SocialType.swift in Sources */,
+				0670ACB52866FA1700E4D091 /* SignInStatus.swift in Sources */,
 				06717E092840A05300FEB138 /* View + Extension.swift in Sources */,
 				06717E352851BF5B00FEB138 /* Imagine.swift in Sources */,
 				06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */,

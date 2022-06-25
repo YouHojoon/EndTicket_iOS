@@ -17,6 +17,7 @@ import SwiftUI
 import UIKit
 final class SignInViewModel: NSObject, ObservableObject{
     @Published var isSignIn = false
+    @Published var status: SignInStaus = .fail
     
     private let gidConfig: GIDConfiguration
     private var subscriptions = Set<AnyCancellable>()
@@ -68,7 +69,7 @@ final class SignInViewModel: NSObject, ObservableObject{
         controller.performRequests()
     }
     
-    private func googleSignIn(completion: ((Bool)->Void)? = nil){
+    private func googleSignIn(){
         guard let windowScenes = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let rootController = windowScenes.windows.first?.rootViewController else{
             DispatchQueue.main.async {
@@ -76,6 +77,7 @@ final class SignInViewModel: NSObject, ObservableObject{
             }
             return
         }
+        
         GIDSignIn.sharedInstance.signIn(with: gidConfig, presenting: rootController){
             guard $1 == nil else{
                 print($1!.localizedDescription)
@@ -90,17 +92,13 @@ final class SignInViewModel: NSObject, ObservableObject{
                 }
                 return
             }
-            self.signInToServer(.google, idToken: $0!.authentication.idToken!){result in
-                DispatchQueue.main.async {
-                    withAnimation{
-                        self.isSignIn = result
-                    }
-                }
+            self.signInToServer(.google, idToken: $0!.authentication.idToken!){
+                self.handleSignInToServerResult($0)
             }
         }
     }
     
-    private func signInToServer(_ type: SocialType, idToken:String, completion: ((Bool) -> Void)?){
+    private func signInToServer(_ type: SocialType, idToken:String, completion: ((SignInStaus) -> Void)?){
         SignInApi.shared.socialSignIn(type,token: idToken)
             .sink(receiveCompletion: {
                 switch $0{
@@ -109,10 +107,35 @@ final class SignInViewModel: NSObject, ObservableObject{
                 case .failure(let error):
                     print("로그인 실패 : \(error.localizedDescription)")
                 }
-            }, receiveValue: {token in
-                let saveResult = KeyChainManager.saveInKeyChain(key: "token", data: token)
-                completion?(saveResult)
+            }, receiveValue: {nickname,token in
+                guard let token = token else{
+                    completion?(.fail)
+                    return
+                }
+        
+                guard KeyChainManager.saveInKeyChain(key: "token", data: token) else{
+                    completion?(.fail)
+                    return
+                }
+                guard let nickname = nickname else{
+                    completion?(.needSignUp)
+                    return
+                }
+                
+                UserDefaults.standard.set(nickname, forKey: nickname)
+                completion?(.success)
             }).store(in: &self.subscriptions)
+    }
+    
+    private func handleSignInToServerResult(_ status: SignInStaus){
+        self.status = status
+        if status != .fail{
+            DispatchQueue.main.async {
+                withAnimation{
+                    self.isSignIn = true
+                }
+            }
+        }
     }
     
     //MARK: - 자동 로그인 관련
@@ -186,8 +209,7 @@ final class SignInViewModel: NSObject, ObservableObject{
                 return
             }
             self.signInToServer(.google, idToken: $0!.authentication.idToken!){
-                print($0)
-               completion?($0)
+                self.handleSignInToServerResult($0)
             }
         }
     }

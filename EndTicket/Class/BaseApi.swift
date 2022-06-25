@@ -11,7 +11,7 @@ import Alamofire
 //MARK: - 기본 API 규격
 class BaseApi{
     let session: Session
-    init(){
-        session = Session(interceptor:AuthInterceptor())
+    init(needInterceptor:Bool = true){
+        session = Session(interceptor: needInterceptor ? AuthInterceptor() : nil)
     }
 }

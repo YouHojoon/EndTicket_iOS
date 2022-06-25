@@ -11,7 +11,7 @@ import Alamofire
 
 final class SignUpApi: BaseApi{
     static let shared = SignUpApi()
-    override private init(){
+    private init(){
         super.init()
     }
     private var test = Set<AnyCancellable>()

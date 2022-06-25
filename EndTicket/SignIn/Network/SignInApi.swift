@@ -11,12 +11,12 @@ import Alamofire
 
 final class SignInApi:BaseApi{
     static let shared = SignInApi()
-    override private init() {
-        super.init()
+    private init() {
+        super.init(needInterceptor: false)
     }
     
 
-    func socialSignIn(_ type: SocialType, token: String) -> AnyPublisher<String,AFError>{
+    func socialSignIn(_ type: SocialType, token: String) -> AnyPublisher<(String?,String?),AFError>{
         switch type {
         default:
             return googleSignin(token: token)
@@ -24,12 +24,12 @@ final class SignInApi:BaseApi{
     }
     
     
-    private func googleSignin(token:String) -> AnyPublisher<String,AFError>{
+    private func googleSignin(token:String) -> AnyPublisher<(String?,String?),AFError>{//순서대로 닉네밍 토큰 리턴
         return session.request(SignInRouter.signIn(.google, token))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignInResponse.self)
             .value().map{
-                $0.token
+                return ($0.result?.user, $0.result?.token)
             }.eraseToAnyPublisher()
     }
 }

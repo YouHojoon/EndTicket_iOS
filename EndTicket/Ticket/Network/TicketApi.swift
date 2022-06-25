@@ -13,7 +13,7 @@ import SwiftUI
 final class TicketApi: BaseApi{
     static let shared = TicketApi()
     
-    private override init() {
+    private init() {
         super.init()
     }
     

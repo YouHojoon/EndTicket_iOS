@@ -12,7 +12,7 @@ import GoogleSignInSwift
 struct SignInView: View {
     @AppStorage("isFirstStart") private var isFirstStart:Bool = true
     @EnvironmentObject private var viewModel:SignInViewModel
-    
+    @State private var shouldGoNextView = false
     var body: some View {
         VStack(spacing:12){
             Image("logo")
@@ -93,13 +93,20 @@ struct SignInView: View {
         .onAppear{
             viewModel.restorePreviousSignIn()
         }
-        .overlay(viewModel.isSignIn ?
-                 SignUpView()
-            .frame(maxWidth:.infinity)
-            .edgesIgnoringSafeArea(.horizontal)
-            .transition(.opacity)
-            .background(Color.white)
-            .environmentObject(SignUpViewModel()) : nil)
+        .onReceive(viewModel.$isSignIn){
+            shouldGoNextView = $0
+        }
+        .fullScreenCover(isPresented: $shouldGoNextView){
+            switch viewModel.status{
+            case .fail:
+                EmptyView()
+            case .success:
+                EndTicketTabView().environmentObject(TicketViewModel())
+            case .needSignUp:
+                SignUpView().environmentObject(SignUpViewModel())
+            }
+        }
+      
     }
 }
 
