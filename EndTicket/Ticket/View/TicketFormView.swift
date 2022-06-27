@@ -22,14 +22,12 @@ struct TicketFormView: View {
     private let ticketId: Int?
 
     init(){
-        UIScrollView.appearance().bounces = false
         buttonType = .add
         ticketId = nil
     }
     
     //MARK: - 수정을 위한 생성자
     init(_ ticket: Ticket){
-        UIScrollView.appearance().bounces = false
         ticketId = ticket.id
         buttonType = .modify
         _title = State(initialValue: ticket.title)
@@ -75,6 +73,9 @@ struct TicketFormView: View {
             Spacer()
         }
         .background(Color.gray50.ignoresSafeArea())
+        .onAppear{
+            UIScrollView.appearance().bounces = false
+        }
     }
     
     

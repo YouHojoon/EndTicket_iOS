@@ -19,10 +19,11 @@ struct EndTicketTabView: View {
                         TicketFormView()
                             .environmentObject(ticketViewModel)
                     }
-                    .padding(.bottom,56)
+                    .padding(.bottom,56)//탭바 크기만큼 패딩
                     .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
                 
                 
+                //탭바
                 HStack(spacing:0){
                     Image("home_icon")
                         .renderingMode(.template)
@@ -87,7 +88,7 @@ struct EndTicketTabView: View {
     private var content:some View{
         switch tabIndex {
         case .home:
-            HomeView(shouldShowTicketFormView: $shouldShowTicketFormView)
+            HomeView(tabIndex: $tabIndex,shouldShowTicketFormView: $shouldShowTicketFormView)
                 .environmentObject(ticketViewModel)
         case .futureOfMe:
             FutureOfMeView()
@@ -96,14 +97,19 @@ struct EndTicketTabView: View {
             HistoryHomeView()
         case .myPage:
             MyHomeView()
+        case .prefer:
+            TicketPreferView(tabIndex: $tabIndex)
+                .transition(.move(edge: .trailing))
+                .environmentObject(ticketViewModel)
         }
     }
     
-    private enum TabIndex{
+    enum TabIndex{
         case home
         case futureOfMe
         case history
         case myPage
+        case prefer
     }
 }
 

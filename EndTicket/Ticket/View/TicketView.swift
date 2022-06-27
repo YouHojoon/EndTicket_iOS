@@ -58,7 +58,7 @@ struct TicketView: View {
                         Text("\(ticket.currentCount)")
                             .font(.system(size: 10,weight: .bold))
                             .foregroundColor(.gray500)
-                            .frame(height: 8)
+                            .frame(height:   8)
                         Capsule()
                             .frame(width: 8, height: 78)
                         Text("\(ticket.touchCount)")
@@ -84,9 +84,10 @@ struct TicketView: View {
             .onEnded{
                 let dragWidth = round(abs($0.translation.width))
                 //offset이 음수면 왼쪽
-                let operation = offset < 0 ? viewModel.cancelTouchTicket : viewModel.touchTicket
+                let ticket = viewModel.tickets.first{$0.id == self.ticket.id}!
+                let operation = offset < 0 ? (ticket.currentCount > 0 ?     viewModel.cancelTouchTicket : nil) : (ticket.currentCount < ticket.touchCount ? viewModel.touchTicket : nil)
                 if dragWidth > 335 / 2{
-                    operation(ticket.id)
+                    operation?(ticket.id)
                 }
                 withAnimation(.easeInOut){
                     offset = 0
@@ -99,13 +100,19 @@ struct TicketView: View {
         }
         .onTapGesture(count: 2){
             viewModel.deleteTicket(id: ticket.id)
-      }
+        }
         .onTapGesture(count: 1){
             shouldShowModifyForm = true
         }
-
         .onReceive(viewModel.isDeleteTicketSuccess){
             if $0 == ticket.id && $1{
+                withAnimation(.easeInOut){
+                    height = 0
+                }
+            }
+        }.onReceive(viewModel.isTouchTicketSuccess){
+            let ticket = viewModel.tickets.first{$0.id == self.ticket.id}!
+            if $0 && ticket.touchCount == ticket.currentCount{
                 withAnimation(.easeInOut){
                     height = 0
                 }

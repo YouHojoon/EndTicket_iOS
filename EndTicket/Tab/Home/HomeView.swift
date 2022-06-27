@@ -10,9 +10,10 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
     @Binding private var shouldShowTicketFormView: Bool
-    init(shouldShowTicketFormView:Binding<Bool>){
+    @Binding private var tabIndex: EndTicketTabView.TabIndex
+    init(tabIndex:Binding<EndTicketTabView.TabIndex>,shouldShowTicketFormView:Binding<Bool>){
         _shouldShowTicketFormView = shouldShowTicketFormView
-        UIScrollView.appearance().bounces = true
+        _tabIndex = tabIndex
     }
     var body: some View {
         VStack(spacing:0){
@@ -24,6 +25,11 @@ struct HomeView: View {
                     Spacer()
                     Image("home_top_icon")
                         .frame(width:22, height: 22)
+                        .onTapGesture {
+                            withAnimation{
+                                tabIndex = .prefer
+                            }
+                        }
                 }
                 .padding(.bottom,23)
                 RoundedRectangle(cornerRadius: 10)
@@ -92,6 +98,7 @@ struct HomeView: View {
             }
             .onAppear{
                 viewModel.fetchTickets()
+                UIScrollView.appearance().bounces = true
             }
         }
     }

@@ -11,6 +11,8 @@ import SwiftUI
 
 final class TicketViewModel:ObservableObject{
     @Published var tickets:[Ticket] = []
+    @Published var preferTicket:Ticket? = nil
+    
     let isPostTicketSuccess = PassthroughSubject<Bool,Never>()
     let isModifyTicketSuccess = PassthroughSubject<Bool,Never>()
     let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
@@ -109,8 +111,19 @@ final class TicketViewModel:ObservableObject{
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount-=1
             self.isCancelTouchTicketSuccess.send($0)
-            self.isTouchTicketSuccess.send($0)
         }).store(in: &subscriptions)
     }
-
+    
+    func getPreferTicket(){
+        TicketApi.shared.getPreferTicket().receive(on: DispatchQueue.main).sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("추천 티켓 get 실패 : \(error.localizedDescription)")
+            }
+        }, receiveValue: {
+            self.preferTicket = $0
+        }).store(in: &subscriptions)
+    }
 }
