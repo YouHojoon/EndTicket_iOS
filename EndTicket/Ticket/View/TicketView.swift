@@ -111,11 +111,13 @@ struct TicketView: View {
                 }
             }
         }.onReceive(viewModel.isTouchTicketSuccess){
-            let ticket = viewModel.tickets.first{$0.id == self.ticket.id}!
+            let index = viewModel.tickets.firstIndex{$0.id == self.ticket.id}!
+            let ticket = viewModel.tickets[index]
             if $0 && ticket.touchCount == ticket.currentCount{
                 withAnimation(.easeInOut){
                     height = 0
                 }
+                viewModel.tickets.remove(at: index)
             }
         }
     }
