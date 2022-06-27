@@ -20,7 +20,7 @@ struct TicketFormView: View {
     
     private let buttonType:ButtonType
     private let ticketId: Int?
-
+    
     init(){
         buttonType = .add
         ticketId = nil
@@ -66,15 +66,19 @@ struct TicketFormView: View {
                     TicketFormCategoryView(selected: $category)
                     TicketColorSelectView(selected: $color)
                     TicketTouchCountSelectView(selected: $touchCount)
-                }
+                }.padding(.top, 30)
             }
             .padding(.horizontal, 20)
-            .padding(.top, 30)
             Spacer()
         }
         .background(Color.gray50.ignoresSafeArea())
         .onAppear{
             UIScrollView.appearance().bounces = false
+        }.onDisappear{
+            UIScrollView.appearance().bounces = true
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
     }
     
