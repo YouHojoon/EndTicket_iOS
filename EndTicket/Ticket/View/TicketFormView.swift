@@ -78,7 +78,16 @@ struct TicketFormView: View {
         .onTapGesture {
             hideKeyboard()
         }.alert(isPresented: $shouldShowAlert){
-           alert
+            EndTicketAlert(title:"변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?"){
+                EndTicketAlertButton(title:Text("예").foregroundColor(.gray600)){
+                    shouldShowAlert = false
+                    dismiss()
+                }
+            }secondButton: {
+                EndTicketAlertButton(title:Text("아니요").foregroundColor(.black)){
+                    shouldShowAlert = false
+                }
+            }
         }
     }
     
@@ -112,34 +121,6 @@ struct TicketFormView: View {
                 }
         }
     }
-    
-    var alert: EndTicketAlert{
-        switch buttonType{
-        case .add:
-            return EndTicketAlert(title:"변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?"){
-                EndTicketAlertButton(title:Text("예").foregroundColor(.gray600)){
-                    shouldShowAlert = false
-                    dismiss()
-                }
-            }secondButton: {
-                EndTicketAlertButton(title:Text("아니요").foregroundColor(.black)){
-                    shouldShowAlert = false
-                }
-            }
-        case .modify:
-            return EndTicketAlert(title:"변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?"){
-                EndTicketAlertButton(title:Text("예").foregroundColor(.gray600)){
-                    shouldShowAlert = false
-                    dismiss()
-                }
-            }secondButton: {
-                EndTicketAlertButton(title:Text("아니요").foregroundColor(.black)){
-                    shouldShowAlert = false
-                }
-            }
-        }
-    }
-    
     
     private enum  ButtonType {
         case add, modify
