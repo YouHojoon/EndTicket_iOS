@@ -24,4 +24,24 @@ extension View{
     func hideKeyboard(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+    
+    func alert(isPresented:Binding<Bool>, alert: () -> EndTicketAlert) -> some View{
+        let keyWindow = UIApplication.shared.connectedScenes.filter ({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene}).compactMap {$0}.first?.windows.filter { $0.isKeyWindow }.first!
+
+        let vc = UIHostingController(rootView: alert())
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.view.backgroundColor = .clear
+        vc.definesPresentationContext = true
+        
+        return self.onChange(of: isPresented.wrappedValue, perform: {
+            if $0{
+                keyWindow?.rootViewController?.topViewController().present(vc,animated: true)
+            }
+            else{
+                keyWindow?.rootViewController?.topViewController().dismiss(animated: true)
+            }
+        })
+    }
 }

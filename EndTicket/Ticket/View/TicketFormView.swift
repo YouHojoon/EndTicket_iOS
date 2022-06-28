@@ -17,7 +17,7 @@ struct TicketFormView: View {
     @State private var category: Ticket.Category = .allCases[0]
     @State private var color: Color = .ticketRed1
     @State private var touchCount: Int = 5
-    
+    @State private var shouldShowAlert = false
     private let buttonType:ButtonType
     private let ticketId: Int?
     
@@ -45,9 +45,7 @@ struct TicketFormView: View {
                     .font(.system(size:15, weight: .medium))
                     .padding(.trailing,13)
                     .onTapGesture {
-                        withAnimation{
-                            dismiss()
-                        }
+                        shouldShowAlert = true
                     }
                 Text(ticketId == nil ? "티켓 추가하기" : "티켓 수정하기")
                     .font(.interSemiBold(size: 20))
@@ -79,6 +77,8 @@ struct TicketFormView: View {
         }
         .onTapGesture {
             hideKeyboard()
+        }.alert(isPresented: $shouldShowAlert){
+           alert
         }
     }
     
@@ -110,6 +110,33 @@ struct TicketFormView: View {
                         dismiss()
                     }
                 }
+        }
+    }
+    
+    var alert: EndTicketAlert{
+        switch buttonType{
+        case .add:
+            return EndTicketAlert(title:"변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?"){
+                EndTicketAlertButton(title:Text("예").foregroundColor(.gray600)){
+                    shouldShowAlert = false
+                    dismiss()
+                }
+            }secondButton: {
+                EndTicketAlertButton(title:Text("아니요").foregroundColor(.black)){
+                    shouldShowAlert = false
+                }
+            }
+        case .modify:
+            return EndTicketAlert(title:"변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?"){
+                EndTicketAlertButton(title:Text("예").foregroundColor(.gray600)){
+                    shouldShowAlert = false
+                    dismiss()
+                }
+            }secondButton: {
+                EndTicketAlertButton(title:Text("아니요").foregroundColor(.black)){
+                    shouldShowAlert = false
+                }
+            }
         }
     }
     
