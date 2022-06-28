@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TicketFormView: View {
     @Environment(\.dismiss) private var dismiss
@@ -18,6 +19,8 @@ struct TicketFormView: View {
     @State private var color: Color = .ticketRed1
     @State private var touchCount: Int = 5
     @State private var shouldShowAlert = false
+    @State private var isEnabledButton = false
+    
     private let buttonType:ButtonType
     private let ticketId: Int?
     
@@ -51,6 +54,8 @@ struct TicketFormView: View {
                     .font(.interSemiBold(size: 20))
                 Spacer()
                 addOrModifyButton
+                    .disabled(!isEnabledButton)
+                    .foregroundColor(isEnabledButton ? .black : .gray600)
             }.padding(.horizontal, 20)
                 .padding(.vertical,18)
                 .background(Color.white)
@@ -88,6 +93,9 @@ struct TicketFormView: View {
                     shouldShowAlert = false
                 }
             }
+        }
+        .onChange(of: !title.isEmpty && !start.isEmpty && !end.isEmpty){
+            isEnabledButton = $0
         }
     }
     

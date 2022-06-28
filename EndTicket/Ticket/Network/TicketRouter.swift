@@ -35,7 +35,7 @@ enum TicketRouter: BaseRouter{
         case .canelTouchTicket(let ticketId):
             return "\(baseEndPoint)/\(ticketId)"
         case .getPreferTicket:
-            return "\(baseEndPoint)/1" // 임시로 userId
+            return "\(baseEndPoint)/107930786794814138357" // 임시로 userId
         }
     }
     

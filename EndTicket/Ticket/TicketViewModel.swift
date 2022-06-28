@@ -45,6 +45,7 @@ final class TicketViewModel:ObservableObject{
                 self.isPostTicketSuccess.send(false)
                 return
             }
+            _ = $1
             self.tickets.append($0!)
             self.isPostTicketSuccess.send(true)
         }).store(in: &subscriptions)
