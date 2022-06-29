@@ -10,6 +10,7 @@ import SwiftUI
 struct EndTicketTabView: View {
     @State private var tabIndex: TabIndex = .home
     @State private var shouldShowTicketFormView = false
+    @State private var shouldShowAlert = false
     let ticketViewModel = TicketViewModel()
     var body: some View {
         GeometryReader{proxy in
@@ -48,8 +49,28 @@ struct EndTicketTabView: View {
                             .foregroundColor(.white)
                     }.frame(width:proxy.size.width / 5)
                         .onTapGesture {
-                            withAnimation{
-                                shouldShowTicketFormView = true
+                            if ticketViewModel.tickets.count == 6{
+                                    shouldShowAlert = true
+                            }
+                            else{
+                                withAnimation{
+                                    shouldShowTicketFormView = true
+                                }
+                            }
+                        }.alert(isPresented: $shouldShowAlert){
+                            EndTicketAlert{
+                                VStack(spacing:20){
+                                    Text("새로 추가하는 것보다\n현재 목표에 집중하는 게 어떨까요..?")
+                                        .font(.system(size: 18, weight: .bold))
+                                        .multilineTextAlignment(.center)
+                                        .lineSpacing(0.83)
+                                    Text("새로 추가하고 싶다면, 하나를 삭제하고 +버튼을 눌러주세요:)")
+                                        .font(.system(size: 10, weight: .bold))
+                                }.foregroundColor(Color.black)
+                            }primaryButton: {
+                                EndTicketAlertButton(title:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.black)){
+                                    shouldShowAlert = false
+                                }
                             }
                         }
                     

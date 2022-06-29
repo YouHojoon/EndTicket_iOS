@@ -30,17 +30,17 @@ final class TicketApi: BaseApi{
             }.eraseToAnyPublisher()
     }
 
-    func postTicket(_ ticket: Ticket) -> AnyPublisher<(Ticket?,Int), AFError>{
+    func postTicket(_ ticket: Ticket) -> AnyPublisher<(Ticket?), AFError>{
         return session.request(TicketRouter.postTicket(ticket))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:DefaultTicketResponse.self)
             .value()
             .map{
                 if $0.isSuccess{
-                    return ($0.result?.ticketResponseToTicket(), $0.code)
+                    return $0.result?.ticketResponseToTicket()
                 }
                 else{
-                    return (nil, $0.code)
+                    return nil
                 }
             }.eraseToAnyPublisher()
     }

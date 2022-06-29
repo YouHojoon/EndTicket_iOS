@@ -85,7 +85,7 @@ struct TicketView: View {
                 let dragWidth = round(abs($0.translation.width))
                 //offset이 음수면 왼쪽
                 let ticket = viewModel.tickets.first{$0.id == self.ticket.id}!
-                let operation = offset < 0 ? (ticket.currentCount > 0 ?     viewModel.cancelTouchTicket : nil) : (ticket.currentCount < ticket.touchCount ? viewModel.touchTicket : nil)
+                let operation = offset < 0 ? (ticket.currentCount > 0 ?     viewModel.cancelTouchTicket : nil) : (ticket.currentCount <= ticket.touchCount ? viewModel.touchTicket : nil)
                 if dragWidth > 335 / 2{
                     operation?(ticket.id)
                 }
@@ -110,15 +110,18 @@ struct TicketView: View {
                     height = 0
                 }
             }
-        }.onReceive(viewModel.isTouchTicketSuccess){
-            let index = viewModel.tickets.firstIndex{$0.id == self.ticket.id}!
-            let ticket = viewModel.tickets[index]
-            if $0 && ticket.touchCount == ticket.currentCount{
-                withAnimation(.easeInOut){
-                    height = 0
+        }.onReceive(viewModel.isTouchTicketSuccess){id, isSuccess in
+            print(viewModel.tickets)
+               let index = viewModel.tickets.firstIndex{$0.id == id}!
+                let ticket = viewModel.tickets[index]
+                if isSuccess && self.ticket.id == id
+                    && ticket.touchCount + 1 == ticket.currentCount{
+                    withAnimation(.easeInOut){
+                        height = 0
+                    }
+                    viewModel.tickets.remove(at: index)
                 }
-                viewModel.tickets.remove(at: index)
-            }
+
         }
     }
 }

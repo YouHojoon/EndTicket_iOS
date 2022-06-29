@@ -82,8 +82,12 @@ struct TicketFormView: View {
         }
         .onTapGesture {
             hideKeyboard()
-        }.alert(isPresented: $shouldShowAlert){
-            EndTicketAlert(title:"변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?"){
+        }
+        .alert(isPresented: $shouldShowAlert){
+            EndTicketAlert{
+                Text("변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?").font(.system(size: 18,weight: .bold))
+                    .multilineTextAlignment(.center)
+            } primaryButton:{
                 EndTicketAlertButton(title:Text("예").foregroundColor(.gray600)){
                     shouldShowAlert = false
                     dismiss()

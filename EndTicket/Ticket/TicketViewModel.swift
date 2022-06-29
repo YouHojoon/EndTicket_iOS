@@ -15,7 +15,7 @@ final class TicketViewModel:ObservableObject{
     
     let isPostTicketSuccess = PassthroughSubject<Bool,Never>()
     let isModifyTicketSuccess = PassthroughSubject<Bool,Never>()
-    let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
+    let isTouchTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
     let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isDeleteTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
     private var subscriptions = Set<AnyCancellable>()
@@ -45,7 +45,7 @@ final class TicketViewModel:ObservableObject{
                 self.isPostTicketSuccess.send(false)
                 return
             }
-            _ = $1
+            
             self.tickets.append($0!)
             self.isPostTicketSuccess.send(true)
         }).store(in: &subscriptions)
@@ -96,7 +96,7 @@ final class TicketViewModel:ObservableObject{
         }, receiveValue: {
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount+=1
-            self.isTouchTicketSuccess.send($0)
+            self.isTouchTicketSuccess.send((id,$0))
         }).store(in: &subscriptions)
     }
     
