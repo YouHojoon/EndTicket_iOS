@@ -11,9 +11,11 @@ import SwiftUI
 
 final class TicketViewModel:ObservableObject{
     @Published var tickets:[Ticket] = []
+    @Published var preferTicket:Ticket? = nil
+    
     let isPostTicketSuccess = PassthroughSubject<Bool,Never>()
     let isModifyTicketSuccess = PassthroughSubject<Bool,Never>()
-    let isTouchTicketSuccess = PassthroughSubject<Bool,Never>()
+    let isTouchTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
     let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
     let isDeleteTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
     private var subscriptions = Set<AnyCancellable>()
@@ -43,6 +45,7 @@ final class TicketViewModel:ObservableObject{
                 self.isPostTicketSuccess.send(false)
                 return
             }
+            
             self.tickets.append($0!)
             self.isPostTicketSuccess.send(true)
         }).store(in: &subscriptions)
@@ -93,7 +96,7 @@ final class TicketViewModel:ObservableObject{
         }, receiveValue: {
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount+=1
-            self.isTouchTicketSuccess.send($0)
+            self.isTouchTicketSuccess.send((id,$0))
         }).store(in: &subscriptions)
     }
     
@@ -109,8 +112,19 @@ final class TicketViewModel:ObservableObject{
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount-=1
             self.isCancelTouchTicketSuccess.send($0)
-            self.isTouchTicketSuccess.send($0)
         }).store(in: &subscriptions)
     }
-
+    
+    func getPreferTicket(){
+        TicketApi.shared.getPreferTicket().receive(on: DispatchQueue.main).sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("추천 티켓 get 실패 : \(error.localizedDescription)")
+            }
+        }, receiveValue: {
+            self.preferTicket = $0
+        }).store(in: &subscriptions)
+    }
 }

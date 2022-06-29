@@ -10,13 +10,16 @@ import SwiftUI
 struct TicketFormTextField: View {
     private let title:String
     private let placeholder: String
+    private let maxTextLength: Int
     
+    @State private var shouldShowRedBounds = false
     @Binding private var text:String
     @FocusState private var focus
     
-    init(title:String, placeholder:String, text:Binding<String>){
+    init(title:String, placeholder:String, text:Binding<String>, maxTextLength: Int = 20){
         self.title = title
         self.placeholder = placeholder
+        self.maxTextLength = maxTextLength
         _text = text
     }
     
@@ -35,10 +38,26 @@ struct TicketFormTextField: View {
             .focused($focus)
             .padding()
             .frame(height:50)
-            .background(Color.white.onTapGesture {
-                focus = true
-            })
+            .overlay{
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(shouldShowRedBounds ? .red : .clear, lineWidth: 1)
+            }
+            .background{
+                Color.white.onTapGesture {
+                    focus = true
+                }
+            }
             .cornerRadius(10)
+            .onChange(of: text){
+                if $0.count > maxTextLength{
+                    text = String($0.prefix(maxTextLength))
+                    shouldShowRedBounds = true
+                    print(shouldShowRedBounds)
+                }
+                if $0.count < maxTextLength{
+                    shouldShowRedBounds = false
+                }
+            }
         }
     }
 }

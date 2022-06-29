@@ -12,7 +12,8 @@ struct TicketView: View {
     @State private var shouldShowModifyForm = false
     @State private var height: CGFloat = 167
     @State private var offset = 0.0
-    
+    @State private var shouldShowAlert = false
+    @GestureState private var isLongPressed = false
     @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
         self.ticket = ticket
@@ -58,7 +59,7 @@ struct TicketView: View {
                         Text("\(ticket.currentCount)")
                             .font(.system(size: 10,weight: .bold))
                             .foregroundColor(.gray500)
-                            .frame(height: 8)
+                            .frame(height:   8)
                         Capsule()
                             .frame(width: 8, height: 78)
                         Text("\(ticket.touchCount)")
@@ -84,9 +85,10 @@ struct TicketView: View {
             .onEnded{
                 let dragWidth = round(abs($0.translation.width))
                 //offset이 음수면 왼쪽
-                let operation = offset < 0 ? viewModel.cancelTouchTicket : viewModel.touchTicket
+                let ticket = viewModel.tickets.first{$0.id == self.ticket.id}!
+                let operation = offset < 0 ? (ticket.currentCount > 0 ?     viewModel.cancelTouchTicket : nil) : (ticket.currentCount <= ticket.touchCount ? viewModel.touchTicket : nil)
                 if dragWidth > 335 / 2{
-                    operation(ticket.id)
+                    operation?(ticket.id)
                 }
                 withAnimation(.easeInOut){
                     offset = 0
@@ -97,17 +99,48 @@ struct TicketView: View {
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
-        .onTapGesture(count: 2){
-            viewModel.deleteTicket(id: ticket.id)
-      }
-        .onTapGesture(count: 1){
-            shouldShowModifyForm = true
-        }
-
+        
+//        .onLongPressGesture{
+//            shouldShowAlert = true
+//        }
+        .gesture(LongPressGesture().updating($isLongPressed){currentState, gestureState, _ in
+            gestureState = currentState
+            print(isLongPressed)
+        })
+        .onChange(of: isLongPressed, perform: {
+            print($0)
+        })
         .onReceive(viewModel.isDeleteTicketSuccess){
             if $0 == ticket.id && $1{
                 withAnimation(.easeInOut){
                     height = 0
+                }
+            }
+        }.onReceive(viewModel.isTouchTicketSuccess){id, isSuccess in
+            print(viewModel.tickets)
+               let index = viewModel.tickets.firstIndex{$0.id == id}!
+                let ticket = viewModel.tickets[index]
+                if isSuccess && self.ticket.id == id
+                    && ticket.touchCount + 1 == ticket.currentCount{
+                    withAnimation(.easeInOut){
+                        height = 0
+                    }
+                    viewModel.tickets.remove(at: index)
+                }
+
+        }.alert(isPresented: $shouldShowAlert){
+            EndTicketAlert{
+                Text("변경하시겠습니까?")
+                    .font(.system(size: 18,weight: .bold))
+            }primaryButton: {
+                EndTicketAlertButton(title:Text("수정").foregroundColor(.black)){
+                    shouldShowAlert = false
+                    shouldShowModifyForm = true
+                }
+            }secondButton: {
+                EndTicketAlertButton(title:Text("삭제").foregroundColor(.red)){
+                    shouldShowAlert = false
+                    viewModel.deleteTicket(id: ticket.id)
                 }
             }
         }

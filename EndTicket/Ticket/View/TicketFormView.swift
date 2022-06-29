@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TicketFormView: View {
     @Environment(\.dismiss) private var dismiss
@@ -17,19 +18,19 @@ struct TicketFormView: View {
     @State private var category: Ticket.Category = .allCases[0]
     @State private var color: Color = .ticketRed1
     @State private var touchCount: Int = 5
+    @State private var shouldShowAlert = false
+    @State private var isEnabledButton = false
     
     private let buttonType:ButtonType
     private let ticketId: Int?
-
+    
     init(){
-        UIScrollView.appearance().bounces = false
         buttonType = .add
         ticketId = nil
     }
     
     //MARK: - 수정을 위한 생성자
     init(_ ticket: Ticket){
-        UIScrollView.appearance().bounces = false
         ticketId = ticket.id
         buttonType = .modify
         _title = State(initialValue: ticket.title)
@@ -47,14 +48,14 @@ struct TicketFormView: View {
                     .font(.system(size:15, weight: .medium))
                     .padding(.trailing,13)
                     .onTapGesture {
-                        withAnimation{
-                            dismiss()
-                        }
+                        shouldShowAlert = true
                     }
                 Text(ticketId == nil ? "티켓 추가하기" : "티켓 수정하기")
                     .font(.interSemiBold(size: 20))
                 Spacer()
                 addOrModifyButton
+                    .disabled(!isEnabledButton)
+                    .foregroundColor(isEnabledButton ? .black : .gray600)
             }.padding(.horizontal, 20)
                 .padding(.vertical,18)
                 .background(Color.white)
@@ -68,13 +69,38 @@ struct TicketFormView: View {
                     TicketFormCategoryView(selected: $category)
                     TicketColorSelectView(selected: $color)
                     TicketTouchCountSelectView(selected: $touchCount)
-                }
+                }.padding(.top, 30)
             }
             .padding(.horizontal, 20)
-            .padding(.top, 30)
             Spacer()
         }
         .background(Color.gray50.ignoresSafeArea())
+        .onAppear{
+            UIScrollView.appearance().bounces = false
+        }.onDisappear{
+            UIScrollView.appearance().bounces = true
+        }
+        .onTapGesture {
+            hideKeyboard()
+        }
+        .alert(isPresented: $shouldShowAlert){
+            EndTicketAlert{
+                Text("변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?").font(.system(size: 18,weight: .bold))
+                    .multilineTextAlignment(.center)
+            } primaryButton:{
+                EndTicketAlertButton(title:Text("예").foregroundColor(.gray600)){
+                    shouldShowAlert = false
+                    dismiss()
+                }
+            }secondButton: {
+                EndTicketAlertButton(title:Text("아니요").foregroundColor(.black)){
+                    shouldShowAlert = false
+                }
+            }
+        }
+        .onChange(of: !title.isEmpty && !start.isEmpty && !end.isEmpty){
+            isEnabledButton = $0
+        }
     }
     
     
@@ -107,7 +133,6 @@ struct TicketFormView: View {
                 }
         }
     }
-    
     
     private enum  ButtonType {
         case add, modify

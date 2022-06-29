@@ -10,6 +10,7 @@ import SwiftUI
 struct EndTicketTabView: View {
     @State private var tabIndex: TabIndex = .home
     @State private var shouldShowTicketFormView = false
+    @State private var shouldShowAlert = false
     let ticketViewModel = TicketViewModel()
     var body: some View {
         GeometryReader{proxy in
@@ -19,10 +20,11 @@ struct EndTicketTabView: View {
                         TicketFormView()
                             .environmentObject(ticketViewModel)
                     }
-                    .padding(.bottom,56)
+                    .padding(.bottom,56)//탭바 크기만큼 패딩
                     .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
                 
                 
+                //탭바
                 HStack(spacing:0){
                     Image("home_icon")
                         .renderingMode(.template)
@@ -47,8 +49,28 @@ struct EndTicketTabView: View {
                             .foregroundColor(.white)
                     }.frame(width:proxy.size.width / 5)
                         .onTapGesture {
-                            withAnimation{
-                                shouldShowTicketFormView = true
+                            if ticketViewModel.tickets.count == 6{
+                                    shouldShowAlert = true
+                            }
+                            else{
+                                withAnimation{
+                                    shouldShowTicketFormView = true
+                                }
+                            }
+                        }.alert(isPresented: $shouldShowAlert){
+                            EndTicketAlert{
+                                VStack(spacing:20){
+                                    Text("새로 추가하는 것보다\n현재 목표에 집중하는 게 어떨까요..?")
+                                        .font(.system(size: 18, weight: .bold))
+                                        .multilineTextAlignment(.center)
+                                        .lineSpacing(0.83)
+                                    Text("새로 추가하고 싶다면, 하나를 삭제하고 +버튼을 눌러주세요:)")
+                                        .font(.system(size: 10, weight: .bold))
+                                }.foregroundColor(Color.black)
+                            }primaryButton: {
+                                EndTicketAlertButton(title:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.black)){
+                                    shouldShowAlert = false
+                                }
                             }
                         }
                     
@@ -87,7 +109,7 @@ struct EndTicketTabView: View {
     private var content:some View{
         switch tabIndex {
         case .home:
-            HomeView(shouldShowTicketFormView: $shouldShowTicketFormView)
+            HomeView(tabIndex: $tabIndex,shouldShowTicketFormView: $shouldShowTicketFormView)
                 .environmentObject(ticketViewModel)
         case .futureOfMe:
             FutureOfMeView()
@@ -96,14 +118,19 @@ struct EndTicketTabView: View {
             HistoryHomeView()
         case .myPage:
             MyHomeView()
+        case .prefer:
+            TicketPreferView(tabIndex: $tabIndex)
+                .transition(.move(edge: .trailing))
+                .environmentObject(ticketViewModel)
         }
     }
     
-    private enum TabIndex{
+    enum TabIndex{
         case home
         case futureOfMe
         case history
         case myPage
+        case prefer
     }
 }
 
