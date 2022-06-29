@@ -98,33 +98,36 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
     }
     
-    private func signInToServer(_ type: SocialType, idToken:String, completion: ((SignInStaus) -> Void)?){
-        SignInApi.shared.socialSignIn(type,token: idToken)
-            .sink(receiveCompletion: {
-                switch $0{
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("로그인 실패 : \(error.localizedDescription)")
-                }
-            }, receiveValue: {nickname,token in
-                guard let token = token else{
-                    completion?(.fail)
-                    return
-                }
-        
-                guard KeyChainManager.saveInKeyChain(key: "token", data: token) else{
-                    completion?(.fail)
-                    return
-                }
-                guard let nickname = nickname else{
-                    completion?(.needSignUp)
-                    return
-                }
-                
-                UserDefaults.standard.set(nickname, forKey: nickname)
-                completion?(.success)
-            }).store(in: &self.subscriptions)
+    private func signInToServer(_ type: SocialType, idToken:String, completion: ((SignInStaus) -> Void)? = nil){
+        if KeyChainManager.readInKeyChain(key: "token") == nil || UserDefaults.standard.string(forKey: "nickname") == nil{
+            SignInApi.shared.socialSignIn(type,token: idToken)
+                .sink(receiveCompletion: {
+                    switch $0{
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("로그인 실패 : \(error.localizedDescription)")
+                    }
+                }, receiveValue: {nickname,token in
+                    guard let token = token else{
+                        completion?(.fail)
+                        return
+                    }
+            
+                    guard KeyChainManager.saveInKeyChain(key: "token", data: token) else{
+                        completion?(.fail)
+                        return
+                    }
+                    guard let nickname = nickname else{
+                        completion?(.needSignUp)
+                        return
+                    }
+                    
+                    UserDefaults.standard.set(nickname, forKey: nickname)
+                    completion?(.success)
+                }).store(in: &self.subscriptions)
+        }
+        else{completion?(.success)}
     }
     
     private func handleSignInToServerResult(_ status: SignInStaus){
@@ -157,14 +160,6 @@ final class SignInViewModel: NSObject, ObservableObject{
                                 }
                             }
                         }
-                    }
-                    else{
-                        withAnimation(.easeInOut){
-                            DispatchQueue.main.async{
-                                self.isSignIn = true
-                            }
-                        }
-                        
                     }
                 }
             }
