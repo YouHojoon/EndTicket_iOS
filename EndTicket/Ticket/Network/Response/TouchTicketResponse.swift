@@ -14,7 +14,7 @@ struct TouchTicketResponse: BaseResponse{
     
     struct Result:Codable{
         let ticketId: String
-        let touchCount: Int
+        //let touchCount: Int
         let touchCountId: Int
     }
 }
