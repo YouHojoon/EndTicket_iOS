@@ -97,6 +97,8 @@ struct SignInView: View {
             shouldShowProgressView = false
         }
         .fullScreenCover(isPresented: $shouldGoNextView){
+            viewModel.disconnect()
+        }content:{
             switch viewModel.status{
             case .fail:
                 EmptyView()

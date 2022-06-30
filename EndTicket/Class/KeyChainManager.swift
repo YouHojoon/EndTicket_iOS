@@ -18,6 +18,17 @@ final class KeyChainManager{
         ]
     }
     
+    
+    static func deleteInKeyChain(key:String) -> Bool{
+        let query = getBaseQuery(key: key)
+        let status = SecItemDelete(query as CFDictionary)
+        
+        guard status == noErr else{
+            return false
+        }
+        
+        return true
+    }
     static func saveInKeyChain(key:String, data: String) -> Bool{
         var query = getBaseQuery(key: key)
         let encodedData = data.data(using: .utf8)!
@@ -37,7 +48,6 @@ final class KeyChainManager{
         }
         return true
     }
-    
     static func readInKeyChain(key:String) -> String?{
         var query = getBaseQuery(key: key)
         query[kSecMatchLimit] = kSecMatchLimitOne
@@ -67,13 +77,14 @@ final class KeyChainManager{
         
         return dataString
     }
-    
     static func saveUserInKeyChain(credential:ASAuthorizationAppleIDCredential) -> Bool{
         return saveInKeyChain(key: "userIdentifier", data: credential.user)
     }
-    
     static func readUserInKeyChain() -> String?{
         return readInKeyChain(key: "userIdentifier")
+    }
+    static func deleteUserInKeyChain() -> Bool{
+        return deleteInKeyChain(key: "userIdentifier")
     }
     
 }
