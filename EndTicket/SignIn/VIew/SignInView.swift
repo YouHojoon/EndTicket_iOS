@@ -13,6 +13,7 @@ struct SignInView: View {
     @AppStorage("isFirstStart") private var isFirstStart:Bool = true
     @EnvironmentObject private var viewModel:SignInViewModel
     @State private var shouldGoNextView = false
+    @State private var shouldShowProgressView = false
     var body: some View {
         VStack(spacing:12){
             Image("logo")
@@ -27,10 +28,7 @@ struct SignInView: View {
                         .offset(y:21)
                 ,alignment: .bottom)
                 .padding(.bottom, 121)
-                
-                
-            
-                        
+                       
             //MARK: - 로그인 버튼
             Group{
                 Button{
@@ -92,9 +90,11 @@ struct SignInView: View {
         .overlay(isFirstStart ? OnBoardingView() : nil)
         .onAppear{
             viewModel.restorePreviousSignIn()
+            shouldShowProgressView = true
         }
-        .onReceive(viewModel.$isSignIn){
+        .onReceive(viewModel.$isSignIn.dropFirst()){
             shouldGoNextView = $0
+            shouldShowProgressView = false
         }
         .fullScreenCover(isPresented: $shouldGoNextView){
             switch viewModel.status{
@@ -106,6 +106,7 @@ struct SignInView: View {
                 SignUpView().environmentObject(SignUpViewModel())
             }
         }
+        .progressView(isPresented: $shouldShowProgressView)
       
     }
 }
