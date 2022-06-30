@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var viewModel:SignUpViewModel
+    
     @State private var isTextFieldNormalBorder = true
     @State private var isButtonEnable = true
     @State private var isTextFieldMessageHidden = true
@@ -17,7 +19,14 @@ struct SignUpView: View {
     @FocusState private var isTextFieldFocus
     
     var body: some View {
-        VStack(spacing: 0){
+        VStack(alignment:.leading,spacing: 0){
+            Image(systemName: "arrow.backward")
+                .font(.system(size:15, weight: .medium))
+                .padding(.bottom,61)
+                .onTapGesture {
+                    dismiss()
+                }
+            
             Text("별명을 지어주세요!")
                 .kerning(-0.5)
                 .font(.interSemiBold(size: 18))
@@ -70,7 +79,7 @@ struct SignUpView: View {
                 .disabled(!isButtonEnable)
         }
         
-        .padding(.top,144)
+        .padding(.top,27)
         .padding(.horizontal, 30)
         .frame(maxWidth:.infinity)
         .fullScreenCover(isPresented: $shouldShowNextView){
@@ -93,7 +102,7 @@ struct SignUpView: View {
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView().environmentObject(SignUpViewModel())
-            .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))
+         
     
     }
 }
