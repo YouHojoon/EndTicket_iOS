@@ -254,6 +254,7 @@ final class SignInViewModel: NSObject, ObservableObject{
     private func disconnectServer(){
         UserDefaults.standard.removeObject(forKey: "nickname")
         _ = KeyChainManager.deleteUserInKeyChain()
+        self.status = .fail
     }
     
 }

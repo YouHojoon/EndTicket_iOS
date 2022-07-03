@@ -104,7 +104,7 @@ struct SignInView: View {
         }content:{
             switch viewModel.status{
             case .fail:
-                EmptyView()
+                Color.clear
             case .success:
                 EndTicketTabView()
             case .needSignUp:
