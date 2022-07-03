@@ -131,7 +131,7 @@ final class SignInViewModel: NSObject, ObservableObject{
         self.status = status
         
         if status != .fail{
-            UserDefaults.standard.set(socialType, forKey: "socialType")
+            UserDefaults.standard.set(socialType.rawValue, forKey: "socialType")
             DispatchQueue.main.async {
                 withAnimation{
                     self.isSignIn = true
@@ -163,6 +163,7 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
         else{
             isSignIn = true
+            self.status = .success
         }
     }
     
