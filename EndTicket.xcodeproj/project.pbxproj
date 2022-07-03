@@ -20,6 +20,7 @@
 		063634F02858B56E00856928 /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634EF2858B56E00856928 /* AuthInterceptor.swift */; };
 		063634F22858B85C00856928 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634F12858B85C00856928 /* SignUpResponse.swift */; };
 		063BFAE82871D39800626E16 /* ImagineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BFAE72871D39800626E16 /* ImagineFormView.swift */; };
+		063BFAEE2871F93000626E16 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 063BFAED2871F93000626E16 /* Inter-Bold.ttf */; };
 		064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E4284E3A1B000EEF62 /* TicketView.swift */; };
 		064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E6284E43E9000EEF62 /* HomeView.swift */; };
 		064B50E9284E4CB6000EEF62 /* GmarketSansLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */; };
@@ -117,6 +118,7 @@
 		063634EF2858B56E00856928 /* AuthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
 		063634F12858B85C00856928 /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
 		063BFAE72871D39800626E16 /* ImagineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineFormView.swift; sourceTree = "<group>"; };
+		063BFAED2871F93000626E16 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		064B50E4284E3A1B000EEF62 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		064B50E6284E43E9000EEF62 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansLight.otf; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 		06717DFF284096AE00FEB138 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				063BFAED2871F93000626E16 /* Inter-Bold.ttf */,
 				063634DF28520C2F00856928 /* Inter-SemiBold.ttf */,
 				06B26298285C3A9C00722A52 /* Inter-Medium.ttf */,
 				064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */,
@@ -730,6 +733,7 @@
 				06717DD528408B6C00FEB138 /* Preview Assets.xcassets in Resources */,
 				064B50E9284E4CB6000EEF62 /* GmarketSansLight.otf in Resources */,
 				06717DF828408E5E00FEB138 /* .gitignore in Resources */,
+				063BFAEE2871F93000626E16 /* Inter-Bold.ttf in Resources */,
 				06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */,
 				06B26299285C3A9C00722A52 /* Inter-Medium.ttf in Resources */,
 				061F79D92844B4220095AEAD /* Credential.plist in Resources */,

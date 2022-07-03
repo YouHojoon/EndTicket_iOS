@@ -16,7 +16,8 @@ struct HomeView: View {
         _tabIndex = tabIndex
     }
     var body: some View {
-        VStack(spacing:0){
+        //MARK: - 위에 뷰
+        VStack(alignment:.leading,spacing:0){
             Group{
                 HStack{
                     Text("홈")
@@ -32,30 +33,29 @@ struct HomeView: View {
                         }
                 }
                 .padding(.bottom,23)
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray100,lineWidth: 1)
-                    .frame(width: 335, height: 50)
-                    .overlay{
-                        HStack(spacing:7.33){
-                            Image(systemName: "clock")
-                                .font(.system(size: 13.33,weight: .bold))
-                                .foregroundColor(.gray500)
-                                .rotationEffect(.degrees(90))
-                            Text("21:03:22")
-                                .font(.interSemiBold(size: 12))
-                                .foregroundColor(.gray500)
-                            Spacer()
-                            Text("이번주는 터치 6번 목표로 하기")
-                                .font(.interSemiBold(size: 14))
-                                .foregroundColor(.gray900)
-                        }.padding(.horizontal, 24.63)
-                    }
-                    .padding(.bottom,20)
-                    .foregroundColor(.white)
-                
+               
+                Text("드리밍님\n오늘도 같이 도전해볼까요?")
+                    .font(.interBold(size: 22))
+                HStack(spacing:0){
+                    Image(systemName: "clock")
+                        .font(.system(size: 13))
+                        .foregroundColor(.mainColor)
+                        .padding(.trailing,6.33)
+                    Text("02:00:12")
+                        .font(.interSemiBold(size: 12))
+                        .foregroundColor(.mainColor)
+                        .padding(.trailing,10)
+                    Text("이번주는 '터치 6번' 목표로 하기")
+                        .font(.interSemiBold(size: 14))
+                        .foregroundColor(.gray500)
+                }
+                .padding(.bottom,21)
             }.background(Color.white.edgesIgnoringSafeArea([.horizontal,.top]))
                 .padding(.horizontal,20)
                 .padding(.top, 12)
+            
+            
+            //MARK: - 티켓 리스트
             ZStack(alignment:.top){
                 Color
                     .gray50
@@ -69,21 +69,19 @@ struct HomeView: View {
                             .padding(.bottom, 5)
                         Text("새로운 종착지를 설정해주세요!")
                             .font(.interSemiBold(size: 14))
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 20)
+                        
                         Button{
                             shouldShowTicketFormView = true
                         }label:{
                             Text("새로운 티켓 만들기")
                                 .font(.system(size:15,weight: .bold))
                                 .foregroundColor(.white)
-                                .frame(width:295, height: 50)
+                                .frame(maxWidth:.infinity, maxHeight: 50)
                         }.background(Color.mainColor)
-                            .cornerRadius(30)
-                        
+                        .cornerRadius(10)
                     }
-                    .frame(width:335,height: 335)
-                    .background(Color.white)
-                    .cornerRadius(10)
+                    .padding(.horizontal,20)
                     .padding(.top,30)
                 }
                 else{
