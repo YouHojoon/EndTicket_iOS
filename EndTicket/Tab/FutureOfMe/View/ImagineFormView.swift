@@ -34,6 +34,7 @@ struct ImagineFormView: View{
                 addOrModifyButton
                     .disabled(!isEnabledButton)
                     .foregroundColor(isEnabledButton ? .black : .gray600)
+                    
             }.padding(.horizontal, 20)
                 .padding(.vertical,18)
                 .background(Color.white)
@@ -66,6 +67,10 @@ struct ImagineFormView: View{
                 }
             }
         }
+        .onChange(of: !behavior.isEmpty && !goal.isEmpty){
+            isEnabledButton = $0
+        }
+        
         
     }
     
