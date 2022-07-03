@@ -23,6 +23,7 @@ final class SignUpViewModel:ObservableObject{
                 switch $0{
                 case .finished:
                     self.isSuccessSignUp = true
+                    UserDefaults.standard.set(self.nickname,forKey: "nickname")
                     break
                 case .failure(let error):
                     print("닉네임 등록 실패 : \(error.localizedDescription)")
