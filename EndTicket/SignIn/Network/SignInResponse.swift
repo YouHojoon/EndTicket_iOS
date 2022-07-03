@@ -15,7 +15,7 @@ struct SignInResponse:BaseResponse{
     
     struct Result: Codable{
         let id:String
-        let user: String?
+        let nickname: String?
         let token:String
     }
 }
