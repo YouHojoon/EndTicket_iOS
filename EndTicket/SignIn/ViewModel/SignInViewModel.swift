@@ -16,7 +16,6 @@ import AuthenticationServices
 import SwiftUI
 import UIKit
 final class SignInViewModel: NSObject, ObservableObject{
-    @Published var isSignIn = false
     @Published var status: SignInStaus = .fail
     
     private let gidConfig: GIDConfiguration
@@ -46,15 +45,10 @@ final class SignInViewModel: NSObject, ObservableObject{
         UserApi.shared.loginWithKakaoTalk{
             guard $1 == nil else{
                 print($1!.localizedDescription)
-                self.isSignIn = false
                 return
             }
             guard let _ = $0 else{
-                self.isSignIn = false
                 return
-            }
-            withAnimation(.easeInOut){
-                self.isSignIn = true
             }
         }
     }
@@ -62,9 +56,7 @@ final class SignInViewModel: NSObject, ObservableObject{
         let request = ASAuthorizationAppleIDProvider().createRequest()
         let controller = ASAuthorizationController(authorizationRequests: [request])
         asAuthDelegate = ASAuthorizationControllerDelgateImpl{result in
-            withAnimation(.easeInOut){
-                self.isSignIn = result
-            }
+           
         }
         controller.delegate = asAuthDelegate
         controller.performRequests()
@@ -72,24 +64,15 @@ final class SignInViewModel: NSObject, ObservableObject{
     private func googleSignIn(){
         guard let windowScenes = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let rootController = windowScenes.windows.first?.rootViewController else{
-            DispatchQueue.main.async {
-                self.isSignIn = false
-            }
             return
         }
         
         GIDSignIn.sharedInstance.signIn(with: gidConfig, presenting: rootController){
             guard $1 == nil else{
                 print($1!.localizedDescription)
-                DispatchQueue.main.async {
-                    self.isSignIn = false
-                }
                 return
             }
             guard let _ = $0 else{
-                DispatchQueue.main.async {
-                    self.isSignIn = false
-                }
                 return
             }
             self.signInToServer(.google, idToken: $0!.authentication.idToken!){
@@ -128,15 +111,12 @@ final class SignInViewModel: NSObject, ObservableObject{
        
     }
     private func handleSignInToServerResult(_ status: SignInStaus, socialType: SocialType){
-        self.status = status
+        DispatchQueue.main.async {
+            self.status = status
+        }
         
         if status != .fail{
             UserDefaults.standard.set(socialType.rawValue, forKey: "socialType")
-            DispatchQueue.main.async {
-                withAnimation{
-                    self.isSignIn = true
-                }
-            }
         }
     }
     
@@ -144,7 +124,7 @@ final class SignInViewModel: NSObject, ObservableObject{
     func restorePreviousSignIn(){
         if KeyChainManager.readInKeyChain(key: "token") == nil || UserDefaults.standard.string(forKey: "nickname") == nil || UserDefaults.standard.string(forKey: "socialType") == nil{
             for sns in SocialType.allCases{
-                if isSignIn{
+                if status != .fail{
                     break
                 }
                 
@@ -157,13 +137,14 @@ final class SignInViewModel: NSObject, ObservableObject{
                     }
                 }
             }
-            if !isSignIn{
-                isSignIn = false
+            if status == .fail{
+                status = .fail
             }
         }
         else{
-            isSignIn = true
-            self.status = .success
+            DispatchQueue.main.async {
+                self.status = .success
+            }
         }
     }
     
