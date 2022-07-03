@@ -62,12 +62,12 @@ struct TicketFormView: View {
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    TicketFormTextField(title:"제목", placeholder: "목표를 간단하게 적어보세요.",text: $title)
-                    TicketFormTextField(title:"시작역", placeholder: "목표를 이루려면 어떻게 해야 활까요?",text: $start)
-                    TicketFormTextField(title:"종착역", placeholder: "달성하고 나면, 나의 모습은 어떨까요?",text: $end)
+                    FormTextField(title:"제목", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "목표를 간단하게 적어보세요.",text: $title)
+                    FormTextField(title:"시작역", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "목표를 이루려면 어떻게 해야 활까요?",text: $start)
+                    FormTextField(title:"종착역", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "달성하고 나면, 나의 모습은 어떨까요?",text: $end)
                     Divider().padding(.vertical, 10)
                     TicketFormCategoryView(selected: $category)
-                    TicketColorSelectView(selected: $color)
+                    ColorSelectView(selected: $color)
                     TicketTouchCountSelectView(selected: $touchCount)
                 }.padding(.top, 30)
             }

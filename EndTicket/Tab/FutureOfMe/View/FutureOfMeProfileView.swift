@@ -16,66 +16,67 @@ struct FutureOfMeProfileView: View {
     
     var body: some View {
         VStack(alignment:.leading, spacing: 0){
-            Text("미래의 나")
-                .kerning(-0.5)
-                .font(.system(size: 21,weight: .bold))
-                .padding(.bottom, 43.06)
-            Divider().opacity(0)
+            HStack{
+                Text("미래의 나")
+                    .kerning(-0.5)
+                    .font(.system(size: 21,weight: .bold))
+                Spacer()
+                Image("futureOfMe_edit_icon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 19.5, height: 18.94)
+            }.padding(.bottom, 33)
             
             HStack(spacing:0){
                 //MARK: - 프로필 게이지 부분
-                Circle()
-                    .foregroundColor(.gray50)
-                    .frame(width:85,height: 85)
-                    .overlay{Circle()
-                            .stroke(style:StrokeStyle(lineWidth:8, lineCap: .round, lineJoin: .round))
-                            .foregroundColor(.gray50)
-                            .frame(width:103,height: 103)
-                    }
-                    .overlay{Circle()
-                            .trim(from: 0, to: 1)
-                            .rotation(.degrees(-90)) //오른쪽이 0이여서 회전
-                            .stroke(style:StrokeStyle(lineWidth:8, lineCap: .round, lineJoin: .round))
-                            .fill()
-                            .foregroundColor(.blue)
-                            .frame(width:103,height: 103)
-                    }
-                    .overlay{
-                        Circle().foregroundColor(.white)
-                            .frame(width: 27, height: 27)
-                            .overlay{
-                                Image("futureOfMe_gear")
-                            }
-                            .offset(x: 31, y: 31)
-                            
-                    }
-                    .padding(.trailing, 22)
-                VStack(alignment:.leading,spacing:0){
-                    HStack(spacing:10){
-                        Text("\"당당하고 멋있는 사람\"")
-                            .font(.system(size: 18,weight: .bold))
-                        Image("futureOfMe_edit_icon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 19.5, height: 18.94)
-                    }.padding(.bottom, 11)
-                  
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width:49,height: 20)
-                        .foregroundColor(.gray100)
+                Circle().stroke(style:StrokeStyle(lineWidth:8, lineCap: .round, lineJoin: .round))
+                        .foregroundColor(.gray50)
+                        .frame(width:103,height: 103)
                         .overlay{
-                            Text("꽃봉오리")
-                                .font(.system(size: 10,weight: .medium))
-                                .foregroundColor(.gray700)
+                            //채워지는 부분
+                            Circle()
+                                    .trim(from: 0, to: 1)
+                                    .rotation(.degrees(-90)) //오른쪽이 0이여서 회전
+                                    .stroke(style:StrokeStyle(lineWidth:8, lineCap: .round, lineJoin: .round))
+                                    .fill()
+                                    .foregroundColor(.blue)
+                                    .frame(width:103,height: 103)
                         }
-                        .padding(.bottom,6)
+                        .overlay{//캐릭터
+                            Circle()
+                                .foregroundColor(.gray50)
+                                .frame(width:85,height: 85)
+                        }
+                        .offset(x: -8)
+                    .padding(.trailing, 22)
+                
+                VStack(alignment:.leading,spacing:0){
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.gray200)
+                        .frame(width:37,height: 20)
+                        .overlay{
+                            Text("모찌")
+                                .font(.system(size: 10,weight: .medium))
+                        }
+                        .padding(.bottom,10)
+                    
+                    HStack(spacing:10){
+                        Text("당당하고 멋있는 사람")
+                            .font(.system(size: 18,weight: .bold))
+                       
+                    }.padding(.bottom, 1)
+                  
+                    
                     Text("LV4. 드리밍")
-                        .font(.system(size:13, weight: .regular))
+                        .font(.system(size:13, weight: .bold))
                         .frame(height:25)
+                        .foregroundColor(.gray500)
                 }
+                Spacer()
             }
             .padding(.bottom, 35.94)
             .padding(.leading, 16)
+            
             
 //            Text("진행상황")
 //                .font(.gmarketSansMeidum(size: 15))
@@ -84,7 +85,7 @@ struct FutureOfMeProfileView: View {
 ////            progressView
         }.padding(.horizontal,25)
             .padding(.vertical)
-            .background(RoundedRectangle(cornerRadius: 25).foregroundColor(.white).edgesIgnoringSafeArea(.top))
+            .background(Color.white.edgesIgnoringSafeArea(.top))
     }
 //
 //    var progressView: some View{

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FutureOfMeView: View {
-    
+    @State private var shouldShowFormView = false
     init(){
         UIScrollView.appearance().bounces = false
     }
@@ -26,7 +26,9 @@ struct FutureOfMeView: View {
                         .font(.appleSDGothicBold(size: 16))
                     Spacer()
                     Button{
-                        
+                        withAnimation(.easeInOut){
+                            shouldShowFormView = true
+                        }
                     }label: {
                         Image(systemName: "plus")
                             .font(.system(size: 15, weight: .bold))
@@ -36,10 +38,10 @@ struct FutureOfMeView: View {
                 Divider().padding(.bottom, 21)
                 
                 ScrollView(showsIndicators:false){
-                    VStack(spacing:5){
-                            ForEach(0..<5){index in
+                    VStack(alignment:.leading,spacing:20){
+                        ForEach(0..<5){index in
                                 ImagineView(index)
-                                .padding(.horizontal)
+                                
                         }
                     }
                 }
@@ -47,6 +49,9 @@ struct FutureOfMeView: View {
         }
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .background(Color(#colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).ignoresSafeArea())
+        .fullScreenCover(isPresented:$shouldShowFormView){
+            ImagineFormView()
+        }
     }
 }
 
