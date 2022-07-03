@@ -7,17 +7,19 @@
 
 import SwiftUI
 
-struct TicketFormTextField: View {
+struct FormTextField: View {
     private let title:String
     private let placeholder: String
     private let maxTextLength: Int
+    private let titleImage: Image
     
     @State private var shouldShowRedBounds = false
     @Binding private var text:String
     @FocusState private var focus
     
-    init(title:String, placeholder:String, text:Binding<String>, maxTextLength: Int = 20){
+    init(title:String,titleImage:Image, placeholder:String, text:Binding<String>, maxTextLength: Int = 20){
         self.title = title
+        self.titleImage = titleImage
         self.placeholder = placeholder
         self.maxTextLength = maxTextLength
         _text = text
@@ -26,9 +28,15 @@ struct TicketFormTextField: View {
     
     var body: some View {
         VStack(alignment:.leading, spacing:0){
-            Text(title)
-                .font(.interSemiBold(size: 16))
-                .padding(.bottom, 4)
+            HStack(spacing:5){
+                titleImage.resizable().aspectRatio(contentMode: .fit)
+                    .frame(width:15,height: 15)
+                    .foregroundColor(.black)
+                Text(title)
+                    .font(.interSemiBold(size: 16))
+            }
+            .padding(.bottom, 4)
+            
             TextField(placeholder, text: $text, onCommit: {
                 focus = false
             })
@@ -64,6 +72,6 @@ struct TicketFormTextField: View {
 
 struct TicketFormTextField_Previews: PreviewProvider {
     static var previews: some View {
-        TicketFormView()
+        TicketFormView().environmentObject(TicketViewModel())
     }
 }

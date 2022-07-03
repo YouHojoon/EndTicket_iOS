@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TicketColorSelectView: View {
+struct ColorSelectView: View {
     @Binding private var selected: Color
     init(selected: Binding<Color>){
         _selected = selected

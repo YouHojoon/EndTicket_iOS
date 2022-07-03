@@ -11,6 +11,7 @@ import SwiftUI
 extension Color{
     static let gray50 = Color(#colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1))
     static let gray100 = Color(#colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1))
+    static let gray200 = Color(#colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
     static let gray300 = Color(#colorLiteral(red: 0.7506795526, green: 0.7506795526, blue: 0.7506795526, alpha: 1))
     static let gray500 = Color(#colorLiteral(red: 0.4980392157, green: 0.4980392157, blue: 0.4980392157, alpha: 1))
     static let gray600 = Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1))
