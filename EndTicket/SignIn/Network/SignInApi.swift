@@ -15,21 +15,12 @@ final class SignInApi:BaseApi{
         super.init(needInterceptor: false)
     }
     
-
-    func socialSignIn(_ type: SocialType, token: String) -> AnyPublisher<(String?,String?),AFError>{
-        switch type {
-        default:
-            return googleSignin(token: token)
-        }
-    }
-    
-    
-    private func googleSignin(token:String) -> AnyPublisher<(String?,String?),AFError>{//순서대로 닉네밍 토큰 리턴
+    func googleSignin(token:String) -> AnyPublisher<(String?,String?,String?),AFError>{//순서대로 id,닉네임 토큰 리턴
         return session.request(SignInRouter.signIn(.google, token))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignInResponse.self)
             .value().map{
-                return ($0.result?.user, $0.result?.token)
+                return ($0.result?.id, $0.result?.nickname, $0.result?.token)
             }.eraseToAnyPublisher()
     }
 }

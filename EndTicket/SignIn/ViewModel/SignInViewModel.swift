@@ -81,7 +81,8 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
     }
     private func signInToServer(_ type: SocialType, idToken:String, completion: ((SignInStaus) -> Void)? = nil){
-        SignInApi.shared.socialSignIn(type,token: idToken)
+        print(idToken)
+        SignInApi.shared.googleSignin(token: idToken)
             .sink(receiveCompletion: {
                 switch $0{
                 case .finished:
@@ -89,7 +90,7 @@ final class SignInViewModel: NSObject, ObservableObject{
                 case .failure(let error):
                     print("로그인 실패 : \(error.localizedDescription)")
                 }
-            }, receiveValue: {nickname,token in
+            }, receiveValue: {id, nickname,token in
                 guard let token = token else{
                     completion?(.fail)
                     return
@@ -99,12 +100,14 @@ final class SignInViewModel: NSObject, ObservableObject{
                     completion?(.fail)
                     return
                 }
+                UserDefaults.standard.set(id,forKey: "id")
+                
                 guard let nickname = nickname else{
                     completion?(.needSignUp)
                     return
                 }
                 
-                UserDefaults.standard.set(nickname, forKey: nickname)
+                UserDefaults.standard.set(nickname, forKey: "nickname")
                 completion?(.success)
             }).store(in: &self.subscriptions)
         
@@ -122,7 +125,7 @@ final class SignInViewModel: NSObject, ObservableObject{
     
     //MARK: - 자동 로그인 관련
     func restorePreviousSignIn(){
-        if KeyChainManager.readInKeyChain(key: "token") == nil || UserDefaults.standard.string(forKey: "nickname") == nil || UserDefaults.standard.string(forKey: "socialType") == nil{
+        if KeyChainManager.readInKeyChain(key: "token") == nil || UserDefaults.standard.string(forKey: "nickname") == nil{ 
             for sns in SocialType.allCases{
                 if status != .fail{
                     break
