@@ -92,9 +92,12 @@ struct SignInView: View {
             viewModel.restorePreviousSignIn()
             shouldShowProgressView = true
         }
-        .onReceive(viewModel.$isSignIn.dropFirst()){
-            shouldGoNextView = $0
+        .onReceive(viewModel.$status.dropFirst()){status in
             shouldShowProgressView = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                shouldGoNextView = status != .fail
+            }
+           
         }
         .fullScreenCover(isPresented: $shouldGoNextView){
             viewModel.disconnect()
