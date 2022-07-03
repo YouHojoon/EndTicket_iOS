@@ -129,9 +129,9 @@ final class SignInViewModel: NSObject, ObservableObject{
     }
     private func handleSignInToServerResult(_ status: SignInStaus, socialType: SocialType){
         self.status = status
-        UserDefaults.standard.set(socialType, forKey: "socialType")
         
         if status != .fail{
+            UserDefaults.standard.set(socialType, forKey: "socialType")
             DispatchQueue.main.async {
                 withAnimation{
                     self.isSignIn = true
