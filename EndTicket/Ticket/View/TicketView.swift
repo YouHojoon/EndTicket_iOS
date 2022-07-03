@@ -12,8 +12,8 @@ struct TicketView: View {
     @State private var shouldShowModifyForm = false
     @State private var height: CGFloat = 167
     @State private var offset = 0.0
-    @State private var shouldShowAlert = false
-    @GestureState private var isLongPressed = false
+    @State private var shouldShowAlert = false //일반 롱프레스 alert
+    @State private var shouldShowDeleteAlert = false // 삭제 관련 alert
     @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
         self.ticket = ticket
@@ -74,6 +74,11 @@ struct TicketView: View {
         .cornerRadius(10)
         .foregroundColor(ticket.color)
         .offset(x: offset)
+        
+        //MARK: - 롱 프레스
+        .gesture(LongPressGesture(minimumDuration:1).onEnded{_ in
+            shouldShowAlert = true
+        })
         .gesture(DragGesture()
                  //MARK: - 티켓 스와이프 관련 제스쳐
             .onChanged{value in
@@ -99,25 +104,14 @@ struct TicketView: View {
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
-        
-//        .onLongPressGesture{
-//            shouldShowAlert = true
-//        }
-        .gesture(LongPressGesture().updating($isLongPressed){currentState, gestureState, _ in
-            gestureState = currentState
-            print(isLongPressed)
-        })
-        .onChange(of: isLongPressed, perform: {
-            print($0)
-        })
         .onReceive(viewModel.isDeleteTicketSuccess){
             if $0 == ticket.id && $1{
                 withAnimation(.easeInOut){
                     height = 0
                 }
             }
-        }.onReceive(viewModel.isTouchTicketSuccess){id, isSuccess in
-            print(viewModel.tickets)
+        }
+        .onReceive(viewModel.isTouchTicketSuccess){id, isSuccess in
                let index = viewModel.tickets.firstIndex{$0.id == id}!
                 let ticket = viewModel.tickets[index]
                 if isSuccess && self.ticket.id == id
@@ -128,18 +122,56 @@ struct TicketView: View {
                     viewModel.tickets.remove(at: index)
                 }
 
-        }.alert(isPresented: $shouldShowAlert){
+        }
+        //MARK: - 롱 프레스 alert
+        .alert(isPresented: $shouldShowAlert){
             EndTicketAlert{
-                Text("변경하시겠습니까?")
-                    .font(.system(size: 18,weight: .bold))
+                VStack(spacing: 34){
+                    HStack{
+                        Image("home_top_icon")
+                        Text("수정하기")
+                        Spacer()
+                    }
+                    .clipShape(Rectangle())
+                    .onTapGesture {
+                        shouldShowAlert = false
+                        shouldShowModifyForm = true
+                    }
+                    HStack{
+                        Image("home_top_icon")
+                            .renderingMode(.template)
+                        Text("티켓 삭제하기")
+                        Spacer()
+                    }.foregroundColor(.red)
+                    .onTapGesture {
+                        shouldShowAlert = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            shouldShowDeleteAlert = true
+                        }
+                        
+                    }
+                }.font(.system(size: 16,weight: .bold))
+                    .padding(.top, 57)
+                    .padding(.bottom,37)
+                    .padding(.horizontal,30)
             }primaryButton: {
-                EndTicketAlertButton(title:Text("수정").foregroundColor(.black)){
+                EndTicketAlertButton(title:Text("취소").foregroundColor(.gray600), color: .gray50){
                     shouldShowAlert = false
-                    shouldShowModifyForm = true
+                }
+            }
+        }
+        //MARK: - 삭제 alert
+        .alert(isPresented: $shouldShowDeleteAlert){
+            EndTicketAlert{
+                Text("티켓을 삭제하시겠습니까?")
+                    .font(.system(size:18,weight:.bold))
+            }primaryButton: {   
+                EndTicketAlertButton(title:Text("취소").foregroundColor(.gray400)){
+                    shouldShowDeleteAlert = false
                 }
             }secondButton: {
                 EndTicketAlertButton(title:Text("삭제").foregroundColor(.red)){
-                    shouldShowAlert = false
+                    shouldShowDeleteAlert = false
                     viewModel.deleteTicket(id: ticket.id)
                 }
             }

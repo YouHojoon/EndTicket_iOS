@@ -11,9 +11,7 @@ struct EndTicketAlert<Content>: View where Content: View{
     let content: Content
     let primaryButton: EndTicketAlertButton
     let secondButton: EndTicketAlertButton?
-    
-    
-    //    @State private var alertFrame:CGRect = .zero
+
     init(content: () -> Content, primaryButton: () ->  EndTicketAlertButton, secondButton: (() -> EndTicketAlertButton)? = nil){
         self.content = content()
         self.primaryButton = primaryButton()
@@ -23,13 +21,16 @@ struct EndTicketAlert<Content>: View where Content: View{
     var body: some View {
         ZStack{
             Color.black.opacity(0.3).ignoresSafeArea()
-     
+            
             content
                 .padding(.bottom, 60)
                 .frame(maxWidth:315, minHeight: 169)
                 .overlay(
                     VStack(spacing:0){
-                        Divider()
+                        if primaryButton.color == nil{
+                            Divider()
+                        }
+                        
                         HStack(){
                             primaryButton
                             if secondButton != nil{

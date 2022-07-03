@@ -10,12 +10,14 @@ import SwiftUI
 struct EndTicketAlertButton: View {
     typealias Action = () -> ()
     
-    let action: Action
-    let title: Text
+    private let action: Action
+    private let title: Text
+    let color: Color?
     
-    init(title:Text, action: @escaping Action){
+    init(title:Text,color:Color? = nil,action: @escaping Action){
         self.title = title
         self.action = action
+        self.color = color
     }
     
     var body: some View {
@@ -23,7 +25,7 @@ struct EndTicketAlertButton: View {
             action()
         }label: {
             title.frame(maxWidth:.infinity, maxHeight: .infinity)
-        }
+        }.background(color)
     }
 }
 //
