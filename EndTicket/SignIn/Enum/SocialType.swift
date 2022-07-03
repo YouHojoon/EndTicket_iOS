@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum SocialType: String{
+enum SocialType: String, CaseIterable{
     case google = "google"
     case kakao = "kakao"
     case apple = "apple"
