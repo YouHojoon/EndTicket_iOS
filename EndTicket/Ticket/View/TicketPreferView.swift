@@ -65,8 +65,8 @@ struct TicketPreferView: View {
     }
 }
 
-//struct TicketPreferView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TicketPreferView()
-//    }
-//}
+struct TicketPreferView_Previews: PreviewProvider {
+    static var previews: some View {
+        EndTicketTabView()
+    }
+}

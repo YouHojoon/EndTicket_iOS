@@ -60,15 +60,17 @@ struct EndTicketTabView: View {
                         }.alert(isPresented: $shouldShowAlert){
                             EndTicketAlert{
                                 VStack(spacing:20){
-                                    Text("새로 추가하는 것보다\n현재 목표에 집중하는 게 어떨까요..?")
+                                    Text("현재 목표에 집중해주세요!")
                                         .font(.system(size: 18, weight: .bold))
                                         .multilineTextAlignment(.center)
                                         .lineSpacing(0.83)
-                                    Text("새로 추가하고 싶다면, 하나를 삭제하고 +버튼을 눌러주세요:)")
-                                        .font(.system(size: 10, weight: .bold))
+                                    Text("새로 추가하고 싶다면\n하나를 삭제하고 추가해주세요:)")
+                                        .font(.system(size: 15, weight: .bold))
+                                        .foregroundColor(.gray300)
+                                        .multilineTextAlignment(.center)
                                 }.foregroundColor(Color.black)
                             }primaryButton: {
-                                EndTicketAlertButton(title:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.black)){
+                                EndTicketAlertButton(title:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
                                     shouldShowAlert = false
                                 }
                             }
@@ -120,7 +122,6 @@ struct EndTicketTabView: View {
             MyHomeView()
         case .prefer:
             TicketPreferView(tabIndex: $tabIndex)
-                .transition(.move(edge: .trailing))
                 .environmentObject(ticketViewModel)
         }
     }
