@@ -58,7 +58,7 @@ struct HomeView: View {
             //MARK: - 티켓 리스트
             ZStack(alignment:.top){
                 Color
-                    .gray50
+                    .gray10
                     .edgesIgnoringSafeArea([.horizontal,.bottom])
                 if viewModel.tickets.isEmpty{
                     VStack(spacing:0){
@@ -92,7 +92,7 @@ struct HomeView: View {
                             }
                         }.padding(.vertical, 30)
                     }
-                }
+                }   
             }
             .onAppear{
                 viewModel.fetchTickets()
