@@ -10,82 +10,94 @@ import SwiftUI
 struct TicketView: View {
     private let ticket: Ticket
     @State private var shouldShowModifyForm = false
-    @State private var height: CGFloat = 167
+    @State private var height: CGFloat = 150
     @State private var offset = 0.0
     @State private var shouldShowAlert = false //일반 롱프레스 alert
     @State private var shouldShowDeleteAlert = false // 삭제 관련 alert
+    
     @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
         self.ticket = ticket
    
     }
     var body: some View{
-        HStack(spacing:1){
-            TicketLeadingShape()
-                .frame(width:258)
-                .overlay(
-                    //MARK: - 티켓 텍스트 관련
-                    VStack(alignment: .leading,spacing:0){
-                        HStack(spacing:8){
-                            Text(ticket.title).font(.system(size: 16,weight: .bold))
-                                .frame(height:20)
-                            Capsule()
-                                .frame(width:31,height: 15)
-                                .overlay{
-                                    Text(ticket.category.rawValue)
-                                        .font(.system(size: 8,weight: .bold))
-                                        .foregroundColor(.gray600)
-                                        .background()
-                                }
-                        }
-                        .padding(.bottom,28)
-                        Text("시작역")
-                            .font(.system(size: 8,weight: .bold))
-                            .frame(height:8)
-                        Text(ticket.start).font(.system(size: 12,weight: .bold))
-                            .frame(height:20)
-                            .padding(.bottom,16)
-                        Text("종착역").font(.system(size: 8,weight: .bold))
-                        Text(ticket.end).font(.system(size: 12,weight: .bold))
-                            .frame(height:20)
-                    }.foregroundColor(.white)
-                        .padding([.leading,.top], 24)
-                    , alignment: .topLeading)
-            TicketTrailingShape()
-                .foregroundColor(.white)
-                .frame(width:77)
-                .overlay{
-                    VStack(spacing:5){
-                        Text("\(ticket.currentCount)")
-                            .font(.system(size: 10,weight: .bold))
+        VStack(alignment:.leading,spacing:0){
+            HStack{
+                RoundedRectangle(cornerRadius: 2)
+                    .stroke(Color.gray100, lineWidth: 1)
+                    .frame(width:38, height: 18)
+                    .overlay{
+                        Text("\(ticket.category.rawValue)")
+                            .font(.system(size: 10,weight: .medium))
                             .foregroundColor(.gray500)
-                            .frame(height:   8)
-                        Capsule()
-                            .frame(width: 8, height: 78)
-                        Text("\(ticket.touchCount)")
-                            .font(.system(size: 10,weight: .bold))
-                            .foregroundColor(.gray500)
-                            .frame(height: 8)
                     }
-                    .foregroundColor(.gray)
-                }
+                
+                RoundedRectangle(cornerRadius: 2)
+                    .stroke(Color.gray100, lineWidth: 1)
+                    .frame(width:38, height: 18)
+                    .overlay{
+                        Text("\(ticket.touchCount)")
+                            .font(.system(size: 10,weight: .medium))
+                            .foregroundColor(.gray500)
+                    }
+                Spacer()
+                Text("\(ticket.currentCount)").font(.interBold(size: 18))
+            }.padding(.bottom, 18)
+            
+            GeometryReader{proxy in
+                Capsule()
+                    .frame(height:8)
+                    .foregroundColor(.gray100)
+                    .overlay(
+                        Capsule()
+                            .frame(width: proxy.size.width * CGFloat(ticket.currentCount) / CGFloat(ticket.touchCount),height:8)
+                    ,alignment: .leading)
+            }.frame(height:8)
+                .padding(.bottom,16)
+            HStack{
+                Image(systemName: "arrow.right.circle")
+                    .font(.system(size: 15))
+                    .foregroundColor(.black)
+                Spacer()
+                Image("futureOfMe_description_icon")
+                    .renderingMode(.template)
+                    .foregroundColor(ticket.touchCount == ticket.currentCount ? ticket.color : .gray300)
+            }.padding(.bottom,5)
+            HStack{
+                Text("\(ticket.start)")
+                    .font(.system(size: 12,weight: .medium))
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.black)
+                Spacer()
+                Text("\(ticket.end)")
+                    .font(.system(size: 12,weight: .medium))
+                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(ticket.touchCount == ticket.currentCount ? ticket.color : .gray300)
+            }
+                
         }
+        .padding(.horizontal,20)
         .frame(width:335,height:height)
-        .cornerRadius(10)
+        .overlay(
+            RoundedCorner(radius: 5, corners: [.bottomLeft, .topLeft])
+                .frame(width:5)
+            ,alignment: .leading)
+        .background(Color.white)
+        .cornerRadius(5)
         .foregroundColor(ticket.color)
         .offset(x: offset)
-        
         //MARK: - 롱 프레스
-        .gesture(LongPressGesture(minimumDuration:1).onEnded{_ in
-            shouldShowAlert = true
-        })
+        .gesture(LongPressGesture(minimumDuration:0.5)
+            .onEnded{_ in
+                shouldShowAlert = true
+            }
+        )
         .gesture(DragGesture()
                  //MARK: - 티켓 스와이프 관련 제스쳐
             .onChanged{value in
                 withAnimation{
                     offset = value.translation.width
                 }
-                
             }
             .onEnded{
                 let dragWidth = round(abs($0.translation.width))
@@ -128,7 +140,7 @@ struct TicketView: View {
             EndTicketAlert{
                 VStack(spacing: 34){
                     HStack{
-                        Image("home_top_icon")
+                        Image("edit_square")
                         Text("수정하기")
                         Spacer()
                     }
@@ -138,7 +150,7 @@ struct TicketView: View {
                         shouldShowModifyForm = true
                     }
                     HStack{
-                        Image("home_top_icon")
+                        Image("trashcan")
                             .renderingMode(.template)
                         Text("티켓 삭제하기")
                         Spacer()

@@ -25,6 +25,7 @@
 		064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E6284E43E9000EEF62 /* HomeView.swift */; };
 		064B50E9284E4CB6000EEF62 /* GmarketSansLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */; };
 		064B50EC284E4E41000EEF62 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50EB284E4E41000EEF62 /* Ticket.swift */; };
+		06588D88287291DC004AACB2 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06588D87287291DC004AACB2 /* RoundedCorner.swift */; };
 		0670ACB52866FA1700E4D091 /* SignInStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670ACB42866FA1700E4D091 /* SignInStatus.swift */; };
 		06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DCD28408B6A00FEB138 /* EndTicketApp.swift */; };
 		06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD128408B6C00FEB138 /* Assets.xcassets */; };
@@ -123,6 +124,7 @@
 		064B50E6284E43E9000EEF62 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansLight.otf; sourceTree = "<group>"; };
 		064B50EB284E4E41000EEF62 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		06588D87287291DC004AACB2 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		0670ACB42866FA1700E4D091 /* SignInStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStatus.swift; sourceTree = "<group>"; };
 		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				06B2629A285C3F1E00722A52 /* FormTextField.swift */,
 				06B2629F285C568B00722A52 /* ColorSelectView.swift */,
+				06588D87287291DC004AACB2 /* RoundedCorner.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -914,6 +917,7 @@
 				06B26295285B29C500722A52 /* TicketResponse.swift in Sources */,
 				06B26288285B13A500722A52 /* TicketApi.swift in Sources */,
 				06B262B22864046D00722A52 /* SignInRouter.swift in Sources */,
+				06588D88287291DC004AACB2 /* RoundedCorner.swift in Sources */,
 				064B50EC284E4E41000EEF62 /* Ticket.swift in Sources */,
 				06B262D62869DEE500722A52 /* EndTicketAlertButton.swift in Sources */,
 				06B26297285C372A00722A52 /* TicketFormView.swift in Sources */,
