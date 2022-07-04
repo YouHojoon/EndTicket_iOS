@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Color{
+    static let gray10 = Color(#colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1))
     static let gray50 = Color(#colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1))
     static let gray100 = Color(#colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1))
     static let gray200 = Color(#colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))

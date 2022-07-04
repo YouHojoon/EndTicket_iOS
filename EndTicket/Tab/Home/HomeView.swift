@@ -34,7 +34,7 @@ struct HomeView: View {
                 }
                 .padding(.bottom,23)
                
-                Text("드리밍님\n오늘도 같이 도전해볼까요?")
+                Text("\(UserDefaults.standard.string(forKey:"nickname")!)님\n오늘도 같이 도전해볼까요?")
                     .font(.interBold(size: 22))
                 HStack(spacing:0){
                     Image(systemName: "clock")
@@ -58,7 +58,7 @@ struct HomeView: View {
             //MARK: - 티켓 리스트
             ZStack(alignment:.top){
                 Color
-                    .gray50
+                    .gray10
                     .edgesIgnoringSafeArea([.horizontal,.bottom])
                 if viewModel.tickets.isEmpty{
                     VStack(spacing:0){
@@ -92,7 +92,7 @@ struct HomeView: View {
                             }
                         }.padding(.vertical, 30)
                     }
-                }
+                }   
             }
             .onAppear{
                 viewModel.fetchTickets()

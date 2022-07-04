@@ -18,6 +18,7 @@ struct TicketView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
         self.ticket = ticket
+        
    
     }
     var body: some View{
@@ -84,8 +85,14 @@ struct TicketView: View {
             ,alignment: .leading)
         .background(Color.white)
         .cornerRadius(5)
+        .shadow(color: Color(#colorLiteral(red: 0.4392156863, green: 0.5647058824, blue: 0.6901960784, alpha: 0.15)), radius: 30, x: 0, y: 10)
+        
         .foregroundColor(ticket.color)
         .offset(x: offset)
+        //scroll을 위한 빈 탭 제스쳐
+        .onTapGesture {
+            
+        }
         //MARK: - 롱 프레스
         .gesture(LongPressGesture(minimumDuration:0.5)
             .onEnded{_ in
@@ -110,7 +117,7 @@ struct TicketView: View {
                 withAnimation(.easeInOut){
                     offset = 0
                 }
-                
+
             }
         )
         .fullScreenCover(isPresented:$shouldShowModifyForm){
