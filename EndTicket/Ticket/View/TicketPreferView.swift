@@ -32,9 +32,9 @@ struct TicketPreferView: View {
                 Spacer()
                 Text("추천티켓").font(.system(size: 21,weight: .bold))
                 Spacer()
-            }.padding(.bottom, 13)
-                .padding(.horizontal, 20)
-                .background(Color.white)
+            }.padding(.vertical, 13)
+            .padding(.horizontal, 20)
+            .background(Color.white)
             
             
             ZStack{
