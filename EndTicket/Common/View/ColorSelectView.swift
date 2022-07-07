@@ -14,7 +14,7 @@ struct ColorSelectView: View {
     }
     
     var body: some View {
-        LazyHGrid(rows: Array(repeating:GridItem(.fixed(52)), count:3), spacing: 11){
+        LazyHGrid(rows: Array(repeating:GridItem(.fixed(52)), count:2), spacing: 11){
             ForEach(Color.ticketColors, id:\.self){color in
                 Circle()
                     .foregroundColor(color)
@@ -36,6 +36,6 @@ struct ColorSelectView: View {
 
 struct TicketColorSelectView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketFormView()
+        TicketFormView().environmentObject(TicketViewModel())
     }
 }

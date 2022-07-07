@@ -40,11 +40,11 @@ struct Ticket: Identifiable{
     
     static func getDummys() -> [Ticket]{
         return [
-            Ticket(title: "용기 가지기", category: .personality, start: "눈치 보지 말고 대화하기", end: "사람들 앞에서 당당한 나의 모습", color: .blue,touchCount: 15,id: 1),
-            Ticket(title: "운동하기", category: .health, start: "가볍게 산책하며 숨 고르기", end: "체력도 늘고 활력도 되찾는 나의 모습", color: .white,touchCount: 15,id: 2),
-            Ticket(title: "나를 믿기", category: .value, start: "나를 있는 그대로 받아들이기", end: "나를 사랑한 만큼, 상대방도 나를 사랑한다.", color: .white,touchCount: 15, id:3),
-            Ticket(title: "용기 가지기", category: .personality, start: "눈치 보지 말고 대화하기", end: "사람들 앞에서 당당한 나의 모습", color: .white,touchCount: 15,id: 4),
-            Ticket(title: "용기 가지기", category: .personality, start: "눈치 보지 말고 대화하기", end: "사람들 앞에서 당당한 나의 모습", color: .white,touchCount: 15,id: 5),
+            Ticket(title: "용기 가지기", category: .personality, start: "눈치 보지 말고 대화하기", end: "사람들 앞에서 당당한 나의 모습", color: .ticketRed1,touchCount: 15,id: 1),
+            Ticket(title: "운동하기", category: .health, start: "가볍게 산책하며 숨 고르기", end: "체력도 늘고 활력도 되찾는 나의 모습", color: .ticketBlue1,touchCount: 15,id: 2),
+            Ticket(title: "나를 믿기", category: .value, start: "나를 있는 그대로 받아들이기", end: "나를 사랑한 만큼, 상대방도 나를 사랑한다.", color: .ticketGray1,touchCount: 15, id:3),
+            Ticket(title: "용기 가지기", category: .personality, start: "눈치 보지 말고 대화하기", end: "사람들 앞에서 당당한 나의 모습", color: .ticketOrange1,touchCount: 15,id: 4),
+            Ticket(title: "용기 가지기", category: .personality, start: "눈치 보지 말고 대화하기", end: "사람들 앞에서 당당한 나의 모습", color: .ticketPurple1,touchCount: 15,id: 5),
         ]
     }
 }

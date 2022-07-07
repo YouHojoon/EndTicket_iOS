@@ -62,13 +62,13 @@ struct TicketFormView: View {
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    FormTextField(title:"제목", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "목표를 간단하게 적어보세요.",text: $title)
-                    FormTextField(title:"시작역", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "목표를 이루려면 어떻게 해야 활까요?",text: $start)
-                    FormTextField(title:"종착역", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "달성하고 나면, 나의 모습은 어떨까요?",text: $end)
+                    FormTextField(title:"제목", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "목표를 간단하게 적어보세요.",text: $title, isEssential: ticketId == nil)
+                    FormTextField(title:"시작역", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "목표를 이루려면 어떻게 해야 활까요?",text: $start, isEssential: ticketId == nil)
+                    FormTextField(title:"종착역", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "달성하고 나면, 나의 모습은 어떨까요?",text: $end, isEssential: ticketId == nil)
                     Divider().padding(.vertical, 10)
-                    TicketFormCategoryView(selected: $category)
+                    TicketFormCategoryView(selected: $category,isEssential: ticketId == nil)
                     ColorSelectView(selected: $color)
-                    TicketTouchCountSelectView(selected: $touchCount)
+                    TicketTouchCountSelectView(selected: $touchCount,isEssential: ticketId == nil)
                 }.padding(.top, 30)
             }
             .padding(.horizontal, 20)
@@ -88,11 +88,11 @@ struct TicketFormView: View {
                 Text("변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?").font(.system(size: 18,weight: .bold))
                     .multilineTextAlignment(.center)
             } primaryButton:{
-                EndTicketAlertButton(title:Text("취소").foregroundColor(.gray600)){
+                EndTicketAlertButton(label:Text("취소").foregroundColor(.gray600)){
                     shouldShowAlert = false
                 }
-            }secondButton: {
-                EndTicketAlertButton(title:Text("나가기").foregroundColor(.red)){
+            }secondaryButton: {
+                EndTicketAlertButton(label:Text("나가기").foregroundColor(.red)){
                     shouldShowAlert = false
                     dismiss()
                 }

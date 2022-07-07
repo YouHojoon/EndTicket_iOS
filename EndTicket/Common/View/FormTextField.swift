@@ -12,29 +12,36 @@ struct FormTextField: View {
     private let placeholder: String
     private let maxTextLength: Int
     private let titleImage: Image
+    private let isEssential:Bool
     
     @State private var shouldShowRedBounds = false
     @Binding private var text:String
     @FocusState private var focus
     
-    init(title:String,titleImage:Image, placeholder:String, text:Binding<String>, maxTextLength: Int = 20){
+    init(title:String,titleImage:Image, placeholder:String, text:Binding<String>, maxTextLength: Int = 20, isEssential:Bool = false){
         self.title = title
         self.titleImage = titleImage
         self.placeholder = placeholder
         self.maxTextLength = maxTextLength
+        self.isEssential = isEssential
         _text = text
     }
     
     
     var body: some View {
         VStack(alignment:.leading, spacing:0){
-            HStack(spacing:5){
+            HStack(spacing:0){
                 titleImage.resizable().aspectRatio(contentMode: .fit)
                     .frame(width:15,height: 15)
                     .foregroundColor(.black)
+                    .padding(.trailing,5)
                 Text(title)
-                    .font(.interSemiBold(size: 16))
-            }
+                    .padding(.trailing,1)
+                if isEssential{
+                    Text("*")
+                        .foregroundColor(.red)
+                }
+            }.font(.interSemiBold(size: 16))
             .padding(.bottom, 4)
             
             TextField(placeholder, text: $text, onCommit: {

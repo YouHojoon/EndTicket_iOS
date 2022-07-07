@@ -57,11 +57,11 @@ struct ImagineFormView: View{
                 Text("변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?").font(.system(size: 18,weight: .bold))
                     .multilineTextAlignment(.center)
             } primaryButton:{
-                EndTicketAlertButton(title:Text("취소").foregroundColor(.gray600)){
+                EndTicketAlertButton(label:Text("취소").foregroundColor(.gray600)){
                     shouldShowAlert = false
                 }
-            }secondButton: {
-                EndTicketAlertButton(title:Text("나가기").foregroundColor(.red)){
+            }secondaryButton: {
+                EndTicketAlertButton(label:Text("나가기").foregroundColor(.red)){
                     shouldShowAlert = false
                     dismiss()
                 }

@@ -10,12 +10,12 @@ import SwiftUI
 struct EndTicketAlert<Content>: View where Content: View{
     let content: Content
     let primaryButton: EndTicketAlertButton
-    let secondButton: EndTicketAlertButton?
+    let secondaryButton: EndTicketAlertButton?
 
-    init(content: () -> Content, primaryButton: () ->  EndTicketAlertButton, secondButton: (() -> EndTicketAlertButton)? = nil){
+    init(content: () -> Content, primaryButton: () ->  EndTicketAlertButton, secondaryButton: (() -> EndTicketAlertButton)? = nil){
         self.content = content()
         self.primaryButton = primaryButton()
-        self.secondButton = secondButton?()
+        self.secondaryButton = secondaryButton?()
     }
     
     var body: some View {
@@ -33,9 +33,9 @@ struct EndTicketAlert<Content>: View where Content: View{
                         
                         HStack(){
                             primaryButton
-                            if secondButton != nil{
+                            if secondaryButton != nil{
                                 Divider()
-                                secondButton
+                                secondaryButton
                             }
                         }
                         .frame(height:60)

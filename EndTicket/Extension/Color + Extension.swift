@@ -73,12 +73,12 @@ extension Color{
     }
     
     static let ticketColors:[Color] = [
-            .ticketRed1,.ticketRed2,.ticketRed3,
-            .ticketOrange1,.ticketOrange2,.ticketOrange3,
-            .ticketGreen1,.ticketGreen2,.ticketGreen3,
-            .ticketBlue1,.ticketBlue2,.ticketBlue3,
-            .ticketPurple1,.ticketPurple2,.ticketPurple3,
-            .ticketGray1,.ticketGray2,.ticketGray3
+            .ticketRed1,.ticketRed2,
+            .ticketOrange1,.ticketOrange2,
+            .ticketGreen1,.ticketGreen2,
+            .ticketBlue1,.ticketBlue2,
+            .ticketPurple1,.ticketPurple2,
+            .ticketGray1,.ticketGray2,
         ]
     
 }

@@ -22,7 +22,12 @@ struct HomeView: View {
                 HStack{
                     Text("홈")
                         .kerning(-0.5)
-                        .font(.appleSDGothicBold(size: 21))
+                        .font(.system(size: 21,weight:.bold))
+                    Spacer()
+                    Image("logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:39, height:39)
                     Spacer()
                     Image("home_top_icon")
                         .frame(width:22, height: 22)
@@ -62,7 +67,7 @@ struct HomeView: View {
                     .edgesIgnoringSafeArea([.horizontal,.bottom])
                 if viewModel.tickets.isEmpty{
                     VStack(spacing:0){
-                        Image("on_boarding_1")
+                        Image("home_image")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 230, height: 230)
