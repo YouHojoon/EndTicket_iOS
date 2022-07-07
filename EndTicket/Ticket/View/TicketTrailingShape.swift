@@ -11,9 +11,9 @@ struct TicketTrailingShape: Shape {
     func path(in rect: CGRect) -> Path {
         return Path { path in
             path.move(to: CGPoint(x:0, y: 0))
-            path.addArc(center: CGPoint(x: 0, y: 0), radius: 8, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+            path.addArc(center: CGPoint(x: 0, y: 0), radius: 5, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
             path.addLine(to: CGPoint(x:0, y:rect.height))
-            
+            path.addArc(center: CGPoint(x: 0, y: rect.height), radius: 5, startAngle: .degrees(270), endAngle: .degrees(0), clockwise: false)
             path.addLine(to: CGPoint(x:rect.width, y:rect.height))
             path.addLine(to: CGPoint(x:rect.width, y:0))
         }
@@ -22,6 +22,6 @@ struct TicketTrailingShape: Shape {
 
 struct TicketTraillingShape_Previews: PreviewProvider {
     static var previews: some View {
-        TicketTrailingShape()        
+        TicketTrailingShape().frame(width:335)
     }
 }

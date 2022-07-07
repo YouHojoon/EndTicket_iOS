@@ -42,7 +42,7 @@ struct TicketView: View {
                             .foregroundColor(.gray500)
                     }
                 Spacer()
-                Text("\(ticket.currentCount)").font(.interBold(size: 18))
+                Text("\(ticket.currentCount)번의 용기").font(.interBold(size: 18))
             }.padding(.bottom, 18)
             
             GeometryReader{proxy in
@@ -55,26 +55,25 @@ struct TicketView: View {
                     ,alignment: .leading)
             }.frame(height:8)
                 .padding(.bottom,16)
-            HStack{
+            
+            HStack(spacing:5){
                 Image(systemName: "arrow.right.circle")
                     .font(.system(size: 15))
                     .foregroundColor(.black)
-                Spacer()
-                Image("futureOfMe_description_icon")
-                    .renderingMode(.template)
-                    .foregroundColor(ticket.touchCount == ticket.currentCount ? ticket.color : .gray300)
-            }.padding(.bottom,5)
-            HStack{
                 Text("\(ticket.start)")
                     .font(.system(size: 12,weight: .medium))
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.black)
-                Spacer()
+                
+            }.padding(.bottom,10)
+                .foregroundColor(ticket.touchCount != ticket.currentCount ? .black : .gray300)
+            HStack(spacing:5){
+                Image("futureOfMe_description_icon")
+                    .renderingMode(.template)
                 Text("\(ticket.end)")
                     .font(.system(size: 12,weight: .medium))
                     .multilineTextAlignment(.trailing)
-                    .foregroundColor(ticket.touchCount == ticket.currentCount ? ticket.color : .gray300)
-            }
+            }.foregroundColor(ticket.touchCount == ticket.currentCount ? .black: .gray300)
                 
         }
         .padding(.horizontal,20)

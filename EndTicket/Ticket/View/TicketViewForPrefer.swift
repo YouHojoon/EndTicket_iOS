@@ -19,77 +19,79 @@ struct TicketViewForPrefer: View {
     }
     
     var body: some View {
-        
-        HStack{
-            VStack(alignment:.leading,spacing:0){
-                HStack{
-                    RoundedRectangle(cornerRadius: 2)
-                        .stroke(Color.gray100, lineWidth: 1)
-                        .frame(width:38, height: 18)
-                        .overlay{
-                            Text("\(ticket.category.rawValue)")
-                                .font(.system(size: 10,weight: .medium))
+        GeometryReader{proxy in
+            HStack(spacing:0){
+                TicketLeadingShape()
+                    .frame(width: proxy.size.width * 0.75)
+                    .foregroundColor(.white)
+                    .overlay{
+                    VStack(alignment:.leading,spacing:0){
+                        HStack{
+                            RoundedRectangle(cornerRadius: 2)
+                                .stroke(Color.gray100, lineWidth: 1)
+                                .frame(width:38, height: 18)
+                                .overlay{
+                                    Text("\(ticket.category.rawValue)")
+                                        .font(.system(size: 10,weight: .medium))
+                                        .foregroundColor(.gray500)
+                                }
+                            
+                            RoundedRectangle(cornerRadius: 2)
+                                .stroke(Color.gray100, lineWidth: 1)
+                                .frame(width:38, height: 18)
+                                .overlay{
+                                    Text("\(ticket.touchCount)")
+                                        .font(.system(size: 10,weight: .medium))
+                                        .foregroundColor(.gray500)
+                                }
+                            Spacer()
+                        }.padding(.bottom, 10)
+                        HStack(spacing:5){
+                            Image(systemName: "arrow.right.circle")
+                                .font(.system(size: 15))
                                 .foregroundColor(.gray500)
-                        }
-                    
-                    RoundedRectangle(cornerRadius: 2)
-                        .stroke(Color.gray100, lineWidth: 1)
-                        .frame(width:38, height: 18)
-                        .overlay{
-                            Text("\(ticket.touchCount)")
-                                .font(.system(size: 10,weight: .medium))
+                            Text("\(ticket.start)")
+                                .font(.system(size: 12,weight: .medium))
+                                .foregroundColor(.black)
+                        }.padding(.bottom,5)
+                        HStack(spacing:5){
+                            Image("futureOfMe_description_icon")
+                                .renderingMode(.template)
                                 .foregroundColor(.gray500)
+                            Text("\(ticket.end)")
+                                .font(.system(size: 12,weight: .medium))
+                                .foregroundColor(.black)
                         }
-                    Spacer()
-                }.padding(.bottom, 10)
-                
-                HStack(spacing:5){
-                    Image(systemName: "arrow.right.circle")
-                        .font(.system(size: 15))
-                        .foregroundColor(.gray500)
-                    Text("\(ticket.start)")
-                        .font(.system(size: 12,weight: .medium))
-                        .foregroundColor(.black)
-                }.padding(.bottom,5)
-                HStack(spacing:5){
-                    Image("futureOfMe_description_icon")
-                        .renderingMode(.template)
-                        .foregroundColor(.gray500)
-                    Text("\(ticket.end)")
-                        .font(.system(size: 12,weight: .medium))
-                        .foregroundColor(.black)
-                }
+                    }.padding(.horizontal,20)
             }
-            Circle().frame(width:50,height: 50)
-                .foregroundColor(ticket.color)
-                .overlay{
-                    Image(systemName: "plus")
-                        .foregroundColor(.white)
-                        .font(.system(size: 18,weight: .semibold))
-                    
-                }.onTapGesture {
-                    if viewModel.tickets.count == 6{
-                        shouldShowTicketsIsMaxAlert = true
+                TicketTrailingShape()
+                    .frame(width: proxy.size.width * 0.25)
+                    .foregroundColor(ticket.color)
+                    .overlay{
+                        Image(systemName: "plus")
+                            .foregroundColor(.white)
+                            .font(.system(size: 18,weight: .semibold))
+
+                    }.onTapGesture {
+                        if viewModel.tickets.count == 6{
+                            shouldShowTicketsIsMaxAlert = true
+                        }
+                        else{
+                            isAddButtonTapped = true
+                            viewModel.postTicket(ticket)
+                        }
                     }
-                    else{
-                        isAddButtonTapped = true
-                        viewModel.postTicket(ticket)
-                    }
-                }
-        }
-        
-        
-        .padding(.horizontal,20)
-        .frame(width:335,height:100)
-        .overlay(
-            RoundedCorner(radius: 5, corners: [.bottomLeft, .topLeft])
-                .frame(width:5)
-            ,alignment: .leading)
-        .background(Color.white)
-        .cornerRadius(5)
-        .shadow(color: Color(#colorLiteral(red: 0.4392156863, green: 0.5647058824, blue: 0.6901960784, alpha: 0.15)), radius: 20, x: 0, y: 5)
-        
-        .foregroundColor(ticket.color)
+            }
+            .cornerRadius(5)
+            .overlay(
+                RoundedCorner(radius: 5, corners: [.bottomLeft, .topLeft])
+                    .frame(width:5)
+                ,alignment: .leading)
+            .cornerRadius(5)
+            .shadow(color: Color(#colorLiteral(red: 0.4392156863, green: 0.5647058824, blue: 0.6901960784, alpha: 0.15)), radius: 20, x: 0, y: 5)
+            .foregroundColor(ticket.color)
+        }.frame(height:100)
+            
         .onReceive(viewModel.isPostTicketSuccess){
             if isAddButtonTapped{
                 shouldShowAlert = $0
@@ -130,5 +132,6 @@ struct TicketViewForPrefer: View {
 struct TicketViewForPrefer_Previews: PreviewProvider {
     static var previews: some View {
         TicketViewForPrefer(Ticket.getDummys()[0])
+            .environmentObject(TicketViewModel())
     }
 }
