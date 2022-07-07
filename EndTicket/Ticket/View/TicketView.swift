@@ -58,15 +58,14 @@ struct TicketView: View {
             
             HStack(spacing:5){
                 Image(systemName: "arrow.right.circle")
+                    .renderingMode(.template)
                     .font(.system(size: 15))
-                    .foregroundColor(.black)
+                    
                 Text("\(ticket.start)")
                     .font(.system(size: 12,weight: .medium))
                     .multilineTextAlignment(.leading)
-                    .foregroundColor(.black)
-                
             }.padding(.bottom,10)
-                .foregroundColor(ticket.touchCount != ticket.currentCount ? .black : .gray300)
+            .foregroundColor(ticket.touchCount != ticket.currentCount ? .black : .gray300)
             HStack(spacing:5){
                 Image("futureOfMe_description_icon")
                     .renderingMode(.template)
