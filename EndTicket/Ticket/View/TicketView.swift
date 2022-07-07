@@ -14,12 +14,12 @@ struct TicketView: View {
     @State private var offset = 0.0
     @State private var shouldShowAlert = false //일반 롱프레스 alert
     @State private var shouldShowDeleteAlert = false // 삭제 관련 alert
-    
+    @State private var shouldShowModifyOrDeleteAlert = false
     @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
         self.ticket = ticket
         
-   
+        
     }
     var body: some View{
         VStack(alignment:.leading,spacing:0){
@@ -52,7 +52,7 @@ struct TicketView: View {
                     .overlay(
                         Capsule()
                             .frame(width: proxy.size.width * CGFloat(ticket.currentCount) / CGFloat(ticket.touchCount),height:8)
-                    ,alignment: .leading)
+                        ,alignment: .leading)
             }.frame(height:8)
                 .padding(.bottom,16)
             
@@ -74,7 +74,7 @@ struct TicketView: View {
                     .font(.system(size: 12,weight: .medium))
                     .multilineTextAlignment(.trailing)
             }.foregroundColor(ticket.touchCount == ticket.currentCount ? .black: .gray300)
-                
+            
         }
         .padding(.horizontal,20)
         .frame(width:335,height:height)
@@ -89,13 +89,49 @@ struct TicketView: View {
         .foregroundColor(ticket.color)
         .offset(x: offset)
         //scroll을 위한 빈 탭 제스쳐
+        .overlay{
+            if shouldShowModifyOrDeleteAlert{
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.black.opacity(0.25))
+                    .overlay{
+                        HStack(spacing:35){
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width:40, height:40)
+                                .foregroundColor(.white)
+                                .overlay{
+                                    Image("edit_square")
+                                }
+                                .onTapGesture{
+                                    shouldShowModifyForm = true
+                                    shouldShowModifyOrDeleteAlert = false
+                                }
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width:40, height:40)
+                                .foregroundColor(Color(#colorLiteral(red: 0.962533772, green: 0.3612903357, blue: 0.2801753879, alpha: 1)))
+                                .overlay{
+                                    Image("trashcan")
+                                        .renderingMode(.template)
+                                        .foregroundColor(.white)
+                                }
+                                .onTapGesture{
+                                    shouldShowDeleteAlert = true
+                                    shouldShowModifyOrDeleteAlert = false
+                                }
+                        }
+                    }.transition(.opacity)
+            }
+        }
         .onTapGesture {
-            
+            withAnimation{
+                shouldShowModifyOrDeleteAlert = false
+            }
         }
         //MARK: - 롱 프레스
         .gesture(LongPressGesture(minimumDuration:0.5)
             .onEnded{_ in
-                shouldShowAlert = true
+                withAnimation{
+                    shouldShowModifyOrDeleteAlert = true
+                }
             }
         )
         .gesture(DragGesture()
@@ -116,7 +152,7 @@ struct TicketView: View {
                 withAnimation(.easeInOut){
                     offset = 0
                 }
-
+                
             }
         )
         .fullScreenCover(isPresented:$shouldShowModifyForm){
@@ -130,60 +166,23 @@ struct TicketView: View {
             }
         }
         .onReceive(viewModel.isTouchTicketSuccess){id, isSuccess in
-               let index = viewModel.tickets.firstIndex{$0.id == id}!
-                let ticket = viewModel.tickets[index]
-                if isSuccess && self.ticket.id == id
-                    && ticket.touchCount + 1 == ticket.currentCount{
-                    withAnimation(.easeInOut){
-                        height = 0
-                    }
-                    viewModel.tickets.remove(at: index)
+            let index = viewModel.tickets.firstIndex{$0.id == id}!
+            let ticket = viewModel.tickets[index]
+            if isSuccess && self.ticket.id == id
+                && ticket.touchCount + 1 == ticket.currentCount{
+                withAnimation(.easeInOut){
+                    height = 0
                 }
-
-        }
-        //MARK: - 롱 프레스 alert
-        .alert(isPresented: $shouldShowAlert){
-            EndTicketAlert{
-                VStack(spacing: 34){
-                    HStack{
-                        Image("edit_square")
-                        Text("수정하기")
-                        Spacer()
-                    }
-                    .clipShape(Rectangle())
-                    .onTapGesture {
-                        shouldShowAlert = false
-                        shouldShowModifyForm = true
-                    }
-                    HStack{
-                        Image("trashcan")
-                            .renderingMode(.template)
-                        Text("티켓 삭제하기")
-                        Spacer()
-                    }.foregroundColor(.red)
-                    .onTapGesture {
-                        shouldShowAlert = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                            shouldShowDeleteAlert = true
-                        }
-                        
-                    }
-                }.font(.system(size: 16,weight: .bold))
-                    .padding(.top, 57)
-                    .padding(.bottom,37)
-                    .padding(.horizontal,30)
-            }primaryButton: {
-                EndTicketAlertButton(title:Text("취소").foregroundColor(.gray600), color: .gray50){
-                    shouldShowAlert = false
-                }
+                viewModel.tickets.remove(at: index)
             }
+            
         }
         //MARK: - 삭제 alert
         .alert(isPresented: $shouldShowDeleteAlert){
             EndTicketAlert{
                 Text("티켓을 삭제하시겠습니까?")
                     .font(.system(size:18,weight:.bold))
-            }primaryButton: {   
+            }primaryButton: {
                 EndTicketAlertButton(title:Text("취소").foregroundColor(.gray400)){
                     shouldShowDeleteAlert = false
                 }
