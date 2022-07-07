@@ -13,38 +13,38 @@ struct ImagineView: View {
     private let completeButtonColor = Color(#colorLiteral(red: 0.2705882353, green: 0.337254902, blue: 1, alpha: 1))
     
     @State private var shouldShowModifyView = false
-    @EnvironmentObject private var viewModel: ImagineViewModel
+    @EnvironmentObject private var viewModel: FutureOfMeViewModel
     
     init(_ index: Int){
         self.index = index
     }
     
     var body: some View {
-        let isCompleted = viewModel.imagines[index].isCompleted
+        let isSuccess = viewModel.imagines[index].isSuccessed
         
         HStack(spacing:15){
             Button{
-                viewModel.toggleIsCompleted(index: index)
+                viewModel.toggleIsSuccessed(index: index)
             }label:{
                 Circle()
                     .frame(width:34, height: 34)
-                    .foregroundColor(isCompleted ? completeButtonColor : .clear)
+                    .foregroundColor(isSuccess ? completeButtonColor : .clear)
                     .overlay{
-                        if !isCompleted{
+                        if !isSuccess{
                             Circle().stroke(completeButtonColor, lineWidth: 2)
                         }
                     }
                     .overlay{
                         Image(systemName: "checkmark")
-                            .foregroundColor(isCompleted ? .white : completeButtonColor)
+                            .foregroundColor(isSuccess ? .white : completeButtonColor)
                     }
             }.padding(.horizontal,1)
             
             VStack(alignment: .leading, spacing:3){
-                Text(viewModel.imagines[index].goal).font(.system(size:16,weight: .bold))
-                    .strikethrough(isCompleted)
+                Text(viewModel.imagines[index].subject).font(.system(size:16,weight: .bold))
+                    .strikethrough(isSuccess)
                     .frame(height:20)
-                    .foregroundColor(isCompleted ? .gray300 : .black)
+                    .foregroundColor(isSuccess ? .gray300 : .black)
                 
                 HStack(spacing:3){
                     Image("futureOfMe_description_icon")
@@ -52,12 +52,12 @@ struct ImagineView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width:15,height: 15)
                     
-                    Text(viewModel.imagines[index].desciption)
+                    Text(viewModel.imagines[index].purpose)
                         .font(.system(size: 12,weight: .regular))
-                        .strikethrough(isCompleted)
+                        .strikethrough(isSuccess)
                 }
                 .frame(height:20)
-                .foregroundColor(isCompleted ? .gray300 : .gray500)
+                .foregroundColor(isSuccess ? .gray300 : .gray500)
             }
             Spacer()
             Image(systemName: "chevron.right")
