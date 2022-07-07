@@ -35,6 +35,7 @@ struct OnBoardingView: View {
                             .kerning(-0.54)
                             .font(.system(size: 16,weight: .bold))
                             .foregroundColor(.gray500)
+                            .multilineTextAlignment(.center)
                         onBoarding.image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
