@@ -123,11 +123,11 @@ struct MyHomeView: View {
                         Text("로그아웃 하시겠습니까?").font(.system(size: 18,weight: .bold))
                             .multilineTextAlignment(.center)
                     } primaryButton:{
-                        EndTicketAlertButton(title:Text("취소").foregroundColor(.gray600)){
+                        EndTicketAlertButton(label:Text("취소").foregroundColor(.gray600)){
                             shouldShowAlert = false
                         }
-                    }secondButton: {
-                        EndTicketAlertButton(title:Text("로그아웃").foregroundColor(.red)){
+                    }secondaryButton: {
+                        EndTicketAlertButton(label:Text("로그아웃").foregroundColor(.red)){
                             shouldShowAlert = false
                             signInViewModel.disconnect()
                         }

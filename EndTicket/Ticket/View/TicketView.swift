@@ -183,11 +183,11 @@ struct TicketView: View {
                 Text("티켓을 삭제하시겠습니까?")
                     .font(.system(size:18,weight:.bold))
             }primaryButton: {
-                EndTicketAlertButton(title:Text("취소").foregroundColor(.gray400)){
+                EndTicketAlertButton(label:Text("취소").foregroundColor(.gray400)){
                     shouldShowDeleteAlert = false
                 }
-            }secondButton: {
-                EndTicketAlertButton(title:Text("삭제").foregroundColor(.red)){
+            }secondaryButton: {
+                EndTicketAlertButton(label:Text("삭제").foregroundColor(.red)){
                     shouldShowDeleteAlert = false
                     viewModel.deleteTicket(id: ticket.id)
                 }

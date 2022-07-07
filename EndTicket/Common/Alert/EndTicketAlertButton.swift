@@ -11,11 +11,11 @@ struct EndTicketAlertButton: View {
     typealias Action = () -> ()
     
     private let action: Action
-    private let title: Text
+    private let label: Text
     let color: Color?
     
-    init(title:Text,color:Color? = nil,action: @escaping Action){
-        self.title = title
+    init(label:Text,color:Color? = nil,action: @escaping Action){
+        self.label = label
         self.action = action
         self.color = color
     }
@@ -24,7 +24,7 @@ struct EndTicketAlertButton: View {
         Button{
             action()
         }label: {
-            title.frame(maxWidth:.infinity, maxHeight: .infinity)
+            label.frame(maxWidth:.infinity, maxHeight: .infinity)
         }.background(color)
     }
 }

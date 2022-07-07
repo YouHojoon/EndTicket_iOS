@@ -103,7 +103,7 @@ struct TicketViewForPrefer: View {
                 Text("홈에 추가 되었습니다.")
                     .font(.system(size: 18,weight: .bold))
             }primaryButton: {
-                EndTicketAlertButton(title: Text("확인").foregroundColor(.mainColor)){
+                EndTicketAlertButton(label: Text("확인").foregroundColor(.mainColor)){
                     shouldShowAlert = false
                 }
             }
@@ -121,7 +121,7 @@ struct TicketViewForPrefer: View {
                         .multilineTextAlignment(.center)
                 }.foregroundColor(Color.black)
             }primaryButton: {
-                EndTicketAlertButton(title:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
+                EndTicketAlertButton(label:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
                     shouldShowTicketsIsMaxAlert = false
                 }
             }
