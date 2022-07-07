@@ -39,7 +39,6 @@
 		06717E092840A05300FEB138 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E082840A05300FEB138 /* View + Extension.swift */; };
 		06717E0C2840AE0700FEB138 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E0B2840AE0700FEB138 /* SignInView.swift */; };
 		06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E122840B86D00FEB138 /* Font + Extension.swift */; };
-		06717E162840C54600FEB138 /* SignInButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E152840C54600FEB138 /* SignInButtonModifier.swift */; };
 		06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */; };
 		06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */; };
 		06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2128504D5E00FEB138 /* EndTicketTabView.swift */; };
@@ -142,7 +141,6 @@
 		06717E0B2840AE0700FEB138 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		06717E122840B86D00FEB138 /* Font + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Extension.swift"; sourceTree = "<group>"; };
 		06717E142840BC3800FEB138 /* EndTicket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EndTicket.entitlements; sourceTree = "<group>"; };
-		06717E152840C54600FEB138 /* SignInButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonModifier.swift; sourceTree = "<group>"; };
 		06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingButtonModifier.swift; sourceTree = "<group>"; };
 		06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = ViewModel/SignUpViewModel.swift; sourceTree = "<group>"; };
 		06717E2128504D5E00FEB138 /* EndTicketTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketTabView.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				06717E0B2840AE0700FEB138 /* SignInView.swift */,
-				06717E152840C54600FEB138 /* SignInButtonModifier.swift */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -930,7 +927,6 @@
 				06B2628F285B1C9D00722A52 /* TicketListResponse.swift in Sources */,
 				06B262DA286B164900722A52 /* UIViewController + Extension.swift in Sources */,
 				06B262D42869D96600722A52 /* EndTicketAlert.swift in Sources */,
-				06717E162840C54600FEB138 /* SignInButtonModifier.swift in Sources */,
 				063634E82852119600856928 /* SignUpRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

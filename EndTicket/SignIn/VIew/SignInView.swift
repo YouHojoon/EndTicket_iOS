@@ -14,6 +14,7 @@ struct SignInView: View {
     @EnvironmentObject private var viewModel:SignInViewModel
     @State private var shouldGoNextView = false
     @State private var shouldShowProgressView = false
+    
     var body: some View {
         VStack(spacing:12){
             Image("logo")
@@ -26,9 +27,9 @@ struct SignInView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width:78,height: 41)
                         .offset(y:21)
-                ,alignment: .bottom)
-                .padding(.bottom, 121)
-                       
+                    ,alignment: .bottom)
+                .padding(.bottom, 130)
+            
             //MARK: - 로그인 버튼
             Group{
                 Button{
@@ -39,13 +40,18 @@ struct SignInView: View {
                             .resizable()
                             .frame(width:18, height: 18)
                         Text("Google로 로그인").kerning(-0.48)
+                            .padding()
+                            .foregroundColor(.black)
                         Spacer().frame(width:18)
-                    }
-                   
-        
-                }.modifier(SignInButtonModifier())
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray300,lineWidth: 1))
+                    }.frame(maxWidth:.infinity, maxHeight: 50)
+                }
+                .background(.white)
+                .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray300,lineWidth: 1))
+                .padding(.horizontal,20)
+                
+                
                 Button{
                     viewModel.socialSignIn(.kakao)
                 }label: {
@@ -55,37 +61,36 @@ struct SignInView: View {
                             .frame(width:18,height: 18)
                         Text("Kakao로 로그인")
                             .kerning(-0.48)
+                            .foregroundColor(.black)
                         Spacer()
                             .frame(width:18)
-                    }
-                }.modifier(SignInButtonModifier(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1))))
+                    }.frame(maxWidth:.infinity, maxHeight: 50)
+                }.background(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1)))
+                .cornerRadius(10)
+                .padding(.horizontal,20)
+                
                 Button{
                     viewModel.socialSignIn(.apple)
                 }label: {
                     HStack(spacing:21){
-                            Image("apple_button_symbol")
-                            Text("Apple로 로그인")
+                        Image("apple_button_symbol")
+                        Text("Apple로 로그인")
                             .kerning(-0.48)
-                            Spacer()
+                            .foregroundColor(.white)
+                        Spacer()
                             .frame(width:24)
                         //애플 기본 로고 크기가 24
-                    }
+                    }.frame(maxWidth:.infinity, maxHeight: 50)
                 }
-                .foregroundColor(.white)
-                .modifier(SignInButtonModifier(.black))
+                
+                .background(.black)
+                .cornerRadius(10)
+                .padding(.horizontal,20)
+                
             }
             
-            HStack(spacing:10){
-                Text("회원가입")
-                Divider()
-                    .background(Color.black)
-                    .frame(height:10)
-                Text("문의하기")
-            }.foregroundColor(.gray500)
-                .padding(.top, 8)
         }
-        .font(.appleSDGothicBold(size: 15))
-        .padding(.horizontal, 30)
+        .font(.system(size: 15,weight: .bold))
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .overlay(isFirstStart ? OnBoardingView() : nil)
         .onAppear{
@@ -97,7 +102,6 @@ struct SignInView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                 shouldGoNextView = status != .fail
             }
-           
         }
         .fullScreenCover(isPresented: $shouldGoNextView){
             viewModel.disconnect()
@@ -112,7 +116,7 @@ struct SignInView: View {
             }
         }
         .progressView(isPresented: $shouldShowProgressView)
-      
+        
     }
 }
 
