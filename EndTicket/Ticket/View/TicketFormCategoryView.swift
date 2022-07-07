@@ -9,13 +9,21 @@ import SwiftUI
 
 struct TicketFormCategoryView: View {
     @Binding private var selected: Ticket.Category
-    init(selected:Binding<Ticket.Category>){
+    private let isEssential:Bool
+    init(selected:Binding<Ticket.Category>,isEssential:Bool = false){
         _selected = selected
+        self.isEssential = isEssential
     }
     
     var body: some View {
         VStack(alignment:.leading, spacing: 4){
-            Text("분류").font(.interSemiBold(size: 16))
+            HStack(spacing:1){
+                Text("분류")
+                if isEssential{
+                    Text("*").foregroundColor(.red)
+                }
+            }.font(.interSemiBold(size: 16))
+            
             ScrollView(.horizontal,showsIndicators:false){
                 HStack(spacing:8){
                     ForEach(Ticket.Category.allCases,id:\.self){category in
@@ -42,6 +50,6 @@ struct TicketFormCategoryView: View {
 
 struct TicketFormCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketFormView()
+        TicketFormView().environmentObject(TicketViewModel())
     }
 }
