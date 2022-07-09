@@ -115,7 +115,7 @@ struct EndTicketTabView: View {
                 .environmentObject(ticketViewModel)
         case .futureOfMe:
             FutureOfMeView()
-                .environmentObject(ImagineViewModel())
+                .environmentObject(FutureOfMeViewModel())
         case .history:
             HistoryHomeView()
         case .myPage:

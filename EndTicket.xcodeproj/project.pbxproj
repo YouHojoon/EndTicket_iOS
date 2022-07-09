@@ -26,6 +26,11 @@
 		064B50E9284E4CB6000EEF62 /* GmarketSansLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */; };
 		064B50EC284E4E41000EEF62 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50EB284E4E41000EEF62 /* Ticket.swift */; };
 		06588D88287291DC004AACB2 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06588D87287291DC004AACB2 /* RoundedCorner.swift */; };
+		0658B1E728772ACF00465938 /* FutureOfMeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1E628772ACF00465938 /* FutureOfMeApi.swift */; };
+		0658B1E928772B2E00465938 /* FutureOfMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1E828772B2E00465938 /* FutureOfMe.swift */; };
+		0658B1EB28772BAB00465938 /* GetFutureOfMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1EA28772BAB00465938 /* GetFutureOfMeResponse.swift */; };
+		0658B1ED28772C1100465938 /* FutureOfMeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1EC28772C1100465938 /* FutureOfMeRouter.swift */; };
+		0658B1EF2877435600465938 /* PostFutureOfMeSubjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1EE2877435600465938 /* PostFutureOfMeSubjectResponse.swift */; };
 		0670ACB52866FA1700E4D091 /* SignInStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670ACB42866FA1700E4D091 /* SignInStatus.swift */; };
 		06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DCD28408B6A00FEB138 /* EndTicketApp.swift */; };
 		06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD128408B6C00FEB138 /* Assets.xcassets */; };
@@ -47,7 +52,7 @@
 		06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2B2850CE5500FEB138 /* FutureOfMeView.swift */; };
 		06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2D2851A2EE00FEB138 /* FutureOfMeProfileView.swift */; };
 		06717E302851B11D00FEB138 /* ImagineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2F2851B11D00FEB138 /* ImagineView.swift */; };
-		06717E332851BF3400FEB138 /* ImagineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E322851BF3400FEB138 /* ImagineViewModel.swift */; };
+		06717E332851BF3400FEB138 /* FutureOfMeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E322851BF3400FEB138 /* FutureOfMeViewModel.swift */; };
 		06717E352851BF5B00FEB138 /* Imagine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E342851BF5B00FEB138 /* Imagine.swift */; };
 		06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E382851DBFD00FEB138 /* HistoryHomeView.swift */; };
 		06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */; };
@@ -124,6 +129,11 @@
 		064B50E8284E4CB6000EEF62 /* GmarketSansLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansLight.otf; sourceTree = "<group>"; };
 		064B50EB284E4E41000EEF62 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		06588D87287291DC004AACB2 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		0658B1E628772ACF00465938 /* FutureOfMeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMeApi.swift; sourceTree = "<group>"; };
+		0658B1E828772B2E00465938 /* FutureOfMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMe.swift; sourceTree = "<group>"; };
+		0658B1EA28772BAB00465938 /* GetFutureOfMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFutureOfMeResponse.swift; sourceTree = "<group>"; };
+		0658B1EC28772C1100465938 /* FutureOfMeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMeRouter.swift; sourceTree = "<group>"; };
+		0658B1EE2877435600465938 /* PostFutureOfMeSubjectResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFutureOfMeSubjectResponse.swift; sourceTree = "<group>"; };
 		0670ACB42866FA1700E4D091 /* SignInStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStatus.swift; sourceTree = "<group>"; };
 		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
@@ -149,7 +159,7 @@
 		06717E2B2850CE5500FEB138 /* FutureOfMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMeView.swift; sourceTree = "<group>"; };
 		06717E2D2851A2EE00FEB138 /* FutureOfMeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOfMeProfileView.swift; sourceTree = "<group>"; };
 		06717E2F2851B11D00FEB138 /* ImagineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineView.swift; sourceTree = "<group>"; };
-		06717E322851BF3400FEB138 /* ImagineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineViewModel.swift; path = ViewModel/ImagineViewModel.swift; sourceTree = "<group>"; };
+		06717E322851BF3400FEB138 /* FutureOfMeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FutureOfMeViewModel.swift; path = ViewModel/FutureOfMeViewModel.swift; sourceTree = "<group>"; };
 		06717E342851BF5B00FEB138 /* Imagine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imagine.swift; sourceTree = "<group>"; };
 		06717E382851DBFD00FEB138 /* HistoryHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeView.swift; sourceTree = "<group>"; };
 		06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeContentView.swift; sourceTree = "<group>"; };
@@ -310,8 +320,20 @@
 			children = (
 				064B50EB284E4E41000EEF62 /* Ticket.swift */,
 				06717E342851BF5B00FEB138 /* Imagine.swift */,
+				0658B1E828772B2E00465938 /* FutureOfMe.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0658B1E528772AA900465938 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0658B1E628772ACF00465938 /* FutureOfMeApi.swift */,
+				0658B1EA28772BAB00465938 /* GetFutureOfMeResponse.swift */,
+				0658B1EC28772C1100465938 /* FutureOfMeRouter.swift */,
+				0658B1EE2877435600465938 /* PostFutureOfMeSubjectResponse.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		06717DC128408B6A00FEB138 = {
@@ -466,8 +488,9 @@
 		06717E292850CE2900FEB138 /* FutureOfMe */ = {
 			isa = PBXGroup;
 			children = (
+				0658B1E528772AA900465938 /* Network */,
 				06717E2A2850CE4A00FEB138 /* View */,
-				06717E322851BF3400FEB138 /* ImagineViewModel.swift */,
+				06717E322851BF3400FEB138 /* FutureOfMeViewModel.swift */,
 			);
 			path = FutureOfMe;
 			sourceTree = "<group>";
@@ -872,13 +895,14 @@
 				06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */,
 				063634EC285869F600856928 /* OnBoardingView.swift in Sources */,
 				06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */,
-				06717E332851BF3400FEB138 /* ImagineViewModel.swift in Sources */,
+				06717E332851BF3400FEB138 /* FutureOfMeViewModel.swift in Sources */,
 				06717E3F2851E78600FEB138 /* MyHomeView.swift in Sources */,
 				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
 				06B262B72864082700722A52 /* SignInResponse.swift in Sources */,
 				06B2629B285C3F1F00722A52 /* FormTextField.swift in Sources */,
 				06B262B92864307400722A52 /* TouchTicketResponse.swift in Sources */,
 				06B262BB28644C3000722A52 /* CancelTouchTicket.swift in Sources */,
+				0658B1E928772B2E00465938 /* FutureOfMe.swift in Sources */,
 				061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */,
 				064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */,
 				06B26293285B26BB00722A52 /* TicketViewModel.swift in Sources */,
@@ -888,6 +912,7 @@
 				06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */,
 				06B262CE28694B6D00722A52 /* TicketViewForPrefer.swift in Sources */,
 				06B262CA2865898F00722A52 /* NoTokenError.swift in Sources */,
+				0658B1EB28772BAB00465938 /* GetFutureOfMeResponse.swift in Sources */,
 				06B2629D285C4D5800722A52 /* TicketFormCategoryView.swift in Sources */,
 				06717E2628506D5D00FEB138 /* TicketLeadingShape.swift in Sources */,
 				063634EA2852132E00856928 /* SignUpApi.swift in Sources */,
@@ -899,6 +924,7 @@
 				063634F02858B56E00856928 /* AuthInterceptor.swift in Sources */,
 				06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */,
 				061F79DD2844B4870095AEAD /* SignInViewModel.swift in Sources */,
+				0658B1E728772ACF00465938 /* FutureOfMeApi.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* SignInView.swift in Sources */,
 				06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */,
 				06B262B02864032200722A52 /* SignInApi.swift in Sources */,
@@ -922,7 +948,9 @@
 				064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */,
 				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
 				06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */,
+				0658B1ED28772C1100465938 /* FutureOfMeRouter.swift in Sources */,
 				06B262CC286949F100722A52 /* TicketPreferView.swift in Sources */,
+				0658B1EF2877435600465938 /* PostFutureOfMeSubjectResponse.swift in Sources */,
 				061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */,
 				06B2628F285B1C9D00722A52 /* TicketListResponse.swift in Sources */,
 				06B262DA286B164900722A52 /* UIViewController + Extension.swift in Sources */,
@@ -1105,7 +1133,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1137,7 +1165,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
