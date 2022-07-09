@@ -43,9 +43,8 @@ enum TicketRouter: BaseRouter{
         switch self {
         case .postTicket(let ticket), .modifyTicket(let ticket):
             return [
-                "title" : ticket.title,
-                "start" : ticket.start,
-                "end" : ticket.end,
+                "subject" : ticket.subject,
+                "purpose" : ticket.purpose,
                 "color" : ticket.color.hexString,
                 "category": ticket.category.rawValue,
                 "touchCount": ticket.touchCount

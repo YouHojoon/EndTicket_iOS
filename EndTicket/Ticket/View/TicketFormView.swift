@@ -12,9 +12,8 @@ struct TicketFormView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var viewModel: TicketViewModel
     
-    @State private var title: String = ""
-    @State private var start: String = ""
-    @State private var end: String = ""
+    @State private var subject: String = ""
+    @State private var purpose: String = ""
     @State private var category: Ticket.Category = .allCases[0]
     @State private var color: Color = .ticketRed1
     @State private var touchCount: Int = 5
@@ -33,9 +32,8 @@ struct TicketFormView: View {
     init(_ ticket: Ticket){
         ticketId = ticket.id
         buttonType = .modify
-        _title = State(initialValue: ticket.title)
-        _start = State(initialValue: ticket.start)
-        _end = State(initialValue: ticket.end)
+        _subject = State(initialValue: ticket.subject)
+        _purpose = State(initialValue: ticket.purpose)
         _category = State(initialValue: ticket.category)
         _color = State(initialValue: ticket.color)
         _touchCount = State(initialValue: ticket.touchCount)
@@ -62,9 +60,8 @@ struct TicketFormView: View {
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    FormTextField(title:"제목", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "목표를 간단하게 적어보세요.",text: $title, isEssential: ticketId == nil)
-                    FormTextField(title:"시작역", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "목표를 이루려면 어떻게 해야 활까요?",text: $start, isEssential: ticketId == nil)
-                    FormTextField(title:"종착역", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "달성하고 나면, 나의 모습은 어떨까요?",text: $end, isEssential: ticketId == nil)
+                    FormTextField(title:"행동", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil)
+                    FormTextField(title:"목표", titleImage: Image("futureOfMe_description_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil)
                     Divider().padding(.vertical, 10)
                     TicketFormCategoryView(selected: $category,isEssential: ticketId == nil)
                     ColorSelectView(selected: $color)
@@ -98,7 +95,7 @@ struct TicketFormView: View {
                 }
             }
         }
-        .onChange(of: !title.isEmpty && !start.isEmpty && !end.isEmpty){
+        .onChange(of: !subject.isEmpty && !purpose.isEmpty){
             isEnabledButton = $0
         }
     }
@@ -112,7 +109,7 @@ struct TicketFormView: View {
                 .font(.interMedium(size: 13))
                 .underline()
                 .onTapGesture {
-                    viewModel.postTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount))
+                    viewModel.postTicket(Ticket(category: category, subject: subject, purpose: purpose, color: color, touchCount: touchCount))
                 }
                 .onReceive(viewModel.isPostTicketSuccess){result in
                     withAnimation{
@@ -124,7 +121,7 @@ struct TicketFormView: View {
                 .font(.interMedium(size: 13))
                 .underline()
                 .onTapGesture{
-                    viewModel.modifyTicket(Ticket(title: title, category: category, start: start, end: end, color: color, touchCount: touchCount, id:ticketId!))
+                    viewModel.modifyTicket(Ticket(category: category, subject: subject, purpose: purpose, color: color, touchCount: touchCount, id:ticketId!))
                 }
                 .onReceive(viewModel.isModifyTicketSuccess){result in
                     withAnimation{
