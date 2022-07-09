@@ -50,7 +50,7 @@ struct TicketViewForPrefer: View {
                             Image(systemName: "arrow.right.circle")
                                 .font(.system(size: 15))
                                 .foregroundColor(.gray500)
-                            Text("\(ticket.start)")
+                            Text("\(ticket.subject)")
                                 .font(.system(size: 12,weight: .medium))
                                 .foregroundColor(.black)
                         }.padding(.bottom,5)
@@ -58,7 +58,7 @@ struct TicketViewForPrefer: View {
                             Image("futureOfMe_description_icon")
                                 .renderingMode(.template)
                                 .foregroundColor(.gray500)
-                            Text("\(ticket.end)")
+                            Text("\(ticket.purpose)")
                                 .font(.system(size: 12,weight: .medium))
                                 .foregroundColor(.black)
                         }

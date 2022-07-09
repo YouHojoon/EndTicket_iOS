@@ -61,7 +61,7 @@ struct TicketView: View {
                     .renderingMode(.template)
                     .font(.system(size: 15))
                     
-                Text("\(ticket.start)")
+                Text("\(ticket.subject)")
                     .font(.system(size: 12,weight: .medium))
                     .multilineTextAlignment(.leading)
             }.padding(.bottom,10)
@@ -69,7 +69,7 @@ struct TicketView: View {
             HStack(spacing:5){
                 Image("futureOfMe_description_icon")
                     .renderingMode(.template)
-                Text("\(ticket.end)")
+                Text("\(ticket.purpose)")
                     .font(.system(size: 12,weight: .medium))
                     .multilineTextAlignment(.trailing)
             }.foregroundColor(ticket.touchCount == ticket.currentCount ? .black: .gray300)

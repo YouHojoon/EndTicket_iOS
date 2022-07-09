@@ -9,10 +9,9 @@ import Foundation
 import SwiftUI
 struct TicketResponse:Codable{
     let id: Int
-    let title: String
     let category: String
-    let start: String
-    let end: String
+    let subject: String
+    let purpose: String
     let color: String
     let touchCount: Int
     let isSuccess: String?
@@ -21,6 +20,6 @@ struct TicketResponse:Codable{
     
     func ticketResponseToTicket() -> Ticket{
         let color = Color(hex: color)
-        return Ticket(title: title, category: Ticket.Category.init(rawValue: category)!, start: start, end: end, color: color, touchCount: touchCount, currentCount: Int(currentCount ?? "0")!, id: id)
+        return Ticket(category: Ticket.Category.init(rawValue: category)!, subject: subject, purpose: purpose, color: color, touchCount: touchCount, currentCount: Int(currentCount ?? "0")!, id: id)
     }
 }

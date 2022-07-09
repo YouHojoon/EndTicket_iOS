@@ -37,7 +37,9 @@ struct FormTextField: View {
         VStack(alignment:.leading, spacing:0){
             HStack(spacing:0){
                 if let titleImage = self.titleImage {
-                    titleImage.resizable().aspectRatio(contentMode: .fit)
+                    titleImage
+                        .renderingMode(.template)
+                        .resizable().aspectRatio(contentMode: .fit)
                         .frame(width:15,height: 15)
                         .foregroundColor(.black)
                         .padding(.trailing,5)
