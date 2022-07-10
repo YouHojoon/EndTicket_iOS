@@ -92,8 +92,9 @@ struct FutureOfMeProfileView: View {
             .background(Color.white.edgesIgnoringSafeArea(.top))
             .onAppear{
                 viewModel.fetchFutureOfMe()
-                
-            }.alert(isPresented: $shouldShowAlert){
+            }
+            //MARK: - Alert
+            .alert(isPresented: $shouldShowAlert){
                 EndTicketAlert{
                     VStack{
                         Text("미래의 나를 한마디로 설명해줄래요?")
@@ -115,6 +116,7 @@ struct FutureOfMeProfileView: View {
                     }
                 }
             }
+           
     }
 }
 
