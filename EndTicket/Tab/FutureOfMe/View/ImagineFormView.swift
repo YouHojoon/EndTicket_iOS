@@ -71,6 +71,7 @@ struct ImagineFormView: View{
                                 .foregroundColor(Color( #colorLiteral(red: 0.9623875022, green: 0.3615829945, blue: 0.2794611752, alpha: 1)))
                                 .frame(maxWidth:.infinity, minHeight: 50, maxHeight: 50)
                         }.background(Color.white)
+                            .cornerRadius(10)
                     }
                     
                 }.padding(.top, 30)
