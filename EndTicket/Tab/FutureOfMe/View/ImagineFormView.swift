@@ -117,7 +117,7 @@ struct ImagineFormView: View{
         }//MARK: - 삭제 alert
         .alert(isPresented: $shouldShowDeleteAlert){
             EndTicketAlert{
-                Text("티켓을 삭제하시겠습니까?")
+                Text("상상하기를 삭제하시겠습니까?")
                     .font(.system(size:18,weight:.bold))
             }primaryButton: {
                 EndTicketAlertButton(label:Text("취소").foregroundColor(.gray400)){
