@@ -30,6 +30,7 @@ final class FutureOfMeViewModel:ObservableObject{
                 if $0{
                     self.imagines.remove(at: index)
                     self.isSuccessTouchImagine.send((id,true))
+                    self.futureOfMe?.experience += 20
                 }
                 else{
                     self.isSuccessTouchImagine.send((id,false))

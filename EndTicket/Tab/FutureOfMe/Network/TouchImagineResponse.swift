@@ -13,7 +13,7 @@ struct TouchImagineResponse: BaseResponse{
     let result: Result?
     
     struct Result:Codable{
-        let id: String
+        let id: Int
         let isSuccess: Int
     }
 }
