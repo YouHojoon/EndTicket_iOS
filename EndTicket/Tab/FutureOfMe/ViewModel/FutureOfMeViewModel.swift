@@ -66,17 +66,19 @@ final class FutureOfMeViewModel:ObservableObject{
             }).store(in: &subscriptions)
     }
     func fetchImagines(){
-        FutureOfMeApi.shared.getImagines()
-            .sink(receiveCompletion: {
-                switch $0{
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("상상해보기 조회 실패 : \(error.localizedDescription)")
-                }
-            }, receiveValue: {
-                self.imagines = $0
-            }).store(in: &subscriptions)
+        if imagines.isEmpty{//서버 통신을 줄이기 위해서 비어 있을 때만 요청
+            FutureOfMeApi.shared.getImagines()
+                .sink(receiveCompletion: {
+                    switch $0{
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("상상해보기 조회 실패 : \(error.localizedDescription)")
+                    }
+                }, receiveValue: {
+                    self.imagines = $0
+                }).store(in: &subscriptions)
+        }
     }
     func postImagine(_ imagine: Imagine){
         FutureOfMeApi.shared.postImagine(imagine)
