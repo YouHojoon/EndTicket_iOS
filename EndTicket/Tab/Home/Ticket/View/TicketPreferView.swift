@@ -16,10 +16,6 @@ struct TicketPreferView: View {
     }
     
     var body: some View {
-        
-       
-        
-        
         VStack(alignment:.leading, spacing:0){
             HStack(spacing:0){
                 Image(systemName: "arrow.backward")
