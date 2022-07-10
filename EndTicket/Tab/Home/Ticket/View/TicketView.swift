@@ -157,14 +157,14 @@ struct TicketView: View {
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
         }
-        .onReceive(viewModel.isDeleteTicketSuccess){
+        .onReceive(viewModel.isSuccessDeleteTicket){
             if $0 == ticket.id && $1{
                 withAnimation(.easeInOut){
                     height = 0
                 }
             }
         }
-        .onReceive(viewModel.isTouchTicketSuccess){id, isSuccess in
+        .onReceive(viewModel.isSuccessTouchTicket){id, isSuccess in
             let index = viewModel.tickets.firstIndex{$0.id == id}!
             let ticket = viewModel.tickets[index]
             if isSuccess && self.ticket.id == id

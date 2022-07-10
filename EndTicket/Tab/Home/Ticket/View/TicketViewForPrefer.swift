@@ -92,7 +92,7 @@ struct TicketViewForPrefer: View {
             .foregroundColor(ticket.color)
         }.frame(height:100)
             
-        .onReceive(viewModel.isPostTicketSuccess){
+        .onReceive(viewModel.isSuccessPostTicket){
             if isAddButtonTapped{
                 shouldShowAlert = $0
             }

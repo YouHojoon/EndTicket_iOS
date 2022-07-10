@@ -19,7 +19,7 @@ struct TicketFormView: View {
     @State private var touchCount: Int = 5
     @State private var shouldShowAlert = false
     @State private var isEnabledButton = false
-    
+    @State private var shouldShowDeleteAlert = false
     private let buttonType:ButtonType
     private let ticketId: Int?
     
@@ -66,6 +66,18 @@ struct TicketFormView: View {
                     TicketFormCategoryView(selected: $category,isEssential: ticketId == nil)
                     ColorSelectView(selected: $color)
                     TicketTouchCountSelectView(selected: $touchCount,isEssential: ticketId == nil)
+                        .padding(.bottom, 40)
+                    if ticketId != nil{
+                        Button{
+                            shouldShowDeleteAlert = true
+                        }label: {
+                            Text("삭제하기")
+                                .font(.interSemiBold(size: 14))
+                                .foregroundColor(Color( #colorLiteral(red: 0.9623875022, green: 0.3615829945, blue: 0.2794611752, alpha: 1)))
+                                .frame(maxWidth:.infinity, minHeight: 50, maxHeight: 50)
+                        }.background(Color.white)
+                    }
+                    
                 }.padding(.top, 30)
             }
             .padding(.horizontal, 20)
@@ -98,6 +110,27 @@ struct TicketFormView: View {
         .onChange(of: !subject.isEmpty && !purpose.isEmpty){
             isEnabledButton = $0
         }
+        .onReceive(viewModel.isSuccessDeleteTicket){_, result in
+            if result{
+                dismiss()
+            }
+        }//MARK: - 삭제 alert
+        .alert(isPresented: $shouldShowDeleteAlert){
+            EndTicketAlert{
+                Text("티켓을 삭제하시겠습니까?")
+                    .font(.system(size:18,weight:.bold))
+            }primaryButton: {
+                EndTicketAlertButton(label:Text("취소").foregroundColor(.gray400)){
+                    shouldShowDeleteAlert = false
+                }
+            }secondaryButton: {
+                EndTicketAlertButton(label:Text("삭제").foregroundColor(.red)){
+                    viewModel.deleteTicket(id: ticketId!)
+                    shouldShowDeleteAlert = false
+                    dismiss()
+                }
+            }
+        }
     }
     
     
@@ -111,7 +144,7 @@ struct TicketFormView: View {
                 .onTapGesture {
                     viewModel.postTicket(Ticket(category: category, subject: subject, purpose: purpose, color: color, touchCount: touchCount))
                 }
-                .onReceive(viewModel.isPostTicketSuccess){result in
+                .onReceive(viewModel.isSuccessPostTicket){result in
                     withAnimation{
                         dismiss()
                     }
@@ -123,7 +156,7 @@ struct TicketFormView: View {
                 .onTapGesture{
                     viewModel.modifyTicket(Ticket(category: category, subject: subject, purpose: purpose, color: color, touchCount: touchCount, id:ticketId!))
                 }
-                .onReceive(viewModel.isModifyTicketSuccess){result in
+                .onReceive(viewModel.isSuccessModifyTicket){result in
                     withAnimation{
                         dismiss()
                     }
