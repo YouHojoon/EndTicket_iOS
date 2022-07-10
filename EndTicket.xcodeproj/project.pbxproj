@@ -303,6 +303,7 @@
 		064B50E2284E3A09000EEF62 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				06B2629E285C563700722A52 /* Ticket */,
 				064B50E6284E43E9000EEF62 /* HomeView.swift */,
 			);
 			path = Home;
@@ -375,7 +376,6 @@
 			isa = PBXGroup;
 			children = (
 				063BFAE92871D42800626E16 /* Common */,
-				06B2629E285C563700722A52 /* Ticket */,
 				06717E2028504D4C00FEB138 /* Tab */,
 				06717E0A2840ADF600FEB138 /* SignIn */,
 				061F79DE2844B7D90095AEAD /* SignUp */,
