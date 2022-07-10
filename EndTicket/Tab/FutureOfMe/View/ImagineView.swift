@@ -76,7 +76,7 @@ struct ImagineView: View {
             }
         }
         .fullScreenCover(isPresented:$shouldShowModifyView){
-            ImagineFormView()
+            ImagineFormView(imagine)
         }
     }
 }

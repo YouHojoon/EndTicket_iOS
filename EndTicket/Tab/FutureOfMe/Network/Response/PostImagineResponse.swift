@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-struct PostImagineResponse:BaseResponse{
+struct PostOrModifyImagineResponse:BaseResponse{
     let isSuccess: Bool
     let message: String
     let code: Int

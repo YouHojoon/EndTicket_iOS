@@ -13,6 +13,8 @@ enum FutureOfMeRouter: BaseRouter{
     case postFutureOfMeSubject(String)
     case getImagine
     case postImagine(Imagine)
+    case modifyImagine(Imagine)
+    case deleteImagine(Int)
     case touchImagine(Int)
     
     var endPoint: String{
@@ -22,7 +24,9 @@ enum FutureOfMeRouter: BaseRouter{
             return "\(baseEndPoint)"
         case .getImagine,  .postImagine:
             return "\(baseEndPoint)/dream"
-        case .touchImagine(let imagineId):
+        case .modifyImagine(let imagine):
+            return "\(baseEndPoint)/dream/\(imagine.id)"
+        case .touchImagine(let imagineId), .deleteImagine(let imagineId):
             return "\(baseEndPoint)/dream/\(imagineId)"
         }
     }
@@ -33,8 +37,12 @@ enum FutureOfMeRouter: BaseRouter{
             return .get
         case .postImagine, .touchImagine:
             return .post
+        case .modifyImagine:
+            return .patch
         case .postFutureOfMeSubject:
             return .patch
+        case .deleteImagine:
+            return .delete
         }
     }
     
@@ -42,7 +50,7 @@ enum FutureOfMeRouter: BaseRouter{
         switch self {
         case .postFutureOfMeSubject(let subject):
             return ["subject":subject]
-        case .postImagine(let imagine):
+        case .postImagine(let imagine), .modifyImagine(let imagine):
             return ["subject":imagine.subject, "purpose": imagine.purpose, "color": imagine.color.hexString]
         default:
             return Parameters()

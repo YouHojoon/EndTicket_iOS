@@ -10,7 +10,7 @@ struct FutureOfMe:Codable{
     let id: String
     var subject: String?
     let title: String?
-    let level: Int
+    var level: Int
     var experience: Int
     let characterImageUrl: URL?
     let characterImageName: String?
