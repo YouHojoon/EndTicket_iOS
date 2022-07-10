@@ -13,24 +13,26 @@ final class TicketViewModel:ObservableObject{
     @Published var tickets:[Ticket] = []
     @Published var preferTicket:Ticket? = nil
     
-    let isPostTicketSuccess = PassthroughSubject<Bool,Never>()
-    let isModifyTicketSuccess = PassthroughSubject<Bool,Never>()
-    let isTouchTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
-    let isCancelTouchTicketSuccess = PassthroughSubject<Bool,Never>()
-    let isDeleteTicketSuccess = PassthroughSubject<(Int,Bool),Never>()
+    let isSuccessPostTicket = PassthroughSubject<Bool,Never>()
+    let isSuccessModifyTicket = PassthroughSubject<Bool,Never>()
+    let isSuccessTouchTicket = PassthroughSubject<(Int,Bool),Never>()
+    let isSuccessCancelTouchTicket = PassthroughSubject<Bool,Never>()
+    let isSuccessDeleteTicket = PassthroughSubject<(Int,Bool),Never>()
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchTickets(){
-        TicketApi.shared.getTickets().receive(on: DispatchQueue.main).sink(receiveCompletion: {
-            switch $0{
-            case .finished:
-                break
-            case .failure(let error):
-                print("ticket 불러오기 실패 : \(error.localizedDescription)")
-            }
-        }, receiveValue: {
-            self.tickets = $0
-        }).store(in: &subscriptions)
+        if tickets.isEmpty{
+            TicketApi.shared.getTickets().receive(on: DispatchQueue.main).sink(receiveCompletion: {
+                switch $0{
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("ticket 불러오기 실패 : \(error.localizedDescription)")
+                }
+            }, receiveValue: {
+                self.tickets = $0
+            }).store(in: &subscriptions)
+        }
     }
     func postTicket(_ ticket: Ticket){
         TicketApi.shared.postTicket(ticket).receive(on:DispatchQueue.main).sink(receiveCompletion: {
@@ -42,12 +44,12 @@ final class TicketViewModel:ObservableObject{
             }
         }, receiveValue: {
             guard $0 != nil else{
-                self.isPostTicketSuccess.send(false)
+                self.isSuccessPostTicket.send(false)
                 return
             }
             
             self.tickets.append($0!)
-            self.isPostTicketSuccess.send(true)
+            self.isSuccessPostTicket.send(true)
         }).store(in: &subscriptions)
     }
     func deleteTicket(id: Int){
@@ -59,7 +61,7 @@ final class TicketViewModel:ObservableObject{
                 print("ticket 삭제 실패 : \(error.localizedDescription)")
             }
         }, receiveValue: {
-            self.isDeleteTicketSuccess.send((id,$0))
+            self.isSuccessDeleteTicket.send((id,$0))
             if $0{
                 let index = self.tickets.firstIndex(where: {$0.id == id})!
                 self.tickets.remove(at: index)
@@ -76,12 +78,12 @@ final class TicketViewModel:ObservableObject{
             }
         }, receiveValue: {
             guard $0 != nil else{
-                self.isModifyTicketSuccess.send(false)
+                self.isSuccessModifyTicket.send(false)
                 return
             }
             let index = self.tickets.firstIndex{$0.id == ticket.id}!
             self.tickets[index] = $0!
-            self.isModifyTicketSuccess.send(true)
+            self.isSuccessModifyTicket.send(true)
         }).store(in: &subscriptions)
     }
     
@@ -96,7 +98,7 @@ final class TicketViewModel:ObservableObject{
         }, receiveValue: {
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount+=1
-            self.isTouchTicketSuccess.send((id,$0))
+            self.isSuccessTouchTicket.send((id,$0))
         }).store(in: &subscriptions)
     }
     
@@ -111,7 +113,7 @@ final class TicketViewModel:ObservableObject{
         }, receiveValue: {
             let index = self.tickets.firstIndex(where: {$0.id == id})!
             self.tickets[index].currentCount-=1
-            self.isCancelTouchTicketSuccess.send($0)
+            self.isSuccessCancelTouchTicket.send($0)
         }).store(in: &subscriptions)
     }
     
