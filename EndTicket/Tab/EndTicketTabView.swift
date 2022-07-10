@@ -69,6 +69,8 @@ struct EndTicketTabView: View {
                                         .foregroundColor(.gray300)
                                         .multilineTextAlignment(.center)
                                 }.foregroundColor(Color.black)
+                                    .padding(.bottom,40)
+                                    .padding(.top,30)
                             }primaryButton: {
                                 EndTicketAlertButton(label:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
                                     shouldShowAlert = false
