@@ -59,7 +59,9 @@ struct TicketView: View {
             HStack(spacing:5){
                 Image(systemName: "arrow.right.circle")
                     .renderingMode(.template)
-                    .font(.system(size: 15))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 15, height: 15)
                     
                 Text("\(ticket.subject)")
                     .font(.system(size: 12,weight: .medium))
@@ -69,6 +71,7 @@ struct TicketView: View {
             HStack(spacing:5){
                 Image("futureOfMe_description_icon")
                     .renderingMode(.template)
+                    
                 Text("\(ticket.purpose)")
                     .font(.system(size: 12,weight: .medium))
                     .multilineTextAlignment(.trailing)

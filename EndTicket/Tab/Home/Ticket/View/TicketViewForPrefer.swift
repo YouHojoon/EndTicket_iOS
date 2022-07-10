@@ -48,7 +48,9 @@ struct TicketViewForPrefer: View {
                         }.padding(.bottom, 10)
                         HStack(spacing:5){
                             Image(systemName: "arrow.right.circle")
-                                .font(.system(size: 15))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 15, height: 15)
                                 .foregroundColor(.gray500)
                             Text("\(ticket.subject)")
                                 .font(.system(size: 12,weight: .medium))
