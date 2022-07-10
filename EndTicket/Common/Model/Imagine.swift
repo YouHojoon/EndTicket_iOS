@@ -8,11 +8,20 @@
 import Foundation
 import SwiftUI
 
-struct Imagine{
+struct Imagine: Identifiable{
+    let id: Int
     let subject: String
     let purpose: String
     let color: Color
-    var isSuccessed: Bool = false
+    var isSuccess: Bool
+    
+    init(subject:String, purpose:String, color: Color, isSuccess: Bool = false, id:Int = 0){
+        self.subject = subject
+        self.purpose = purpose
+        self.color = color
+        self.isSuccess = isSuccess
+        self.id = id
+    }
     
     static func getDummys() -> [Imagine]{
         return [

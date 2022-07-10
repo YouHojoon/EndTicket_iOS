@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FutureOfMeView: View {
     @State private var shouldShowImagineFormView = false
-    
+    @EnvironmentObject private var viewModel: FutureOfMeViewModel
     init(){
         UIScrollView.appearance().bounces = false
     }
@@ -39,12 +39,37 @@ struct FutureOfMeView: View {
                 Divider().padding(.bottom, 21)
                 
                 ScrollView(showsIndicators:false){
-                    VStack(alignment:.leading,spacing:20){
-                        ForEach(0..<4){index in
-                                ImagineView(index)
-                                
+                    if !viewModel.imagines.isEmpty{
+                        VStack(alignment:.leading,spacing:20){
+                            ForEach(viewModel.imagines, id: \.id){index in
+                                    ImagineView(index)
+                                    
+                            }
                         }
                     }
+                    
+                    else{
+                        VStack(spacing:0){
+                            Image("futureOfMe_image")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 208, height: 201)
+                                .padding(.bottom,5)
+                            Text("미래의 나는 어떨지 상상해보세요:)")
+                                .font(.interSemiBold(size: 14))
+                                .padding(.bottom,20)
+                            Button{
+                                shouldShowImagineFormView = true
+                            }label: {
+                                Text("상상하기")
+                                    .font(.system(size: 15,weight: .bold))
+                                    .frame(maxWidth:.infinity, minHeight: 50, maxHeight: 50)
+                                    .foregroundColor(.white)
+                            }.background(Color.mainColor)
+                            .cornerRadius(10)
+                        }
+                    }
+                    
                 }
             }.padding(.horizontal, 25)
         }
@@ -52,6 +77,9 @@ struct FutureOfMeView: View {
         .background(Color(#colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).ignoresSafeArea())
         .fullScreenCover(isPresented:$shouldShowImagineFormView){
             ImagineFormView()
+        }
+        .onAppear{
+            viewModel.fetchImagines()
         }
         
     }
