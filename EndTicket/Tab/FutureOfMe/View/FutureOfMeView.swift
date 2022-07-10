@@ -88,6 +88,7 @@ struct FutureOfMeView: View {
         .onAppear{
             viewModel.fetchImagines()
         }
+        //MARK: - alert
         .alert(isPresented: $shouldShowAlert){
             EndTicketAlert{
                 VStack(spacing:20){
@@ -100,6 +101,8 @@ struct FutureOfMeView: View {
                         .foregroundColor(.gray300)
                         .multilineTextAlignment(.center)
                 }.foregroundColor(Color.black)
+                    .padding(.top, 40)
+                    .padding(.bottom, 30)
             }primaryButton: {
                 EndTicketAlertButton(label:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
                     shouldShowAlert = false

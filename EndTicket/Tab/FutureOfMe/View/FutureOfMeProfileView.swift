@@ -91,7 +91,7 @@ struct FutureOfMeProfileView: View {
             .padding(.vertical)
             .background(Color.white.edgesIgnoringSafeArea(.top))
             .onAppear{
-                viewModel.getFutureOfMe()
+                viewModel.fetchFutureOfMe()
                 
             }.alert(isPresented: $shouldShowAlert){
                 EndTicketAlert{

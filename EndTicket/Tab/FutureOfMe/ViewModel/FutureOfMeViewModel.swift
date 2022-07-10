@@ -37,7 +37,7 @@ final class FutureOfMeViewModel:ObservableObject{
                 
             }).store(in: &subscriptions)
     }
-    func getFutureOfMe(){
+    func fetchFutureOfMe(){
         FutureOfMeApi.shared.getFutureOfMe().sink(receiveCompletion: {
             switch $0{
             case .finished:
