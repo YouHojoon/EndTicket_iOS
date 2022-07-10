@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FutureOfMeView: View {
     @State private var shouldShowImagineFormView = false
+    @State private var shouldShowAlert = false
+    @EnvironmentObject private var viewModel: FutureOfMeViewModel
     
     init(){
         UIScrollView.appearance().bounces = false
@@ -27,8 +29,13 @@ struct FutureOfMeView: View {
                         .font(.appleSDGothicBold(size: 16))
                     Spacer()
                     Button{
-                        withAnimation(.easeInOut){
-                            shouldShowImagineFormView = true
+                        if viewModel.imagines.count == 6{
+                            shouldShowAlert = true
+                        }
+                        else{
+                            withAnimation(.easeInOut){
+                                shouldShowImagineFormView = true
+                            }
                         }
                     }label: {
                         Image(systemName: "plus")
@@ -39,12 +46,37 @@ struct FutureOfMeView: View {
                 Divider().padding(.bottom, 21)
                 
                 ScrollView(showsIndicators:false){
-                    VStack(alignment:.leading,spacing:20){
-                        ForEach(0..<4){index in
-                                ImagineView(index)
-                                
+                    if !viewModel.imagines.isEmpty{
+                        VStack(alignment:.leading,spacing:20){
+                            ForEach(viewModel.imagines, id: \.id){index in
+                                    ImagineView(index)
+                                    
+                            }
                         }
                     }
+                    
+                    else{
+                        VStack(spacing:0){
+                            Image("futureOfMe_image")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 208, height: 201)
+                                .padding(.bottom,5)
+                            Text("미래의 나는 어떨지 상상해보세요:)")
+                                .font(.interSemiBold(size: 14))
+                                .padding(.bottom,20)
+                            Button{
+                                shouldShowImagineFormView = true
+                            }label: {
+                                Text("상상하기")
+                                    .font(.system(size: 15,weight: .bold))
+                                    .frame(maxWidth:.infinity, minHeight: 50, maxHeight: 50)
+                                    .foregroundColor(.white)
+                            }.background(Color.mainColor)
+                            .cornerRadius(10)
+                        }
+                    }
+                    
                 }
             }.padding(.horizontal, 25)
         }
@@ -53,7 +85,30 @@ struct FutureOfMeView: View {
         .fullScreenCover(isPresented:$shouldShowImagineFormView){
             ImagineFormView()
         }
-        
+        .onAppear{
+            viewModel.fetchImagines()
+        }
+        //MARK: - alert
+        .alert(isPresented: $shouldShowAlert){
+            EndTicketAlert{
+                VStack(spacing:20){
+                    Text("현재 목표에 집중해주세요!")
+                        .font(.system(size: 18, weight: .bold))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(0.83)
+                    Text("새로 추가하고 싶다면\n하나를 삭제하고 추가해주세요:)")
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundColor(.gray300)
+                        .multilineTextAlignment(.center)
+                }.foregroundColor(Color.black)
+                    .padding(.top, 40)
+                    .padding(.bottom, 30)
+            }primaryButton: {
+                EndTicketAlertButton(label:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
+                    shouldShowAlert = false
+                }
+            }
+        }
     }
 }
 

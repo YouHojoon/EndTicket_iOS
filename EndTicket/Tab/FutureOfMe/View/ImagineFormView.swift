@@ -10,15 +10,15 @@ import SwiftUI
 struct ImagineFormView: View{
     private var buttonType:ButtonType = .add
     
-    @State private var behavior = ""
-    @State private var goal = ""
+    @State private var subject = ""
+    @State private var purpose = ""
     @State private var color: Color = .ticketRed1
     
     @State private var shouldShowAlert = false
     @State private var isEnabledButton = false
     
     @Environment(\.dismiss) private var dismiss
-   
+    @EnvironmentObject private var viewModel: FutureOfMeViewModel
     var body: some View{
         VStack(spacing:0){
             HStack(spacing:0){
@@ -31,6 +31,7 @@ struct ImagineFormView: View{
                 Text("상상해보기")
                     .font(.interSemiBold(size: 20))
                 Spacer()
+                
                 addOrModifyButton
                     .disabled(!isEnabledButton)
                     .foregroundColor(isEnabledButton ? .black : .gray600)
@@ -41,8 +42,8 @@ struct ImagineFormView: View{
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    FormTextField(title:"제목",titleImage: Image(systemName: "arrow.right.circle"), placeholder: "시작역-목표를 이루려면 어떤 행동을 해야 할까요?",text: $behavior)
-                    FormTextField(title:"목표",titleImage: Image("futureOfMe_description_icon"), placeholder: "종착역-달성하고 나면, 나의 모습은 어떨까요?",text: $goal)
+                    FormTextField(title:"제목",titleImage: Image(systemName: "arrow.right.circle"), placeholder: "시작역-목표를 이루려면 어떤 행동을 해야 할까요?",text: $subject)
+                    FormTextField(title:"목표",titleImage: Image("futureOfMe_description_icon"), placeholder: "종착역-달성하고 나면, 나의 모습은 어떨까요?",text: $purpose)
                     Divider().padding(.vertical, 10)
                     ColorSelectView(selected: $color)
                 }.padding(.top, 30)
@@ -67,8 +68,13 @@ struct ImagineFormView: View{
                 }
             }
         }
-        .onChange(of: !behavior.isEmpty && !goal.isEmpty){
+        .onChange(of: !subject.isEmpty && !purpose.isEmpty){
             isEnabledButton = $0
+        }
+        .onReceive(viewModel.isSuccessPostImagine){
+            if $0{
+                dismiss()
+            }
         }
         
         
@@ -83,7 +89,7 @@ struct ImagineFormView: View{
                 .font(.interMedium(size: 13))
                 .underline()
                 .onTapGesture {
-                    
+                    viewModel.postImagine(Imagine(subject: subject, purpose: purpose, color: color))
                 }
                 
         case .modify:
