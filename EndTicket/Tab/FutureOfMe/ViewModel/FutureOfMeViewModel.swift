@@ -12,9 +12,10 @@ final class FutureOfMeViewModel:ObservableObject{
     @Published public private(set) var imagines:[Imagine] = []
     @Published public private(set) var futureOfMe: FutureOfMe? = nil
     let isSuccessPostImagine = PassthroughSubject<Bool, Never>()
+    let isSuccessTouchImagine = PassthroughSubject<(Int,Bool), Never>()
     
     private var subscriptions = Set<AnyCancellable>()
-    func toggleImagineIsSuccessed(id:Int){
+    func touchImagine(id:Int){
         let index = imagines.firstIndex{$0.id == id}!
         FutureOfMeApi.shared.touchImagine(id: id)
             .sink(receiveCompletion: {
@@ -27,7 +28,11 @@ final class FutureOfMeViewModel:ObservableObject{
             }
                   , receiveValue: {
                 if $0{
-                    self.imagines[index].isSuccess.toggle()
+                    self.imagines.remove(at: index)
+                    self.isSuccessTouchImagine.send((id,true))
+                }
+                else{
+                    self.isSuccessTouchImagine.send((id,false))
                 }
                 
             }).store(in: &subscriptions)

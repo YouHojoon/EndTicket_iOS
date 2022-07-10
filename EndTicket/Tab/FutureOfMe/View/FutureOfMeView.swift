@@ -9,7 +9,9 @@ import SwiftUI
 
 struct FutureOfMeView: View {
     @State private var shouldShowImagineFormView = false
+    @State private var shouldShowAlert = false
     @EnvironmentObject private var viewModel: FutureOfMeViewModel
+    
     init(){
         UIScrollView.appearance().bounces = false
     }
@@ -27,8 +29,13 @@ struct FutureOfMeView: View {
                         .font(.appleSDGothicBold(size: 16))
                     Spacer()
                     Button{
-                        withAnimation(.easeInOut){
-                            shouldShowImagineFormView = true
+                        if viewModel.imagines.count == 6{
+                            shouldShowAlert = true
+                        }
+                        else{
+                            withAnimation(.easeInOut){
+                                shouldShowImagineFormView = true
+                            }
                         }
                     }label: {
                         Image(systemName: "plus")
@@ -81,7 +88,24 @@ struct FutureOfMeView: View {
         .onAppear{
             viewModel.fetchImagines()
         }
-        
+        .alert(isPresented: $shouldShowAlert){
+            EndTicketAlert{
+                VStack(spacing:20){
+                    Text("현재 목표에 집중해주세요!")
+                        .font(.system(size: 18, weight: .bold))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(0.83)
+                    Text("새로 추가하고 싶다면\n하나를 삭제하고 추가해주세요:)")
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundColor(.gray300)
+                        .multilineTextAlignment(.center)
+                }.foregroundColor(Color.black)
+            }primaryButton: {
+                EndTicketAlertButton(label:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
+                    shouldShowAlert = false
+                }
+            }
+        }
     }
 }
 
