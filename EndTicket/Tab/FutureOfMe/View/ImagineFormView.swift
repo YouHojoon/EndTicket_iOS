@@ -8,17 +8,32 @@
 import Foundation
 import SwiftUI
 struct ImagineFormView: View{
-    private var buttonType:ButtonType = .add
-    
+    private let buttonType:ButtonType
+    private let imagineId: Int?
     @State private var subject = ""
     @State private var purpose = ""
     @State private var color: Color = .ticketRed1
     
     @State private var shouldShowAlert = false
+    @State private var shouldShowDeleteAlert = false
     @State private var isEnabledButton = false
     
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var viewModel: FutureOfMeViewModel
+    
+    
+    init(){
+        imagineId = nil
+        buttonType = .add
+    }
+    init(_ imagine: Imagine){
+        _subject = State(initialValue: imagine.subject)
+        _purpose = State(initialValue: imagine.purpose)
+        _color = State(initialValue: imagine.color)
+        imagineId = imagine.id
+        buttonType = .modify
+    }
+    
     var body: some View{
         VStack(spacing:0){
             HStack(spacing:0){
@@ -42,13 +57,27 @@ struct ImagineFormView: View{
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    FormTextField(title:"제목",titleImage: Image(systemName: "arrow.right.circle"), placeholder: "시작역-목표를 이루려면 어떤 행동을 해야 할까요?",text: $subject)
-                    FormTextField(title:"목표",titleImage: Image("futureOfMe_description_icon"), placeholder: "종착역-달성하고 나면, 나의 모습은 어떨까요?",text: $purpose)
+                    FormTextField(title:"제목",titleImage: Image(systemName: "arrow.right.circle"), placeholder: "시작역-목표를 이루려면 어떤 행동을 해야 할까요?",text: $subject, isEssential: imagineId == nil)
+                    FormTextField(title:"목표",titleImage: Image("futureOfMe_description_icon"), placeholder: "종착역-달성하고 나면, 나의 모습은 어떨까요?",text: $purpose, isEssential: imagineId == nil)
                     Divider().padding(.vertical, 10)
                     ColorSelectView(selected: $color)
+                        .padding(.bottom, 40)
+                    if imagineId != nil{
+                        Button{
+                            shouldShowDeleteAlert = true
+                        }label: {
+                            Text("삭제하기")
+                                .font(.interSemiBold(size: 14))
+                                .foregroundColor(Color( #colorLiteral(red: 0.9623875022, green: 0.3615829945, blue: 0.2794611752, alpha: 1)))
+                                .frame(maxWidth:.infinity, minHeight: 50, maxHeight: 50)
+                        }.background(Color.white)
+                    }
+                    
                 }.padding(.top, 30)
             }
             .padding(.horizontal, 20)
+            
+            
             Spacer()
         }
       
@@ -76,6 +105,32 @@ struct ImagineFormView: View{
                 dismiss()
             }
         }
+        .onReceive(viewModel.isSuccessModifyImagine){
+            if $0{
+                dismiss()
+            }
+        }
+        .onReceive(viewModel.isSuccessDeleteImagine){
+            if $0{
+                dismiss()
+            }
+        }//MARK: - 삭제 alert
+        .alert(isPresented: $shouldShowDeleteAlert){
+            EndTicketAlert{
+                Text("티켓을 삭제하시겠습니까?")
+                    .font(.system(size:18,weight:.bold))
+            }primaryButton: {
+                EndTicketAlertButton(label:Text("취소").foregroundColor(.gray400)){
+                    shouldShowDeleteAlert = false
+                }
+            }secondaryButton: {
+                EndTicketAlertButton(label:Text("삭제").foregroundColor(.red)){
+                    viewModel.deleteImagine(id: imagineId!)
+                    shouldShowDeleteAlert = false
+                    dismiss()
+                }
+            }
+        }
         
         
     }
@@ -97,7 +152,7 @@ struct ImagineFormView: View{
                 .font(.interMedium(size: 13))
                 .underline()
                 .onTapGesture{
-                   
+                    viewModel.modifyImagine(Imagine(subject: subject, purpose: purpose, color: color, id: imagineId!))
                 }
                 
         }

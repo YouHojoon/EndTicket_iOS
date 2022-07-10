@@ -35,6 +35,7 @@
 		0658B1F328796A0400465938 /* ImagineResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1F228796A0400465938 /* ImagineResponse.swift */; };
 		0658B1F528796A6400465938 /* GetImagineResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1F428796A6400465938 /* GetImagineResponse.swift */; };
 		0658B1F72879836700465938 /* TouchImagineResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1F62879836700465938 /* TouchImagineResponse.swift */; };
+		0658B1FA287B257900465938 /* DeleteImagineResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658B1F9287B257900465938 /* DeleteImagineResponse.swift */; };
 		0670ACB52866FA1700E4D091 /* SignInStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670ACB42866FA1700E4D091 /* SignInStatus.swift */; };
 		06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717DCD28408B6A00FEB138 /* EndTicketApp.swift */; };
 		06717DD228408B6C00FEB138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06717DD128408B6C00FEB138 /* Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		0658B1F228796A0400465938 /* ImagineResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineResponse.swift; sourceTree = "<group>"; };
 		0658B1F428796A6400465938 /* GetImagineResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImagineResponse.swift; sourceTree = "<group>"; };
 		0658B1F62879836700465938 /* TouchImagineResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchImagineResponse.swift; sourceTree = "<group>"; };
+		0658B1F9287B257900465938 /* DeleteImagineResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteImagineResponse.swift; sourceTree = "<group>"; };
 		0670ACB42866FA1700E4D091 /* SignInStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStatus.swift; sourceTree = "<group>"; };
 		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
@@ -337,16 +339,25 @@
 		0658B1E528772AA900465938 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0658B1F8287B21C900465938 /* Response */,
 				0658B1E628772ACF00465938 /* FutureOfMeApi.swift */,
-				0658B1EA28772BAB00465938 /* GetFutureOfMeResponse.swift */,
 				0658B1EC28772C1100465938 /* FutureOfMeRouter.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0658B1F8287B21C900465938 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				0658B1EA28772BAB00465938 /* GetFutureOfMeResponse.swift */,
 				0658B1EE2877435600465938 /* PostFutureOfMeSubjectResponse.swift */,
 				0658B1F0287967C500465938 /* PostImagineResponse.swift */,
 				0658B1F228796A0400465938 /* ImagineResponse.swift */,
 				0658B1F428796A6400465938 /* GetImagineResponse.swift */,
 				0658B1F62879836700465938 /* TouchImagineResponse.swift */,
+				0658B1F9287B257900465938 /* DeleteImagineResponse.swift */,
 			);
-			path = Network;
+			path = Response;
 			sourceTree = "<group>";
 		};
 		06717DC128408B6A00FEB138 = {
@@ -951,6 +962,7 @@
 				06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */,
 				06B26291285B1D0800722A52 /* BaseResponse.swift in Sources */,
 				063634F22858B85C00856928 /* SignUpResponse.swift in Sources */,
+				0658B1FA287B257900465938 /* DeleteImagineResponse.swift in Sources */,
 				06B26295285B29C500722A52 /* TicketResponse.swift in Sources */,
 				06B26288285B13A500722A52 /* TicketApi.swift in Sources */,
 				06B262B22864046D00722A52 /* SignInRouter.swift in Sources */,

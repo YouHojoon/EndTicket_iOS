@@ -13,6 +13,8 @@ final class FutureOfMeViewModel:ObservableObject{
     @Published public private(set) var futureOfMe: FutureOfMe? = nil
     let isSuccessPostImagine = PassthroughSubject<Bool, Never>()
     let isSuccessTouchImagine = PassthroughSubject<(Int,Bool), Never>()
+    let isSuccessModifyImagine = PassthroughSubject<Bool, Never>()
+    let isSuccessDeleteImagine = PassthroughSubject<(Bool), Never>()
     
     private var subscriptions = Set<AnyCancellable>()
     func touchImagine(id:Int){
@@ -30,7 +32,23 @@ final class FutureOfMeViewModel:ObservableObject{
                 if $0{
                     self.imagines.remove(at: index)
                     self.isSuccessTouchImagine.send((id,true))
-                    self.futureOfMe?.experience += 20
+                    
+                    guard var futureOfMe = self.futureOfMe else {
+                        return
+                    }
+                    
+                    if futureOfMe.level == 40 && futureOfMe.experience == 100{
+                        return
+                    }
+                    else{
+                        futureOfMe.experience += 20
+                        if futureOfMe.experience == 100 {
+                            if futureOfMe.level != 40{
+                                futureOfMe.level += 1
+                                futureOfMe.experience = 0
+                            }
+                        }
+                    }
                 }
                 else{
                     self.isSuccessTouchImagine.send((id,false))
@@ -97,6 +115,46 @@ final class FutureOfMeViewModel:ObservableObject{
                 }
                 self.isSuccessPostImagine.send(true)
                 self.imagines.append(imagine)
+            }).store(in: &subscriptions)
+    }
+    func modifyImagine(_ imagine: Imagine){
+        FutureOfMeApi.shared.modifyImagine(imagine)
+            .sink(receiveCompletion: {
+                switch $0{
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("상상해보기 수정 실패 : \(error.localizedDescription)")
+                }
+            }, receiveValue: {
+                guard let imagine = $0 else{
+                    self.isSuccessModifyImagine.send(false)
+                    return
+                }
+                let index = self.imagines.firstIndex{$0.id == imagine.id}!
+                self.imagines[index] = imagine
+                self.isSuccessModifyImagine.send(true)
+            })
+            .store(in: &subscriptions)
+    }
+    func deleteImagine(id: Int){
+        FutureOfMeApi.shared.deleteImagine(id: id)
+            .sink(receiveCompletion: {
+                switch $0{
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("상상해보기 삭제 실패 : \(error.localizedDescription)")
+                }
+            }, receiveValue: {
+                if $0{
+                    let index = self.imagines.firstIndex{$0.id == id}!
+                    self.imagines.remove(at: index)
+                    self.isSuccessDeleteImagine.send(true)
+                }
+                else{
+                    self.isSuccessDeleteImagine.send(false)
+                }
             }).store(in: &subscriptions)
     }
 }
