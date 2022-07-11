@@ -32,6 +32,7 @@ struct ImagineFormView: View{
         _color = State(initialValue: imagine.color)
         imagineId = imagine.id
         buttonType = .modify
+        _isEnabledButton = State(initialValue: true)
     }
     
     var body: some View{
