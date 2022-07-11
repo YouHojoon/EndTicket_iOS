@@ -15,8 +15,11 @@ struct EndTicketTabView: View {
     var body: some View {
         GeometryReader{proxy in
             ZStack(alignment:.bottom){
-                content
-                    .fullScreenCover(isPresented: $shouldShowTicketFormView){
+                VStack(alignment: .leading,spacing:0){
+                    header.padding(.horizontal,20)
+                    content
+                }
+                .fullScreenCover(isPresented: $shouldShowTicketFormView){
                         TicketFormView()
                             .environmentObject(ticketViewModel)
                     }
@@ -113,7 +116,7 @@ struct EndTicketTabView: View {
     private var content:some View{
         switch tabIndex {
         case .home:
-            HomeView(tabIndex: $tabIndex,shouldShowTicketFormView: $shouldShowTicketFormView)
+            HomeView()
                 .environmentObject(ticketViewModel)
         case .futureOfMe:
             FutureOfMeView()
@@ -123,11 +126,75 @@ struct EndTicketTabView: View {
         case .myPage:
             MyHomeView()
         case .prefer:
-            TicketPreferView(tabIndex: $tabIndex)
+            TicketPreferView()
                 .environmentObject(ticketViewModel)
         }
     }
-    
+    @ViewBuilder
+    private var header: some View{
+        switch tabIndex {
+        case .home:
+            HStack{
+                Text("홈")
+                    .kerning(-0.5)
+                    .font(.system(size: 21,weight:.bold))
+                Spacer()
+                Image("logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:39, height:39)
+                Spacer()
+                Image("home_top_icon")
+                    .frame(width:22, height: 22)
+                    .onTapGesture {
+                        withAnimation{
+                            tabIndex = .prefer
+                        }
+                    }
+            }
+            .padding(.bottom,23)
+        case .futureOfMe:
+            HStack{
+                Text("미래의 나")
+                    .kerning(-0.5)
+                    .font(.system(size: 21,weight: .bold))
+                Spacer()
+                Image("futureOfMe_edit_icon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 19.5, height: 18.94)
+                    .onTapGesture{
+                        shouldShowAlert = true
+                    }
+                
+            }.padding(.bottom, 33)
+        case .history:
+            Text("기록")
+                .kerning(-0.5)
+                .font(.gmarketSansMeidum(size: 20))
+                .padding(.bottom,24)
+        case .myPage:
+            Text("설정")
+                .kerning(-0.5)
+                .font(.system(size: 21,weight: .bold))
+                .padding(.bottom,33)
+            
+        case .prefer:
+            HStack(spacing:0){
+                Image(systemName: "arrow.backward")
+                    .font(.system(size: 16))
+                    .onTapGesture {
+                        withAnimation{
+                            tabIndex = .home
+                        }
+                    }
+                Spacer()
+                Text("추천티켓").font(.system(size: 21,weight: .bold))
+                Spacer()
+            }.padding(.vertical, 13)
+            .background(Color.white)
+        }
+    }
     enum TabIndex{
         case home
         case futureOfMe
