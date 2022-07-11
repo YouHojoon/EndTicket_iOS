@@ -10,8 +10,6 @@ import Alamofire
 
 struct FutureOfMeProfileView: View {
     @EnvironmentObject private var viewModel: FutureOfMeViewModel
-    @State private var shouldShowAlert = false
-    @State private var subject = ""
     private let progressBaseColor = Color(#colorLiteral(red: 0.8705882353, green: 0.8705882353, blue: 0.8705882353, alpha: 1))
     private let progressCompletedColor = Color(#colorLiteral(red: 0.7568627451, green: 0.7568627451, blue: 0.7568627451, alpha: 1))
     
@@ -78,30 +76,6 @@ struct FutureOfMeProfileView: View {
             .onAppear{
                 viewModel.fetchFutureOfMe()
             }
-            //MARK: - Alert
-            .alert(isPresented: $shouldShowAlert){
-                EndTicketAlert{
-                    VStack{
-                        Text("미래의 나를 한마디로 설명해줄래요?")
-                            .font(.system(size: 18, weight: .bold))
-                            .padding(.bottom, 15)
-                        FormTextField(text: $subject,height: 35, maxTextLength: 13,borderColor: .gray300)
-                            
-                    }.padding(.horizontal, 20)
-                        .padding(.bottom,30)
-                        .padding(.top, 40)
-                }primaryButton: {
-                    EndTicketAlertButton(label: Text("취소").foregroundColor(.gray400)){
-                        shouldShowAlert = false
-                    }
-                }secondaryButton: {
-                    EndTicketAlertButton(label: Text("제목짓기").foregroundColor(.mainColor)){
-                        viewModel.postFutureOfMeSubject(subject)
-                        shouldShowAlert = false
-                    }
-                }
-            }
-           
     }
 }
 
