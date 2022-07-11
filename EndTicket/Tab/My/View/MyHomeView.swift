@@ -13,11 +13,11 @@ struct MyHomeView: View {
     var body: some View {
         NavigationView{
             VStack(alignment:.leading,spacing:0){
-                Text("설정")
-                    .kerning(-0.5)
-                    .font(.system(size: 21,weight: .bold))
-                    .padding(.bottom,33)
-                
+//                Text("설정")
+//                    .kerning(-0.5)
+//                    .font(.system(size: 21,weight: .bold))
+//                    .padding(.bottom,33)
+//                
                 
                 HStack(spacing:23){
                     Circle().frame(width: 56, height: 56)

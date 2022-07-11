@@ -10,10 +10,10 @@ import SwiftUI
 struct HistoryHomeView: View {
     var body: some View {
         VStack(alignment:.leading,spacing:0){
-            Text("기록")
-                .kerning(-0.5)
-                .font(.gmarketSansMeidum(size: 20))
-                .padding(.bottom,24)
+//            Text("기록")
+//                .kerning(-0.5)
+//                .font(.gmarketSansMeidum(size: 20))
+//                .padding(.bottom,24)
             Text("지금까지")
                 .font(.gmarketSansMeidum(size: 20))
                 .padding(.bottom)

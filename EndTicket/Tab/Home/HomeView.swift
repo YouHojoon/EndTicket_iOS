@@ -9,36 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
-    @Binding private var shouldShowTicketFormView: Bool
-    @Binding private var tabIndex: EndTicketTabView.TabIndex
-    init(tabIndex:Binding<EndTicketTabView.TabIndex>,shouldShowTicketFormView:Binding<Bool>){
-        _shouldShowTicketFormView = shouldShowTicketFormView
-        _tabIndex = tabIndex
-    }
+    @State private var shouldShowTicketFormView = false
     var body: some View {
         //MARK: - 위에 뷰
         VStack(alignment:.leading,spacing:0){
             Group{
-                HStack{
-                    Text("홈")
-                        .kerning(-0.5)
-                        .font(.system(size: 21,weight:.bold))
-                    Spacer()
-                    Image("logo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:39, height:39)
-                    Spacer()
-                    Image("home_top_icon")
-                        .frame(width:22, height: 22)
-                        .onTapGesture {
-                            withAnimation{
-                                tabIndex = .prefer
-                            }
-                        }
-                }
-                .padding(.bottom,23)
-               
                 Text("\(UserDefaults.standard.string(forKey:"nickname")!)님\n오늘도 같이 도전해볼까요?")
                     .font(.interBold(size: 22))
                 HStack(spacing:0){
@@ -67,7 +42,7 @@ struct HomeView: View {
                     .edgesIgnoringSafeArea([.horizontal,.bottom])
                 if viewModel.tickets.isEmpty{
                     VStack(spacing:0){
-                        Image("home_image")
+                        Image("ticket_flag")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 230, height: 230)
@@ -98,11 +73,14 @@ struct HomeView: View {
                         }.padding(.vertical, 30)
                     }
                 }   
-            }
-            .onAppear{
-                viewModel.fetchTickets()
-                UIScrollView.appearance().bounces = true
-            }
+            }   
+        }
+        .onAppear{
+            viewModel.fetchTickets()
+            UIScrollView.appearance().bounces = true
+        }
+        .fullScreenCover(isPresented: $shouldShowTicketFormView){
+                TicketFormView()
         }
     }
 }

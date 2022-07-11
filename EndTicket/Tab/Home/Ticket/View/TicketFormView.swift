@@ -61,7 +61,7 @@ struct TicketFormView: View {
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
                     FormTextField(title:"행동", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil)
-                    FormTextField(title:"목표", titleImage: Image("futureOfMe_description_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil)
+                    FormTextField(title:"목표", titleImage: Image("goal_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil)
                     Divider().padding(.vertical, 10)
                     TicketFormCategoryView(selected: $category,isEssential: ticketId == nil)
                     ColorSelectView(selected: $color)
@@ -111,8 +111,8 @@ struct TicketFormView: View {
         .onChange(of: !subject.isEmpty && !purpose.isEmpty){
             isEnabledButton = $0
         }
-        .onReceive(viewModel.isSuccessDeleteTicket){_, result in
-            if result{
+        .onReceive(viewModel.isSuccessDeleteTicket){
+            if $0{
                 dismiss()
             }
         }//MARK: - 삭제 alert
@@ -145,9 +145,11 @@ struct TicketFormView: View {
                 .onTapGesture {
                     viewModel.postTicket(Ticket(category: category, subject: subject, purpose: purpose, color: color, touchCount: touchCount))
                 }
-                .onReceive(viewModel.isSuccessPostTicket){result in
-                    withAnimation{
-                        dismiss()
+                .onReceive(viewModel.isSuccessPostTicket){
+                    if $0{
+                        withAnimation{
+                            dismiss()
+                        }
                     }
                 }
         case .modify:
@@ -157,9 +159,11 @@ struct TicketFormView: View {
                 .onTapGesture{
                     viewModel.modifyTicket(Ticket(category: category, subject: subject, purpose: purpose, color: color, touchCount: touchCount, id:ticketId!))
                 }
-                .onReceive(viewModel.isSuccessModifyTicket){result in
-                    withAnimation{
-                        dismiss()
+                .onReceive(viewModel.isSuccessModifyTicket){
+                    if $0{
+                        withAnimation{
+                            dismiss()
+                        }
                     }
                 }
         }

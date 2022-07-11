@@ -8,31 +8,10 @@
 import SwiftUI
 
 struct TicketPreferView: View {
-    @Binding private var tabIndex: EndTicketTabView.TabIndex
     @EnvironmentObject private var viewModel: TicketViewModel
-    
-    init(tabIndex:Binding<EndTicketTabView.TabIndex>){
-        _tabIndex = tabIndex
-    }
-    
+
     var body: some View {
         VStack(alignment:.leading, spacing:0){
-            HStack(spacing:0){
-                Image(systemName: "arrow.backward")
-                    .font(.system(size: 16))
-                    .onTapGesture {
-                        withAnimation{
-                            tabIndex = .home
-                        }
-                    }
-                Spacer()
-                Text("추천티켓").font(.system(size: 21,weight: .bold))
-                Spacer()
-            }.padding(.vertical, 13)
-            .padding(.horizontal, 20)
-            .background(Color.white)
-            
-            
             ZStack{
                 Color.gray10.ignoresSafeArea()
                 VStack(alignment:.leading, spacing:0){
@@ -46,7 +25,7 @@ struct TicketPreferView: View {
                                 .foregroundColor(.black)
                         }
                         Spacer()
-                        Image("on_boarding_3")
+                        Image("ticket_thumb")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width:105,height: 90)

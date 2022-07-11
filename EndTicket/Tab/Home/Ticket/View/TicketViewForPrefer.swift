@@ -57,7 +57,7 @@ struct TicketViewForPrefer: View {
                                 .foregroundColor(.black)
                         }.padding(.bottom,5)
                         HStack(spacing:5){
-                            Image("futureOfMe_description_icon")
+                            Image("goal_icon")
                                 .renderingMode(.template)
                                 .foregroundColor(.gray500)
                             Text("\(ticket.purpose)")
