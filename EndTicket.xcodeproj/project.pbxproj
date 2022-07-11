@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		061F79D92844B4220095AEAD /* Credential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 061F79D82844B4220095AEAD /* Credential.plist */; };
-		061F79DD2844B4870095AEAD /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DC2844B4870095AEAD /* SignInViewModel.swift */; };
 		061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DF2844B7E70095AEAD /* SignUpView.swift */; };
 		061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E528478BCC0095AEAD /* KeyChainManager.swift */; };
 		061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E728478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift */; };
@@ -50,7 +49,6 @@
 		06717E0C2840AE0700FEB138 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E0B2840AE0700FEB138 /* SignInView.swift */; };
 		06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E122840B86D00FEB138 /* Font + Extension.swift */; };
 		06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */; };
-		06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */; };
 		06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2128504D5E00FEB138 /* EndTicketTabView.swift */; };
 		06717E2628506D5D00FEB138 /* TicketLeadingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E2528506D5D00FEB138 /* TicketLeadingShape.swift */; };
 		06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E272850774300FEB138 /* TicketTrailingShape.swift */; };
@@ -63,6 +61,8 @@
 		06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */; };
 		06717E3F2851E78600FEB138 /* MyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3E2851E78600FEB138 /* MyHomeView.swift */; };
 		06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E402851FC4000FEB138 /* Color + Extension.swift */; };
+		067E6F94287BC1E700D404EF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E6F93287BC1E700D404EF /* SignUpViewModel.swift */; };
+		067E6F96287BC22800D404EF /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E6F95287BC22800D404EF /* SignInViewModel.swift */; };
 		06B26288285B13A500722A52 /* TicketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26287285B13A500722A52 /* TicketApi.swift */; };
 		06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26289285B14AD00722A52 /* TicketRouter.swift */; };
 		06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2628C285B15B500722A52 /* BaseRouter.swift */; };
@@ -115,7 +115,6 @@
 /* Begin PBXFileReference section */
 		02F79F4514709AAE5461FDC5 /* Pods-EndTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket.release.xcconfig"; path = "Target Support Files/Pods-EndTicket/Pods-EndTicket.release.xcconfig"; sourceTree = "<group>"; };
 		061F79D82844B4220095AEAD /* Credential.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credential.plist; sourceTree = "<group>"; };
-		061F79DC2844B4870095AEAD /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInViewModel.swift; path = ViewModel/SignInViewModel.swift; sourceTree = "<group>"; };
 		061F79DF2844B7E70095AEAD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		061F79E12844BA040095AEAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		061F79E528478BCC0095AEAD /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
@@ -162,7 +161,6 @@
 		06717E122840B86D00FEB138 /* Font + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font + Extension.swift"; sourceTree = "<group>"; };
 		06717E142840BC3800FEB138 /* EndTicket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EndTicket.entitlements; sourceTree = "<group>"; };
 		06717E182849BEE200FEB138 /* OnBoardingButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingButtonModifier.swift; sourceTree = "<group>"; };
-		06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = ViewModel/SignUpViewModel.swift; sourceTree = "<group>"; };
 		06717E2128504D5E00FEB138 /* EndTicketTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketTabView.swift; sourceTree = "<group>"; };
 		06717E2528506D5D00FEB138 /* TicketLeadingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketLeadingShape.swift; sourceTree = "<group>"; };
 		06717E272850774300FEB138 /* TicketTrailingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTrailingShape.swift; sourceTree = "<group>"; };
@@ -175,6 +173,8 @@
 		06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeContentView.swift; sourceTree = "<group>"; };
 		06717E3E2851E78600FEB138 /* MyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeView.swift; sourceTree = "<group>"; };
 		06717E402851FC4000FEB138 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
+		067E6F93287BC1E700D404EF /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = EndTicket/SignUp/SignUpViewModel.swift; sourceTree = SOURCE_ROOT; };
+		067E6F95287BC22800D404EF /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		06B26287285B13A500722A52 /* TicketApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketApi.swift; sourceTree = "<group>"; };
 		06B26289285B14AD00722A52 /* TicketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRouter.swift; sourceTree = "<group>"; };
 		06B2628C285B15B500722A52 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 			children = (
 				063634E62852118700856928 /* Network */,
 				06717E1C2849D77300FEB138 /* View */,
-				06717E1E2849D78A00FEB138 /* SignUpViewModel.swift */,
+				067E6F93287BC1E700D404EF /* SignUpViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 				06B262B5286404FE00722A52 /* Enum */,
 				06B262AE286402F000722A52 /* Network */,
 				061F79DA2844B4720095AEAD /* VIew */,
-				061F79DC2844B4870095AEAD /* SignInViewModel.swift */,
+				067E6F95287BC22800D404EF /* SignInViewModel.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -933,7 +933,6 @@
 				06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */,
 				06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */,
 				0658B1F528796A6400465938 /* GetImagineResponse.swift in Sources */,
-				06717E1F2849D78A00FEB138 /* SignUpViewModel.swift in Sources */,
 				06B262CE28694B6D00722A52 /* TicketViewForPrefer.swift in Sources */,
 				06B262CA2865898F00722A52 /* NoTokenError.swift in Sources */,
 				0658B1EB28772BAB00465938 /* GetFutureOfMeResponse.swift in Sources */,
@@ -947,7 +946,6 @@
 				06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */,
 				063634F02858B56E00856928 /* AuthInterceptor.swift in Sources */,
 				06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */,
-				061F79DD2844B4870095AEAD /* SignInViewModel.swift in Sources */,
 				0658B1F1287967C500465938 /* PostImagineResponse.swift in Sources */,
 				0658B1E728772ACF00465938 /* FutureOfMeApi.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* SignInView.swift in Sources */,
@@ -971,6 +969,7 @@
 				06B262D62869DEE500722A52 /* EndTicketAlertButton.swift in Sources */,
 				0658B1F328796A0400465938 /* ImagineResponse.swift in Sources */,
 				0658B1F72879836700465938 /* TouchImagineResponse.swift in Sources */,
+				067E6F94287BC1E700D404EF /* SignUpViewModel.swift in Sources */,
 				06B26297285C372A00722A52 /* TicketFormView.swift in Sources */,
 				063634EE2858B49F00856928 /* BaseApi.swift in Sources */,
 				064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */,
@@ -981,6 +980,7 @@
 				0658B1EF2877435600465938 /* PostFutureOfMeSubjectResponse.swift in Sources */,
 				061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */,
 				06B2628F285B1C9D00722A52 /* TicketListResponse.swift in Sources */,
+				067E6F96287BC22800D404EF /* SignInViewModel.swift in Sources */,
 				06B262DA286B164900722A52 /* UIViewController + Extension.swift in Sources */,
 				06B262D42869D96600722A52 /* EndTicketAlert.swift in Sources */,
 				063634E82852119600856928 /* SignUpRouter.swift in Sources */,
