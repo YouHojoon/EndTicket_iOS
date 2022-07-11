@@ -9,10 +9,8 @@ import SwiftUI
 
 struct ImagineView: View {
     private let imagine: Imagine
-    
-    private let completeButtonColor = Color(#colorLiteral(red: 0.2705882353, green: 0.337254902, blue: 1, alpha: 1))
     private let buttonBoderColor = Color(#colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1))
-    @State private var height: CGFloat = 43
+    
     @State private var shouldShowModifyView = false
     @EnvironmentObject private var viewModel: FutureOfMeViewModel
     
@@ -44,7 +42,7 @@ struct ImagineView: View {
                     .foregroundColor(.black)
                 
                 HStack(spacing:3){
-                    Image("futureOfMe_description_icon")
+                    Image("goal_icon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width:15,height: 15)
@@ -67,14 +65,7 @@ struct ImagineView: View {
                     }
                 }
         }
-        .frame(height:height)
-        .onReceive(viewModel.isSuccessTouchImagine){
-            if $1 && imagine.id == $0{
-                withAnimation{
-                    height = 0
-                }
-            }
-        }
+        .frame(height:43)
         .fullScreenCover(isPresented:$shouldShowModifyView){
             ImagineFormView(imagine)
         }

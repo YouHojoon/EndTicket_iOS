@@ -12,49 +12,31 @@ final class FutureOfMeViewModel:ObservableObject{
     @Published public private(set) var imagines:[Imagine] = []
     @Published public private(set) var futureOfMe: FutureOfMe? = nil
     let isSuccessPostImagine = PassthroughSubject<Bool, Never>()
-    let isSuccessTouchImagine = PassthroughSubject<(Int,Bool), Never>()
     let isSuccessModifyImagine = PassthroughSubject<Bool, Never>()
     let isSuccessDeleteImagine = PassthroughSubject<(Bool), Never>()
     
     private var subscriptions = Set<AnyCancellable>()
+    
     func touchImagine(id:Int){
         let index = imagines.firstIndex{$0.id == id}!
-        FutureOfMeApi.shared.touchImagine(id: id)
-            .sink(receiveCompletion: {
-                switch $0{
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("상상해보기 터치 실패 : \(error.localizedDescription)")
-                }
+        FutureOfMeApi.shared.touchImagine(id: id).sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("상상해보기 터치 실패 : \(error.localizedDescription)")
             }
-                  , receiveValue: {
-                if $0{
+        }, receiveValue: {
+            if $0{
+                withAnimation{
                     self.imagines.remove(at: index)
-                    self.isSuccessTouchImagine.send((id,true))
-                    
-                    guard var futureOfMe = self.futureOfMe else {
-                        return
-                    }
-                    
-                    if futureOfMe.level == 40 && futureOfMe.experience == 100{
-                        return
-                    }
-                    else{
-                        futureOfMe.experience += 20
-                        if futureOfMe.experience == 100 {
-                            if futureOfMe.level != 40{
-                                futureOfMe.level += 1
-                                futureOfMe.experience = 0
-                            }
-                        }
-                    }
                 }
-                else{
-                    self.isSuccessTouchImagine.send((id,false))
+                guard self.futureOfMe != nil else{
+                    return
                 }
-                
-            }).store(in: &subscriptions)
+                self.futureOfMe!.incresedExperience(20)
+            }
+        }).store(in: &subscriptions)
     }
     func fetchFutureOfMe(){
         FutureOfMeApi.shared.getFutureOfMe().sink(receiveCompletion: {

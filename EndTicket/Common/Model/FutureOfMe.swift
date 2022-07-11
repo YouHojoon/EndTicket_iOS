@@ -15,4 +15,19 @@ struct FutureOfMe:Codable{
     let characterImageUrl: URL?
     let characterImageName: String?
     let nickname: String
+    
+    mutating func incresedExperience(_ amount: Int){
+        if level == 40 && experience == 100{
+            return
+        }
+        else{
+            experience += amount
+            if experience == 100 {
+                if level != 40{
+                    level += 1
+                    experience = 0
+                }
+            }
+        }
+    }
 }
