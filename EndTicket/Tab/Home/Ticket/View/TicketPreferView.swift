@@ -25,7 +25,7 @@ struct TicketPreferView: View {
                                 .foregroundColor(.black)
                         }
                         Spacer()
-                        Image("on_boarding_3")
+                        Image("ticket_thumb")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width:105,height: 90)

@@ -42,7 +42,7 @@ struct HomeView: View {
                     .edgesIgnoringSafeArea([.horizontal,.bottom])
                 if viewModel.tickets.isEmpty{
                     VStack(spacing:0){
-                        Image("home_image")
+                        Image("ticket_flag")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 230, height: 230)

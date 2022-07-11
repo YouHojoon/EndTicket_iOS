@@ -10,14 +10,12 @@ import Combine
 import SwiftUI
 
 final class TicketViewModel:ObservableObject{
-    @Published var tickets:[Ticket] = []
-    @Published var preferTicket:Ticket? = nil
+    @Published public private(set) var tickets:[Ticket] = []
+    @Published public private(set) var preferTicket:Ticket? = nil
     
     let isSuccessPostTicket = PassthroughSubject<Bool,Never>()
     let isSuccessModifyTicket = PassthroughSubject<Bool,Never>()
-    let isSuccessTouchTicket = PassthroughSubject<(Int,Bool),Never>()
-    let isSuccessCancelTouchTicket = PassthroughSubject<Bool,Never>()
-    let isSuccessDeleteTicket = PassthroughSubject<(Int,Bool),Never>()
+    let isSuccessDeleteTicket = PassthroughSubject<Bool,Never>()
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchTickets(){
@@ -61,10 +59,12 @@ final class TicketViewModel:ObservableObject{
                 print("ticket 삭제 실패 : \(error.localizedDescription)")
             }
         }, receiveValue: {
-            self.isSuccessDeleteTicket.send((id,$0))
+            self.isSuccessDeleteTicket.send($0)
             if $0{
                 let index = self.tickets.firstIndex(where: {$0.id == id})!
-                self.tickets.remove(at: index)
+                withAnimation{                    
+                    self.tickets.remove(at: index)
+                }
             }
         }).store(in: &subscriptions)
     }
@@ -96,9 +96,16 @@ final class TicketViewModel:ObservableObject{
                 print("ticket 터치 실패 : \(error.localizedDescription)")
             }
         }, receiveValue: {
-            let index = self.tickets.firstIndex(where: {$0.id == id})!
-            self.tickets[index].currentCount+=1
-            self.isSuccessTouchTicket.send((id,$0))
+            if $0{
+                let index = self.tickets.firstIndex(where: {$0.id == id})!
+                self.tickets[index].currentCount+=1
+                
+                if  self.tickets[index].currentCount == self.tickets[index].touchCount + 1{
+                    _ = withAnimation{
+                        self.tickets.remove(at: index)
+                    }
+                }
+            }
         }).store(in: &subscriptions)
     }
     
@@ -111,9 +118,10 @@ final class TicketViewModel:ObservableObject{
                 print("ticket 터치 실패 : \(error.localizedDescription)")
             }
         }, receiveValue: {
-            let index = self.tickets.firstIndex(where: {$0.id == id})!
-            self.tickets[index].currentCount-=1
-            self.isSuccessCancelTouchTicket.send($0)
+            if $0{
+                let index = self.tickets.firstIndex(where: {$0.id == id})!
+                self.tickets[index].currentCount-=1
+            }
         }).store(in: &subscriptions)
     }
     

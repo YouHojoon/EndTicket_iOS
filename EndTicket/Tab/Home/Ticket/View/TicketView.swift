@@ -10,7 +10,6 @@ import SwiftUI
 struct TicketView: View {
     private let ticket: Ticket
     @State private var shouldShowModifyForm = false
-    @State private var height: CGFloat = 150
     @State private var offset = 0.0
     @State private var shouldShowAlert = false //일반 롱프레스 alert
     @State private var shouldShowDeleteAlert = false // 삭제 관련 alert
@@ -69,7 +68,7 @@ struct TicketView: View {
             }.padding(.bottom,10)
             .foregroundColor(ticket.touchCount != ticket.currentCount ? .black : .gray300)
             HStack(spacing:5){
-                Image("futureOfMe_description_icon")
+                Image("goal_icon")
                     .renderingMode(.template)
                     
                 Text("\(ticket.purpose)")
@@ -79,7 +78,7 @@ struct TicketView: View {
             
         }
         .padding(.horizontal,20)
-        .frame(width:335,height:height)
+        .frame(width:335,height:150)
         .overlay(
             RoundedCorner(radius: 5, corners: [.bottomLeft, .topLeft])
                 .frame(width:5)
@@ -159,25 +158,6 @@ struct TicketView: View {
         )
         .fullScreenCover(isPresented:$shouldShowModifyForm){
             TicketFormView(ticket)
-        }
-        .onReceive(viewModel.isSuccessDeleteTicket){
-            if $0 == ticket.id && $1{
-                withAnimation(.easeInOut){
-                    height = 0
-                }
-            }
-        }
-        .onReceive(viewModel.isSuccessTouchTicket){id, isSuccess in
-            let index = viewModel.tickets.firstIndex{$0.id == id}!
-            let ticket = viewModel.tickets[index]
-            if isSuccess && self.ticket.id == id
-                && ticket.touchCount + 1 == ticket.currentCount{
-                withAnimation(.easeInOut){
-                    height = 0
-                }
-                viewModel.tickets.remove(at: index)
-            }
-            
         }
         //MARK: - 삭제 alert
         .alert(isPresented: $shouldShowDeleteAlert){
