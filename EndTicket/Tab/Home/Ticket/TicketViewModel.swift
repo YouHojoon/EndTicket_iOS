@@ -98,12 +98,13 @@ final class TicketViewModel:ObservableObject{
         }, receiveValue: {
             if $0{
                 let index = self.tickets.firstIndex(where: {$0.id == id})!
-                self.tickets[index].currentCount+=1
-                
-                if  self.tickets[index].currentCount == self.tickets[index].touchCount + 1{
+                if self.tickets[index].currentCount == self.tickets[index].touchCount {
                     _ = withAnimation{
                         self.tickets.remove(at: index)
                     }
+                }
+                else{
+                    self.tickets[index].currentCount+=1
                 }
             }
         }).store(in: &subscriptions)
