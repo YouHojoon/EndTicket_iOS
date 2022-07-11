@@ -14,47 +14,49 @@ struct TicketView: View {
     @State private var shouldShowAlert = false //일반 롱프레스 alert
     @State private var shouldShowDeleteAlert = false // 삭제 관련 alert
     @State private var shouldShowModifyOrDeleteAlert = false
+    
     @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
         self.ticket = ticket
-        
-        
     }
     var body: some View{
         VStack(alignment:.leading,spacing:0){
             HStack{
-                RoundedRectangle(cornerRadius: 2)
-                    .stroke(Color.gray100, lineWidth: 1)
-                    .frame(width:38, height: 18)
+                Text("\(ticket.category.rawValue)")
+                    .font(.system(size: 10,weight: .medium))
+                    .foregroundColor(.gray500)
+                    .padding(.horizontal,10)
+                    .padding(.vertical,4)
                     .overlay{
-                        Text("\(ticket.category.rawValue)")
-                            .font(.system(size: 10,weight: .medium))
-                            .foregroundColor(.gray500)
+                        RoundedRectangle(cornerRadius: 2)
+                            .stroke(Color.gray100, lineWidth: 1)
                     }
-                
-                RoundedRectangle(cornerRadius: 2)
-                    .stroke(Color.gray100, lineWidth: 1)
-                    .frame(width:38, height: 18)
+                    .frame(minWidth:38)
+                Text("\(ticket.touchCount)회")
+                    .font(.system(size: 10,weight: .medium))
+                    .foregroundColor(.gray500)
+                    .padding(.horizontal,10)
+                    .padding(.vertical,4)
                     .overlay{
-                        Text("\(ticket.touchCount)")
-                            .font(.system(size: 10,weight: .medium))
-                            .foregroundColor(.gray500)
+                        RoundedRectangle(cornerRadius: 2)
+                            .stroke(Color.gray100, lineWidth: 1)
                     }
+                    .frame(minWidth:38)
                 Spacer()
                 Text("\(ticket.currentCount)번의 용기").font(.interBold(size: 18))
             }.padding(.bottom, 18)
-            
             GeometryReader{proxy in
                 Capsule()
                     .frame(height:8)
                     .foregroundColor(.gray100)
                     .overlay(
                         Capsule()
-                            .frame(width: proxy.size.width * CGFloat(ticket.currentCount) / CGFloat(ticket.touchCount),height:8)
+                            .frame(width: proxy.size.width * CGFloat(ticket.currentCount) / CGFloat(ticket.touchCount)
+                                   ,height:8, alignment: .leading)
                         ,alignment: .leading)
             }.frame(height:8)
-                .padding(.bottom,16)
             
+            .padding(.bottom,16)
             HStack(spacing:5){
                 Image(systemName: "arrow.right.circle")
                     .renderingMode(.template)
@@ -78,7 +80,7 @@ struct TicketView: View {
             
         }
         .padding(.horizontal,20)
-        .frame(width:335,height:150)
+        .frame(height:150)
         .overlay(
             RoundedCorner(radius: 5, corners: [.bottomLeft, .topLeft])
                 .frame(width:5)
@@ -86,10 +88,7 @@ struct TicketView: View {
         .background(Color.white)
         .cornerRadius(5)
         .shadow(color: Color(#colorLiteral(red: 0.4392156863, green: 0.5647058824, blue: 0.6901960784, alpha: 0.15)), radius: 30, x: 0, y: 10)
-        
         .foregroundColor(ticket.color)
-        .offset(x: offset)
-        //scroll을 위한 빈 탭 제스쳐
         .overlay{
             if shouldShowModifyOrDeleteAlert{
                 RoundedRectangle(cornerRadius: 10)
@@ -122,6 +121,11 @@ struct TicketView: View {
                     }.transition(.opacity)
             }
         }
+        .padding(.horizontal, 20)
+        
+        .offset(x: offset)
+        //scroll을 위한 빈 탭 제스쳐
+        
         .onTapGesture {
             withAnimation{
                 shouldShowModifyOrDeleteAlert = false
@@ -175,6 +179,7 @@ struct TicketView: View {
                 }
             }
         }
+        
     }
 }
 
