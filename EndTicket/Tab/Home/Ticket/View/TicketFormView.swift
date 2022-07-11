@@ -37,6 +37,7 @@ struct TicketFormView: View {
         _category = State(initialValue: ticket.category)
         _color = State(initialValue: ticket.color)
         _touchCount = State(initialValue: ticket.touchCount)
+        _isEnabledButton = State(initialValue: true)
     }
     
     var body: some View {
@@ -66,6 +67,7 @@ struct TicketFormView: View {
                     TicketFormCategoryView(selected: $category,isEssential: ticketId == nil)
                     ColorSelectView(selected: $color)
                     TicketTouchCountSelectView(selected: $touchCount,isEssential: ticketId == nil)
+                        .disabled(ticketId != nil)
                         .padding(.bottom, 40)
                     if ticketId != nil{
                         Button{
