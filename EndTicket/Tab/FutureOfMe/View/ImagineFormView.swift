@@ -58,7 +58,7 @@ struct ImagineFormView: View{
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
                     FormTextField(title:"제목",titleImage: Image(systemName: "arrow.right.circle"), placeholder: "시작역-목표를 이루려면 어떤 행동을 해야 할까요?",text: $subject, isEssential: imagineId == nil)
-                    FormTextField(title:"목표",titleImage: Image("futureOfMe_description_icon"), placeholder: "종착역-달성하고 나면, 나의 모습은 어떨까요?",text: $purpose, isEssential: imagineId == nil)
+                    FormTextField(title:"목표",titleImage: Image("goal_icon"), placeholder: "종착역-달성하고 나면, 나의 모습은 어떨까요?",text: $purpose, isEssential: imagineId == nil)
                     Divider().padding(.vertical, 10)
                     ColorSelectView(selected: $color)
                         .padding(.bottom, 40)
@@ -155,7 +155,6 @@ struct ImagineFormView: View{
                 .onTapGesture{
                     viewModel.modifyImagine(Imagine(subject: subject, purpose: purpose, color: color, id: imagineId!))
                 }
-                
         }
     }
     

@@ -159,14 +159,15 @@ struct EndTicketTabView: View {
                     .kerning(-0.5)
                     .font(.system(size: 21,weight: .bold))
                 Spacer()
-                Image("futureOfMe_edit_icon")
+                Image("edit_icon")
+                    .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.black)
                     .frame(width: 19.5, height: 18.94)
                     .onTapGesture{
                         shouldShowAlert = true
                     }
-                
             }.padding(.bottom, 33)
         case .history:
             Text("기록")

@@ -16,22 +16,7 @@ struct FutureOfMeProfileView: View {
     private let progressCompletedColor = Color(#colorLiteral(red: 0.7568627451, green: 0.7568627451, blue: 0.7568627451, alpha: 1))
     
     var body: some View {
-        VStack(alignment:.leading, spacing: 0){
-//            HStack{
-//                Text("미래의 나")
-//                    .kerning(-0.5)
-//                    .font(.system(size: 21,weight: .bold))
-//                Spacer()
-//                Image("futureOfMe_edit_icon")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 19.5, height: 18.94)
-//                    .onTapGesture{
-//                        shouldShowAlert = true
-//                    }
-//                
-//            }.padding(.bottom, 33)
-            
+        VStack(alignment:.leading, spacing: 0){    
             HStack(spacing:0){
                 //MARK: - 프로필 게이지 부분
                 Circle().stroke(style:StrokeStyle(lineWidth:8, lineCap: .round, lineJoin: .round))
