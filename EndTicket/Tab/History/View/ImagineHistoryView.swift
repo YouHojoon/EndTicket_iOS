@@ -1,16 +1,15 @@
 //
-//  TicketHistoryView.swift
+//  ImagineHistoryView.swift
 //  EndTicket
 //
-//  Created by 유호준 on 2022/07/12.
+//  Created by 유호준 on 2022/07/13.
 //
 
 import SwiftUI
 
-struct TicketHistoryView: View {
-    @State private var category: Ticket.Category = .all
-    @EnvironmentObject private var viewModel: HistoryViewModel
+struct ImagineHistoryView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var viewModel: HistoryViewModel
     var body: some View {
         VStack(alignment:.leading, spacing:0){
             VStack(alignment: .leading, spacing:0){
@@ -23,23 +22,17 @@ struct TicketHistoryView: View {
                                 dismiss()
                             }
                         Spacer()
-                        Text("티켓")
+                        Text("상상하기")
                             .font(.system(size: 21,weight: .bold))
                         Spacer()
                     }.padding(.top, 23.67)
                         .padding(.bottom, 43)
                     
-                    Text("잘하셨어요!\n앞으로 더 기대 되는걸요:)")
+                    Text("상상한 것보다!\n더 잘 됐을 거에요:)")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 22,weight: .bold))
                     .padding(.bottom,20)
                 }.padding(.horizontal,20)
-                
-                ScrollView(.horizontal, showsIndicators: false){
-                    HStack{
-                        TicketCategorySelectView(selected: $category,shouldShowTitle:false,isEssential:false, shouldRemoveAllCategory:false)
-                    }.padding(.horizontal,20)
-                }.padding(.bottom,15)
             }
             .background(Color.white.edgesIgnoringSafeArea(.horizontal))
 
@@ -47,8 +40,8 @@ struct TicketHistoryView: View {
                 Color.gray10.ignoresSafeArea()
                 ScrollView{
                     LazyVStack(spacing:20){
-                        ForEach(viewModel.ticketHistories,id:\.id){
-                            TicketViewForHistory($0)
+                        ForEach(viewModel.imagineHistories,id:\.id){
+                            ImagineViewForHistory($0)
                         }
                         Spacer()
                     }.padding(.top, 30)
@@ -56,15 +49,13 @@ struct TicketHistoryView: View {
                 }
             }
         }.onAppear{
-            viewModel.fetchTicketHistory(category: category)
-        }.onChange(of: category){
-            viewModel.fetchTicketHistory(category: $0)
+            viewModel.fetchImagineHistory()
         }
     }
 }
 
-struct TicketHistoryView_Previews: PreviewProvider {
+struct ImagineHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketHistoryView()
+        ImagineHistoryView()
     }
 }

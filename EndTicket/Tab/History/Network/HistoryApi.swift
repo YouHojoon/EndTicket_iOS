@@ -14,26 +14,29 @@ final class HistoryApi: BaseApi{
         super.init(needInterceptor: true)
     }
     
-    func getMainHistory() -> AnyPublisher<[(HistoryType,Int)],AFError>{
-        session.request(HistoryRouter.main)
+    func getMainHistory() -> AnyPublisher<MainHistory?,AFError>{
+        return session.request(HistoryRouter.main)
             .publishDecodable(type:GetMainHistroyResponse.self)
             .value()
             .map{
-                var result:[(HistoryType,Int)] = []
-                result.append((HistoryType.ticket,$0.result?.ticketCount ?? 0))
-                result.append((HistoryType.mission,$0.result?.missionCount ?? 0))
-                result.append((HistoryType.futureOfMe,$0.result?.dreamCount ?? 0))
-                
-                return result
+                $0.result
             }.eraseToAnyPublisher()
     }
     
     func getTicketHistory(category:Ticket.Category) -> AnyPublisher<[Ticket],AFError>{
-        session.request(HistoryRouter.ticket(category))
+        return session.request(HistoryRouter.ticket(category))
             .publishDecodable(type:TicketListResponse.self)
             .value()
             .map{
                 $0.result?.ticket.map{$0.ticketResponseToTicket()} ?? []
+            }.eraseToAnyPublisher()
+    }
+    func getImagineHistory()-> AnyPublisher<[Imagine], AFError>{
+        return session.request(HistoryRouter.imagine)
+            .publishDecodable(type:GetImagineResponse.self)
+            .value()
+            .map{
+                $0.result?.dream.map{$0.imagineResponseToImagine()} ?? []
             }.eraseToAnyPublisher()
     }
 }

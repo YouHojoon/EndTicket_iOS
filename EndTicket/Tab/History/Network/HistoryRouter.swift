@@ -11,7 +11,7 @@ enum HistoryRouter: BaseRouter{
     case main
     case ticket(Ticket.Category)
     case mission
-    case futureOfMe
+    case imagine
     
     var parameters: Parameters{
         return Parameters()
@@ -26,7 +26,7 @@ enum HistoryRouter: BaseRouter{
                 return "\(baseEndPoint)/ticket"
         case .mission:
             return "\(baseEndPoint)/mission"
-        case .futureOfMe:
+        case .imagine:
             return "\(baseEndPoint)/dream"
             
         }
@@ -45,14 +45,13 @@ enum HistoryRouter: BaseRouter{
     
     func asURLRequest() throws -> URLRequest {
         var url = URL(string: EndTicketApp.baseUrl)!.appendingPathComponent(endPoint)
+        
         if query != nil{
             var componet = URLComponents(url: url, resolvingAgainstBaseURL: false)!
             componet.queryItems = [query!]
             url = componet.url!
-            print(url)
         }
         
-        print(url)
         var request = URLRequest(url: url)
         request.url = url
         request.method = method

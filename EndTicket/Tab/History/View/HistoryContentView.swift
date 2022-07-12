@@ -57,7 +57,7 @@ struct HistoryContentView: View {
         switch type {
         case .ticket:
             return Image("ticket_flag")
-        case .futureOfMe:
+        case .imagine:
             return Image("futureOfMe_image")
         case .mission:
             return Image("mission")
@@ -71,8 +71,8 @@ struct HistoryContentView: View {
             TicketHistoryView()
         case .mission:
             EmptyView()
-        case .futureOfMe:
-            EmptyView()
+        case .imagine:
+            ImagineHistoryView()
         }
     }
 }
