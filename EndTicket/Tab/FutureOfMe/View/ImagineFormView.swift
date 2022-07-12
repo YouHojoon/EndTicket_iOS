@@ -78,27 +78,11 @@ struct ImagineFormView: View{
                 }.padding(.top, 30)
             }
             .padding(.horizontal, 20)
-            
-            
             Spacer()
         }
       
         .background(Color.gray50.ignoresSafeArea())
-        .alert(isPresented: $shouldShowAlert){
-            EndTicketAlert{
-                Text("변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?").font(.system(size: 18,weight: .bold))
-                    .multilineTextAlignment(.center)
-            } primaryButton:{
-                EndTicketAlertButton(label:Text("취소").foregroundColor(.gray600)){
-                    shouldShowAlert = false
-                }
-            }secondaryButton: {
-                EndTicketAlertButton(label:Text("나가기").foregroundColor(.red)){
-                    shouldShowAlert = false
-                    dismiss()
-                }
-            }
-        }
+        
         .onChange(of: !subject.isEmpty && !purpose.isEmpty){
             isEnabledButton = $0
         }
@@ -116,9 +100,11 @@ struct ImagineFormView: View{
             if $0{
                 dismiss()
             }
-        }//MARK: - 삭제 alert
+        }
+        .returnAlert(isPresented: $shouldShowAlert, dismiss: dismiss)
+        //MARK: - 삭제 alert
         .alert(isPresented: $shouldShowDeleteAlert){
-            EndTicketAlert{
+            EndTicketAlertImpl{
                 Text("상상하기를 삭제하시겠습니까?")
                     .font(.system(size:18,weight:.bold))
             }primaryButton: {

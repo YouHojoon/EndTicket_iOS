@@ -161,7 +161,7 @@ struct TicketView: View {
         }
         //MARK: - 삭제 alert
         .alert(isPresented: $shouldShowDeleteAlert){
-            EndTicketAlert{
+            EndTicketAlertImpl{
                 Text("티켓을 삭제하시겠습니까?")
                     .font(.system(size:18,weight:.bold))
             }primaryButton: {

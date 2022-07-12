@@ -119,7 +119,7 @@ struct MyHomeView: View {
                 .padding(.horizontal,20)
                 .padding(.top,25)
                 .alert(isPresented: $shouldShowAlert){
-                    EndTicketAlert{
+                    EndTicketAlertImpl{
                         Text("로그아웃 하시겠습니까?").font(.system(size: 18,weight: .bold))
                             .multilineTextAlignment(.center)
                     } primaryButton:{

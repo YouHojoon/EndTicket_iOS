@@ -11,7 +11,7 @@ import Alamofire
 struct TicketViewForPrefer: View {
     private let ticket: Ticket
     @State private var shouldShowAlert = false
-    @State private var shouldShowTicketsIsMaxAlert = false
+    @State private var shouldShowMaxContentAlert = false
     @State private var isAddButtonTapped = false
     @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
@@ -76,7 +76,7 @@ struct TicketViewForPrefer: View {
 
                     }.onTapGesture {
                         if viewModel.tickets.count == 6{
-                            shouldShowTicketsIsMaxAlert = true
+                            shouldShowMaxContentAlert = true
                         }
                         else{
                             isAddButtonTapped = true
@@ -101,7 +101,7 @@ struct TicketViewForPrefer: View {
             isAddButtonTapped = false
         }
         .alert(isPresented: $shouldShowAlert){
-            EndTicketAlert{
+            EndTicketAlertImpl{
                 Text("홈에 추가 되었습니다.")
                     .font(.system(size: 18,weight: .bold))
             }primaryButton: {
@@ -110,24 +110,8 @@ struct TicketViewForPrefer: View {
                 }
             }
         }
-        .alert(isPresented: $shouldShowTicketsIsMaxAlert){
-            EndTicketAlert{
-                VStack(spacing:20){
-                    Text("현재 목표에 집중해주세요!")
-                        .font(.system(size: 18, weight: .bold))
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(0.83)
-                    Text("새로 추가하고 싶다면\n하나를 삭제하고 추가해주세요:)")
-                        .font(.system(size: 15, weight: .bold))
-                        .foregroundColor(.gray300)
-                        .multilineTextAlignment(.center)
-                }.foregroundColor(Color.black)
-            }primaryButton: {
-                EndTicketAlertButton(label:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
-                    shouldShowTicketsIsMaxAlert = false
-                }
-            }
-        }
+        .maxContentAlert(isPresented: $shouldShowMaxContentAlert)
+        
     }
 }
 
