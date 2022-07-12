@@ -58,12 +58,17 @@
 		06717E332851BF3400FEB138 /* FutureOfMeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E322851BF3400FEB138 /* FutureOfMeViewModel.swift */; };
 		06717E352851BF5B00FEB138 /* Imagine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E342851BF5B00FEB138 /* Imagine.swift */; };
 		06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E382851DBFD00FEB138 /* HistoryHomeView.swift */; };
-		06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */; };
+		06717E3B2851DE7000FEB138 /* HistoryContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3A2851DE7000FEB138 /* HistoryContentView.swift */; };
 		06717E3F2851E78600FEB138 /* MyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E3E2851E78600FEB138 /* MyHomeView.swift */; };
 		06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06717E402851FC4000FEB138 /* Color + Extension.swift */; };
-		067E6F98287D0BE300D404EF /* EndTicketAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E6F97287D0BE300D404EF /* EndTicketAlert.swift */; };
 		067E6F94287BC1E700D404EF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E6F93287BC1E700D404EF /* SignUpViewModel.swift */; };
 		067E6F96287BC22800D404EF /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E6F95287BC22800D404EF /* SignInViewModel.swift */; };
+		067E6F98287D0BE300D404EF /* EndTicketAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E6F97287D0BE300D404EF /* EndTicketAlert.swift */; };
+		068B5C21287D3769001C9154 /* HistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068B5C20287D3769001C9154 /* HistoryRouter.swift */; };
+		068B5C24287D3834001C9154 /* HistoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068B5C23287D3834001C9154 /* HistoryType.swift */; };
+		068B5C26287D38CC001C9154 /* HistoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068B5C25287D38CC001C9154 /* HistoryApi.swift */; };
+		068B5C28287D3929001C9154 /* GetMainHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068B5C27287D3929001C9154 /* GetMainHistoryResponse.swift */; };
+		068B5C2A287D3AB9001C9154 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068B5C29287D3AB9001C9154 /* HistoryViewModel.swift */; };
 		06B26288285B13A500722A52 /* TicketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26287285B13A500722A52 /* TicketApi.swift */; };
 		06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26289285B14AD00722A52 /* TicketRouter.swift */; };
 		06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2628C285B15B500722A52 /* BaseRouter.swift */; };
@@ -171,12 +176,17 @@
 		06717E322851BF3400FEB138 /* FutureOfMeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FutureOfMeViewModel.swift; path = ViewModel/FutureOfMeViewModel.swift; sourceTree = "<group>"; };
 		06717E342851BF5B00FEB138 /* Imagine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imagine.swift; sourceTree = "<group>"; };
 		06717E382851DBFD00FEB138 /* HistoryHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeView.swift; sourceTree = "<group>"; };
-		06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHomeContentView.swift; sourceTree = "<group>"; };
+		06717E3A2851DE7000FEB138 /* HistoryContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryContentView.swift; sourceTree = "<group>"; };
 		06717E3E2851E78600FEB138 /* MyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeView.swift; sourceTree = "<group>"; };
 		06717E402851FC4000FEB138 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
-		067E6F97287D0BE300D404EF /* EndTicketAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketAlert.swift; sourceTree = "<group>"; };
 		067E6F93287BC1E700D404EF /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = EndTicket/SignUp/SignUpViewModel.swift; sourceTree = SOURCE_ROOT; };
 		067E6F95287BC22800D404EF /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		067E6F97287D0BE300D404EF /* EndTicketAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketAlert.swift; sourceTree = "<group>"; };
+		068B5C20287D3769001C9154 /* HistoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRouter.swift; sourceTree = "<group>"; };
+		068B5C23287D3834001C9154 /* HistoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryType.swift; sourceTree = "<group>"; };
+		068B5C25287D38CC001C9154 /* HistoryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryApi.swift; sourceTree = "<group>"; };
+		068B5C27287D3929001C9154 /* GetMainHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMainHistoryResponse.swift; sourceTree = "<group>"; };
+		068B5C29287D3AB9001C9154 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		06B26287285B13A500722A52 /* TicketApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketApi.swift; sourceTree = "<group>"; };
 		06B26289285B14AD00722A52 /* TicketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRouter.swift; sourceTree = "<group>"; };
 		06B2628C285B15B500722A52 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -534,7 +544,10 @@
 		06717E362851DB9F00FEB138 /* HIstory */ = {
 			isa = PBXGroup;
 			children = (
+				068B5C22287D3825001C9154 /* Enum */,
+				068B5C1F287D375C001C9154 /* Network */,
 				06717E372851DBAE00FEB138 /* View */,
+				068B5C29287D3AB9001C9154 /* HistoryViewModel.swift */,
 			);
 			path = HIstory;
 			sourceTree = "<group>";
@@ -543,7 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				06717E382851DBFD00FEB138 /* HistoryHomeView.swift */,
-				06717E3A2851DE7000FEB138 /* HistoryHomeContentView.swift */,
+				06717E3A2851DE7000FEB138 /* HistoryContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,6 +575,24 @@
 				06717E3E2851E78600FEB138 /* MyHomeView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		068B5C1F287D375C001C9154 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				068B5C20287D3769001C9154 /* HistoryRouter.swift */,
+				068B5C25287D38CC001C9154 /* HistoryApi.swift */,
+				068B5C27287D3929001C9154 /* GetMainHistoryResponse.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		068B5C22287D3825001C9154 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				068B5C23287D3834001C9154 /* HistoryType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		06B26286285B139300722A52 /* Network */ = {
@@ -918,6 +949,7 @@
 				06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */,
 				06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */,
 				06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */,
+				068B5C26287D38CC001C9154 /* HistoryApi.swift in Sources */,
 				06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */,
 				063634EC285869F600856928 /* OnBoardingView.swift in Sources */,
 				06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */,
@@ -948,9 +980,10 @@
 				06717E352851BF5B00FEB138 /* Imagine.swift in Sources */,
 				06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */,
 				063634F02858B56E00856928 /* AuthInterceptor.swift in Sources */,
-				06717E3B2851DE7000FEB138 /* HistoryHomeContentView.swift in Sources */,
+				06717E3B2851DE7000FEB138 /* HistoryContentView.swift in Sources */,
 				0658B1F1287967C500465938 /* PostImagineResponse.swift in Sources */,
 				0658B1E728772ACF00465938 /* FutureOfMeApi.swift in Sources */,
+				068B5C2A287D3AB9001C9154 /* HistoryViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* SignInView.swift in Sources */,
 				06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */,
 				067E6F98287D0BE300D404EF /* EndTicketAlert.swift in Sources */,
@@ -960,7 +993,9 @@
 				06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
 				06B262A0285C568B00722A52 /* ColorSelectView.swift in Sources */,
+				068B5C28287D3929001C9154 /* GetMainHistoryResponse.swift in Sources */,
 				06717E302851B11D00FEB138 /* ImagineView.swift in Sources */,
+				068B5C24287D3834001C9154 /* HistoryType.swift in Sources */,
 				06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */,
 				06B26291285B1D0800722A52 /* BaseResponse.swift in Sources */,
 				063634F22858B85C00856928 /* SignUpResponse.swift in Sources */,
@@ -986,6 +1021,7 @@
 				06B2628F285B1C9D00722A52 /* TicketListResponse.swift in Sources */,
 				067E6F96287BC22800D404EF /* SignInViewModel.swift in Sources */,
 				06B262DA286B164900722A52 /* UIViewController + Extension.swift in Sources */,
+				068B5C21287D3769001C9154 /* HistoryRouter.swift in Sources */,
 				06B262D42869D96600722A52 /* EndTicketAlertImpl.swift in Sources */,
 				063634E82852119600856928 /* SignUpRouter.swift in Sources */,
 			);

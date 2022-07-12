@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct HistoryHomeView: View {
+    @EnvironmentObject private var viewModel: HistoryViewModel
     var body: some View {
-        VStack(alignment:.leading,spacing:0){
-//            Text("기록")
-//                .kerning(-0.5)
-//                .font(.gmarketSansMeidum(size: 20))
-//                .padding(.bottom,24)
-            Text("지금까지")
-                .font(.gmarketSansMeidum(size: 20))
-                .padding(.bottom)
-            (Text("124")
-                .font(.gmarketSansMeidum(size: 60)) + Text("회 터치").font(.gmarketSansMeidum(size: 20)))
-            .kerning(-0.5)
-            .padding(.bottom)
+        VStack(alignment:.leading, spacing:0){
+            (Text("\(UserDefaults.standard.string(forKey: "nickname") ?? "")님\n현재까지 ") + Text("\(viewModel.mainHistory.reduce(0){$0 + $1.1})").foregroundColor(.mainColor)
+            + Text("번 목표에 다가가셨어요!\n앞으로 더 기대 되는걸요:)"))
+            .multilineTextAlignment(.leading)
+            .font(.system(size: 22,weight: .bold))
+            .background(Color.white.edgesIgnoringSafeArea(.horizontal))
+            .padding([.horizontal,.bottom],20)
             
-            HStack(spacing:20){
-                HistoryHomeContentView()
-                    .frame(width:160, height: 205)
-                HistoryHomeContentView()
-                    .frame(width:160, height: 205)
-            }.padding(.bottom,41)
-            
-            HistoryHomeContentView()
-                .frame(width:340, height: 178)
-            Spacer()
-        }.padding(.horizontal,20)
-            .padding(.top,25)
+            ZStack{
+                Color.gray10.ignoresSafeArea()
+                VStack{
+                    LazyVGrid(columns:[GridItem(.flexible()),GridItem(.flexible())], spacing: 15){
+                        ForEach(HistoryType.allCases, id:\.rawValue){
+                            HistoryContentView(type:$0, amount: viewModel.getMainHistoryAmount(type: $0))
+                        }
+                    }
+                    Spacer()
+                }.padding(.top, 30)
+                .padding(.horizontal, 20)
+            }
+        }
+        .onAppear{
+            viewModel.fetchMainHistory()
+        }
     }
 }
 
