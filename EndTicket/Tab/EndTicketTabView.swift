@@ -10,7 +10,7 @@ import SwiftUI
 struct EndTicketTabView: View {
     @State private var tabIndex: TabIndex = .home
     @State private var shouldShowTicketFormView = false
-    @State private var shouldShowAlert = false
+    @State private var shouldMaxContentShowAlert = false
     @State private var shouldShowEditFutureOfMeAlert = false
     @State private var subject = ""
     
@@ -57,33 +57,14 @@ struct EndTicketTabView: View {
                     }.frame(width:proxy.size.width / 5)
                         .onTapGesture {
                             if ticketViewModel.tickets.count == 6{
-                                    shouldShowAlert = true
+                                shouldMaxContentShowAlert = true
                             }
                             else{
                                 withAnimation{
                                     shouldShowTicketFormView = true
                                 }
                             }
-                        }.alert(isPresented: $shouldShowAlert){
-                            EndTicketAlert{
-                                VStack(spacing:20){
-                                    Text("현재 목표에 집중해주세요!")
-                                        .font(.system(size: 18, weight: .bold))
-                                        .multilineTextAlignment(.center)
-                                        .lineSpacing(0.83)
-                                    Text("새로 추가하고 싶다면\n하나를 삭제하고 추가해주세요:)")
-                                        .font(.system(size: 15, weight: .bold))
-                                        .foregroundColor(.gray300)
-                                        .multilineTextAlignment(.center)
-                                }.foregroundColor(Color.black)
-                                    .padding(.bottom,40)
-                                    .padding(.top,30)
-                            }primaryButton: {
-                                EndTicketAlertButton(label:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
-                                    shouldShowAlert = false
-                                }
-                            }
-                        }
+                        }.maxContentAlert(isPresented: $shouldMaxContentShowAlert)
                     
                     tapButton(image: "history_icon", title: "기록", width: proxy.size.width / 5)
                     .onTapGesture {
@@ -175,7 +156,7 @@ struct EndTicketTabView: View {
             }.padding(.bottom, 33)
             //MARK: - Alert
             .alert(isPresented: $shouldShowEditFutureOfMeAlert){
-                EndTicketAlert{
+                EndTicketAlertImpl{
                     VStack{
                         Text("미래의 나를 한마디로 설명해줄래요?")
                             .font(.system(size: 18, weight: .bold))

@@ -20,18 +20,17 @@ struct TicketFormView: View {
     @State private var shouldShowAlert = false
     @State private var isEnabledButton = false
     @State private var shouldShowDeleteAlert = false
-    private let buttonType:ButtonType
+    private let type:Type
     private let ticketId: Int?
-    
     init(){
-        buttonType = .add
+        type = .add
         ticketId = nil
     }
     
     //MARK: - 수정을 위한 생성자
     init(_ ticket: Ticket){
         ticketId = ticket.id
-        buttonType = .modify
+        type = .modify
         _subject = State(initialValue: ticket.subject)
         _purpose = State(initialValue: ticket.purpose)
         _category = State(initialValue: ticket.category)
@@ -95,21 +94,7 @@ struct TicketFormView: View {
         .onTapGesture {
             hideKeyboard()
         }
-        .alert(isPresented: $shouldShowAlert){
-            EndTicketAlert{
-                Text("변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?").font(.system(size: 18,weight: .bold))
-                    .multilineTextAlignment(.center)
-            } primaryButton:{
-                EndTicketAlertButton(label:Text("취소").foregroundColor(.gray600)){
-                    shouldShowAlert = false
-                }
-            }secondaryButton: {
-                EndTicketAlertButton(label:Text("나가기").foregroundColor(.red)){
-                    shouldShowAlert = false
-                    dismiss()
-                }
-            }
-        }
+        .returnAlert(isPresented: $shouldShowAlert, dismiss: dismiss)
         .onChange(of: !subject.isEmpty && !purpose.isEmpty){
             isEnabledButton = $0
         }
@@ -119,7 +104,7 @@ struct TicketFormView: View {
             }
         }//MARK: - 삭제 alert
         .alert(isPresented: $shouldShowDeleteAlert){
-            EndTicketAlert{
+            EndTicketAlertImpl{
                 Text("티켓을 삭제하시겠습니까?")
                     .font(.system(size:18,weight:.bold))
             }primaryButton: {
@@ -139,7 +124,7 @@ struct TicketFormView: View {
     
     @ViewBuilder
     var addOrModifyButton: some View{
-        switch buttonType {
+        switch type {
         case .add:
             Text("등록")
                 .font(.interMedium(size: 13))
@@ -171,8 +156,8 @@ struct TicketFormView: View {
         }
     }
     
-    private enum  ButtonType {
-        case add, modify
+    private enum `Type` {
+        case add,modify
     }
 }
 

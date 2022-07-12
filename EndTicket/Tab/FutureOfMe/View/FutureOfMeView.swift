@@ -89,26 +89,7 @@ struct FutureOfMeView: View {
             viewModel.fetchImagines()
         }
         //MARK: - alert
-        .alert(isPresented: $shouldShowAlert){
-            EndTicketAlert{
-                VStack(spacing:20){
-                    Text("현재 목표에 집중해주세요!")
-                        .font(.system(size: 18, weight: .bold))
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(0.83)
-                    Text("새로 추가하고 싶다면\n하나를 삭제하고 추가해주세요:)")
-                        .font(.system(size: 15, weight: .bold))
-                        .foregroundColor(.gray300)
-                        .multilineTextAlignment(.center)
-                }.foregroundColor(Color.black)
-                    .padding(.top, 40)
-                    .padding(.bottom, 30)
-            }primaryButton: {
-                EndTicketAlertButton(label:Text("확인").font(.system(size: 16,weight: .bold)).foregroundColor(.mainColor)){
-                    shouldShowAlert = false
-                }
-            }
-        }
+        .maxContentAlert(isPresented: $shouldShowAlert)
     }
 }
 

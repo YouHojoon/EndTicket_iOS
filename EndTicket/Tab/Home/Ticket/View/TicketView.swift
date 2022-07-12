@@ -14,7 +14,7 @@ struct TicketView: View {
     @State private var shouldShowAlert = false //일반 롱프레스 alert
     @State private var shouldShowDeleteAlert = false // 삭제 관련 alert
     @State private var shouldShowModifyOrDeleteAlert = false
-    
+    @Namespace private var space
     @EnvironmentObject private var viewModel: TicketViewModel
     init(_ ticket: Ticket){
         self.ticket = ticket
@@ -45,6 +45,7 @@ struct TicketView: View {
                 Spacer()
                 Text("\(ticket.currentCount)번의 용기").font(.interBold(size: 18))
             }.padding(.bottom, 18)
+            //MARK: - Progress Bar
             GeometryReader{proxy in
                 Capsule()
                     .frame(height:8)
@@ -52,9 +53,10 @@ struct TicketView: View {
                     .overlay(
                         Capsule()
                             .frame(width: proxy.size.width * CGFloat(ticket.currentCount) / CGFloat(ticket.touchCount)
-                                   ,height:8, alignment: .leading)
+                                   ,height:8)
                         ,alignment: .leading)
             }.frame(height:8)
+                
             
             .padding(.bottom,16)
             HStack(spacing:5){
@@ -122,8 +124,9 @@ struct TicketView: View {
             }
         }
         .padding(.horizontal, 20)
-        
+        .animation(.easeInOut.delay(0.1), value: ticket.currentCount)
         .offset(x: offset)
+        
         //scroll을 위한 빈 탭 제스쳐
         
         .onTapGesture {
@@ -150,9 +153,9 @@ struct TicketView: View {
                 let dragWidth = round(abs($0.translation.width))
                 //offset이 음수면 왼쪽
                 let ticket = viewModel.tickets.first{$0.id == self.ticket.id}!
-                let operation = offset < 0 ? (ticket.currentCount > 0 ?     viewModel.cancelTouchTicket : nil) : (ticket.currentCount <= ticket.touchCount ? viewModel.touchTicket : nil)
+                let operation = offset < 0  ?     viewModel.cancelTouchTicket : viewModel.touchTicket
                 if dragWidth > 335 / 2{
-                    operation?(ticket.id)
+                    operation(ticket.id)
                 }
                 withAnimation(.easeInOut){
                     offset = 0
@@ -165,7 +168,7 @@ struct TicketView: View {
         }
         //MARK: - 삭제 alert
         .alert(isPresented: $shouldShowDeleteAlert){
-            EndTicketAlert{
+            EndTicketAlertImpl{
                 Text("티켓을 삭제하시겠습니까?")
                     .font(.system(size:18,weight:.bold))
             }primaryButton: {

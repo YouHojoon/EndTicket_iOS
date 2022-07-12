@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct EndTicketAlert<Content>: View where Content: View{
+struct EndTicketAlertImpl<Content>:EndTicketAlert where Content:View{
     let content: Content
     let primaryButton: EndTicketAlertButton
     let secondaryButton: EndTicketAlertButton?
-
+    
     init(content: () -> Content, primaryButton: () ->  EndTicketAlertButton, secondaryButton: (() -> EndTicketAlertButton)? = nil){
         self.content = content()
         self.primaryButton = primaryButton()
         self.secondaryButton = secondaryButton?()
     }
-    
+
     var body: some View {
         ZStack{
             Color.black.opacity(0.3).ignoresSafeArea()
@@ -48,17 +48,3 @@ struct EndTicketAlert<Content>: View where Content: View{
         }
     }
 }
-
-//struct EndTicketAlert_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EndTicketAlert(title: "변경된 내용은 저장되지 않습니다.\n이 화면을 나가시겠습니까?"){
-//            EndTicketAlertButton(title:Text("예").foregroundColor(.gray600)){
-//                
-//            }
-//        }secondButton: {
-//            EndTicketAlertButton(title:Text("아니요").foregroundColor(.red)){
-//                
-//            }
-//        }
-//    }
-//}
