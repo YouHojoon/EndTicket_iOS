@@ -513,7 +513,7 @@
 			children = (
 				064B50E2284E3A09000EEF62 /* Home */,
 				06717E292850CE2900FEB138 /* FutureOfMe */,
-				06717E362851DB9F00FEB138 /* HIstory */,
+				06717E362851DB9F00FEB138 /* History */,
 				06717E3C2851E76F00FEB138 /* My */,
 				06717E2128504D5E00FEB138 /* EndTicketTabView.swift */,
 			);
@@ -541,7 +541,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		06717E362851DB9F00FEB138 /* HIstory */ = {
+		06717E362851DB9F00FEB138 /* History */ = {
 			isa = PBXGroup;
 			children = (
 				068B5C22287D3825001C9154 /* Enum */,
@@ -549,7 +549,7 @@
 				06717E372851DBAE00FEB138 /* View */,
 				068B5C29287D3AB9001C9154 /* HistoryViewModel.swift */,
 			);
-			path = HIstory;
+			path = History;
 			sourceTree = "<group>";
 		};
 		06717E372851DBAE00FEB138 /* View */ = {
