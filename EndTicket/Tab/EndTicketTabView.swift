@@ -21,6 +21,7 @@ struct EndTicketTabView: View {
             ZStack(alignment:.bottom){
                 VStack(alignment: .leading,spacing:0){
                     header.padding(.horizontal,20)
+                        .padding(.top, 23.67)
                     content
                 }
                 .fullScreenCover(isPresented: $shouldShowTicketFormView){
@@ -108,6 +109,7 @@ struct EndTicketTabView: View {
                 .environmentObject(futureOfMeViewModel)
         case .history:
             HistoryHomeView()
+                .environmentObject(HistoryViewModel())
         case .myPage:
             MyHomeView()
         case .prefer:
@@ -180,8 +182,8 @@ struct EndTicketTabView: View {
         case .history:
             Text("기록")
                 .kerning(-0.5)
-                .font(.gmarketSansMeidum(size: 20))
-                .padding(.bottom,24)
+                .font(.system(size: 21,weight: .bold))
+                .padding(.bottom,43)
         case .myPage:
             Text("설정")
                 .kerning(-0.5)

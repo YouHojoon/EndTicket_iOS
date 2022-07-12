@@ -29,11 +29,12 @@ struct Ticket: Identifiable{
     
     
     enum Category: String, CaseIterable{
+        case all = "전체"
         case health = "건강"
         case personality = "성격"
         case value = "가치관"
         case selfImprovement = "자기계발"
-        case relationship = "인간관계"
+        case relationship = "대인관계"
     }
     
     static func getDummys() -> [Ticket]{
