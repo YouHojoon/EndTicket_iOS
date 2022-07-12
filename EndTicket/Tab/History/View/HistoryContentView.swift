@@ -37,6 +37,7 @@ struct HistoryContentView: View {
                         .frame(width: 15.75, height: 8.64)
                         .foregroundColor(.gray200)
                         .frame(width: 20, height: 20)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             shouldShowDetail = true
                         }
@@ -70,7 +71,7 @@ struct HistoryContentView: View {
         case .ticket:
             TicketHistoryView()
         case .mission:
-            EmptyView()
+            MissionHistoryView()
         case .imagine:
             ImagineHistoryView()
         }

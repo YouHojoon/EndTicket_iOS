@@ -13,8 +13,6 @@ struct ImagineViewForHistory: View {
         self.imagine = imagine
     }
     var body: some View {
-        
-
             TicketLeadingShape()
             .foregroundColor(.white)
             .cornerRadius(5)

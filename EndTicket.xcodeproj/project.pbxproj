@@ -100,6 +100,9 @@
 		06DC287C287DDBC5004F29DF /* ImagineHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */; };
 		06DC287E287DDC4D004F29DF /* ImagineViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */; };
 		06DC2880287DE0C6004F29DF /* MainHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287F287DE0C6004F29DF /* MainHistory.swift */; };
+		06DC2883287DE2E2004F29DF /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2882287DE2E2004F29DF /* Mission.swift */; };
+		06DC2885287DE36F004F29DF /* GetMissionHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */; };
+		06DC2887287DE45C004F29DF /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2886287DE45C004F29DF /* MissionHistoryView.swift */; };
 		06EBADAB287D66BD002A4B31 /* TicketViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
@@ -223,6 +226,9 @@
 		06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineHistoryView.swift; path = EndTicket/Tab/History/View/ImagineHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineViewForHistory.swift; path = EndTicket/Tab/HIstory/View/ImagineViewForHistory.swift; sourceTree = SOURCE_ROOT; };
 		06DC287F287DE0C6004F29DF /* MainHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHistory.swift; sourceTree = "<group>"; };
+		06DC2882287DE2E2004F29DF /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetMissionHistoryResponse.swift; path = EndTicket/Tab/HIstory/Network/GetMissionHistoryResponse.swift; sourceTree = SOURCE_ROOT; };
+		06DC2886287DE45C004F29DF /* MissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MissionHistoryView.swift; path = EndTicket/Tab/HIstory/View/MissionHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewForHistory.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -356,6 +362,7 @@
 				06717E342851BF5B00FEB138 /* Imagine.swift */,
 				0658B1E828772B2E00465938 /* FutureOfMe.swift */,
 				06DC287F287DE0C6004F29DF /* MainHistory.swift */,
+				06DC2882287DE2E2004F29DF /* Mission.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -572,6 +579,7 @@
 				068B5C2B287D58CD001C9154 /* TicketHistoryView.swift */,
 				06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */,
 				06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */,
+				06DC2886287DE45C004F29DF /* MissionHistoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -598,6 +606,7 @@
 				068B5C20287D3769001C9154 /* HistoryRouter.swift */,
 				068B5C25287D38CC001C9154 /* HistoryApi.swift */,
 				068B5C27287D3929001C9154 /* GetMainHistoryResponse.swift */,
+				06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -971,6 +980,7 @@
 				06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */,
 				06717E332851BF3400FEB138 /* FutureOfMeViewModel.swift in Sources */,
 				06717E3F2851E78600FEB138 /* MyHomeView.swift in Sources */,
+				06DC2885287DE36F004F29DF /* GetMissionHistoryResponse.swift in Sources */,
 				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
 				06B262B72864082700722A52 /* SignInResponse.swift in Sources */,
 				06B2629B285C3F1F00722A52 /* FormTextField.swift in Sources */,
@@ -996,6 +1006,7 @@
 				06717E352851BF5B00FEB138 /* Imagine.swift in Sources */,
 				06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */,
 				063634F02858B56E00856928 /* AuthInterceptor.swift in Sources */,
+				06DC2887287DE45C004F29DF /* MissionHistoryView.swift in Sources */,
 				06717E3B2851DE7000FEB138 /* HistoryContentView.swift in Sources */,
 				0658B1F1287967C500465938 /* PostImagineResponse.swift in Sources */,
 				0658B1E728772ACF00465938 /* FutureOfMeApi.swift in Sources */,
@@ -1015,6 +1026,7 @@
 				068B5C24287D3834001C9154 /* HistoryType.swift in Sources */,
 				06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */,
 				06B26291285B1D0800722A52 /* BaseResponse.swift in Sources */,
+				06DC2883287DE2E2004F29DF /* Mission.swift in Sources */,
 				063634F22858B85C00856928 /* SignUpResponse.swift in Sources */,
 				0658B1FA287B257900465938 /* DeleteImagineResponse.swift in Sources */,
 				06B26295285B29C500722A52 /* TicketResponse.swift in Sources */,
