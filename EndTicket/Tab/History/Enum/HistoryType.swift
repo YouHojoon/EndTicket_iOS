@@ -72,14 +72,15 @@ enum HistoryType: String,CaseIterable{
                 Spacer()
                 Text("\(rawValue)")
                     .font(.system(size: 21,weight: .bold))
+                    .offset(x:-20)
                 Spacer()
             }.padding(.top, 23.67)
-                .padding(.bottom, 43)
+            .padding(.bottom, 43)
             
             Text("\(pepTalk)")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 22,weight: .bold))
                 .padding(.bottom,20)
-        }.padding(.horizontal,20)
+        }.padding(.leading,20)
     }
 }
