@@ -57,6 +57,8 @@ struct TicketHistoryView: View {
             }
         }.onAppear{
             viewModel.fetchTicketHistory(category: category)
+        }.onChange(of: category){
+            viewModel.fetchTicketHistory(category: $0)
         }
     }
 }

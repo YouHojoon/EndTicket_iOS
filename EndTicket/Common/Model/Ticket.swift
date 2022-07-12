@@ -34,7 +34,7 @@ struct Ticket: Identifiable{
         case personality = "성격"
         case value = "가치관"
         case selfImprovement = "자기계발"
-        case relationship = "인간관계"
+        case relationship = "대인관계"
     }
     
     static func getDummys() -> [Ticket]{
