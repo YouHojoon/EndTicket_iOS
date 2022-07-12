@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 struct ImagineFormView: View{
-    private let buttonType:ButtonType
+    private let type: `Type`
     private let imagineId: Int?
     @State private var subject = ""
     @State private var purpose = ""
@@ -24,14 +24,14 @@ struct ImagineFormView: View{
     
     init(){
         imagineId = nil
-        buttonType = .add
+        type = .add
     }
     init(_ imagine: Imagine){
         _subject = State(initialValue: imagine.subject)
         _purpose = State(initialValue: imagine.purpose)
         _color = State(initialValue: imagine.color)
         imagineId = imagine.id
-        buttonType = .modify
+        type = .modify
         _isEnabledButton = State(initialValue: true)
     }
     
@@ -126,7 +126,7 @@ struct ImagineFormView: View{
     
     @ViewBuilder
     var addOrModifyButton: some View{
-        switch buttonType {
+        switch type {
         case .add:
             Text("등록")
                 .font(.interMedium(size: 13))
@@ -145,7 +145,7 @@ struct ImagineFormView: View{
         }
     }
     
-    private enum  ButtonType {
+    private enum  `Type` {
         case add, modify
     }
     
