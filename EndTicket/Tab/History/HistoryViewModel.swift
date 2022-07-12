@@ -11,6 +11,7 @@ import SwiftUI
 
 final class HistoryViewModel: ObservableObject{
     @Published public private(set) var mainHistory: [(HistoryType, Int)] = []
+    @Published public private(set) var ticketHistories: [Ticket] = []
     private var subscriptions = Set<AnyCancellable>()
     
     
@@ -25,7 +26,7 @@ final class HistoryViewModel: ObservableObject{
     }
     
     func fetchMainHistory(){
-        HistoryApi.shared.getMainHistroy().sink(receiveCompletion: {
+        HistoryApi.shared.getMainHistory().sink(receiveCompletion: {
             switch $0{
             case .finished:
                 break
@@ -34,6 +35,18 @@ final class HistoryViewModel: ObservableObject{
             }
         }, receiveValue: {
             self.mainHistory = $0
+        }).store(in: &subscriptions)
+    }
+    func fetchTicketHistory(category: Ticket.Category){
+        HistoryApi.shared.getTicketHistory(category: category).sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("티켓 기록 조회 실패 : \(error.localizedDescription)")
+            }
+        }, receiveValue: {
+            self.ticketHistories = $0
         }).store(in: &subscriptions)
     }
 }

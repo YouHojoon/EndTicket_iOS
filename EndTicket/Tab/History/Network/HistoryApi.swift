@@ -14,7 +14,7 @@ final class HistoryApi: BaseApi{
         super.init(needInterceptor: true)
     }
     
-    func getMainHistroy() -> AnyPublisher<[(HistoryType,Int)],AFError>{
+    func getMainHistory() -> AnyPublisher<[(HistoryType,Int)],AFError>{
         session.request(HistoryRouter.main)
             .publishDecodable(type:GetMainHistroyResponse.self)
             .value()
@@ -25,6 +25,15 @@ final class HistoryApi: BaseApi{
                 result.append((HistoryType.futureOfMe,$0.result?.dreamCount ?? 0))
                 
                 return result
+            }.eraseToAnyPublisher()
+    }
+    
+    func getTicketHistory(category:Ticket.Category) -> AnyPublisher<[Ticket],AFError>{
+        session.request(HistoryRouter.ticket(category))
+            .publishDecodable(type:TicketListResponse.self)
+            .value()
+            .map{
+                $0.result?.ticket.map{$0.ticketResponseToTicket()} ?? []
             }.eraseToAnyPublisher()
     }
 }

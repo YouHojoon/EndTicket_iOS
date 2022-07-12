@@ -29,6 +29,7 @@ struct Ticket: Identifiable{
     
     
     enum Category: String, CaseIterable{
+        case all = "전체"
         case health = "건강"
         case personality = "성격"
         case value = "가치관"

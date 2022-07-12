@@ -9,7 +9,9 @@ import Foundation
 import Alamofire
 enum HistoryRouter: BaseRouter{
     case main
-    case detail(HistoryType)
+    case ticket(Ticket.Category)
+    case mission
+    case futureOfMe
     
     var parameters: Parameters{
         return Parameters()
@@ -20,8 +22,18 @@ enum HistoryRouter: BaseRouter{
         switch self {
         case .main:
             return "\(baseEndPoint)/main"
-        case .detail(let type):
-            return "\(baseEndPoint)/\(type.rawValue)"
+        case .ticket(let category):
+            if category == .all{
+                return "\(baseEndPoint)/ticket"
+            }
+            else{
+                return "\(baseEndPoint)/ticket?category=\(category.rawValue)"
+            }
+        case .mission:
+            return "\(baseEndPoint)/mission"
+        case .futureOfMe:
+            return "\(baseEndPoint)/dream"
+            
         }
     }
     
@@ -32,6 +44,7 @@ enum HistoryRouter: BaseRouter{
     func asURLRequest() throws -> URLRequest {
         let url = URL(string: EndTicketApp.baseUrl)!.appendingPathComponent(endPoint)
         var request = URLRequest(url: url)
+        request.url = url
         request.method = method
         return request
     }

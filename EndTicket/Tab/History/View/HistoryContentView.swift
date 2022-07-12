@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryContentView: View {
     private let type: HistoryType
     private let amount: Int
-    
+    @State private var shouldShowDetail = false
     init(type:HistoryType, amount: Int){
         self.type = type
         self.amount = amount
@@ -38,19 +38,21 @@ struct HistoryContentView: View {
                         .foregroundColor(.gray200)
                         .frame(width: 20, height: 20)
                         .onTapGesture {
-                            
+                            shouldShowDetail = true
                         }
                 }.padding(.bottom, 20)
             }.padding(.horizontal,10)
         }.padding(.horizontal,5)
-            
-            .background(RoundedRectangle(cornerRadius: 10)
+        .background(RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(.white)
-                .shadow(color: .black.opacity(0.05), radius: 15, x: 0, y: 4))
+                .shadow(color: .black.opacity(0.05), radius: 15, x: 0, y: 4)
+        ).fullScreenCover(isPresented:$shouldShowDetail){
+            detail
+        }
     }
     
     
-
+    
     var image: Image{
         switch type {
         case .ticket:
@@ -59,6 +61,18 @@ struct HistoryContentView: View {
             return Image("futureOfMe_image")
         case .mission:
             return Image("mission")
+        }
+    }
+    
+    @ViewBuilder
+    var detail: some View{
+        switch type {
+        case .ticket:
+            TicketHistoryView()
+        case .mission:
+            EmptyView()
+        case .futureOfMe:
+            EmptyView()
         }
     }
 }

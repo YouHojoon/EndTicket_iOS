@@ -63,7 +63,7 @@ struct TicketFormView: View {
                     FormTextField(title:"행동", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil)
                     FormTextField(title:"목표", titleImage: Image("goal_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil)
                     Divider().padding(.vertical, 10)
-                    TicketFormCategoryView(selected: $category,isEssential: ticketId == nil)
+                    TicketCategorySelectView(selected: $category,isEssential: ticketId == nil)
                     ColorSelectView(selected: $color)
                     TicketTouchCountSelectView(selected: $touchCount,isEssential: ticketId == nil)
                         .disabled(ticketId != nil)
