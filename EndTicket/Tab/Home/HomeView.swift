@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
+    @EnvironmentObject private var missionViewModel: MissionViewModel
     @State private var shouldShowTicketFormView = false
     var body: some View {
         //MARK: - 위에 뷰
@@ -25,7 +26,7 @@ struct HomeView: View {
                         .font(.interSemiBold(size: 12))
                         .foregroundColor(.mainColor)
                         .padding(.trailing,10)
-                    Text("이번주는 '터치 6번' 목표로 하기")
+                    Text("\(missionViewModel.missions.count == 0 ? "" : missionViewModel.missions[0].mission)")
                         .font(.interSemiBold(size: 14))
                         .foregroundColor(.gray500)
                 }
@@ -77,6 +78,7 @@ struct HomeView: View {
         }
         .onAppear{
             viewModel.fetchTickets()
+            missionViewModel.fetchMission()
             UIScrollView.appearance().bounces = true
         }
         .fullScreenCover(isPresented: $shouldShowTicketFormView){
