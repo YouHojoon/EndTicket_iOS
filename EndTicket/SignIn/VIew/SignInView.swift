@@ -40,7 +40,6 @@ struct SignInView: View {
                             .resizable()
                             .frame(width:18, height: 18)
                         Text("Google로 로그인").kerning(-0.48)
-                            .padding()
                             .foregroundColor(.black)
                         Spacer().frame(width:18)
                     }.frame(maxWidth:.infinity, maxHeight: 50)

@@ -50,13 +50,14 @@ final class SignInViewModel: NSObject, ObservableObject{
             guard let _ = $0 else{
                 return
             }
+            print($0?.accessToken)
         }
     }
     private func appleSignIn(){
         let request = ASAuthorizationAppleIDProvider().createRequest()
         let controller = ASAuthorizationController(authorizationRequests: [request])
         asAuthDelegate = ASAuthorizationControllerDelgateImpl{result in
-           
+            
         }
         controller.delegate = asAuthDelegate
         controller.performRequests()
