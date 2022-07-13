@@ -13,7 +13,7 @@ struct SignInView: View {
     @AppStorage("isFirstStart") private var isFirstStart:Bool = true
     @EnvironmentObject private var viewModel:SignInViewModel
     @State private var shouldGoNextView = false
-    @State private var shouldShowProgressView = false
+    @State private var shouldShowLauhchScreen = true
     
     var body: some View {
         VStack(spacing:12){
@@ -92,12 +92,12 @@ struct SignInView: View {
         .font(.system(size: 15,weight: .bold))
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .overlay(isFirstStart ? OnBoardingView() : nil)
+        .overlay(LaunchScreen())
         .onAppear{
             viewModel.restorePreviousSignIn()
-            shouldShowProgressView = true
         }
         .onReceive(viewModel.$status.dropFirst()){status in
-            shouldShowProgressView = false
+            shouldShowLauhchScreen  = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                 shouldGoNextView = status != .fail
             }
@@ -114,7 +114,7 @@ struct SignInView: View {
                 SignUpView().environmentObject(SignUpViewModel())
             }
         }
-        .progressView(isPresented: $shouldShowProgressView)
+
         
     }
 }

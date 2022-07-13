@@ -103,6 +103,7 @@
 		06DC2883287DE2E2004F29DF /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2882287DE2E2004F29DF /* Mission.swift */; };
 		06DC2885287DE36F004F29DF /* GetMissionHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */; };
 		06DC2887287DE45C004F29DF /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2886287DE45C004F29DF /* MissionHistoryView.swift */; };
+		06DC288A287F0FB4004F29DF /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2889287F0FB4004F29DF /* LaunchScreen.swift */; };
 		06EBADAB287D66BD002A4B31 /* TicketViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */; };
 		06EBADB2287EBC55002A4B31 /* MissionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB1287EBC55002A4B31 /* MissionRouter.swift */; };
 		06EBADB5287EBD24002A4B31 /* MissionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */; };
@@ -233,6 +234,7 @@
 		06DC2882287DE2E2004F29DF /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetMissionHistoryResponse.swift; path = EndTicket/Tab/HIstory/Network/GetMissionHistoryResponse.swift; sourceTree = SOURCE_ROOT; };
 		06DC2886287DE45C004F29DF /* MissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MissionHistoryView.swift; path = EndTicket/Tab/HIstory/View/MissionHistoryView.swift; sourceTree = SOURCE_ROOT; };
+		06DC2889287F0FB4004F29DF /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewForHistory.swift; sourceTree = "<group>"; };
 		06EBADB1287EBC55002A4B31 /* MissionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRouter.swift; sourceTree = "<group>"; };
 		06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListResponse.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				06717E0B2840AE0700FEB138 /* SignInView.swift */,
+				06DC2889287F0FB4004F29DF /* LaunchScreen.swift */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -998,6 +1001,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06DC288A287F0FB4004F29DF /* LaunchScreen.swift in Sources */,
 				06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */,
 				06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */,
 				06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */,
