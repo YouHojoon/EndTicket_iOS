@@ -11,6 +11,7 @@ final class ASAuthorizationControllerDelgateImpl: NSObject, ASAuthorizationContr
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential{
+            print(String(data: credential.identityToken!, encoding: .utf8)!)
             completion?(KeyChainManager.saveUserInKeyChain(credential: credential))
         }
         else{
