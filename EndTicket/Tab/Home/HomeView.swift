@@ -11,12 +11,18 @@ struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
     @EnvironmentObject private var missionViewModel: MissionViewModel
     @State private var shouldShowTicketFormView = false
+    @State private var shouldHidePepTalk = false
+    @State private var shouldShowPepTalk = true
+    
     var body: some View {
         //MARK: - 위에 뷰
         VStack(alignment:.leading,spacing:0){
             Group{
-                Text("\(UserDefaults.standard.string(forKey:"nickname")!)님\n오늘도 같이 도전해볼까요?")
-                    .font(.interBold(size: 22))
+                if shouldShowPepTalk{
+                    Text("\(UserDefaults.standard.string(forKey:"nickname")!)님\n오늘도 같이 도전해볼까요?")
+                        .font(.interBold(size: 22))
+                }
+                
                 HStack(spacing:0){
                     Image(systemName: "clock")
                         .font(.system(size: 13))
@@ -32,8 +38,8 @@ struct HomeView: View {
                 }
                 .padding(.bottom,21)
             }.background(Color.white.edgesIgnoringSafeArea([.horizontal,.top]))
-                .padding(.horizontal,20)
-                .padding(.top, 12)
+            .padding(.horizontal,20)
+            .padding(.top, 12)
             
             
             //MARK: - 티켓 리스트
@@ -72,7 +78,27 @@ struct HomeView: View {
                                 TicketView($0)
                             }
                         }.padding(.vertical, 30)
-                    }
+                        .background(GeometryReader { proxy -> Color in
+                            if shouldHidePepTalk {
+                                DispatchQueue.main.async {
+                                    withAnimation{
+                                        shouldShowPepTalk = proxy.frame(in: .named("scroll")).minY >= 0
+                                    }
+                                }
+                            }
+                            return Color.clear
+                        })
+                        .background(
+                            GeometryReader { proxy -> Color in
+                                DispatchQueue.main.async {
+                                    //컨텐츠가 응원문구를 가릴정도로 많은가?
+                                    shouldHidePepTalk = proxy.frame(in: .named("scroll")).size.height >= UIScreen.main.bounds.size.height - 100
+                                }
+                                
+                                return Color.clear
+                            }
+                        )
+                    } .coordinateSpace(name: "scroll")
                 }   
             }   
         }
