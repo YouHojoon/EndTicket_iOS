@@ -12,9 +12,5 @@ struct GetMainHistroyResponse:BaseResponse{
     let message: String
     let result: Result?
     
-    struct Result:Codable{
-        let dreamCount: Int
-        let ticketCount: Int
-        let missionCount: Int
-    }
+    typealias Result = MainHistory
 }

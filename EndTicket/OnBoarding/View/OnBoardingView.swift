@@ -18,12 +18,12 @@ struct OnBoardingView: View {
                 .foregroundColor(Color.gray500)
                 .font(.system(size:13,weight: .medium))
                 .padding(.bottom,36)
-                .frame(width:335,alignment: .trailing)
+                .frame(maxWidth:.infinity,alignment: .trailing)
                 .onTapGesture{
                     withAnimation{
                         UserDefaults.standard.setValue(false, forKey: "isFirstStart")
                     }
-                }
+                }.padding(.trailing,20)
             
             ZStack{//opacity가 변하면서 바뀌는 것을 원해서 ZStack으로
                 ForEach(OnBoarding.allCases, id:\.self){onBoarding in

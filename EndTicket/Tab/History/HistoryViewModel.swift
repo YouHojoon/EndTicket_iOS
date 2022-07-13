@@ -10,19 +10,19 @@ import Combine
 import SwiftUI
 
 final class HistoryViewModel: ObservableObject{
-    @Published public private(set) var mainHistory: [(HistoryType, Int)] = []
+    @Published public private(set) var mainHistory: MainHistory? = nil
     @Published public private(set) var ticketHistories: [Ticket] = []
+    @Published public private(set) var imagineHistories: [Imagine] = []
+    @Published public private(set) var missionHistories: [Mission] = []
     private var subscriptions = Set<AnyCancellable>()
     
     
     func getMainHistoryAmount(type:HistoryType) -> Int{
-        let history = mainHistory.first{(historyType, _) in
-            type == historyType
-        }
-        guard let history = history else {
+        guard let mainHistory = self.mainHistory else {
             return 0
         }
-        return history.1
+        
+        return mainHistory.getHistoryCount(type: type)
     }
     
     func fetchMainHistory(){
@@ -47,6 +47,30 @@ final class HistoryViewModel: ObservableObject{
             }
         }, receiveValue: {
             self.ticketHistories = $0
+        }).store(in: &subscriptions)
+    }
+    func fetchImagineHistory(){
+        HistoryApi.shared.getImagineHistory().sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("상상하기 기록 조회 실패 : \(error.localizedDescription)")
+            }
+        }, receiveValue: {
+            self.imagineHistories = $0
+        }).store(in: &subscriptions)
+    }
+    func fetchMissionHistory(){
+        HistoryApi.shared.getMissionHistory().sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("주간 미션 기록 조회 실패 : \(error.localizedDescription)")
+            }
+        }, receiveValue: {
+            self.missionHistories = $0
         }).store(in: &subscriptions)
     }
 }

@@ -9,20 +9,19 @@ import Foundation
 import Alamofire
 
 enum TicketRouter: BaseRouter{
-    case getTicket
+    case getTickets
     case postTicket(Ticket)
     case deleteTicket(Int)
     case ticketTouch(Int)
     case modifyTicket(Ticket)
-    case getWeekendGoal
     case canelTouchTicket(Int)
     case getPreferTicket
+    case getOthersTickets
     
     var endPoint: String{
         let baseEndPoint = "ticket"
-        
         switch self {
-        case .getTicket, .postTicket:
+        case .getTickets, .postTicket:
             return "\(baseEndPoint)"
         case .deleteTicket(let ticketId):
             return "\(baseEndPoint)/\(ticketId)"
@@ -30,12 +29,12 @@ enum TicketRouter: BaseRouter{
             return "\(baseEndPoint)/touch/\(ticketId)"
         case .modifyTicket(let ticket):
             return "\(baseEndPoint)/\(ticket.id)"
-        case .getWeekendGoal:
-            return "\(baseEndPoint)/goal"
         case .canelTouchTicket(let ticketId):
             return "\(baseEndPoint)/touch/\(ticketId)"
         case .getPreferTicket:
             return "\(baseEndPoint)/\(UserDefaults.standard.string(forKey: "id")!)" // 임시로 userId
+        case .getOthersTickets:
+            return "\(baseEndPoint)/other"
         }
     }
     
@@ -56,22 +55,14 @@ enum TicketRouter: BaseRouter{
     
     var method: HTTPMethod{
         switch self {
-        case .getTicket:
+        case .getTickets, .getPreferTicket, .getOthersTickets:
             return .get
-        case .postTicket:
+        case .postTicket, .ticketTouch:
             return .post
-        case .deleteTicket:
+        case .deleteTicket, .canelTouchTicket:
             return .delete
-        case .ticketTouch:
-            return .post
         case .modifyTicket:
             return .patch
-        case .getWeekendGoal:
-            return .get
-        case .canelTouchTicket:
-            return .delete
-        case .getPreferTicket:
-            return .get
         }
     }
 

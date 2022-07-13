@@ -18,7 +18,7 @@ final class TicketApi: BaseApi{
     }
     
     func getTickets() -> AnyPublisher<[Ticket], AFError>{
-        return session.request(TicketRouter.getTicket)
+        return session.request(TicketRouter.getTickets)
             .validate(statusCode: 200..<300)
             .publishDecodable(type:TicketListResponse.self)
             .value()
@@ -94,6 +94,14 @@ final class TicketApi: BaseApi{
             .value()
             .map{
                 $0.result?.ticket.first?.ticketResponseToTicket()
+            }.eraseToAnyPublisher()
+    }
+    func getOthersTickets() -> AnyPublisher<[Ticket],AFError>{
+        return session.request(TicketRouter.getOthersTickets).validate(statusCode: 200..<300)
+            .publishDecodable(type:TicketListResponse.self)
+            .value()
+            .map{
+                $0.result?.ticket.map{$0.ticketResponseToTicket()} ?? []
             }.eraseToAnyPublisher()
     }
 }

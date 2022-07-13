@@ -11,7 +11,7 @@ struct HistoryHomeView: View {
     @EnvironmentObject private var viewModel: HistoryViewModel
     var body: some View {
         VStack(alignment:.leading, spacing:0){
-            (Text("\(UserDefaults.standard.string(forKey: "nickname") ?? "")님\n현재까지 ") + Text("\(viewModel.mainHistory.reduce(0){$0 + $1.1})").foregroundColor(.mainColor)
+            (Text("\(UserDefaults.standard.string(forKey: "nickname") ?? "")님\n현재까지 ") + Text("\(viewModel.mainHistory?.ticketTouchCount ?? 0)").foregroundColor(.mainColor)
             + Text("번 목표에 다가가셨어요!\n앞으로 더 기대 되는걸요:)"))
             .multilineTextAlignment(.leading)
             .font(.system(size: 22,weight: .bold))
