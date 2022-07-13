@@ -104,6 +104,10 @@
 		06DC2885287DE36F004F29DF /* GetMissionHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */; };
 		06DC2887287DE45C004F29DF /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2886287DE45C004F29DF /* MissionHistoryView.swift */; };
 		06EBADAB287D66BD002A4B31 /* TicketViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */; };
+		06EBADB2287EBC55002A4B31 /* MissionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB1287EBC55002A4B31 /* MissionRouter.swift */; };
+		06EBADB5287EBD24002A4B31 /* MissionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */; };
+		06EBADB8287EBDB5002A4B31 /* MissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB7287EBDB5002A4B31 /* MissionViewModel.swift */; };
+		06EBADBA287EBDEC002A4B31 /* MissionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB9287EBDEC002A4B31 /* MissionApi.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -230,6 +234,10 @@
 		06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetMissionHistoryResponse.swift; path = EndTicket/Tab/HIstory/Network/GetMissionHistoryResponse.swift; sourceTree = SOURCE_ROOT; };
 		06DC2886287DE45C004F29DF /* MissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MissionHistoryView.swift; path = EndTicket/Tab/HIstory/View/MissionHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewForHistory.swift; sourceTree = "<group>"; };
+		06EBADB1287EBC55002A4B31 /* MissionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRouter.swift; sourceTree = "<group>"; };
+		06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListResponse.swift; sourceTree = "<group>"; };
+		06EBADB7287EBDB5002A4B31 /* MissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewModel.swift; sourceTree = "<group>"; };
+		06EBADB9287EBDEC002A4B31 /* MissionApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionApi.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -417,6 +425,7 @@
 		06717DCC28408B6A00FEB138 /* EndTicket */ = {
 			isa = PBXGroup;
 			children = (
+				06EBADAF287EBBF4002A4B31 /* Mission */,
 				063BFAE92871D42800626E16 /* Common */,
 				06717E2028504D4C00FEB138 /* Tab */,
 				06717E0A2840ADF600FEB138 /* SignIn */,
@@ -696,6 +705,25 @@
 				06B262D52869DEE500722A52 /* EndTicketAlertButton.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		06EBADAF287EBBF4002A4B31 /* Mission */ = {
+			isa = PBXGroup;
+			children = (
+				06EBADB0287EBC44002A4B31 /* Network */,
+				06EBADB7287EBDB5002A4B31 /* MissionViewModel.swift */,
+			);
+			path = Mission;
+			sourceTree = "<group>";
+		};
+		06EBADB0287EBC44002A4B31 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				06EBADB1287EBC55002A4B31 /* MissionRouter.swift */,
+				06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */,
+				06EBADB9287EBDEC002A4B31 /* MissionApi.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		8A463F1CB07FD806BE1578D5 /* Pods */ = {
@@ -990,11 +1018,13 @@
 				061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */,
 				064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */,
 				06B26293285B26BB00722A52 /* TicketViewModel.swift in Sources */,
+				06EBADB5287EBD24002A4B31 /* MissionListResponse.swift in Sources */,
 				06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */,
 				06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */,
 				06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */,
 				0658B1F528796A6400465938 /* GetImagineResponse.swift in Sources */,
 				06B262CE28694B6D00722A52 /* TicketViewForPrefer.swift in Sources */,
+				06EBADB8287EBDB5002A4B31 /* MissionViewModel.swift in Sources */,
 				06B262CA2865898F00722A52 /* NoTokenError.swift in Sources */,
 				0658B1EB28772BAB00465938 /* GetFutureOfMeResponse.swift in Sources */,
 				06B2629D285C4D5800722A52 /* TicketCategorySelectView.swift in Sources */,
@@ -1007,6 +1037,7 @@
 				06B2628D285B15B500722A52 /* BaseRouter.swift in Sources */,
 				063634F02858B56E00856928 /* AuthInterceptor.swift in Sources */,
 				06DC2887287DE45C004F29DF /* MissionHistoryView.swift in Sources */,
+				06EBADB2287EBC55002A4B31 /* MissionRouter.swift in Sources */,
 				06717E3B2851DE7000FEB138 /* HistoryContentView.swift in Sources */,
 				0658B1F1287967C500465938 /* PostImagineResponse.swift in Sources */,
 				0658B1E728772ACF00465938 /* FutureOfMeApi.swift in Sources */,
@@ -1044,6 +1075,7 @@
 				064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */,
 				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
 				06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */,
+				06EBADBA287EBDEC002A4B31 /* MissionApi.swift in Sources */,
 				0658B1ED28772C1100465938 /* FutureOfMeRouter.swift in Sources */,
 				06B262CC286949F100722A52 /* TicketPreferView.swift in Sources */,
 				0658B1EF2877435600465938 /* PostFutureOfMeSubjectResponse.swift in Sources */,
