@@ -60,12 +60,12 @@ struct TicketFormView: View {
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    FormTextField(title:"행동", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil)
-                    FormTextField(title:"목표", titleImage: Image("goal_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil)
+                    FormTextField(title:"행동", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil).padding(.horizontal,20)
+                    FormTextField(title:"목표", titleImage: Image("goal_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil).padding(.horizontal,20)
                     Divider().padding(.vertical, 10)
                     TicketCategorySelectView(selected: $category,isEssential: ticketId == nil)
-                    ColorSelectView(selected: $color)
-                    TicketTouchCountSelectView(selected: $touchCount,isEssential: ticketId == nil)
+                    ColorSelectView(selected: $color).padding(.horizontal,20)
+                    TicketTouchCountSelectView(selected: $touchCount,isEssential: ticketId == nil).padding(.horizontal,20)
                         .disabled(ticketId != nil)
                         .padding(.bottom, 40)
                     if ticketId != nil{
@@ -77,20 +77,20 @@ struct TicketFormView: View {
                                 .foregroundColor(Color( #colorLiteral(red: 0.9623875022, green: 0.3615829945, blue: 0.2794611752, alpha: 1)))
                                 .frame(maxWidth:.infinity, minHeight: 50, maxHeight: 50)
                         }.background(Color.white)
-                            .cornerRadius(10)
+                            .cornerRadius(10).padding(.horizontal,20)
                     }
-                    
                 }.padding(.top, 30)
             }
-            .padding(.horizontal, 20)
+            
             Spacer()
         }
-        .background(Color.gray50.ignoresSafeArea())
         .onAppear{
-            UIScrollView.appearance().bounces = false
-        }.onDisappear{
-            UIScrollView.appearance().bounces = true
+            UIScrollView.appearance().alwaysBounceVertical = false
         }
+        .onDisappear{
+            UIScrollView.appearance().alwaysBounceVertical = true
+        }
+        .background(Color.gray50.ignoresSafeArea())
         .onTapGesture {
             hideKeyboard()
         }

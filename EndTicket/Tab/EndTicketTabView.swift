@@ -202,7 +202,7 @@ struct EndTicketTabView: View {
                 Spacer()
                 Text("추천티켓").font(.system(size: 21,weight: .bold))
                 Spacer()
-            }.padding(.vertical, 13)
+            }.padding(.bottom, 13)
             .background(Color.white)
         }
     }

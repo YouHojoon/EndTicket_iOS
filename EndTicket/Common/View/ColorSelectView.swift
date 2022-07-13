@@ -14,22 +14,24 @@ struct ColorSelectView: View {
     }
     
     var body: some View {
-        LazyHGrid(rows: Array(repeating:GridItem(.fixed(52)), count:2), spacing: 11){
+        LazyVGrid(columns: Array(repeating:GridItem(.flexible(minimum:44)), count:6)){
             ForEach(Color.ticketColors, id:\.self){color in
-                Circle()
-                    .foregroundColor(color)
-                    .frame(width:40, height:40)
-                    .padding(4)
-                    .overlay(Circle().stroke(color == selected ? Color.gray300 : .clear, lineWidth:3))
-                    .onTapGesture {
-                        selected = color
-                    }
+                Circle().stroke(color == selected ? Color.gray300 : .clear, lineWidth:3)
+                    .overlay{
+                        Circle()
+                            .foregroundColor(color)
+                            .onTapGesture {
+                                selected = color
+                            }
+                            .padding(4)
+                    }.frame(height:44)
             }
         }
+        .padding(.horizontal,20)
         .padding(.vertical, 30)
         .frame(maxWidth:.infinity,maxHeight:200)
-            .background(.white)
-            .cornerRadius(10)
+        .background(.white)
+        .cornerRadius(10)
         
     }
 }

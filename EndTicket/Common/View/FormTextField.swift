@@ -53,7 +53,7 @@ struct FormTextField: View {
                         .foregroundColor(.red)
                 }
             }.font(.interSemiBold(size: 16))
-                .padding(.bottom, title != nil || titleImage != nil ? 4 : 0)
+            .padding(.bottom, title != nil || titleImage != nil ? 8 : 0)
             
             TextField(placeholder ?? "", text: $text, onCommit: {
                 focus = false

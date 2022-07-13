@@ -20,30 +20,28 @@ struct TicketTouchCountSelectView: View {
     var body: some View {
         VStack(alignment:.leading,spacing:4){
             HStack(spacing:1){
-                Text("터치횟수")
+                Text("스와이프 횟수")
                 if isEssential{
                     Text("*").foregroundColor(.red)
                 }
             }.font(.interSemiBold(size: 16))
-            HStack{
+                .padding(.bottom,10)
+            LazyVGrid(columns:Array.init(repeating: GridItem(.flexible()), count: touchCounts.count)){
                 ForEach(0..<touchCounts.count){index in
                     VStack(spacing:8.94){
                         let touchCount = touchCounts[index]
                         
                         Text("\(touchCounts[index])회").font(.gmarketSansMeidum(size: 16))
                         Circle().stroke(touchCount == selected ? Color.mainColor : Color.gray300, lineWidth:1.5)
-                            .frame(width:13.33,height:13.33)
+                            .frame(width:15,height:15)
                             .overlay(Circle()
-                                .frame(width:8,height:8)
+                                .frame(width:9,height:9)
                                 .foregroundColor(touchCount == selected ? Color.mainColor : Color.gray300))
-                            .onTapGesture{
-                                selected = touchCounts[index]
-                            }
                     }.padding(.vertical, 20)
-                        .padding(.horizontal, 33)
-                    
-                    if index < touchCounts.count - 1 {
-                        Spacer()
+                    .padding(.horizontal, 33)
+                    .contentShape(Rectangle())
+                    .onTapGesture{
+                        selected = touchCounts[index]
                     }
                 }
             }.background(.white)
@@ -54,6 +52,6 @@ struct TicketTouchCountSelectView: View {
 
 struct TicketTouchCountSelectView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketFormView()
+        TicketFormView().environmentObject(TicketViewModel())
     }
 }

@@ -80,7 +80,7 @@
 		06B26297285C372A00722A52 /* TicketFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B26296285C372A00722A52 /* TicketFormView.swift */; };
 		06B26299285C3A9C00722A52 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06B26298285C3A9C00722A52 /* Inter-Medium.ttf */; };
 		06B2629B285C3F1F00722A52 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629A285C3F1E00722A52 /* FormTextField.swift */; };
-		06B2629D285C4D5800722A52 /* TicketFormCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */; };
+		06B2629D285C4D5800722A52 /* TicketCategorySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629C285C4D5800722A52 /* TicketCategorySelectView.swift */; };
 		06B262A0285C568B00722A52 /* ColorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2629F285C568B00722A52 /* ColorSelectView.swift */; };
 		06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */; };
 		06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */; };
@@ -206,7 +206,7 @@
 		06B26296285C372A00722A52 /* TicketFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketFormView.swift; sourceTree = "<group>"; };
 		06B26298285C3A9C00722A52 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		06B2629A285C3F1E00722A52 /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
-		06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketFormCategoryView.swift; sourceTree = "<group>"; };
+		06B2629C285C4D5800722A52 /* TicketCategorySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCategorySelectView.swift; sourceTree = "<group>"; };
 		06B2629F285C568B00722A52 /* ColorSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectView.swift; sourceTree = "<group>"; };
 		06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTouchCountSelectView.swift; sourceTree = "<group>"; };
 		06B262A7285C718B00722A52 /* DefaultTicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTicketResponse.swift; sourceTree = "<group>"; };
@@ -347,7 +347,7 @@
 				06717E272850774300FEB138 /* TicketTrailingShape.swift */,
 				06B262A1285C60FB00722A52 /* TicketTouchCountSelectView.swift */,
 				06B26296285C372A00722A52 /* TicketFormView.swift */,
-				06B2629C285C4D5800722A52 /* TicketFormCategoryView.swift */,
+				06B2629C285C4D5800722A52 /* TicketCategorySelectView.swift */,
 				06B262CB286949F100722A52 /* TicketPreferView.swift */,
 				06B262CD28694B6D00722A52 /* TicketViewForPrefer.swift */,
 				06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */,
@@ -997,7 +997,7 @@
 				06B262CE28694B6D00722A52 /* TicketViewForPrefer.swift in Sources */,
 				06B262CA2865898F00722A52 /* NoTokenError.swift in Sources */,
 				0658B1EB28772BAB00465938 /* GetFutureOfMeResponse.swift in Sources */,
-				06B2629D285C4D5800722A52 /* TicketFormCategoryView.swift in Sources */,
+				06B2629D285C4D5800722A52 /* TicketCategorySelectView.swift in Sources */,
 				06717E2628506D5D00FEB138 /* TicketLeadingShape.swift in Sources */,
 				063634EA2852132E00856928 /* SignUpApi.swift in Sources */,
 				06B262B4286404F800722A52 /* SocialType.swift in Sources */,
