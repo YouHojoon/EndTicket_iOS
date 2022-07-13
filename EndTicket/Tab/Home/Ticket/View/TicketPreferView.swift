@@ -50,19 +50,18 @@ struct TicketPreferView: View {
                         .padding(.bottom, 10)
                     ScrollView(showsIndicators:false){
                         LazyVStack(spacing:10){
-                            ForEach(0..<Ticket.getDummys().count){
-                                TicketViewForPrefer(Ticket.getDummys()[$0])
+                            ForEach(viewModel.othersTickets, id: \.id){
+                                TicketViewForPrefer($0)
                             }
                         }.padding(.vertical)
                     }
                 }.padding(.horizontal, 20)
             }
-           
-            
         }
 
         .onAppear{
-            viewModel.getPreferTicket()
+            viewModel.fetchPreferTicket()
+            viewModel.fetchOthersTickets()
         }
     }
 }
