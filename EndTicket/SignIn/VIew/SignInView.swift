@@ -13,7 +13,7 @@ struct SignInView: View {
     @AppStorage("isFirstStart") private var isFirstStart:Bool = true
     @EnvironmentObject private var viewModel:SignInViewModel
     @State private var shouldGoNextView = false
-    @State private var shouldShowLauhchScreen = true
+    @State private var shouldShowLaunchScreen = false
     
     var body: some View {
         VStack(spacing:12){
@@ -92,12 +92,14 @@ struct SignInView: View {
         .font(.system(size: 15,weight: .bold))
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .overlay(isFirstStart ? OnBoardingView() : nil)
-        .overlay(LaunchScreen())
+        .overlay(shouldShowLaunchScreen ? LaunchScreen().transition(.opacity) : nil)
+        .animation(.easeInOut, value: viewModel.status)
         .onAppear{
+            shouldShowLaunchScreen = true
             viewModel.restorePreviousSignIn()
         }
         .onReceive(viewModel.$status.dropFirst()){status in
-            shouldShowLauhchScreen  = false
+            shouldShowLaunchScreen  = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                 shouldGoNextView = status != .fail
             }

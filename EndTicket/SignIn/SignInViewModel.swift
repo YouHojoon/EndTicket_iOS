@@ -142,7 +142,9 @@ final class SignInViewModel: NSObject, ObservableObject{
                 }
             }
             if status == .fail{
-                status = .fail
+                DispatchQueue.main.async {
+                    self.status = .fail
+                }
             }
         }
         else{
