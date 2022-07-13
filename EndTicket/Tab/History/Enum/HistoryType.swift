@@ -20,11 +20,8 @@ enum HistoryType: String,CaseIterable{
         case .ticket:
             VStack(alignment: .leading, spacing:0){
                baseHeader(dismiss: dismiss)
-                ScrollView(.horizontal, showsIndicators: false){
-                    HStack{
-                        TicketCategorySelectView(selected: selected!,shouldShowTitle:false,isEssential:false, shouldRemoveAllCategory:false)
-                    }.padding(.horizontal,20)
-                }.padding(.bottom,15)
+                TicketCategorySelectView(selected: selected!,shouldShowTitle:false,isEssential:false, shouldRemoveAllCategory:false)
+                .padding(.bottom,15)
             }
             .background(Color.white.edgesIgnoringSafeArea(.horizontal))
         default:
