@@ -33,7 +33,7 @@ final class TicketViewModel:ObservableObject{
         }
     }
     func postTicket(_ ticket: Ticket){
-        TicketApi.shared.postTicket(ticket).receive(on:DispatchQueue.main).sink(receiveCompletion: {
+        TicketApi.shared.postTicket(ticket).receive(on: DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
             case .finished:
                 break
@@ -121,7 +121,9 @@ final class TicketViewModel:ObservableObject{
         }, receiveValue: {
             if $0{
                 let index = self.tickets.firstIndex(where: {$0.id == id})!
-                self.tickets[index].currentCount-=1
+                if self.tickets[index].currentCount != 0 {
+                    self.tickets[index].currentCount-=1
+                }
             }
         }).store(in: &subscriptions)
     }
