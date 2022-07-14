@@ -17,13 +17,10 @@ import SwiftUI
 import UIKit
 final class SignInViewModel: NSObject, ObservableObject{
     @Published var status: SignInStaus = .fail
-    
     private let gidConfig: GIDConfiguration
     private var subscriptions = Set<AnyCancellable>()
     private var asAuthDelegate:ASAuthorizationControllerDelegate?
-    private let isRestorePreviousSiginInFail = KeyChainManager.readInKeyChain(key: "token") == nil || UserDefaults.standard.string(forKey: "nickname") == nil ||
-    UserDefaults.standard.string(forKey: "socialType") == nil
-    
+  
     init(googleClientId:String){
         gidConfig = GIDConfiguration(clientID: googleClientId)
     }
@@ -52,7 +49,7 @@ final class SignInViewModel: NSObject, ObservableObject{
                 return
             }
             
-            self.signInToServer(.kakao, idToken: idToken){
+            self.serverSignIn(.kakao, idToken: idToken){
                 self.handleSignInToServerResult($0, socialType: .kakao)
             }
         }
@@ -65,7 +62,7 @@ final class SignInViewModel: NSObject, ObservableObject{
                 self.status = .fail
                 return
             }
-            self.signInToServer(.apple, idToken: idToken){
+            self.serverSignIn(.apple, idToken: idToken){
                 self.handleSignInToServerResult($0, socialType: .apple)
             }
         }
@@ -86,42 +83,45 @@ final class SignInViewModel: NSObject, ObservableObject{
             guard let _ = $0 else{
                 return
             }
-            self.signInToServer(.google, idToken: $0!.authentication.idToken!){
+            self.serverSignIn(.google, idToken: $0!.authentication.idToken!){
                 self.handleSignInToServerResult($0, socialType: .google)
             }
         }
     }
-    private func signInToServer(_ type: SocialType, idToken:String, completion: ((SignInStaus) -> Void)? = nil){
-        SignInApi.shared.socialSignIn(type, token: idToken)
-            .sink(receiveCompletion: {
-                switch $0{
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("로그인 실패 : \(error.localizedDescription)")
-                }
-            }, receiveValue: {id, nickname,token in
-                guard let token = token else{
-                    completion?(.fail)
-                    return
-                }
-                
-                guard KeyChainManager.saveInKeyChain(key: "token", data: token) else{
-                    completion?(.fail)
-                    return
-                }
-                UserDefaults.standard.set(id,forKey: "id")
-                
-                guard let nickname = nickname else{
-                    completion?(.needSignUp)
-                    return
-                }
-                
-                UserDefaults.standard.set(nickname, forKey: "nickname")
-                completion?(.success)
-            }).store(in: &self.subscriptions)
-        
-       
+    private func serverSignIn(_ type: SocialType, idToken:String, completion: ((SignInStaus) -> Void)? = nil){
+        if !EssentialToSignIn.isCanSignIn(){
+            SignInApi.shared.socialSignIn(type, token: idToken)
+                .sink(receiveCompletion: {
+                    switch $0{
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("로그인 실패 : \(error.localizedDescription)")
+                    }
+                }, receiveValue: {id, nickname,token in
+                    guard let token = token, EssentialToSignIn.token.save(data: token) else{
+                        completion?(.fail)
+                        return
+                    }
+                    
+                    guard let id = id, EssentialToSignIn.id.save(data: id) else{
+                        completion?(.fail)
+                        return
+                    }
+                    
+                    
+                    guard let nickname = nickname, EssentialToSignIn.nickname.save(data: nickname) else{
+                        completion?(.needSignUp)
+                        return
+                    }
+                    
+                    completion?(.success)
+                })
+                .store(in: &self.subscriptions)
+        }
+        else{
+            completion?(.success)
+        }
     }
     private func handleSignInToServerResult(_ status: SignInStaus, socialType: SocialType){
         DispatchQueue.main.async {
@@ -129,34 +129,118 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
         
         if status != .fail{
-            UserDefaults.standard.set(socialType.rawValue, forKey: "socialType")
+            print("???")
+            _ = EssentialToSignIn.socialType.save(data: socialType.rawValue)
         }
     }
     
     //MARK: - 자동 로그인 관련
     func restorePreviousSignIn(){
-        if isRestorePreviousSiginInFail{
-            DispatchQueue.main.async {
-                self.status = .fail
+        if EssentialToSignIn.isCanSignIn(){
+            for sns in SocialType.allCases{
+                restorePreviousSocialSignIn(sns)
             }
-        }
-        else{
             DispatchQueue.main.async {
                 self.status = .success
             }
         }
+        else{
+            DispatchQueue.main.async {
+                self.status = .fail
+            }
+        }
     }
     
-    func disconnect(){
-        guard let socialType = SocialType(rawValue: UserDefaults.standard.string(forKey: "socialType")!) else{
+    private func restorePreviousSocialSignIn(_ socialType: SocialType){
+        let completion:(Bool) -> Void = {
+            if $0{
+                _ = EssentialToSignIn.socialType.save(data: socialType.rawValue)
+            }
+        }
+        switch socialType {
+        case .google:
+            restorePreviousGoogleSignIn(completion: completion)
+        case .apple:
+            restorePreviousAppleSignIn(completion: completion)
+            
+        case .kakao:
+            restorePreviousKakaoSignIn(completion: completion)
+        }
+    }
+    private func restorePreviousAppleSignIn(completion: ((Bool)->Void)? = nil){
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        guard let userId = KeyChainManager.readUserInKeyChain() else{
+            completion?(false)
             return
         }
         
+        appleIDProvider.getCredentialState(forUserID: userId) { (credentialState, error) in
+            switch credentialState {
+            case .authorized:
+                completion?(true)
+            case .revoked, .notFound:
+                completion?(false)
+            default:
+                completion?(false)
+            }
+        }
+    }
+    private func restorePreviousGoogleSignIn(completion: ((Bool)->Void)? = nil){
+        if GIDSignIn.sharedInstance.hasPreviousSignIn(){
+            GIDSignIn.sharedInstance.restorePreviousSignIn {
+                guard $1 == nil else{
+                    print($1!.localizedDescription)
+                    completion?(false)
+                    return
+                }
+                guard $0 != nil else{
+                    completion?(false)
+                    return
+                }
+                
+                completion?(true)
+            }
+        }
+        else{
+            completion?(false)
+        }
+        
+    }
+    private func restorePreviousKakaoSignIn(completion: ((Bool)->Void)? = nil){
+        if AuthApi.hasToken() {
+            UserApi.shared.accessTokenInfo { (t, error) in
+                if let error = error {
+                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
+                        //로그인 필요
+                        print(sdkError.localizedDescription)
+                    }
+                    else {
+                        //기타 에러
+                        print(error.localizedDescription)
+                    }
+                    completion?(false)
+                }
+                else {
+                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
+                    completion?(true)
+                }
+            }
+        }
+        else {
+            //로그인 필요
+            completion?(false)
+        }
+    }
+    
+    func disconnect(){
+        guard let socialType = SocialType(rawValue: EssentialToSignIn.socialType.saved!) else{
+            return
+        }
         switch socialType {
         case .google:
             disconnectGoogle()
         case .kakao:
-            disconnetKakao()
+            disconncetKakao()
         case .apple:
             break
         }
@@ -171,7 +255,7 @@ final class SignInViewModel: NSObject, ObservableObject{
             }
         }
     }
-    private func disconnetKakao(){
+    private func disconncetKakao(){
         UserApi.shared.unlink {(error) in
             if let error = error {
                 print(error)
@@ -182,8 +266,7 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
     }
     private func disconnectServer(){
-        UserDefaults.standard.removeObject(forKey: "nickname")
-        _ = KeyChainManager.deleteUserInKeyChain()
+        EssentialToSignIn.removeAllOfSaved()
         self.status = .fail
     }
     

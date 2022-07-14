@@ -104,6 +104,7 @@
 		06DC2885287DE36F004F29DF /* GetMissionHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */; };
 		06DC2887287DE45C004F29DF /* MissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2886287DE45C004F29DF /* MissionHistoryView.swift */; };
 		06DC288A287F0FB4004F29DF /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC2889287F0FB4004F29DF /* LaunchScreen.swift */; };
+		06DC288C28806860004F29DF /* EssentialToSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC288B28806860004F29DF /* EssentialToSignIn.swift */; };
 		06EBADAB287D66BD002A4B31 /* TicketViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */; };
 		06EBADB2287EBC55002A4B31 /* MissionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB1287EBC55002A4B31 /* MissionRouter.swift */; };
 		06EBADB5287EBD24002A4B31 /* MissionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */; };
@@ -248,6 +249,7 @@
 		06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetMissionHistoryResponse.swift; path = EndTicket/Tab/HIstory/Network/GetMissionHistoryResponse.swift; sourceTree = SOURCE_ROOT; };
 		06DC2886287DE45C004F29DF /* MissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MissionHistoryView.swift; path = EndTicket/Tab/HIstory/View/MissionHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		06DC2889287F0FB4004F29DF /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		06DC288B28806860004F29DF /* EssentialToSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialToSignIn.swift; sourceTree = "<group>"; };
 		06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewForHistory.swift; sourceTree = "<group>"; };
 		06EBADB1287EBC55002A4B31 /* MissionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRouter.swift; sourceTree = "<group>"; };
 		06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListResponse.swift; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 			children = (
 				06B262B3286404F800722A52 /* SocialType.swift */,
 				0670ACB42866FA1700E4D091 /* SignInStatus.swift */,
+				06DC288B28806860004F29DF /* EssentialToSignIn.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1158,6 +1161,7 @@
 				068B5C21287D3769001C9154 /* HistoryRouter.swift in Sources */,
 				06B262D42869D96600722A52 /* EndTicketAlertImpl.swift in Sources */,
 				068B5C2C287D58CD001C9154 /* TicketHistoryView.swift in Sources */,
+				06DC288C28806860004F29DF /* EssentialToSignIn.swift in Sources */,
 				06DC287E287DDC4D004F29DF /* ImagineViewForHistory.swift in Sources */,
 				063634E82852119600856928 /* SignUpRouter.swift in Sources */,
 			);
