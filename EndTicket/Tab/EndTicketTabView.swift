@@ -88,12 +88,9 @@ struct EndTicketTabView: View {
                 .background(Color.white.edgesIgnoringSafeArea(.bottom))
             }.frame(maxWidth:.infinity)
         }
-        
         .onAppear{
             futureOfMeViewModel.fetchFutureOfMe()
         }
-        
-        
         //MARK: - 캐릭터 선택관련
         .onReceive(futureOfMeViewModel.$futureOfMe.dropFirst()){
             if $0 != nil{
