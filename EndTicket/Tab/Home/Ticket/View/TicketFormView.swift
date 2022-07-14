@@ -45,6 +45,7 @@ struct TicketFormView: View {
                 Image(systemName: "arrow.backward")
                     .font(.system(size:15, weight: .medium))
                     .padding(.trailing,13)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         shouldShowAlert = true
                     }
