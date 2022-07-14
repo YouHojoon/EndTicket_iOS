@@ -24,7 +24,7 @@ struct EndTicketAlertImpl<Content>:EndTicketAlert where Content:View{
             
             content
                 .padding(.bottom, 60)
-                .frame(maxWidth:315, minHeight: 169)
+                .frame(maxWidth:UIScreen.main.bounds.width - 40,minHeight: 169)
                 .overlay(
                     VStack(spacing:0){
                         if primaryButton.color == nil{
@@ -45,6 +45,7 @@ struct EndTicketAlertImpl<Content>:EndTicketAlert where Content:View{
                 .background(
                     Color.white
                 ).cornerRadius(10)
+                
         }
     }
 }

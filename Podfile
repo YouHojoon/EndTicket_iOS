@@ -12,6 +12,7 @@ target 'EndTicket' do
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
   pod 'SwiftyJSON'
+  pod 'Kingfisher', '~> 7.0'e
 
   target 'EndTicketTests' do
     inherit! :search_paths

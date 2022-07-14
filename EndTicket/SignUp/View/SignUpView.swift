@@ -36,7 +36,7 @@ struct SignUpView: View {
                 .font(.interSemiBold(size: 18))
                 .padding(.bottom, 10)
                 .foregroundColor(.gray900)
-                .frame(width: 335,height: 25,alignment: .leading)
+                .frame(height: 25,alignment: .leading)
             
             TextField("한글, 영어, 숫자를 포함한 8자 까지만 가능합니다:)", text: $viewModel.nickname, onCommit: {
                 isTextFieldFocus = false
@@ -45,7 +45,7 @@ struct SignUpView: View {
                 .font(.appleSDGothicBold(size: 14))
                 .focused($isTextFieldFocus)
                 .padding()
-                .frame(width: 335, height: 50)
+                .frame(height: 50)
                 .background(
                     Color.white.onTapGesture {
                         //TextField 터치 가능 영역을 넓히기 위함
@@ -68,12 +68,12 @@ struct SignUpView: View {
             Spacer()
             Button{
                 isTextFieldFocus = false
-                viewModel.signUp()
+                viewModel.signUpNickname()
             }label: {
                 Text("등록하기")
                     .foregroundColor(.white)
                     .font(.appleSDGothicBold(size: 15))
-                    .frame(maxWidth: 335, maxHeight: 56)
+                    .frame(maxWidth: .infinity, maxHeight: 56)
             }.background(isButtonEnable ? Color.mainColor : Color.gray300)
                 .cornerRadius(10)
                 .padding(.bottom, isKeyboardShow ? 15 : 0)
@@ -92,7 +92,7 @@ struct SignUpView: View {
         .background(Color.white.ignoresSafeArea().onTapGesture {
             isTextFieldFocus = false
         })
-        .onReceive(viewModel.$isSuccessSignUp.dropFirst()){
+        .onReceive(viewModel.$isSuccessSignUpNickname.dropFirst()){
             if $0{
                 withAnimation(.easeInOut){
                     shouldShowNextView = true
