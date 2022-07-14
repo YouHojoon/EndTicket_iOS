@@ -20,6 +20,7 @@ final class SignUpViewModel:ObservableObject{
     func signUpNickname(){
         SignUpApi
             .shared.signUpNickname(nickname)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {
                 switch $0{
                 case .finished:
@@ -28,8 +29,13 @@ final class SignUpViewModel:ObservableObject{
                     print("닉네임 등록 실패 : \(error.localizedDescription)")
                 }
             }, receiveValue: {
-                self.isSuccessSignUpNickname = $0
-                EssentialToSignIn.socialType.save(data: self.nickname)
+                if $0{
+                    self.isSuccessSignUpNickname = EssentialToSignIn.socialType.save(data: self.nickname)
+                }
+                else{
+                    self.isSuccessSignUpNickname = false
+                }
+                
             })
             .store(in: &subscriptions)
     }
@@ -37,6 +43,7 @@ final class SignUpViewModel:ObservableObject{
     func signUpCharacter(_ character: Character){
         SignUpApi
             .shared.signUpCharacter(character)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: {
                 switch $0{
                 case .finished:
