@@ -29,7 +29,7 @@ final class SignUpViewModel:ObservableObject{
                 }
             }, receiveValue: {
                 self.isSuccessSignUpNickname = $0
-                UserDefaults.standard.set(self.nickname,forKey: "nickname")
+                EssentialToSignIn.socialType.save(data: self.nickname)
             })
             .store(in: &subscriptions)
     }
