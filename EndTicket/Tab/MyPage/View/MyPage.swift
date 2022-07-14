@@ -7,27 +7,40 @@
 
 import SwiftUI
 import PDFKit
-
+import Kingfisher
 struct MyHomeView: View {
     @EnvironmentObject private var signInViewModel: SignInViewModel
+    @EnvironmentObject private var futureOfMeViewModel: FutureOfMeViewModel
     @State private var shouldShowAlert = false
     @State private var shouldShowInquireView = false
     @State private var shouldShowDeleteUserView = false
     @State private var shouldShowPersonalInformationProcessingPolicy = false
+    @State private var imageUrl:URL? = nil
     
     var body: some View {
         VStack(alignment:.leading,spacing:0){
-            HStack(spacing:23){
-                Circle().frame(width: 56, height: 56)
-                    .foregroundColor(.gray50)
-                VStack(alignment:.leading, spacing: 5){
-                    Text("별명")
-                        .font(.gmarketSansMeidum(size: 16))
-                    Text("dbghwns66@daum.net")
-                        .font(.gmarketSansMeidum(size: 12))
-                        .tint(Color(#colorLiteral(red: 0.758, green: 0.758, blue: 0.758, alpha: 1)))
+            HStack(spacing:15){
+                if imageUrl == nil{
+                    Circle()
+                    .foregroundColor(.gray200)
+                    .frame(width: 56, height: 56)
+                       
                 }
-            }.padding(.bottom,29)
+                else{
+                    KFImage(imageUrl!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 56, height: 56)
+                }
+                
+                VStack(alignment:.leading, spacing: 1){
+                    Text("\(EssentialToSignIn.nickname.saved!)")
+                        .font(.system(size: 16, weight: .bold))
+                    Text("\(EssentialToSignIn.email.saved!)")
+                        .font(.system(size: 15, weight: .medium))
+                        .foregroundColor(.gray400)
+                }
+            }.padding(.bottom,21)
             Divider()
             //MARK: - 알림
             //                Group{
@@ -85,6 +98,13 @@ struct MyHomeView: View {
             InquireView(type:.deleteUser)
         }.fullScreenCover(isPresented: $shouldShowPersonalInformationProcessingPolicy){
             PersonalInformationProcessingPolicyView()
+        }.onAppear{
+            futureOfMeViewModel.fetchFutureOfMe()
+        }.onReceive(futureOfMeViewModel.$futureOfMe.dropFirst()){
+            guard let futureOfMe = $0 else{
+                return
+            }
+            imageUrl = futureOfMe.characterImageUrl
         }
     }
     

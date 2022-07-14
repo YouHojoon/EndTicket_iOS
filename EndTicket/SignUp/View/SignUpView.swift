@@ -92,7 +92,7 @@ struct SignUpView: View {
             hideKeyboard()
         }
         .fullScreenCover(isPresented: $shouldShowNextView){
-            EndTicketTabView().environmentObject(TicketViewModel())
+            EndTicketTabView().environmentObject(FutureOfMeViewModel())
         }
         .listenKeyBoardShowAndHide($isKeyboardShow)
         .onReceive(viewModel.$isSuccessSignUpNickname.dropFirst()){

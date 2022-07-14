@@ -15,9 +15,9 @@ struct EndTicketTabView: View {
     @State private var subject = ""
     @State private var shouldShowCharacterSelectAlert = false
     @State private var selectedCharacter: Character = .flower
+    @EnvironmentObject private var futureOfMeViewModel: FutureOfMeViewModel
     
     let ticketViewModel = TicketViewModel()
-    let futureOfMeViewModel = FutureOfMeViewModel()
     let signUpViewModel = SignUpViewModel()
     var body: some View {
         GeometryReader{proxy in
@@ -135,7 +135,6 @@ struct EndTicketTabView: View {
                 .environmentObject(MissionViewModel())
         case .futureOfMe:
             FutureOfMeView()
-                .environmentObject(futureOfMeViewModel)
         case .history:
             HistoryHomeView()
                 .environmentObject(HistoryViewModel())

@@ -111,7 +111,7 @@ struct SignInView: View {
             case .fail:
                 Color.clear
             case .success:
-                EndTicketTabView()
+                EndTicketTabView().environmentObject(FutureOfMeViewModel())
             case .needSignUp:
                 SignUpView().environmentObject(SignUpViewModel())
             }

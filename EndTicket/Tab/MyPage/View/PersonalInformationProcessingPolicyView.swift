@@ -26,7 +26,7 @@ struct PersonalInformationProcessingPolicyView: View{
                         .offset(x:-20)
                     Spacer()
                 }.padding(.top, 23.67)
-                .padding(.bottom, 33)
+                
             }.padding(.leading,20)
             
             PDFRepresentable(url: Bundle.main.url(forResource: "개인정보처리방침", withExtension: ".pdf")!)
