@@ -16,7 +16,7 @@ import AuthenticationServices
 import SwiftUI
 import UIKit
 final class SignInViewModel: NSObject, ObservableObject{
-    @Published var status: SignInStaus = .fail
+    @Published public private(set) var status: SignInStaus = .fail
     private let gidConfig: GIDConfiguration
     private var subscriptions = Set<AnyCancellable>()
     private var asAuthDelegate:ASAuthorizationControllerDelegate?
@@ -43,12 +43,25 @@ final class SignInViewModel: NSObject, ObservableObject{
         UserApi.shared.loginWithKakaoTalk{
             guard $1 == nil else{
                 print($1!.localizedDescription)
+                self.status = .fail
                 return
             }
             guard let idToken = $0?.idToken else{
+                self.status = .fail
                 return
             }
-            
+            UserApi.shared.me{
+                guard $1 == nil else{
+                    print($1!.localizedDescription)
+                    self.status = .fail
+                    return
+                }
+                guard let email = $0?.kakaoAccount?.email, EssentialToSignIn.email.save(data: email) else{
+                    print("aa")
+                    self.status = .fail
+                    return
+                }
+            }
             self.serverSignIn(.kakao, idToken: idToken){
                 self.handleSignInToServerResult($0, socialType: .kakao)
             }
@@ -78,9 +91,15 @@ final class SignInViewModel: NSObject, ObservableObject{
         GIDSignIn.sharedInstance.signIn(with: gidConfig, presenting: rootController){
             guard $1 == nil else{
                 print($1!.localizedDescription)
+                self.status = .fail
                 return
             }
             guard let _ = $0 else{
+                self.status = .fail
+                return
+            }
+            guard let email = $0?.profile?.email, EssentialToSignIn.email.save(data: email) else{
+                self.status = .fail
                 return
             }
             self.serverSignIn(.google, idToken: $0!.authentication.idToken!){
@@ -129,7 +148,6 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
         
         if status != .fail{
-            print("???")
             _ = EssentialToSignIn.socialType.save(data: socialType.rawValue)
         }
     }
@@ -150,7 +168,6 @@ final class SignInViewModel: NSObject, ObservableObject{
             }
         }
     }
-    
     private func restorePreviousSocialSignIn(_ socialType: SocialType){
         let completion:(Bool) -> Void = {
             if $0{

@@ -11,7 +11,7 @@ enum EssentialToSignIn: CaseIterable{
     case nickname
     case socialType
     case id
-    
+    case email
     var saved:String?{
         switch self {
         case .token:
@@ -62,6 +62,8 @@ enum EssentialToSignIn: CaseIterable{
             return "socialType"
         case .id:
             return "id"
+        case .email:
+            return "remail"
         }
     }
 }
