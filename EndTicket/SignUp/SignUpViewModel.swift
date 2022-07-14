@@ -49,18 +49,4 @@ final class SignUpViewModel:ObservableObject{
             })
             .store(in: &subscriptions)
     }
-    
-    func deleteUser(){
-        SignUpApi.shared.deleteUser()
-            .sink(receiveCompletion:{
-                switch $0{
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("유저 삭제 실패 : \(error.localizedDescription)")
-                }
-            }, receiveValue: {
-                self.isSuccessDeleteUser = true
-            })
-    }
 }
