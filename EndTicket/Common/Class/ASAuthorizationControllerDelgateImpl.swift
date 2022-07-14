@@ -3,19 +3,26 @@ import Foundation
 
 //MARK: - Apple 로그인을 위한 클래스
 final class ASAuthorizationControllerDelgateImpl: NSObject, ASAuthorizationControllerDelegate{
-    private let completion: ((Bool) -> Void)?
+    private let completion: ((String?) -> Void)?
     
-    init(completion: ((Bool) -> Void)? = nil){
+    init(completion: ((String?) -> Void)? = nil){
         self.completion = completion
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential{
-            print(String(data: credential.identityToken!, encoding: .utf8)!)
-            completion?(KeyChainManager.saveUserInKeyChain(credential: credential))
+            guard KeyChainManager.saveUserInKeyChain(credential: credential) else {
+                completion?(nil)
+                return
+            }
+            guard let idToken = credential.identityToken else{
+                completion?(nil)
+                return
+            }
+            completion?(String(data:idToken,encoding: .utf8))
         }
         else{
-            completion?(false)
+            completion?(nil)
         }
     }
 }
