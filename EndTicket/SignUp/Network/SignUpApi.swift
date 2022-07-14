@@ -14,14 +14,32 @@ final class SignUpApi: BaseApi{
     private init(){
         super.init()
     }
-    private var test = Set<AnyCancellable>()
     
-    func signUp(nickname: String) ->AnyPublisher<Void,AFError>{
-        return session.request(SignUpRouter.signUp(nickname))
+    
+    func signUpNickname(_ nickname: String) ->AnyPublisher<Bool,AFError>{
+        return session.request(SignUpRouter.signUpNickname(nickname))
             .validate(statusCode: 200..<300)
-            .publishUnserialized()
-            .flatMap{_ -> AnyPublisher<Void,AFError> in
-                return Empty().eraseToAnyPublisher()
+            .publishDecodable(type:SignUpNicknameResponse.self)
+            .value()
+            .map{
+                $0.isSuccess
             }.eraseToAnyPublisher()
-        }
+    }
+    func signUpCharacter(_ character:Character) -> AnyPublisher<Bool, AFError>{
+        return session.request(SignUpRouter.signUpCharacter(character))
+            .validate(statusCode: 200..<300)
+            .publishDecodable(type:SignUpCharacterResponse.self)
+            .value()
+            .map{
+                $0.isSuccess
+            }.eraseToAnyPublisher()
+    }
+    func deleteUser() -> AnyPublisher<Bool,AFError>{
+        return session.request(SignUpRouter.deleteUser())
+            .validate(200..<300)
+            .value()
+            .map{
+                $0.i
+            }
+    }
 }

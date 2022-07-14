@@ -9,35 +9,54 @@ import Foundation
 import Alamofire
 
 enum SignUpRouter: BaseRouter{
-    case signUp(String)
+    case signUpNickname(String)
+    case signUpCharacter(Character)
+    case deleteUser
     
     var endPoint: String{
+        let baseEndPoint = "auth/"
         switch self {
-        case .signUp(_):
-            return "auth/nickname"
+        case .signUpNickname:
+            return "\(baseEndPoint)/nickname"
+        case .signUpCharacter:
+            return "\(baseEndPoint)/character"
+        case .deleteUser:
+            return baseEndPoint
         }
     }
     
     var parameters: Parameters{
         switch self {
-        case .signUp(let nickname):
+        case .signUpNickname(let nickname):
             return [
                 "nickname": nickname
             ]
+        case .signUpCharacter(let character):
+            return [
+                "characterId": character.id
+            ]
+        default:
+            return Parameters()
         }
     }
     
     var method: HTTPMethod{
         switch self {
-        case .signUp(_):
+        case .signUpNickname:
             return .patch
+        case .signUpCharacter:
+            return .post
+        case .deleteUser:
+            return .delete
         }
     }
     
     func asURLRequest() throws -> URLRequest {
         let url = URL(string: EndTicketApp.baseUrl)!.appendingPathComponent(endPoint)
         var request = URLRequest(url: url)
-        request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+        if !parameters.isEmpty{
+            request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+        }
         request.method = method
         return request
     }

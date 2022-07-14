@@ -17,7 +17,7 @@
 		063634EC285869F600856928 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634EB285869F600856928 /* OnBoardingView.swift */; };
 		063634EE2858B49F00856928 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634ED2858B49F00856928 /* BaseApi.swift */; };
 		063634F02858B56E00856928 /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634EF2858B56E00856928 /* AuthInterceptor.swift */; };
-		063634F22858B85C00856928 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634F12858B85C00856928 /* SignUpResponse.swift */; };
+		063634F22858B85C00856928 /* SignUpNicknameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063634F12858B85C00856928 /* SignUpNicknameResponse.swift */; };
 		063BFAE82871D39800626E16 /* ImagineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BFAE72871D39800626E16 /* ImagineFormView.swift */; };
 		063BFAEE2871F93000626E16 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 063BFAED2871F93000626E16 /* Inter-Bold.ttf */; };
 		064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B50E4284E3A1B000EEF62 /* TicketView.swift */; };
@@ -109,6 +109,10 @@
 		06EBADB5287EBD24002A4B31 /* MissionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */; };
 		06EBADB8287EBDB5002A4B31 /* MissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB7287EBDB5002A4B31 /* MissionViewModel.swift */; };
 		06EBADBA287EBDEC002A4B31 /* MissionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB9287EBDEC002A4B31 /* MissionApi.swift */; };
+		06EBADC02880105D002A4B31 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADBF2880105D002A4B31 /* Character.swift */; };
+		06EBADC2288027C9002A4B31 /* CharacterSelectedAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADC1288027C9002A4B31 /* CharacterSelectedAlert.swift */; };
+		06EBADC728802D7C002A4B31 /* SignUpCharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADC628802D7C002A4B31 /* SignUpCharacterResponse.swift */; };
+		06EBADC9288030ED002A4B31 /* DeleteUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADC8288030ED002A4B31 /* DeleteUserResponse.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -144,7 +148,7 @@
 		063634EB285869F600856928 /* OnBoardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		063634ED2858B49F00856928 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		063634EF2858B56E00856928 /* AuthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
-		063634F12858B85C00856928 /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
+		063634F12858B85C00856928 /* SignUpNicknameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNicknameResponse.swift; sourceTree = "<group>"; };
 		063BFAE72871D39800626E16 /* ImagineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineFormView.swift; sourceTree = "<group>"; };
 		063BFAED2871F93000626E16 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		064B50E4284E3A1B000EEF62 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
@@ -240,6 +244,10 @@
 		06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListResponse.swift; sourceTree = "<group>"; };
 		06EBADB7287EBDB5002A4B31 /* MissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewModel.swift; sourceTree = "<group>"; };
 		06EBADB9287EBDEC002A4B31 /* MissionApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionApi.swift; sourceTree = "<group>"; };
+		06EBADBF2880105D002A4B31 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		06EBADC1288027C9002A4B31 /* CharacterSelectedAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSelectedAlert.swift; sourceTree = "<group>"; };
+		06EBADC628802D7C002A4B31 /* SignUpCharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCharacterResponse.swift; sourceTree = "<group>"; };
+		06EBADC8288030ED002A4B31 /* DeleteUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserResponse.swift; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,7 +321,9 @@
 			children = (
 				063634E72852119600856928 /* SignUpRouter.swift */,
 				063634E92852132E00856928 /* SignUpApi.swift */,
-				063634F12858B85C00856928 /* SignUpResponse.swift */,
+				063634F12858B85C00856928 /* SignUpNicknameResponse.swift */,
+				06EBADC628802D7C002A4B31 /* SignUpCharacterResponse.swift */,
+				06EBADC8288030ED002A4B31 /* DeleteUserResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -554,6 +564,7 @@
 		06717E292850CE2900FEB138 /* FutureOfMe */ = {
 			isa = PBXGroup;
 			children = (
+				06EBADBE28801055002A4B31 /* Enum */,
 				0658B1E528772AA900465938 /* Network */,
 				06717E2A2850CE4A00FEB138 /* View */,
 				06717E322851BF3400FEB138 /* FutureOfMeViewModel.swift */,
@@ -706,6 +717,7 @@
 			children = (
 				06B262D32869D96500722A52 /* EndTicketAlertImpl.swift */,
 				06B262D52869DEE500722A52 /* EndTicketAlertButton.swift */,
+				06EBADC1288027C9002A4B31 /* CharacterSelectedAlert.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -727,6 +739,14 @@
 				06EBADB9287EBDEC002A4B31 /* MissionApi.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		06EBADBE28801055002A4B31 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				06EBADBF2880105D002A4B31 /* Character.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		8A463F1CB07FD806BE1578D5 /* Pods */ = {
@@ -1009,9 +1029,11 @@
 				06717E2C2850CE5600FEB138 /* FutureOfMeView.swift in Sources */,
 				06DC287C287DDBC5004F29DF /* ImagineHistoryView.swift in Sources */,
 				063634EC285869F600856928 /* OnBoardingView.swift in Sources */,
+				06EBADC2288027C9002A4B31 /* CharacterSelectedAlert.swift in Sources */,
 				06B262A2285C60FB00722A52 /* TicketTouchCountSelectView.swift in Sources */,
 				06717E332851BF3400FEB138 /* FutureOfMeViewModel.swift in Sources */,
 				06717E3F2851E78600FEB138 /* MyHomeView.swift in Sources */,
+				06EBADC02880105D002A4B31 /* Character.swift in Sources */,
 				06DC2885287DE36F004F29DF /* GetMissionHistoryResponse.swift in Sources */,
 				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
 				06B262B72864082700722A52 /* SignInResponse.swift in Sources */,
@@ -1053,6 +1075,7 @@
 				06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */,
 				063BFAE82871D39800626E16 /* ImagineFormView.swift in Sources */,
 				06717E282850774300FEB138 /* TicketTrailingShape.swift in Sources */,
+				06EBADC9288030ED002A4B31 /* DeleteUserResponse.swift in Sources */,
 				06EBADAB287D66BD002A4B31 /* TicketViewForHistory.swift in Sources */,
 				06717DCE28408B6A00FEB138 /* EndTicketApp.swift in Sources */,
 				06B262A0285C568B00722A52 /* ColorSelectView.swift in Sources */,
@@ -1062,7 +1085,7 @@
 				06717E2228504D5E00FEB138 /* EndTicketTabView.swift in Sources */,
 				06B26291285B1D0800722A52 /* BaseResponse.swift in Sources */,
 				06DC2883287DE2E2004F29DF /* Mission.swift in Sources */,
-				063634F22858B85C00856928 /* SignUpResponse.swift in Sources */,
+				063634F22858B85C00856928 /* SignUpNicknameResponse.swift in Sources */,
 				0658B1FA287B257900465938 /* DeleteImagineResponse.swift in Sources */,
 				06B26295285B29C500722A52 /* TicketResponse.swift in Sources */,
 				06B26288285B13A500722A52 /* TicketApi.swift in Sources */,
@@ -1078,6 +1101,7 @@
 				063634EE2858B49F00856928 /* BaseApi.swift in Sources */,
 				064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */,
 				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
+				06EBADC728802D7C002A4B31 /* SignUpCharacterResponse.swift in Sources */,
 				06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */,
 				06EBADBA287EBDEC002A4B31 /* MissionApi.swift in Sources */,
 				0658B1ED28772C1100465938 /* FutureOfMeRouter.swift in Sources */,

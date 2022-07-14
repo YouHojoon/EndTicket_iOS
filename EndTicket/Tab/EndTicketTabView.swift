@@ -13,10 +13,12 @@ struct EndTicketTabView: View {
     @State private var shouldMaxContentShowAlert = false
     @State private var shouldShowEditFutureOfMeAlert = false
     @State private var subject = ""
-   
+    @State private var shouldShowCharacterSelectAlert = false
+    @State private var selectedCharacter: Character = .flower
+    
     let ticketViewModel = TicketViewModel()
     let futureOfMeViewModel = FutureOfMeViewModel()
-    
+    let signUpViewModel = SignUpViewModel()
     var body: some View {
         GeometryReader{proxy in
             ZStack(alignment:.bottom){
@@ -26,14 +28,14 @@ struct EndTicketTabView: View {
                     content
                 }
                 .fullScreenCover(isPresented: $shouldShowTicketFormView){
-                        TicketFormView()
-                            .environmentObject(ticketViewModel)
-                    }
-                    .padding(.bottom,56)//탭바 크기만큼 패딩
-                    .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
+                    TicketFormView()
+                        .environmentObject(ticketViewModel)
+                }
+                .padding(.bottom,56)//탭바 크기만큼 패딩
+                .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
                 
                 
-                //탭바
+                //MARK: - 탭바
                 HStack(spacing:0){
                     Image("home_icon")
                         .renderingMode(.template)
@@ -46,10 +48,10 @@ struct EndTicketTabView: View {
                         .foregroundColor(tabIndex == .home ? .black : .gray300)
                     
                     tapButton(image: "futureOfMe_icon", title: "미래의 나", width: proxy.size.width / 5)
-                    .onTapGesture {
-                        tabIndex = .futureOfMe
-                    }
-                    .foregroundColor(tabIndex == .futureOfMe ? .black : .gray300)
+                        .onTapGesture {
+                            tabIndex = .futureOfMe
+                        }
+                        .foregroundColor(tabIndex == .futureOfMe ? .black : .gray300)
                     
                     ZStack{
                         Circle().frame(width: 39, height: 39).foregroundColor(.black)
@@ -69,22 +71,51 @@ struct EndTicketTabView: View {
                         }.maxContentAlert(isPresented: $shouldMaxContentShowAlert)
                     
                     tapButton(image: "history_icon", title: "기록", width: proxy.size.width / 5)
-                    .onTapGesture {
-                        tabIndex = .history
-                    }
-                    .foregroundColor(tabIndex == .history ? .black : .gray300)
+                        .onTapGesture {
+                            tabIndex = .history
+                        }
+                        .foregroundColor(tabIndex == .history ? .black : .gray300)
                     
                     tapButton(image: "my_page_icon", title: "my", width: proxy.size.width / 5)
-                    .onTapGesture {
-                        tabIndex = .myPage
-                    }
-                    .foregroundColor(tabIndex == .myPage ? .black : .gray300)
+                        .onTapGesture {
+                            tabIndex = .myPage
+                        }
+                        .foregroundColor(tabIndex == .myPage ? .black : .gray300)
                     
                 }
                 .font(.system(size: 11,weight: .bold))
                 .frame(width:proxy.size.width, height: 56)
                 .background(Color.white.edgesIgnoringSafeArea(.bottom))
             }.frame(maxWidth:.infinity)
+        }
+        
+        .onAppear{
+            futureOfMeViewModel.fetchFutureOfMe()
+        }
+        
+        
+        //MARK: - 캐릭터 선택관련
+        .onReceive(futureOfMeViewModel.$futureOfMe.dropFirst()){
+            if $0 != nil{
+                if $0?.characterImageUrl == nil{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                        withAnimation{
+                            shouldShowCharacterSelectAlert = true
+                        }
+                    }
+                }
+            }
+        }
+        .overlay{
+            if shouldShowCharacterSelectAlert{
+                CharacterSelectAlert()
+                    .transition(.opacity)
+                    .environmentObject(signUpViewModel)
+                    .onReceive(signUpViewModel.$isSuccessSignUpCharacter){
+                        print($0)
+                            self.shouldShowCharacterSelectAlert = !$0
+                    }
+            }
         }
     }
     
@@ -98,7 +129,6 @@ struct EndTicketTabView: View {
             .overlay(Text(title)
                 .offset(y: 5.5), alignment: .bottom)
     }
-    
     @ViewBuilder
     private var content:some View{
         switch tabIndex {
@@ -159,28 +189,28 @@ struct EndTicketTabView: View {
                     }
             }.padding(.bottom, 33)
             //MARK: - Alert
-            .alert(isPresented: $shouldShowEditFutureOfMeAlert){
-                EndTicketAlertImpl{
-                    VStack{
-                        Text("미래의 나를 한마디로 설명해줄래요?")
-                            .font(.system(size: 18, weight: .bold))
-                            .padding(.bottom, 15)
-                        FormTextField(text: $subject,height: 35, maxTextLength: 13,borderColor: .gray300)
+                .alert(isPresented: $shouldShowEditFutureOfMeAlert){
+                    EndTicketAlertImpl{
+                        VStack{
+                            Text("미래의 나를 한마디로 설명해줄래요?")
+                                .font(.system(size: 18, weight: .bold))
+                                .padding(.bottom, 15)
+                            FormTextField(text: $subject,height: 35, maxTextLength: 13,borderColor: .gray300)
                             
-                    }.padding(.horizontal, 20)
-                        .padding(.bottom,30)
-                        .padding(.top, 40)
-                }primaryButton: {
-                    EndTicketAlertButton(label: Text("취소").foregroundColor(.gray400)){
-                        shouldShowEditFutureOfMeAlert = false
-                    }
-                }secondaryButton: {
-                    EndTicketAlertButton(label: Text("제목짓기").foregroundColor(.mainColor)){
-                        futureOfMeViewModel.postFutureOfMeSubject(subject)
-                        shouldShowEditFutureOfMeAlert = false
+                        }.padding(.horizontal, 20)
+                            .padding(.bottom,30)
+                            .padding(.top, 40)
+                    }primaryButton: {
+                        EndTicketAlertButton(label: Text("취소").foregroundColor(.gray400)){
+                            shouldShowEditFutureOfMeAlert = false
+                        }
+                    }secondaryButton: {
+                        EndTicketAlertButton(label: Text("제목짓기").foregroundColor(.mainColor)){
+                            futureOfMeViewModel.postFutureOfMeSubject(subject)
+                            shouldShowEditFutureOfMeAlert = false
+                        }
                     }
                 }
-            }
         case .history:
             Text("기록")
                 .kerning(-0.5)
@@ -205,7 +235,7 @@ struct EndTicketTabView: View {
                 Text("추천티켓").font(.system(size: 21,weight: .bold))
                 Spacer()
             }.padding(.bottom, 13)
-            .background(Color.white)
+                .background(Color.white)
         }
     }
     enum TabIndex{
