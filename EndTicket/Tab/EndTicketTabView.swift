@@ -143,7 +143,7 @@ struct EndTicketTabView: View {
             HistoryHomeView()
                 .environmentObject(HistoryViewModel())
         case .myPage:
-            MyHomeView()
+            MyHomeView().environmentObject(MyPageViewModel())
         case .prefer:
             TicketPreferView()
                 .environmentObject(ticketViewModel)

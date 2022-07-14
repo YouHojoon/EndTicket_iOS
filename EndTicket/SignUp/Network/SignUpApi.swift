@@ -34,12 +34,13 @@ final class SignUpApi: BaseApi{
                 $0.isSuccess
             }.eraseToAnyPublisher()
     }
-    func deleteUser() -> AnyPublisher<Bool,AFError>{
-        return session.request(SignUpRouter.deleteUser())
-            .validate(200..<300)
+    func deleteUser(text:String) -> AnyPublisher<Bool,AFError>{
+        return session.request(SignUpRouter.deleteUser)
+            .validate(statusCode:200..<300)
+            .publishDecodable(type:DeleteUserResponse.self)
             .value()
             .map{
-                $0.i
-            }
+                $0.isSuccess
+            }.eraseToAnyPublisher()
     }
 }
