@@ -21,7 +21,8 @@ final class SignInViewModel: NSObject, ObservableObject{
     private let gidConfig: GIDConfiguration
     private var subscriptions = Set<AnyCancellable>()
     private var asAuthDelegate:ASAuthorizationControllerDelegate?
-
+    private let isRestorePreviousSiginInFail = KeyChainManager.readInKeyChain(key: "token") == nil || UserDefaults.standard.string(forKey: "nickname") == nil ||
+    UserDefaults.standard.string(forKey: "socialType") == nil
     
     init(googleClientId:String){
         gidConfig = GIDConfiguration(clientID: googleClientId)
@@ -47,17 +48,26 @@ final class SignInViewModel: NSObject, ObservableObject{
                 print($1!.localizedDescription)
                 return
             }
-            guard let _ = $0 else{
+            guard let idToken = $0?.idToken else{
                 return
             }
-            print($0?.accessToken)
+            
+            self.signInToServer(.kakao, idToken: idToken){
+                self.handleSignInToServerResult($0, socialType: .kakao)
+            }
         }
     }
     private func appleSignIn(){
         let request = ASAuthorizationAppleIDProvider().createRequest()
         let controller = ASAuthorizationController(authorizationRequests: [request])
-        asAuthDelegate = ASAuthorizationControllerDelgateImpl{result in
-            
+        asAuthDelegate = ASAuthorizationControllerDelgateImpl{
+            guard let idToken = $0 else{
+                self.status = .fail
+                return
+            }
+            self.signInToServer(.apple, idToken: idToken){
+                self.handleSignInToServerResult($0, socialType: .apple)
+            }
         }
         controller.delegate = asAuthDelegate
         controller.performRequests()
@@ -82,8 +92,7 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
     }
     private func signInToServer(_ type: SocialType, idToken:String, completion: ((SignInStaus) -> Void)? = nil){
-        print(idToken)
-        SignInApi.shared.googleSignin(token: idToken)
+        SignInApi.shared.socialSignIn(type, token: idToken)
             .sink(receiveCompletion: {
                 switch $0{
                 case .finished:
@@ -126,25 +135,9 @@ final class SignInViewModel: NSObject, ObservableObject{
     
     //MARK: - 자동 로그인 관련
     func restorePreviousSignIn(){
-        if KeyChainManager.readInKeyChain(key: "token") == nil || UserDefaults.standard.string(forKey: "nickname") == nil{ 
-            for sns in SocialType.allCases{
-                if status != .fail{
-                    break
-                }
-                
-                restorePreviousSocialSignIn(sns){
-                    guard let token = $0 else{
-                        return
-                    }
-                    self.signInToServer(sns, idToken: token){
-                        self.handleSignInToServerResult($0, socialType: sns)
-                    }
-                }
-            }
-            if status == .fail{
-                DispatchQueue.main.async {
-                    self.status = .fail
-                }
+        if isRestorePreviousSiginInFail{
+            DispatchQueue.main.async {
+                self.status = .fail
             }
         }
         else{
@@ -154,82 +147,6 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
     }
     
-    
-    
-    private func restorePreviousSocialSignIn(_ socialType: SocialType, completion: ((String?) -> Void)? = nil){
-        switch socialType {
-        case .google:
-            restorePreviousGoogleSignIn()
-        case .kakao:
-            restorePreviousKakaoSignIn()
-        case .apple:
-            restorePreviousAppleSignIn()
-        }
-    }
-    private func restorePreviousAppleSignIn(completion: ((String?)->Void)? = nil){
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        guard let userId = KeyChainManager.readUserInKeyChain() else{
-            completion?(nil)
-            return
-        }
-        
-        appleIDProvider.getCredentialState(forUserID: userId) { (credentialState, error) in
-            switch credentialState {
-            case .authorized:
-                completion?(nil)
-            case .revoked, .notFound:
-                completion?(nil)
-            default:
-                completion?(nil)
-            }
-        }
-    }
-    private func restorePreviousGoogleSignIn(completion: ((String?)->Void)? = nil){
-        if GIDSignIn.sharedInstance.hasPreviousSignIn(){
-            GIDSignIn.sharedInstance.restorePreviousSignIn {
-                guard $1 == nil else{
-                    print($1!.localizedDescription)
-                    completion?(nil)
-                    return
-                }
-                guard $0 != nil else{
-                    completion?(nil)
-                    return
-                }
-                
-                completion?($0!.authentication.idToken)
-            }
-        }
-        else{
-            completion?(nil)
-        }
-        
-    }
-    private func restorePreviousKakaoSignIn(completion: ((String?)->Void)? = nil){
-        if AuthApi.hasToken() {
-            UserApi.shared.accessTokenInfo { (t, error) in
-                if let error = error {
-                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
-                        //로그인 필요
-                        print(sdkError.localizedDescription)
-                    }
-                    else {
-                        //기타 에러
-                        print(error.localizedDescription)
-                    }
-                    completion?(nil)
-                }
-                else {
-                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
-                    completion?(nil)
-                }
-            }
-        }
-        else {
-            //로그인 필요
-            completion?(nil)
-        }
-    }
     func disconnect(){
         guard let socialType = SocialType(rawValue: UserDefaults.standard.string(forKey: "socialType")!) else{
             return
@@ -239,7 +156,7 @@ final class SignInViewModel: NSObject, ObservableObject{
         case .google:
             disconnectGoogle()
         case .kakao:
-            break
+            disconnetKakao()
         case .apple:
             break
         }
@@ -251,6 +168,16 @@ final class SignInViewModel: NSObject, ObservableObject{
             guard $0 == nil else{
                 print($0!.localizedDescription)
                 return
+            }
+        }
+    }
+    private func disconnetKakao(){
+        UserApi.shared.unlink {(error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("unlink() success.")
             }
         }
     }
