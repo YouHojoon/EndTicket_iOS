@@ -34,9 +34,9 @@ struct MyHomeView: View {
                 }
                 
                 VStack(alignment:.leading, spacing: 1){
-                    Text("\(EssentialToSignIn.nickname.saved!)")
+                    Text("\(EssentialToSignIn.nickname.saved ?? "")")
                         .font(.system(size: 16, weight: .bold))
-                    Text("\(EssentialToSignIn.email.saved!)")
+                    Text("\(EssentialToSignIn.email.saved ?? "")")
                         .font(.system(size: 15, weight: .medium))
                         .foregroundColor(.gray400)
                 }
