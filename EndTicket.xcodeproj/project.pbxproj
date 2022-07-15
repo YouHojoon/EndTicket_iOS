@@ -97,6 +97,7 @@
 		06B262D42869D96600722A52 /* EndTicketAlertImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262D32869D96500722A52 /* EndTicketAlertImpl.swift */; };
 		06B262D62869DEE500722A52 /* EndTicketAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262D52869DEE500722A52 /* EndTicketAlertButton.swift */; };
 		06B262DA286B164900722A52 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262D9286B164900722A52 /* UIViewController + Extension.swift */; };
+		06D94A122881DA5100C27602 /* EndTicketScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A112881DA5100C27602 /* EndTicketScrollView.swift */; };
 		06DC287C287DDBC5004F29DF /* ImagineHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */; };
 		06DC287E287DDC4D004F29DF /* ImagineViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */; };
 		06DC2880287DE0C6004F29DF /* MainHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287F287DE0C6004F29DF /* MainHistory.swift */; };
@@ -243,6 +244,7 @@
 		06B262D32869D96500722A52 /* EndTicketAlertImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketAlertImpl.swift; sourceTree = "<group>"; };
 		06B262D52869DEE500722A52 /* EndTicketAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketAlertButton.swift; sourceTree = "<group>"; };
 		06B262D9286B164900722A52 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		06D94A112881DA5100C27602 /* EndTicketScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketScrollView.swift; sourceTree = "<group>"; };
 		06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineHistoryView.swift; path = EndTicket/Tab/History/View/ImagineHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineViewForHistory.swift; path = EndTicket/Tab/HIstory/View/ImagineViewForHistory.swift; sourceTree = SOURCE_ROOT; };
 		06DC287F287DE0C6004F29DF /* MainHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHistory.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				06B2629A285C3F1E00722A52 /* FormTextField.swift */,
 				06B2629F285C568B00722A52 /* ColorSelectView.swift */,
 				06588D87287291DC004AACB2 /* RoundedCorner.swift */,
+				06D94A112881DA5100C27602 /* EndTicketScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1156,6 +1159,7 @@
 				0658B1ED28772C1100465938 /* FutureOfMeRouter.swift in Sources */,
 				06EBADDD288042E2002A4B31 /* PersonalInformationProcessingPolicyView.swift in Sources */,
 				06B262CC286949F100722A52 /* TicketPreferView.swift in Sources */,
+				06D94A122881DA5100C27602 /* EndTicketScrollView.swift in Sources */,
 				0658B1EF2877435600465938 /* PostFutureOfMeSubjectResponse.swift in Sources */,
 				061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */,
 				06EBADD928804139002A4B31 /* PDFRepresentable.swift in Sources */,

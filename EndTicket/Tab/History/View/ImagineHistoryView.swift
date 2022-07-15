@@ -10,10 +10,11 @@ import SwiftUI
 struct ImagineHistoryView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var viewModel: HistoryViewModel
+    @State private var isNotScolled = true
     var body: some View {
         VStack(alignment:.leading, spacing:0){
-            HistoryType.imagine.headContent(dismiss: dismiss)
-            HistoryType.imagine.mainContent{
+            HistoryType.imagine.headContent(dismiss: dismiss, isNotScrolled: $isNotScolled)
+            HistoryType.imagine.mainContent(isNotScrolled:$isNotScolled){
                 ForEach(viewModel.imagineHistories,id:\.id){
                     ImagineViewForHistory($0)
                 }

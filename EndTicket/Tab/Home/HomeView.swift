@@ -98,7 +98,7 @@ struct HomeView: View {
                                 return Color.clear
                             }
                         )
-                    } .coordinateSpace(name: "scroll")
+                    }.coordinateSpace(name: "scroll")
                 }   
             }   
         }

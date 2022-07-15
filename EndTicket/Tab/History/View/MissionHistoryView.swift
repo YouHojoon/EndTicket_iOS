@@ -10,11 +10,11 @@ import SwiftUI
 struct MissionHistoryView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var viewModel: HistoryViewModel
-    
+    @State private var isNotScrolled = false
     var body: some View {
         VStack(alignment:.leading, spacing:0){
-            HistoryType.mission.headContent(dismiss: dismiss)
-            HistoryType.mission.mainContent{
+            HistoryType.mission.headContent(dismiss: dismiss, isNotScrolled: $isNotScrolled)
+            HistoryType.mission.mainContent(isNotScrolled:$isNotScrolled){
                 ForEach(viewModel.missionHistories,id:\.id){mission in
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height:70)

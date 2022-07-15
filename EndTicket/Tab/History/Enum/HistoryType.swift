@@ -15,18 +15,18 @@ enum HistoryType: String,CaseIterable{
     
     @ViewBuilder
     //티켓을 위한 selected가 있어서 좋은 구조인지 모르겠음
-    func headContent(dismiss: DismissAction, selected:Binding<Ticket.Category>? = nil) -> some View{
+    func headContent(dismiss: DismissAction, isNotScrolled: Binding<Bool>,selected:Binding<Ticket.Category>? = nil) -> some View{
         switch self {
         case .ticket:
             VStack(alignment: .leading, spacing:0){
-               baseHeader(dismiss: dismiss)
+               baseHeader(dismiss: dismiss, isNotScrolled: isNotScrolled)
                 TicketCategorySelectView(selected: selected!,shouldShowTitle:false,isEssential:false, shouldRemoveAllCategory:false)
                 .padding(.bottom,15)
             }
             .background(Color.white.edgesIgnoringSafeArea(.horizontal))
         default:
             VStack(alignment: .leading, spacing:0){
-               baseHeader(dismiss: dismiss)
+               baseHeader(dismiss: dismiss,isNotScrolled: isNotScrolled)
             }
             .background(Color.white.edgesIgnoringSafeArea(.horizontal))
         }
@@ -43,21 +43,21 @@ enum HistoryType: String,CaseIterable{
         }
     }
     
-    func mainContent<Items>(@ViewBuilder items: () -> Items) -> some View where Items:View{
+    func mainContent<Items>(isNotScrolled:Binding<Bool>,@ViewBuilder items: () -> Items) -> some View where Items:View{
         ZStack{
             Color.gray10.ignoresSafeArea()
-            ScrollView{
+            EndTicketScrollView(isNotScrolled:isNotScrolled){
                 LazyVStack(spacing:20){
                     items()
                     Spacer()
                 }.padding(.top, 30)
-                    .padding(.horizontal, 20)
+                .padding(.horizontal, 20)
             }
         }
     }
     
     
-    private func baseHeader(dismiss:DismissAction) -> some View{
+    private func baseHeader(dismiss:DismissAction, isNotScrolled: Binding<Bool>) -> some View{
         Group{
             HStack{
                 Image(systemName: "arrow.backward")
@@ -74,10 +74,13 @@ enum HistoryType: String,CaseIterable{
             }.padding(.top, 23.67)
             .padding(.bottom, 43)
             
-            Text("\(pepTalk)")
-                .multilineTextAlignment(.leading)
-                .font(.system(size: 22,weight: .bold))
-                .padding(.bottom,20)
+            if isNotScrolled.wrappedValue{
+                Text("\(pepTalk)")
+                    .multilineTextAlignment(.leading)
+                    .font(.system(size: 22,weight: .bold))
+                    .padding(.bottom,20)
+            }
+            
         }.padding(.leading,20)
     }
 }
