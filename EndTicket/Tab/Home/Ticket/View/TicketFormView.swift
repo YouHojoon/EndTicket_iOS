@@ -49,8 +49,10 @@ struct TicketFormView: View {
                     .onTapGesture {
                         shouldShowAlert = true
                     }
-                Text(ticketId == nil ? "티켓 추가하기" : "티켓 수정하기")
-                    .font(.interSemiBold(size: 20))
+                Spacer()
+                Text(ticketId == nil ? "티켓 추가" : "티켓 수정")
+                    .font(.system(size: 21,weight: .bold))
+
                 Spacer()
                 addOrModifyButton
                     .disabled(!isEnabledButton)
@@ -61,7 +63,7 @@ struct TicketFormView: View {
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    FormTextField(title:"행동", titleImage: Image(systemName: "arrow.right.circle"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil).padding(.horizontal,20)
+                    FormTextField(title:"행동", titleImage: Image("arrow_right"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil).padding(.horizontal,20)
                     FormTextField(title:"목표", titleImage: Image("goal_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil).padding(.horizontal,20)
                     Divider().padding(.vertical, 10)
                     TicketCategorySelectView(selected: $category,isEssential: ticketId == nil)

@@ -54,7 +54,6 @@ struct TicketCategorySelectView: View {
                             .onTapGesture {
                                 selected = category
                             }
-                        Spacer()
                     }
                 }.padding(.horizontal,20)
             }
