@@ -38,31 +38,27 @@ struct FutureOfMeProfileView: View {
                     .offset(x: -8)
                     .padding(.trailing, 22)
                 
-                VStack(alignment:.leading,spacing:0){
-                    
+                VStack(alignment:.leading,spacing:10){
                     if let subject = viewModel.futureOfMe?.subject{
                          Text(subject)
                             .font(.system(size: 18,weight: .bold))
-                            .padding(.bottom,10)
                     }else{
                         Text("미래의 나를 적어주세요.")
                            .font(.system(size: 18,weight: .bold))
                            .foregroundColor(.gray300)
-                           .padding(.bottom,10)
                     }
                  
                     Text(viewModel.futureOfMe?.title ?? "랜선 여행가")
                         .font(.system(size: 10,weight: .medium))
                         .padding(.horizontal, 10)
+                        .frame(height: 20)
                         .overlay{
                             RoundedRectangle(cornerRadius: 5)
                                 .stroke(Color.gray200)
-                                .frame(height: 20)
-                        }.padding(.bottom, 1)
+                        }.padding(.vertical, 1)
                         
                     Text("LV\(viewModel.futureOfMe?.level ?? 1). \(viewModel.futureOfMe?.nickname ?? EssentialToSignIn.nickname.saved!)")
                         .font(.system(size:13, weight: .bold))
-                        .frame(height:25)
                         .foregroundColor(.gray500)
                 }
                 Spacer()

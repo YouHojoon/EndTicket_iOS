@@ -15,6 +15,7 @@ struct EndTicketTabView: View {
     @State private var subject = ""
     @State private var shouldShowCharacterSelectAlert = false
     @State private var selectedCharacter: Character = .flower
+    @State private var isKeyBoardShow = false
     @EnvironmentObject private var futureOfMeViewModel: FutureOfMeViewModel
     
     let ticketViewModel = TicketViewModel()
@@ -87,7 +88,8 @@ struct EndTicketTabView: View {
                 .frame(width:proxy.size.width, height: 56)
                 .background(Color.white.edgesIgnoringSafeArea(.bottom))
             }.frame(maxWidth:.infinity)
-        }
+        }.edgesIgnoringSafeArea(isKeyBoardShow ? .bottom : .horizontal)
+            .listenKeyBoardShowAndHide($isKeyBoardShow)
         .onAppear{
             futureOfMeViewModel.fetchFutureOfMe()
         }
