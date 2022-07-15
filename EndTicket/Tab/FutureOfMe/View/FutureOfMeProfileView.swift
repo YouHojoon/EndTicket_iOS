@@ -60,7 +60,7 @@ struct FutureOfMeProfileView: View {
                                 .frame(height: 20)
                         }.padding(.bottom, 1)
                         
-                    Text("LV\(viewModel.futureOfMe?.level ?? 0). \(viewModel.futureOfMe?.nickname ?? UserDefaults.standard.string(forKey: "nickname")!)")
+                    Text("LV\(viewModel.futureOfMe?.level ?? 1). \(viewModel.futureOfMe?.nickname ?? EssentialToSignIn.nickname.saved!)")
                         .font(.system(size:13, weight: .bold))
                         .frame(height:25)
                         .foregroundColor(.gray500)
