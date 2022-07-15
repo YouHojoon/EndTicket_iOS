@@ -178,7 +178,6 @@ final class SignInViewModel: NSObject, ObservableObject{
             restorePreviousGoogleSignIn(completion: completion)
         case .apple:
             restorePreviousAppleSignIn(completion: completion)
-            
         case .kakao:
             restorePreviousKakaoSignIn(completion: completion)
         }

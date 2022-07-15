@@ -15,6 +15,6 @@ struct InquireResponse: BaseResponse{
     struct Result: Codable{
         let id: Int
         let inquiry: String
-        let userId: String
+        let userId: Int
     }
 }

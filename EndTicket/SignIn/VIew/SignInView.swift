@@ -98,10 +98,11 @@ struct SignInView: View {
             shouldShowLaunchScreen = true
             viewModel.restorePreviousSignIn()
         }
-        .onReceive(viewModel.$status.dropFirst()){status in
+        .onReceive(viewModel.$status.dropFirst()){_ in
             shouldShowLaunchScreen  = false
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                shouldGoNextView = status != .fail
+                shouldGoNextView = self.viewModel.status != .fail
             }
         }
         .fullScreenCover(isPresented: $shouldGoNextView){

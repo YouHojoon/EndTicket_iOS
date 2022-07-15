@@ -103,7 +103,7 @@ struct InquireView: View {
                         viewModel.inquire(text)
 
                     case .deleteUser:
-                        viewModel.deleteUser()
+                        viewModel.deleteUser(text: text)
                     }
                 }label: {
                     Text("\(type.title)")
@@ -118,6 +118,10 @@ struct InquireView: View {
         }
         .listenKeyBoardShowAndHide($isKeyboardShow)
         .onReceive(viewModel.$isSuccessInquire){
+            if $0{
+                dismiss()
+            }
+        }.onReceive(viewModel.$isSuccessDeleteUser){
             if $0{
                 dismiss()
             }
