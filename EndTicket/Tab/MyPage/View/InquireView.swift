@@ -15,7 +15,7 @@ struct InquireView: View {
     @State private var isEnabledButton = false
     @State private var shouldShowDeleteUserAlert = false
     @EnvironmentObject private var viewModel: MyPageViewModel
-    
+    @EnvironmentObject private var siginInViewModel : SignInViewModel
     private let type: `Type`
     enum `Type`{
         case inquire
@@ -81,7 +81,7 @@ struct InquireView: View {
                         Text("\(type.placeholder)")
                             .font(.system(size:18,weight:.medium))
                             .foregroundColor(.gray300)
-                            .padding(.top,9)
+                            .padding([.leading,.top],9)
                             .onTapGesture{
                                 focus = true
                             } : nil
@@ -117,15 +117,19 @@ struct InquireView: View {
             }.padding(.horizontal,20)
         }
         .listenKeyBoardShowAndHide($isKeyboardShow)
-        .onReceive(viewModel.$isSuccessInquire){
+        .onReceive(viewModel.isSuccessInquire){
             if $0{
                 dismiss()
             }
-        }.onReceive(viewModel.$isSuccessDeleteUser){
+        
+        }
+        .onReceive(viewModel.isSuccessDeleteUser){
             if $0{
-                dismiss()
+                siginInViewModel.disconnect()
             }
-        }.alert(isPresented: $shouldShowDeleteUserAlert){
+        }
+        
+        .alert(isPresented: $shouldShowDeleteUserAlert){
             EndTicketAlertImpl{
                 Text("정말로 탈퇴하시겠습니까?")
                     .font(.system(size:18,weight:.bold))
@@ -135,8 +139,8 @@ struct InquireView: View {
                 }
             }secondaryButton: {
                 EndTicketAlertButton(label:Text("삭제").foregroundColor(.red)){
-                    viewModel.deleteUser(text: text)
                     shouldShowDeleteUserAlert = false
+                    viewModel.deleteUser(text: text)
                 }
             }
         }
