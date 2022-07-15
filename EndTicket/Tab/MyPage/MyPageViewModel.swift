@@ -25,8 +25,8 @@ final class MyPageViewModel:ObservableObject{
         }).store(in: &subscriptions)
     }
     
-    func deleteUser(){
-        SignUpApi.shared.deleteUser(text: "")
+    func deleteUser(text: String){
+        SignUpApi.shared.deleteUser(text: text)
             .sink(receiveCompletion:{
                 switch $0{
                 case .finished:

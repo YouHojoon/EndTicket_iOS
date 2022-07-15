@@ -13,6 +13,7 @@ struct InquireView: View {
     @FocusState private var focus
     @State private var isKeyboardShow = false
     @State private var isEnabledButton = false
+    @State private var shouldShowDeleteUserAlert = false
     @EnvironmentObject private var viewModel: MyPageViewModel
     
     private let type: `Type`
@@ -101,9 +102,8 @@ struct InquireView: View {
                     switch type {
                     case .inquire:
                         viewModel.inquire(text)
-
                     case .deleteUser:
-                        viewModel.deleteUser()
+                        shouldShowDeleteUserAlert = true
                     }
                 }label: {
                     Text("\(type.title)")
@@ -120,6 +120,24 @@ struct InquireView: View {
         .onReceive(viewModel.$isSuccessInquire){
             if $0{
                 dismiss()
+            }
+        }.onReceive(viewModel.$isSuccessDeleteUser){
+            if $0{
+                dismiss()
+            }
+        }.alert(isPresented: $shouldShowDeleteUserAlert){
+            EndTicketAlertImpl{
+                Text("정말로 탈퇴하시겠습니까?")
+                    .font(.system(size:18,weight:.bold))
+            }primaryButton: {
+                EndTicketAlertButton(label:Text("취소").foregroundColor(.gray400)){
+                    shouldShowDeleteUserAlert = false
+                }
+            }secondaryButton: {
+                EndTicketAlertButton(label:Text("삭제").foregroundColor(.red)){
+                    viewModel.deleteUser(text: text)
+                    shouldShowDeleteUserAlert = false
+                }
             }
         }
     }

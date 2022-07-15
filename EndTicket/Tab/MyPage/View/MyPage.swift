@@ -95,7 +95,9 @@ struct MyHomeView: View {
         .fullScreenCover(isPresented: $shouldShowInquireView){
             InquireView(type:.inquire)
         }.fullScreenCover(isPresented: $shouldShowDeleteUserView){
-            InquireView(type:.deleteUser)
+            InquireView(type:.deleteUser).onDisappear{
+                signInViewModel.disconnect()
+            }
         }.fullScreenCover(isPresented: $shouldShowPersonalInformationProcessingPolicy){
             PersonalInformationProcessingPolicyView()
         }.onAppear{

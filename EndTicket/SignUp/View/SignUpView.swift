@@ -15,7 +15,6 @@ struct SignUpView: View {
     @State private var isButtonEnable = true
     @State private var isTextFieldMessageHidden = true
     @State private var isKeyboardShow = false
-    @State private var shouldShowNextView = false
     @FocusState private var isTextFieldFocus
     
     var body: some View {
@@ -91,15 +90,11 @@ struct SignUpView: View {
         .onTapGesture {
             hideKeyboard()
         }
-        .fullScreenCover(isPresented: $shouldShowNextView){
-            EndTicketTabView().environmentObject(FutureOfMeViewModel())
-        }
+        
         .listenKeyBoardShowAndHide($isKeyboardShow)
         .onReceive(viewModel.$isSuccessSignUpNickname.dropFirst()){
             if $0{
-                withAnimation(.easeInOut){
-                    shouldShowNextView = true
-                }
+                dismiss()
             }
         }
     }

@@ -12,6 +12,6 @@ struct DeleteUserResponse:BaseResponse{
     let isSuccess: Bool
     let result: Result?
     struct Result: Codable{
-        let id: String
+        let id: Int
     }
 }

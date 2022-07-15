@@ -40,7 +40,7 @@ final class SignUpApi: BaseApi{
             .publishDecodable(type:DeleteUserResponse.self)
             .value()
             .map{
-                $0.isSuccess
+                return $0.isSuccess
             }.eraseToAnyPublisher()
     }
 }
