@@ -31,7 +31,8 @@ struct TicketTouchCountSelectView: View {
                     VStack(spacing:8.94){
                         let touchCount = touchCounts[index]
                         
-                        Text("\(touchCounts[index])회").font(.gmarketSansMeidum(size: 16))
+                        Text("\(touchCounts[index])회").font(.system(size: 16,weight: .bold))
+                            .foregroundColor(touchCount == selected ? Color.black : Color.gray300)
                         Circle().stroke(touchCount == selected ? Color.mainColor : Color.gray300, lineWidth:1.5)
                             .frame(width:15,height:15)
                             .overlay(Circle()
