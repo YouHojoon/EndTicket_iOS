@@ -27,6 +27,7 @@ enum EssentialToSignIn: CaseIterable{
             return KeyChainManager.saveInKeyChain(key: key, data: data)
         default:
             UserDefaults.standard.setValue(data, forKey: key)
+            UserDefaults.standard.synchronize()
             return true
         }
     }
