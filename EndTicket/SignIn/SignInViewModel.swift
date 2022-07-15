@@ -25,6 +25,15 @@ final class SignInViewModel: NSObject, ObservableObject{
         gidConfig = GIDConfiguration(clientID: googleClientId)
     }
     
+    func refreshStatus(){
+        if EssentialToSignIn.isCanSignIn(){
+            status = .success
+        }
+        else{
+            status = .fail
+        }
+    }
+    
     func socialSignIn(_ type: SocialType){
         switch type {
         case .google:

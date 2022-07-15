@@ -14,7 +14,7 @@ struct SignInView: View {
     @EnvironmentObject private var viewModel:SignInViewModel
     @State private var shouldGoNextView = false
     @State private var shouldShowLaunchScreen = false
-    
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack(spacing:12){
             Image("logo")
@@ -98,25 +98,27 @@ struct SignInView: View {
             shouldShowLaunchScreen = true
             viewModel.restorePreviousSignIn()
         }
-        .onReceive(viewModel.$status.dropFirst()){_ in
+        .onReceive(viewModel.$status.dropFirst()){status in
             shouldShowLaunchScreen  = false
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                shouldGoNextView = self.viewModel.status != .fail
+                shouldGoNextView = status != .fail
             }
+            
         }
         .fullScreenCover(isPresented: $shouldGoNextView){
             switch viewModel.status{
             case .fail:
-                Color.clear
+                EmptyView()
             case .success:
-                EndTicketTabView().environmentObject(FutureOfMeViewModel())
+                EndTicketTabView()
+                    .environmentObject(FutureOfMeViewModel())
             case .needSignUp:
-                SignUpView().environmentObject(SignUpViewModel())
+                SignUpView()
+                    .environmentObject(SignUpViewModel()).onDisappear{
+                        viewModel.refreshStatus()
+                    }
             }
-        }
-
-        
+        } 
     }
 }
 
