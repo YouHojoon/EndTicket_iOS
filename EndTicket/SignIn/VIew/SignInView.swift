@@ -35,11 +35,12 @@ struct SignInView: View {
                 Button{
                     viewModel.socialSignIn(.google)
                 }label: {
-                    HStack(spacing:21){
+                    HStack(spacing:18){
                         Image("google_button_symbol")
                             .resizable()
                             .frame(width:18, height: 18)
-                        Text("Google로 로그인").kerning(-0.48)
+                        Text("Google로 로그인")
+                            .kerning(-0.48)
                             .foregroundColor(.black)
                         Spacer().frame(width:18)
                     }.frame(maxWidth:.infinity, maxHeight: 50)
@@ -49,8 +50,8 @@ struct SignInView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray300,lineWidth: 1))
                 .padding(.horizontal,20)
-                
-                
+//
+
                 Button{
                     viewModel.socialSignIn(.kakao)
                 }label: {
@@ -67,7 +68,7 @@ struct SignInView: View {
                 }.background(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1)))
                 .cornerRadius(10)
                 .padding(.horizontal,20)
-                
+
                 Button{
                     viewModel.socialSignIn(.apple)
                 }label: {
@@ -81,18 +82,21 @@ struct SignInView: View {
                         //애플 기본 로고 크기가 24
                     }.frame(maxWidth:.infinity, maxHeight: 50)
                 }
-                
+
                 .background(.black)
                 .cornerRadius(10)
                 .padding(.horizontal,20)
-                
+//
             }
             
         }
         .font(.system(size: 15,weight: .bold))
         .frame(maxWidth:.infinity, maxHeight: .infinity)
+        
+        //MARK: - 온보딩, launch screen
         .overlay(isFirstStart ? OnBoardingView() : nil)
         .overlay(shouldShowLaunchScreen ? LaunchScreen().transition(.opacity) : nil)
+        //MARK: - 로그인 이후 처리
         .animation(.easeInOut, value: viewModel.status)
         .onAppear{
             shouldShowLaunchScreen = true
