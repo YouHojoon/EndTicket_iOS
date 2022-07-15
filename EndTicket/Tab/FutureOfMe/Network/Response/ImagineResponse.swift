@@ -12,11 +12,11 @@ struct ImagineResponse: Codable{
     let subject: String
     let purpose: String
     let color: String
-    let isSuccess: Int?
+    let isSuccess: Bool?
     let updatedAt: String?
     
     func imagineResponseToImagine() -> Imagine{
         let color = Color.init(hex: color)
-        return Imagine(subject: subject, purpose: purpose, color: color,isSuccess: isSuccess == 1 ? true : false, id: id, updatedAt: updatedAt)
+        return Imagine(subject: subject, purpose: purpose, color: color,isSuccess: isSuccess ?? false, id: id, updatedAt: updatedAt)
     }
 }
