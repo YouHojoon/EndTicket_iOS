@@ -11,7 +11,7 @@ import Alamofire
 enum SignUpRouter: BaseRouter{
     case signUpNickname(String)
     case signUpCharacter(Character)
-    case deleteUser
+    case deleteUser(text:String)
     
     var endPoint: String{
         let baseEndPoint = "auth/"
@@ -35,8 +35,10 @@ enum SignUpRouter: BaseRouter{
             return [
                 "characterId": character.id
             ]
-        default:
-            return Parameters()
+        case .deleteUser(let text):
+            return [
+                "text": text
+            ]
         }
     }
     
@@ -47,7 +49,7 @@ enum SignUpRouter: BaseRouter{
         case .signUpCharacter:
             return .post
         case .deleteUser:
-            return .delete
+            return .patch
         }
     }
     

@@ -35,7 +35,7 @@ final class SignUpApi: BaseApi{
             }.eraseToAnyPublisher()
     }
     func deleteUser(text:String) -> AnyPublisher<Bool,AFError>{
-        return session.request(SignUpRouter.deleteUser)
+        return session.request(SignUpRouter.deleteUser(text: text))
             .validate(statusCode:200..<300)
             .publishDecodable(type:DeleteUserResponse.self)
             .value()
