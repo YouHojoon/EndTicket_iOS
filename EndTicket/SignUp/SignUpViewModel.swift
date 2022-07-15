@@ -30,7 +30,7 @@ final class SignUpViewModel:ObservableObject{
                 }
             }, receiveValue: {
                 if $0{
-                    self.isSuccessSignUpNickname = EssentialToSignIn.socialType.save(data: self.nickname)
+                    self.isSuccessSignUpNickname = EssentialToSignIn.nickname.save(data: self.nickname)
                 }
                 else{
                     self.isSuccessSignUpNickname = false
