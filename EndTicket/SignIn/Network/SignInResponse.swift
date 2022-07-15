@@ -14,7 +14,7 @@ struct SignInResponse:BaseResponse{
     let result: Result?
     
     struct Result: Codable{
-        let id:String
+        let accountId:String
         let nickname: String?
         let token:String
     }

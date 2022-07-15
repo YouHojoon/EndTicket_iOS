@@ -28,29 +28,29 @@ final class SignInApi:BaseApi{
     }
     
     private func googleSignIn(token:String) -> AnyPublisher<(String?,String?,String?),AFError>{//순서대로 id,닉네임 토큰 리턴
-        return session.request(SignInRouter.signIn(.google, token))
+        return session.request(SignInRouter.signIn(.google, idToken:token))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignInResponse.self)
             .value().map{
-                return ($0.result?.id, $0.result?.nickname, $0.result?.token)
+                return ($0.result?.accountId, $0.result?.nickname, $0.result?.token)
             }.eraseToAnyPublisher()
     }
     
     private func kakaoSignIn(token:String) -> AnyPublisher<(String?,String?,String?),AFError>{
-        return session.request(SignInRouter.signIn(.kakao, token))
+        return session.request(SignInRouter.signIn(.kakao, idToken:token))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignInResponse.self)
             .value().map{
-                return ($0.result?.id, $0.result?.nickname, $0.result?.token)
+                return ($0.result?.accountId, $0.result?.nickname, $0.result?.token)
             }.eraseToAnyPublisher()
     }
     
     private func appleSignIn(token:String) -> AnyPublisher<(String?,String?,String?),AFError>{
-        return session.request(SignInRouter.signIn(.apple, token))
+        return session.request(SignInRouter.signIn(.apple, idToken:token))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignInResponse.self)
             .value().map{
-                return ($0.result?.id, $0.result?.nickname, $0.result?.token)
+                return ($0.result?.accountId, $0.result?.nickname, $0.result?.token)
             }.eraseToAnyPublisher()
     }
     

@@ -57,7 +57,6 @@ final class SignInViewModel: NSObject, ObservableObject{
                     return
                 }
                 guard let email = $0?.kakaoAccount?.email, EssentialToSignIn.email.save(data: email) else{
-                    print("aa")
                     self.status = .fail
                     return
                 }
