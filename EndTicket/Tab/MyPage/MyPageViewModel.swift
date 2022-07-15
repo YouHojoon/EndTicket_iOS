@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 final class MyPageViewModel:ObservableObject{
-    @Published public private(set) var isSuccessInquire = false
-    @Published public private(set) var isSuccessDeleteUser = false
+    let isSuccessInquire = PassthroughSubject<Bool, Never>()
+    let isSuccessDeleteUser = PassthroughSubject<Bool, Never>()
     private var subscriptions = Set<AnyCancellable>()
     func inquire(_ text: String){
         InquireApi.shared.inquire(text).sink(receiveCompletion: {
@@ -21,7 +21,7 @@ final class MyPageViewModel:ObservableObject{
                 print("문의하기 실패 : \(error.localizedDescription)")
             }
         }, receiveValue: {
-            self.isSuccessInquire = $0
+            self.isSuccessInquire.send($0)
         }).store(in: &subscriptions)
     }
     
@@ -35,7 +35,7 @@ final class MyPageViewModel:ObservableObject{
                     print("유저 삭제 실패 : \(error.localizedDescription)")
                 }
             }, receiveValue: {
-                self.isSuccessDeleteUser = $0
+                self.isSuccessDeleteUser.send($0)
             }).store(in: &subscriptions)
     }
 }

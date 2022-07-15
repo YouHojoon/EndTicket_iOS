@@ -26,9 +26,7 @@ extension View{
     }
     
     func alert<Alert>(isPresented:Binding<Bool>, alert: () -> Alert) -> some View where Alert: EndTicketAlert {
-        let keyWindow = UIApplication.shared.connectedScenes.filter ({$0.activationState == .foregroundActive})
-            .map({$0 as? UIWindowScene}).compactMap {$0}.first?.windows.filter { $0.isKeyWindow }.first!
-        
+        let keyWindow = UIApplication.shared.keyWindow!
         let vc = UIHostingController(rootView: alert())
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
@@ -37,20 +35,15 @@ extension View{
         
         return self.onChange(of: isPresented.wrappedValue, perform: {
             if $0{
-                keyWindow?.rootViewController?.topViewController().present(vc,animated: true)
+                keyWindow.rootViewController?.topViewController().present(vc,animated: true)
             }
             else{
-                keyWindow?.rootViewController?.topViewController().dismiss(animated: true)
+                keyWindow.rootViewController?.topViewController().dismiss(animated: true)
             }
         })
     }
     func progressView(isPresented:Binding<Bool>) -> some View{
-        var keyWindow = UIApplication.shared.connectedScenes.filter ({$0.activationState == .foregroundActive})
-            .map({$0 as? UIWindowScene}).compactMap {$0}.first?.windows.filter { $0.isKeyWindow }.first!
-        if keyWindow == nil {
-            let scence = UIApplication.shared.connectedScenes.map({$0 as? UIWindowScene}).first!
-            keyWindow = scence?.keyWindow
-        }
+        var keyWindow = UIApplication.shared.keyWindow!
         let view = ZStack{
             Color.black.opacity(0.3)
             ProgressView().progressViewStyle(.circular).tint(.white)
@@ -63,10 +56,10 @@ extension View{
         
         return self.onChange(of: isPresented.wrappedValue, perform: {
             if $0{
-                keyWindow?.rootViewController?.topViewController().present(vc,animated: false)
+                keyWindow.rootViewController?.topViewController().present(vc,animated: false)
             }
             else{
-                keyWindow?.rootViewController?.topViewController().dismiss(animated: false)
+                keyWindow.rootViewController?.topViewController().dismiss(animated: false)
             }
         })
     }

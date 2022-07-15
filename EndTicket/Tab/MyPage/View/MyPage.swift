@@ -11,6 +11,8 @@ import Kingfisher
 struct MyHomeView: View {
     @EnvironmentObject private var signInViewModel: SignInViewModel
     @EnvironmentObject private var futureOfMeViewModel: FutureOfMeViewModel
+    @EnvironmentObject private var viewModel : MyPageViewModel
+    
     @State private var shouldShowAlert = false
     @State private var shouldShowInquireView = false
     @State private var shouldShowDeleteUserView = false
@@ -93,12 +95,11 @@ struct MyHomeView: View {
             }
         }
         .fullScreenCover(isPresented: $shouldShowInquireView){
-            InquireView(type:.inquire)
+            InquireView(type:.inquire).environmentObject(viewModel)
         }.fullScreenCover(isPresented: $shouldShowDeleteUserView){
-            InquireView(type:.deleteUser).onDisappear{
-                signInViewModel.disconnect()
-            }
-        }.fullScreenCover(isPresented: $shouldShowPersonalInformationProcessingPolicy){
+            InquireView(type:.deleteUser)
+        }
+        .fullScreenCover(isPresented: $shouldShowPersonalInformationProcessingPolicy){
             PersonalInformationProcessingPolicyView()
         }.onAppear{
             futureOfMeViewModel.fetchFutureOfMe()

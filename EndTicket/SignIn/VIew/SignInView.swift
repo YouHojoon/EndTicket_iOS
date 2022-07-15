@@ -108,7 +108,9 @@ struct SignInView: View {
         .fullScreenCover(isPresented: $shouldGoNextView){
             switch viewModel.status{
             case .fail:
-                EmptyView()
+                Color.clear.onAppear{
+                    UIApplication.shared.keyWindow?.rootViewController!.dismiss(animated: true)
+                }
             case .success:
                 EndTicketTabView()
                     .environmentObject(FutureOfMeViewModel())
@@ -118,7 +120,7 @@ struct SignInView: View {
                         viewModel.refreshStatus()
                     }
             }
-        } 
+         } 
     }
 }
 

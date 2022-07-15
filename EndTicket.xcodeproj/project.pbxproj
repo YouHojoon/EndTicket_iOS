@@ -123,6 +123,7 @@
 		06EBADD928804139002A4B31 /* PDFRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADD828804139002A4B31 /* PDFRepresentable.swift */; };
 		06EBADDB288041A8002A4B31 /* 개인정보처리방침.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 06EBADDA288041A8002A4B31 /* 개인정보처리방침.pdf */; };
 		06EBADDD288042E2002A4B31 /* PersonalInformationProcessingPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADDC288042E2002A4B31 /* PersonalInformationProcessingPolicyView.swift */; };
+		06EBADDF28815C6F002A4B31 /* UIApplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADDE28815C6F002A4B31 /* UIApplication + Extension.swift */; };
 		6B9E56CFA4B180521F8DC3CD /* Pods_EndTicket_EndTicketUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */; };
 		CFABADA28B2CCE290C51EA7F /* Pods_EndTicketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */; };
 		D1F228806C0365A4D9BACAE3 /* Pods_EndTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2423FCCF55106EF385611FA /* Pods_EndTicket.framework */; };
@@ -268,6 +269,7 @@
 		06EBADD828804139002A4B31 /* PDFRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFRepresentable.swift; sourceTree = "<group>"; };
 		06EBADDA288041A8002A4B31 /* 개인정보처리방침.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "개인정보처리방침.pdf"; sourceTree = "<group>"; };
 		06EBADDC288042E2002A4B31 /* PersonalInformationProcessingPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationProcessingPolicyView.swift; sourceTree = "<group>"; };
+		06EBADDE28815C6F002A4B31 /* UIApplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extension.swift"; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A45595373EA0441530BCFD1 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -538,6 +540,7 @@
 				06717E122840B86D00FEB138 /* Font + Extension.swift */,
 				06717E402851FC4000FEB138 /* Color + Extension.swift */,
 				06B262D9286B164900722A52 /* UIViewController + Extension.swift */,
+				06EBADDE28815C6F002A4B31 /* UIApplication + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1109,6 +1112,7 @@
 				0658B1F1287967C500465938 /* PostImagineResponse.swift in Sources */,
 				0658B1E728772ACF00465938 /* FutureOfMeApi.swift in Sources */,
 				06EBADD328803D30002A4B31 /* InquireResponse.swift in Sources */,
+				06EBADDF28815C6F002A4B31 /* UIApplication + Extension.swift in Sources */,
 				068B5C2A287D3AB9001C9154 /* HistoryViewModel.swift in Sources */,
 				06717E0C2840AE0700FEB138 /* SignInView.swift in Sources */,
 				06B262A8285C718B00722A52 /* DefaultTicketResponse.swift in Sources */,
