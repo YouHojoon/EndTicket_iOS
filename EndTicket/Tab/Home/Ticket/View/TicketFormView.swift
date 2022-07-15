@@ -14,7 +14,7 @@ struct TicketFormView: View {
     
     @State private var subject: String = ""
     @State private var purpose: String = ""
-    @State private var category: Ticket.Category = .allCases[0]
+    @State private var category: Ticket.Category = .allCases.filter{$0 != .all}[0]
     @State private var color: Color = .ticketRed1
     @State private var touchCount: Int = 5
     @State private var shouldShowAlert = false

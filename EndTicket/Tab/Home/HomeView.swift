@@ -11,7 +11,6 @@ struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
     @EnvironmentObject private var missionViewModel: MissionViewModel
     @State private var shouldShowTicketFormView = false
-    @State private var shouldHidePepTalk = false
     @State private var shouldShowPepTalk = true
     
     var body: some View {
@@ -72,33 +71,13 @@ struct HomeView: View {
                     .padding(.top,30)
                 }
                 else{
-                    ScrollView(showsIndicators: false){
+                    EndTicketScrollView(isNotScrolled: $shouldShowPepTalk){
                         LazyVStack(spacing:20){
                             ForEach(viewModel.tickets,id: \.id){
                                 TicketView($0)
                             }
                         }.padding(.vertical, 30)
-                        .background(GeometryReader { proxy -> Color in
-                            if shouldHidePepTalk {
-                                DispatchQueue.main.async {
-                                    withAnimation{
-                                        shouldShowPepTalk = proxy.frame(in: .named("scroll")).minY >= 0
-                                    }
-                                }
-                            }
-                            return Color.clear
-                        })
-                        .background(
-                            GeometryReader { proxy -> Color in
-                                DispatchQueue.main.async {
-                                    //컨텐츠가 응원문구를 가릴정도로 많은가?
-                                    shouldHidePepTalk = proxy.frame(in: .named("scroll")).size.height >= UIScreen.main.bounds.size.height - 100
-                                }
-                                
-                                return Color.clear
-                            }
-                        )
-                    }.coordinateSpace(name: "scroll")
+                    }
                 }   
             }   
         }

@@ -17,11 +17,7 @@ struct TicketCategorySelectView: View {
         self.isEssential = isEssential
         self.shouldShowTitle = shouldShowTitle
         
-        var categorys = Ticket.Category.allCases
-        if shouldRemoveAllCategory{
-            let index = categorys.firstIndex(of: .all)!
-            categorys.remove(at: index)
-        }
+        var categorys = Ticket.Category.allCases.filter{$0 != .all}
         self.categorys = categorys
     }
     
