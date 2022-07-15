@@ -19,7 +19,7 @@ struct HomeView: View {
         VStack(alignment:.leading,spacing:0){
             Group{
                 if shouldShowPepTalk{
-                    Text("\(EssentialToSignIn.nickname.saved!)님\n오늘도 같이 도전해볼까요?")
+                    Text("\(EssentialToSignIn.nickname.saved ?? "")님\n오늘도 같이 도전해볼까요?")
                         .font(.interBold(size: 22))
                 }
                 
