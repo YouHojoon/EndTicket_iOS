@@ -78,7 +78,6 @@ struct FormTextField: View {
                 if $0.count > maxTextLength{
                     text = String($0.prefix(maxTextLength))
                     shouldShowRedBounds = true
-                    print(shouldShowRedBounds)
                 }
                 if $0.count < maxTextLength{
                     shouldShowRedBounds = false
