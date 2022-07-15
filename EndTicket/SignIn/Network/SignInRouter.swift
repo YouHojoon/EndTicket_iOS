@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum SignInRouter:BaseRouter{
-    case signIn(SocialType, String)
+    case signIn(SocialType, idToken:String)
     
     var endPoint: String{
         let baseEndPoint = "auth"
@@ -20,13 +20,7 @@ enum SignInRouter:BaseRouter{
     }
     
     var parameters: Parameters{
-        switch self {
-        case .signIn(_, let token):
-            return [
-                "token" : token
-            ]
-            
-        }
+       return Parameters()
     }
     
     var method: HTTPMethod{
@@ -37,9 +31,13 @@ enum SignInRouter:BaseRouter{
     }
     
     var headers: HTTPHeaders{
-        return [
-            "Content-Type": "application/json; charset=UTF-8"
-        ]
+        switch self {
+        case .signIn(_, let idToken):
+            return [
+                "Content-Type": "application/json; charset=UTF-8",
+                "id-token":idToken
+            ]
+        }
     }
     
     func asURLRequest() throws -> URLRequest {
