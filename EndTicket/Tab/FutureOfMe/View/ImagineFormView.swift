@@ -41,6 +41,7 @@ struct ImagineFormView: View{
                 Image("arrow_left")
                     .font(.system(size:15, weight: .medium))
                     .frame(width: 40, height: 40)
+                    .contentShape(Rectangle())
                     .padding(.leading, 10)
                     .onTapGesture {
                         shouldShowAlert = true
