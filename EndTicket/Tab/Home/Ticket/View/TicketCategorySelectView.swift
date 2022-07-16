@@ -18,17 +18,20 @@ struct TicketCategorySelectView: View {
         self.isEssential = isEssential
         self.shouldShowTitle = shouldShowTitle
         self.shouldRemoveAllCategory = shouldRemoveAllCategory
+        var categorys = Ticket.Category.allCases.filter{$0 != .all}
+        self.categorys = categorys
     }
     
     var body: some View{
         VStack(alignment:.leading, spacing: 4){
             if shouldShowTitle{
-                HStack(spacing:1){
+                HStack(alignment:.top,spacing:2){
                     Text("분류")
                     if isEssential{
-                        Text("*").foregroundColor(.red)
+                        Image("essential_mark")
+                            .padding(.top,2)
                     }
-                }.font(.interSemiBold(size: 16))
+                }.font(.interBold(size: 16))
                 .padding(.horizontal,20)
                 .padding(.bottom, 10)
             }

@@ -10,7 +10,7 @@ import PDFKit
 import Kingfisher
 struct MyHomeView: View {
     @EnvironmentObject private var signInViewModel: SignInViewModel
-    @EnvironmentObject private var futureOfMeViewModel: FutureOfMeViewModel
+//    @EnvironmentObject private var futureOfMeViewModel: FutureOfMeViewModel
     @EnvironmentObject private var viewModel : MyPageViewModel
     
     @State private var shouldShowAlert = false
@@ -101,14 +101,17 @@ struct MyHomeView: View {
         }
         .fullScreenCover(isPresented: $shouldShowPersonalInformationProcessingPolicy){
             PersonalInformationProcessingPolicyView()
-        }.onAppear{
-            futureOfMeViewModel.fetchFutureOfMe()
-        }.onReceive(futureOfMeViewModel.$futureOfMe.dropFirst()){
-            guard let futureOfMe = $0 else{
-                return
-            }
-            imageUrl = futureOfMe.characterImageUrl
         }
+//        
+//        .onAppear{
+//            futureOfMeViewModel.fetchFutureOfMe()
+//        }
+//        .onReceive(futureOfMeViewModel.$futureOfMe.dropFirst()){
+//            guard let futureOfMe = $0 else{
+//                return
+//            }
+//            imageUrl = futureOfMe.characterImageUrl
+//        }
     }
     
     

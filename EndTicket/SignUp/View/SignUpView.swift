@@ -42,7 +42,7 @@ struct SignUpView: View {
                     isTextFieldFocus = false
                 }).autocapitalization(.none)
                     .disableAutocorrection(true)
-                    .font(.appleSDGothicBold(size: 14))
+                    .font(.system(size: 14,weight: .bold))
                     .focused($isTextFieldFocus)
                     .padding()
                     .frame(height: 50)
@@ -62,7 +62,7 @@ struct SignUpView: View {
                 if !isTextFieldMessageHidden{
                     Text(isTextFieldNormalBorder ? "멋진 별명이네요!" : "별명을 다시 한 번 확인해주세요.")
                         .kerning(-0.54)
-                        .font(.gmarketSansMeidum(size: 14))
+                        .font(.system(size: 14, weight: .bold))
                         .frame(width: 335, height: 30, alignment: .leading).foregroundColor(isTextFieldNormalBorder ? .mainColor : .red)
                 }
                 Spacer()
@@ -72,7 +72,7 @@ struct SignUpView: View {
                 }label: {
                     Text("등록하기")
                         .foregroundColor(.white)
-                        .font(.appleSDGothicBold(size: 15))
+                        .font(.system(size: 15,weight: .bold))
                         .frame(maxWidth: .infinity, maxHeight: 56)
                 }.background(isButtonEnable ? Color.mainColor : Color.gray300)
                     .cornerRadius(10)

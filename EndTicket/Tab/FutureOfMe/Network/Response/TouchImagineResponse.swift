@@ -14,6 +14,6 @@ struct TouchImagineResponse: BaseResponse{
     
     struct Result:Codable{
         let id: Int
-        let isSuccess: Int
+        let isSuccess: Bool
     }
 }

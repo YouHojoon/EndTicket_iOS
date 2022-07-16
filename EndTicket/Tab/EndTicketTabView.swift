@@ -14,11 +14,18 @@ struct EndTicketTabView: View {
     @State private var shouldShowEditFutureOfMeAlert = false
     @State private var subject = ""
     @State private var shouldShowCharacterSelectAlert = false
-    @State private var selectedCharacter: Character = .flower
-    @EnvironmentObject private var futureOfMeViewModel: FutureOfMeViewModel
+    @State private var selectedCharacter: Character = .kia
+    @State private var isKeyBoardShow = false
     
-    let ticketViewModel = TicketViewModel()
-    let signUpViewModel = SignUpViewModel()
+    private let ticketViewModel = TicketViewModel()
+    private let signUpViewModel = SignUpViewModel()
+    private let futureOfMeViewModel = FutureOfMeViewModel()
+    private let needSignUpCharacter:Bool
+    
+    init(needSignUpCharacter: Bool){
+        self.needSignUpCharacter = needSignUpCharacter
+    }
+    
     var body: some View {
         GeometryReader{proxy in
             ZStack(alignment:.bottom){
@@ -87,19 +94,13 @@ struct EndTicketTabView: View {
                 .frame(width:proxy.size.width, height: 56)
                 .background(Color.white.edgesIgnoringSafeArea(.bottom))
             }.frame(maxWidth:.infinity)
-        }
-        .onAppear{
-            futureOfMeViewModel.fetchFutureOfMe()
-        }
+        }.edgesIgnoringSafeArea(isKeyBoardShow ? .bottom : .horizontal)
+            .listenKeyBoardShowAndHide($isKeyBoardShow)
         //MARK: - 캐릭터 선택관련
-        .onReceive(futureOfMeViewModel.$futureOfMe.dropFirst()){
-            if $0 != nil{
-                if $0?.characterImageUrl == nil{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                        withAnimation{
-                            shouldShowCharacterSelectAlert = true
-                        }
-                    }
+        .onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                withAnimation{
+                    shouldShowCharacterSelectAlert = needSignUpCharacter
                 }
             }
         }
@@ -109,7 +110,6 @@ struct EndTicketTabView: View {
                     .transition(.opacity)
                     .environmentObject(signUpViewModel)
                     .onReceive(signUpViewModel.$isSuccessSignUpCharacter){
-                        print($0)
                             self.shouldShowCharacterSelectAlert = !$0
                     }
             }
@@ -135,11 +135,13 @@ struct EndTicketTabView: View {
                 .environmentObject(MissionViewModel())
         case .futureOfMe:
             FutureOfMeView()
+                .environmentObject(futureOfMeViewModel)
         case .history:
             HistoryHomeView()
                 .environmentObject(HistoryViewModel())
         case .myPage:
-            MyHomeView().environmentObject(MyPageViewModel())
+            MyHomeView()
+                .environmentObject(MyPageViewModel())
         case .prefer:
             TicketPreferView()
                 .environmentObject(ticketViewModel)
@@ -244,8 +246,8 @@ struct EndTicketTabView: View {
 }
 
 
-struct EndTicketTabView_Previews: PreviewProvider{
-    static var previews: some View{
-        EndTicketTabView()
-    }
-}
+//struct EndTicketTabView_Previews: PreviewProvider{
+//    static var previews: some View{
+//        EndTicketTabView()
+//    }
+//}

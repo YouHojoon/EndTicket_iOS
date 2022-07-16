@@ -130,18 +130,18 @@ struct TicketView: View {
         //scroll을 위한 빈 탭 제스쳐
         
         .onTapGesture {
-            withAnimation{
-                shouldShowModifyOrDeleteAlert = false
-            }
+            viewModel.touchOtherSubject.send(())
+        }
+        .onReceive(viewModel.touchOtherSubject){
+            shouldShowModifyOrDeleteAlert = false
         }
         //MARK: - 롱 프레스
         .gesture(LongPressGesture(minimumDuration:0.5)
             .onEnded{_ in
-                withAnimation{
-                    shouldShowModifyOrDeleteAlert = true
-                }
+                shouldShowModifyOrDeleteAlert = true
             }
         )
+        .animation(.easeInOut,value:shouldShowModifyOrDeleteAlert)
         .gesture(DragGesture()
                  //MARK: - 티켓 스와이프 관련 제스쳐
             .onChanged{value in

@@ -14,7 +14,7 @@ struct TicketFormView: View {
     
     @State private var subject: String = ""
     @State private var purpose: String = ""
-    @State private var category: Ticket.Category = .allCases[0]
+    @State private var category: Ticket.Category = .allCases.filter{$0 != .all}[0]
     @State private var color: Color = .ticketRed1
     @State private var touchCount: Int = 5
     @State private var shouldShowAlert = false
@@ -42,13 +42,12 @@ struct TicketFormView: View {
     var body: some View {
         VStack(spacing:0){
             HStack(spacing:0){
-                Image(systemName: "arrow.backward")
-                    .font(.system(size:15, weight: .medium))
-                    .padding(.trailing,13)
+                Image("arrow_left")
                     .contentShape(Rectangle())
                     .onTapGesture {
                         shouldShowAlert = true
                     }
+                
                 Spacer()
                 Text(ticketId == nil ? "티켓 추가" : "티켓 수정")
                     .font(.system(size: 21,weight: .bold))
@@ -58,17 +57,22 @@ struct TicketFormView: View {
                     .disabled(!isEnabledButton)
                     .foregroundColor(isEnabledButton ? .black : .gray600)
             }.padding(.horizontal, 20)
-                .padding(.vertical,18)
-                .background(Color.white)
+            .padding(.vertical,13)
+            .background(Color.white)
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    FormTextField(title:"행동", titleImage: Image("arrow_right"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil).padding(.horizontal,20)
-                    FormTextField(title:"목표", titleImage: Image("goal_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil).padding(.horizontal,20)
-                    Divider().padding(.vertical, 10)
+                    FormTextField(title:"행동", titleImage: Image("arrow_right"),placeholder: "어떤 행동을 해야 목표를 이룰 수 있을 까요?",text: $subject, isEssential: ticketId == nil)
+                        .padding(.horizontal,20)
+                    FormTextField(title:"목표", titleImage: Image("goal_icon"),placeholder: "달성하게 되면 나의 모습은 어떨까요?",text: $purpose, isEssential: ticketId == nil)
+                        .padding(.horizontal,20)
+                    Divider()
+                        .padding(.vertical, 10)
+                        .padding(.horizontal,20)
                     TicketCategorySelectView(selected: $category,isEssential: ticketId == nil)
                     ColorSelectView(selected: $color).padding(.horizontal,20)
-                    TicketTouchCountSelectView(selected: $touchCount,isEssential: ticketId == nil).padding(.horizontal,20)
+                    TicketTouchCountSelectView(selected: $touchCount,isEssential: ticketId == nil)
+                        .padding(.horizontal,20)
                         .disabled(ticketId != nil)
                         .padding(.bottom, 40)
                     if ticketId != nil{
@@ -164,8 +168,13 @@ struct TicketFormView: View {
     }
 }
 
-//struct TicketFormView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TicketFormView()
-//    }
-//}
+struct TicketFormView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack{
+            Text("분류")
+            Text("분류").font(.interBold(size: 16))
+        }
+        
+        
+    }
+}

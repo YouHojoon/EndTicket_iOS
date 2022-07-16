@@ -15,7 +15,6 @@ final class SignUpApi: BaseApi{
         super.init()
     }
     
-    
     func signUpNickname(_ nickname: String) ->AnyPublisher<Bool,AFError>{
         return session.request(SignUpRouter.signUpNickname(nickname))
             .validate(statusCode: 200..<300)
@@ -25,13 +24,13 @@ final class SignUpApi: BaseApi{
                 $0.isSuccess
             }.eraseToAnyPublisher()
     }
-    func signUpCharacter(_ character:Character) -> AnyPublisher<Bool, AFError>{
+    func signUpCharacter(_ character:Character) -> AnyPublisher<String?, AFError>{
         return session.request(SignUpRouter.signUpCharacter(character))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignUpCharacterResponse.self)
             .value()
             .map{
-                $0.isSuccess
+                $0.result?.characterImageUrl
             }.eraseToAnyPublisher()
     }
     func deleteUser(text:String) -> AnyPublisher<Bool,AFError>{
@@ -43,4 +42,25 @@ final class SignUpApi: BaseApi{
                 return $0.isSuccess
             }.eraseToAnyPublisher()
     }
+    
+    func signUpEmail(_ email:String) -> AnyPublisher<Bool,AFError>{
+        return session.request(SignUpRouter.signUpEmail(email))
+            .validate(statusCode:200..<300)
+            .publishDecodable(type:EmailResponse.self)
+            .value()
+            .map{
+                return $0.isSuccess
+            }.eraseToAnyPublisher()
+    }
+    
+    func getUserEmail() -> AnyPublisher<String?,AFError>{
+        return session.request(SignUpRouter.getUserEmail)
+            .validate(statusCode:200..<300)
+            .publishDecodable(type:EmailResponse.self)
+            .value()
+            .map{
+                return $0.result?.email
+            }.eraseToAnyPublisher()
+    }
+    
 }
