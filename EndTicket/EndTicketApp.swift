@@ -29,7 +29,8 @@ struct EndTicketApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SignInView().onOpenURL{
+            SignInView()
+            .onOpenURL{
                 if AuthApi.isKakaoTalkLoginUrl($0){
                     AuthController.handleOpenUrl(url: $0)
                 }

@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
-
+import Combine
 struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
     @EnvironmentObject private var missionViewModel: MissionViewModel
     @State private var shouldShowTicketFormView = false
     @State private var shouldShowPepTalk = true
+    @State private var viewRefresh = false
+    @State private var tickets:[Ticket] = []
+    @Environment(\.scenePhase) var scenePhase
+    
     
     var body: some View {
         //MARK: - 위에 뷰
@@ -47,36 +51,38 @@ struct HomeView: View {
                 Color
                     .gray10
                     .edgesIgnoringSafeArea([.horizontal,.bottom])
-                if viewModel.tickets.isEmpty{
-                    VStack(spacing:0){
-                        Image("ticket_flag")
-                            .frame(width: 230, height: 230)
-                            .padding(.bottom, 5)
-                            .padding(.top, 20)
-                        Text("새로운 종착지를 설정해주세요!")
-                            .font(.interSemiBold(size: 14))
-                            .padding(.bottom, 20)
-                        
-                        Button{
-                            shouldShowTicketFormView = true
-                        }label:{
-                            Text("새로운 티켓 만들기")
-                                .font(.system(size:15,weight: .bold))
-                                .foregroundColor(.white)
-                                .frame(maxWidth:.infinity, maxHeight: 50)
-                        }.background(Color.mainColor)
-                        .cornerRadius(10)
-                    }
-                    .padding(.horizontal,20)
+                if tickets.isEmpty{
+                        VStack(spacing:0){
+                            Image("ticket_flag")
+                                .frame(width: 230, height: 230)
+                                .padding(.bottom, 5)
+                                .padding(.top, 20)
+                            Text("새로운 종착지를 설정해주세요!")
+                                .font(.interSemiBold(size: 14))
+                                .padding(.bottom, 20)
+                            
+                            Button{
+                                shouldShowTicketFormView = true
+                            }label:{
+                                Text("새로운 티켓 만들기")
+                                    .font(.system(size:15,weight: .bold))
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth:.infinity, maxHeight: 50)
+                            }.background(Color.mainColor)
+                            .cornerRadius(10)
+                        }
+                        .padding(.horizontal,20)
                     
                 }
                 else{
                     EndTicketScrollView(isNotScrolled: $shouldShowPepTalk){
                         LazyVStack(spacing:20){
-                            ForEach(viewModel.tickets,id: \.id){
+                            ForEach(tickets,id: \.id){
                                 TicketView($0)
                             }
                         }.padding(.vertical, 30)
+                    }.onTapGesture {
+                        viewModel.touchOtherSubject.send(())
                     }
                 }   
             }   
@@ -87,7 +93,13 @@ struct HomeView: View {
             UIScrollView.appearance().bounces = true
         }
         .fullScreenCover(isPresented: $shouldShowTicketFormView){
-                TicketFormView()
+            TicketFormView()
+        }
+        .onReceive(viewModel.$tickets){
+            //app이 백그라운드로가면 0으로 날라와서 0이 아닐때만 초기화
+            if $0.count != 0{
+                tickets = $0
+            }
         }
     }
 }

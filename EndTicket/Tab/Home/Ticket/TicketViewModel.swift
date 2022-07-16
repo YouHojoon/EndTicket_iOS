@@ -17,8 +17,9 @@ final class TicketViewModel:ObservableObject{
     let isSuccessPostTicket = PassthroughSubject<Bool,Never>()
     let isSuccessModifyTicket = PassthroughSubject<Bool,Never>()
     let isSuccessDeleteTicket = PassthroughSubject<Bool,Never>()
+    let touchOtherSubject = PassthroughSubject<Void,Never>()
     private var subscriptions = Set<AnyCancellable>()
-    
+ 
     func fetchTickets(){
         if tickets.isEmpty{
             TicketApi.shared.getTickets().receive(on: DispatchQueue.main).sink(receiveCompletion: {
@@ -87,7 +88,6 @@ final class TicketViewModel:ObservableObject{
             self.isSuccessModifyTicket.send(true)
         }).store(in: &subscriptions)
     }
-    
     func touchTicket(id: Int){
         TicketApi.shared.touchTicket(id: id).receive(on: DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
@@ -110,7 +110,6 @@ final class TicketViewModel:ObservableObject{
             }
         }).store(in: &subscriptions)
     }
-    
     func cancelTouchTicket(id:Int){
         TicketApi.shared.canelTouchTicket(id: id).receive(on:DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
@@ -128,7 +127,6 @@ final class TicketViewModel:ObservableObject{
             }
         }).store(in: &subscriptions)
     }
-    
     func fetchPreferTicket(){
         TicketApi.shared.getPreferTicket().receive(on: DispatchQueue.main).sink(receiveCompletion: {
             switch $0{
