@@ -21,6 +21,7 @@ struct CharacterSelectAlert:View{
                         .padding(.bottom,22)
                         .padding(.top,40)
                     HStack(spacing:0){
+                        Spacer()
                         ForEach(Array(Character.allCases.enumerated()),id: \.1){index,character in
                             Circle()
                                 .stroke(character == selectedCharacter ? Color.mainColor : .white,lineWidth: 3)
@@ -43,6 +44,7 @@ struct CharacterSelectAlert:View{
                                 Spacer(minLength: 20)
                             }
                         }
+                        Spacer()
                     }.padding(.bottom,35)
                     Text("\(selectedCharacter.rawValue)")
                         .font(.system(size:22, weight:.bold))
