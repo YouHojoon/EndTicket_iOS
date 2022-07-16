@@ -169,7 +169,7 @@ struct EndTicketTabView: View {
                         }
                     }
             }
-            .padding(.bottom,23)
+            .padding(.bottom,7)
         case .futureOfMe:
             HStack{
                 Text("미래의 나")

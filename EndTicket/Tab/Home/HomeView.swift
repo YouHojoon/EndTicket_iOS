@@ -40,7 +40,7 @@ struct HomeView: View {
 //                .padding(.bottom,21)
             }.background(Color.white.edgesIgnoringSafeArea([.horizontal,.top]))
             .padding(.horizontal,20)
-            .padding(.top, 12)
+            .padding(.top, 31)
             
             
             //MARK: - 티켓 리스트
