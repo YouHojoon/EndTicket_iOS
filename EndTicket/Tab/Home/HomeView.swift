@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
-    @EnvironmentObject private var missionViewModel: MissionViewModel
+//    @EnvironmentObject private var missionViewModel: MissionViewModel
     @State private var shouldShowTicketFormView = false
     @State private var shouldShowPepTalk = true
     @State private var tickets:[Ticket] = []
@@ -86,7 +86,7 @@ struct HomeView: View {
         }
         .onAppear{
             viewModel.fetchTickets()
-            missionViewModel.fetchMission()
+//            missionViewModel.fetchMission()
             UIScrollView.appearance().bounces = true
         }
         .fullScreenCover(isPresented: $shouldShowTicketFormView){

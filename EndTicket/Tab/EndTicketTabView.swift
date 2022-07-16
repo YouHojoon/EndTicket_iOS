@@ -131,7 +131,7 @@ struct EndTicketTabView: View {
         case .home:
             HomeView()
                 .environmentObject(ticketViewModel)
-                .environmentObject(MissionViewModel())
+//                .environmentObject(MissionViewModel())
         case .futureOfMe:
             FutureOfMeView()
                 .environmentObject(futureOfMeViewModel)
