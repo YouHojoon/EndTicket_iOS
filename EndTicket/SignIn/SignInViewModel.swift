@@ -174,6 +174,7 @@ final class SignInViewModel: NSObject, ObservableObject{
                         status = .emailNotFound
                         return
                     }
+                    
                     self.signUpEmail(email){
                         if !$0{
                             status = .fail
@@ -181,6 +182,7 @@ final class SignInViewModel: NSObject, ObservableObject{
                         }
                     }
                 }
+                
                 if status != .fail && status != .emailNotFound{
                     _ = EssentialToSignIn.socialType.save(data: socialType.rawValue)
                 }
@@ -354,6 +356,9 @@ final class SignInViewModel: NSObject, ObservableObject{
             }
         }, receiveValue: {
             completion?($0)
+            if $0 != nil{
+                _ = EssentialToSignIn.email.save(data: $0!)
+            }
         }).store(in: &subscriptions)
     }
 }
