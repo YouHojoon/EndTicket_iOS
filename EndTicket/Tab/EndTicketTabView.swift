@@ -83,7 +83,7 @@ struct EndTicketTabView: View {
                         }
                         .foregroundColor(tabIndex == .history ? .black : .gray300)
                     
-                    tapButton(image: "my_page_icon", title: "my", width: proxy.size.width / 5)
+                    tapButton(image: "my_page_icon", title: "마이페이지", width: proxy.size.width / 5)
                         .onTapGesture {
                             tabIndex = .myPage
                         }
@@ -222,7 +222,7 @@ struct EndTicketTabView: View {
             
         case .prefer:
             HStack(spacing:0){
-                Image(systemName: "arrow.backward")
+                Image("arrow_left")
                     .font(.system(size: 16))
                     .onTapGesture {
                         withAnimation{

@@ -17,23 +17,24 @@ struct MyHomeView: View {
     @State private var shouldShowInquireView = false
     @State private var shouldShowDeleteUserView = false
     @State private var shouldShowPersonalInformationProcessingPolicy = false
-    @State private var imageUrl:URL? = nil
     
     var body: some View {
-        VStack(alignment:.leading,spacing:0){
+        VStack(alignment:.center,spacing:0){
             HStack(spacing:15){
-                if imageUrl == nil{
-                    Circle()
-                    .foregroundColor(.gray200)
+                Circle()
+                    .foregroundColor(.gray50)
                     .frame(width: 56, height: 56)
-                       
-                }
-                else{
-                    KFImage(imageUrl!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 56, height: 56)
-                }
+                    .overlay{
+                        if let imageUrl = EssentialToSignIn.imageUrl.saved{
+                            KFImage(URL(string:imageUrl)!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 56, height: 56)
+                        }
+                        else{
+                            EmptyView()
+                        }
+                    }
                 
                 VStack(alignment:.leading, spacing: 1){
                     Text("\(EssentialToSignIn.nickname.saved ?? "")")
@@ -42,6 +43,7 @@ struct MyHomeView: View {
                         .font(.system(size: 15, weight: .medium))
                         .foregroundColor(.gray400)
                 }
+                Spacer()
             }.padding(.bottom,21)
             Divider()
             //MARK: - 알림
@@ -76,6 +78,10 @@ struct MyHomeView: View {
                     shouldShowDeleteUserView = true
                 }
             Spacer()
+            Text("0.0.1")
+                .font(.system(size:16,weight: .medium))
+                .foregroundColor(.gray300)
+                .padding(.bottom,20)
         }
         .padding(.horizontal,20)
         .padding(.top,25)

@@ -57,20 +57,20 @@ struct InquireView: View {
         VStack(spacing:0){
             Group{
                 HStack{
-                    Image(systemName: "arrow.backward")
+                    Image("arrow_left")
                         .font(.system(size:15, weight: .medium))
-                        .padding(.trailing,13)
+                        .frame(width:40,height: 40)
+                        .padding(.leading, 10)
                         .onTapGesture {
                             dismiss()
                         }
                     Spacer()
                     Text("\(type.title)")
                         .font(.system(size: 21,weight: .bold))
-                        .offset(x:-20)
                     Spacer()
-                }.padding(.top, 23.67)
-                .padding(.bottom, 33)
-            }.padding(.leading,20)
+                }
+                .padding(.vertical, 13)
+            }
             
             Group{
                 TextEditor(text: $text)
