@@ -58,23 +58,28 @@ struct InquireView: View {
             Group{
                 HStack{
                     Image("arrow_left")
-                        .font(.system(size:15, weight: .medium))
                         .frame(width:40,height: 40)
-                        .padding(.leading, 10)
+                        .font(.system(size:15, weight: .medium))
+                        .padding(.leading,10)
                         .contentShape(Rectangle())
+                        .compositingGroup()
                         .onTapGesture {
                             dismiss()
                         }
                     Spacer()
                     Text("\(type.title)")
                         .font(.system(size: 21,weight: .bold))
+                        .offset(x:-10)
                     Spacer()
+                    Rectangle().frame(width: 40, height: 40).foregroundColor(.clear)
                 }
                 .padding(.vertical, 13)
             }
             
             Group{
                 TextEditor(text: $text)
+                    .disableAutocorrection(true)
+                    .textInputAutocapitalization(.never)
                     .focused($focus)
                     .font(.system(size: 18))
                     .overlay(
@@ -98,7 +103,7 @@ struct InquireView: View {
                             isEnabledButton = false
                         }
                     }
-                
+
                 Button{
                     switch type {
                     case .inquire:
