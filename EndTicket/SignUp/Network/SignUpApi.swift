@@ -24,13 +24,13 @@ final class SignUpApi: BaseApi{
                 $0.isSuccess
             }.eraseToAnyPublisher()
     }
-    func signUpCharacter(_ character:Character) -> AnyPublisher<Bool, AFError>{
+    func signUpCharacter(_ character:Character) -> AnyPublisher<String?, AFError>{
         return session.request(SignUpRouter.signUpCharacter(character))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignUpCharacterResponse.self)
             .value()
             .map{
-                $0.isSuccess
+                $0.result?.characterImageUrl
             }.eraseToAnyPublisher()
     }
     func deleteUser(text:String) -> AnyPublisher<Bool,AFError>{

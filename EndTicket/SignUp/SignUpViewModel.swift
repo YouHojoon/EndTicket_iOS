@@ -52,7 +52,12 @@ final class SignUpViewModel:ObservableObject{
                     print("캐릭터 등록 실패 : \(error.localizedDescription)")
                 }
             }, receiveValue: {
-                self.isSuccessSignUpCharacter = $0
+                guard let imageUrl = $0 else{
+                    self.isSuccessSignUpCharacter = false
+                    return
+                }
+                EssentialToSignIn.imageUrl.save(data: imageUrl)
+                self.isSuccessSignUpCharacter = true
             })
             .store(in: &subscriptions)
     }
