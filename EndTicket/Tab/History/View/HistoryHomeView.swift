@@ -20,6 +20,7 @@ struct HistoryHomeView: View {
             .font(.system(size: 22,weight: .bold))
             .background(Color.white.edgesIgnoringSafeArea(.horizontal))
             .padding([.horizontal,.bottom],20)
+            .padding(.top, 30)
             
             ZStack{
                 Color.gray10.ignoresSafeArea()
