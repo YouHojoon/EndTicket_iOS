@@ -62,8 +62,8 @@ struct ImagineFormView: View{
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
-                    FormTextField(title:"제목",titleImage: Image( "arrow_right"), placeholder: "시작역-목표를 이루려면 어떤 행동을 해야 할까요?",text: $subject, maxTextLength: 10,isEssential: imagineId == nil)
-                    FormTextField(title:"목표",titleImage: Image("goal_icon"), placeholder: "종착역-달성하고 나면, 나의 모습은 어떨까요?",text: $purpose, maxTextLength: 20,isEssential: imagineId == nil)
+                    FormTextField(title:"제목",titleImage: Image("arrow_right"), placeholder: "목표를 간단하게 적어보세요",text: $subject, maxTextLength: 10,isEssential: imagineId == nil)
+                    FormTextField(title:"목표",titleImage: Image("goal_icon"), placeholder: "달성하고 나면, 나의 모습은 어떨까요?",text: $purpose, maxTextLength: 20,isEssential: imagineId == nil)
                     Divider().padding(.vertical, 10)
                     ColorSelectView(selected: $color)
                         .padding(.bottom, 40)
