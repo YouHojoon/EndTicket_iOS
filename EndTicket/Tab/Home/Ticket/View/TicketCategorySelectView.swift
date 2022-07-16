@@ -11,18 +11,13 @@ struct TicketCategorySelectView: View {
     @Binding private var selected: Ticket.Category
     private let isEssential: Bool
     private let shouldShowTitle: Bool
-    private let categorys:[Ticket.Category]
+    private let categorys = Ticket.Category.allCases.filter{$0 != .all}
+    private let shouldRemoveAllCategory: Bool
     init(selected:Binding<Ticket.Category>,shouldShowTitle:Bool = true, isEssential:Bool = false, shouldRemoveAllCategory: Bool = true){
         _selected = selected
         self.isEssential = isEssential
         self.shouldShowTitle = shouldShowTitle
-        
-        var categorys = Ticket.Category.allCases
-        if shouldRemoveAllCategory{
-            let index = categorys.firstIndex(of: .all)!
-            categorys.remove(at: index)
-        }
-        self.categorys = categorys
+        self.shouldRemoveAllCategory = shouldRemoveAllCategory
     }
     
     var body: some View{
@@ -37,28 +32,44 @@ struct TicketCategorySelectView: View {
                 .padding(.horizontal,20)
                 .padding(.bottom, 10)
             }
+            
             ScrollView(.horizontal,showsIndicators:false){
                 HStack(spacing:8){
+                    if !shouldRemoveAllCategory{
+                        Text(Ticket.Category.all.rawValue)
+                            .modifier(CategoryButtonModifier(.all,selected: $selected))
+                    }
                     ForEach(categorys,id:\.self){category in
                         Text(category.rawValue)
-                            .font(.system(size: 14,weight:.bold))
-                            .foregroundColor(category == selected ? Color.white : .gray600)
-                            .padding(.horizontal,16)
-                            .padding(.vertical,11)
-                            .background(Capsule()
-                                .foregroundColor(category == selected ? .black : .white))
-                            .overlay(Capsule().stroke(
-                                category == selected ? Color.clear :
-                                    Color.gray100,lineWidth: 1))
-                            .padding(1)
-                            .onTapGesture {
-                                selected = category
-                            }
+                            .modifier(CategoryButtonModifier(category,selected: $selected))
                     }
                 }.padding(.horizontal,20)
             }
         }
-//        .padding(.horizontal,20)
+    }
+}
+
+fileprivate struct CategoryButtonModifier: ViewModifier{
+    @Binding private var selected: Ticket.Category
+    private let category: Ticket.Category
+    init(_ category: Ticket.Category,selected:Binding<Ticket.Category>){
+        _selected = selected
+        self.category = category
+    }
+    func body(content: Content) -> some View {
+        content.font(.system(size: 14,weight:.bold))
+            .foregroundColor(category == selected ? Color.white : .gray600)
+            .padding(.horizontal,16)
+            .padding(.vertical,11)
+            .background(Capsule()
+                .foregroundColor(category == selected ? .black : .white))
+            .overlay(Capsule().stroke(
+                category == selected ? Color.clear :
+                    Color.gray100,lineWidth: 1))
+            .padding(1)
+            .onTapGesture {
+                selected = category
+            }
     }
 }
 

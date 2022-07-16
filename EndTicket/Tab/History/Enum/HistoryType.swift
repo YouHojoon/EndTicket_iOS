@@ -10,7 +10,7 @@ import SwiftUI
 
 enum HistoryType: String,CaseIterable{
     case ticket = "티켓"
-    case mission = "주간미션"
+//    case mission = "주간미션"
     case imagine = "상상하기"
     
     @ViewBuilder
@@ -36,8 +36,8 @@ enum HistoryType: String,CaseIterable{
         switch self {
         case .ticket:
             return "잘하셨어요!\n앞으로 더 기대 되는걸요:)"
-        case .mission:
-            return "꾸준히 하고 계신가요?\n달성하다보면 좋아질 거에요!"
+//        case .mission:
+//            return "꾸준히 하고 계신가요?\n달성하다보면 좋아질 거에요!"
         case .imagine:
             return "상상한 것보다\n더 잘 됐을 거에요:)"
         }

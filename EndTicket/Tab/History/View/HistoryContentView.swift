@@ -38,30 +38,32 @@ struct HistoryContentView: View {
                         .foregroundColor(.gray200)
                         .frame(width: 20, height: 20)
                         .contentShape(Rectangle())
-                        .onTapGesture {
-                            shouldShowDetail = true
-                        }
+                       
                 }.padding(.bottom, 20)
             }.padding(.horizontal,10)
         }.padding(.horizontal,5)
         .background(RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.05), radius: 15, x: 0, y: 4)
-        ).fullScreenCover(isPresented:$shouldShowDetail){
+        )
+        .onTapGesture {
+            shouldShowDetail = true
+        }
+        .fullScreenCover(isPresented:$shouldShowDetail){
             detail
         }
+        
     }
     
-    
-    
+
     var image: Image{
         switch type {
         case .ticket:
             return Image("ticket_flag")
         case .imagine:
             return Image("futureOfMe_image")
-        case .mission:
-            return Image("mission")
+//        case .mission:
+//            return Image("mission")
         }
     }
     
@@ -70,8 +72,8 @@ struct HistoryContentView: View {
         switch type {
         case .ticket:
             TicketHistoryView()
-        case .mission:
-            MissionHistoryView()
+//        case .mission:
+//            MissionHistoryView()
         case .imagine:
             ImagineHistoryView()
         }
