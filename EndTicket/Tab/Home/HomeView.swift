@@ -12,7 +12,6 @@ struct HomeView: View {
     @EnvironmentObject private var missionViewModel: MissionViewModel
     @State private var shouldShowTicketFormView = false
     @State private var shouldShowPepTalk = true
-    @State private var viewRefresh = false
     @State private var tickets:[Ticket] = []
     @Environment(\.scenePhase) var scenePhase
     
