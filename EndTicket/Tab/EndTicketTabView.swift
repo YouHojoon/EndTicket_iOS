@@ -233,9 +233,11 @@ struct EndTicketTabView: View {
                     }
                 Spacer()
                 Text("추천티켓").font(.system(size: 21,weight: .bold))
+                
                 Spacer()
+                Rectangle().foregroundColor(.clear).frame(width:40,height: 40)
             }.padding(.vertical, 13)
-            .offset(x:-10)
+            
             .background(Color.white)
         }
     }
