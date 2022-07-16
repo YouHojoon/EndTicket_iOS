@@ -40,7 +40,8 @@ struct ImagineFormView: View{
             HStack(spacing:0){
                 Image("arrow_left")
                     .font(.system(size:15, weight: .medium))
-                    .padding(.leading,13)
+                    .frame(width: 40, height: 40)
+                    .padding(.leading, 10)
                     .onTapGesture {
                         shouldShowAlert = true
                     }
@@ -52,10 +53,11 @@ struct ImagineFormView: View{
                 addOrModifyButton
                     .disabled(!isEnabledButton)
                     .foregroundColor(isEnabledButton ? .black : .gray600)
+                    .padding(.trailing, 13)
                     
-            }.padding(.horizontal, 20)
-                .padding(.vertical,13)
-                .background(Color.white)
+            }
+            .padding(.vertical,13)
+            .background(Color.white)
             
             ScrollView(showsIndicators:false){
                 VStack(alignment:.leading,spacing: 20){
