@@ -56,9 +56,10 @@ struct TicketFormView: View {
 
                 Spacer()
                 addOrModifyButton
+                    .frame(width:40,height: 40)
                     .disabled(!isEnabledButton)
                     .foregroundColor(isEnabledButton ? .black : .gray600)
-                    .padding(.trailing, 13)
+                    .padding(.trailing, 18)
             }
             .padding(.vertical,13)
             .background(Color.white)
