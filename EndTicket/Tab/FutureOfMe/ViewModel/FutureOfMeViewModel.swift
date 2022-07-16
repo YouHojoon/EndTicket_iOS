@@ -47,7 +47,7 @@ final class FutureOfMeViewModel:ObservableObject{
         }, receiveValue: {
             self.futureOfMe = $0
             if let imageUrl = self.futureOfMe?.characterImageUrl{
-                EssentialToSignIn.imageUrl.save(data:imageUrl.path)
+                EssentialToSignIn.imageUrl.save(data:imageUrl.absoluteString)
             }
         }).store(in: &subscriptions)
     }
