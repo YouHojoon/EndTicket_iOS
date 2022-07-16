@@ -13,7 +13,7 @@ struct PostFutureOfMeSubjectResponse: BaseResponse{
     let result: Result?
     
     struct Result: Codable{
-        let id: String
+        let id: Int
         let subject: String
     }
 }

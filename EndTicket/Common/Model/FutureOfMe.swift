@@ -7,13 +7,13 @@
 
 import Foundation
 struct FutureOfMe:Codable{
-    let id: String
+    let id: Int
     var subject: String?
     let title: String?
     var level: Int
     var experience: Int
     let characterImageUrl: URL?
-    let characterImageName: String?
+    let characterImageId: Int?
     let nickname: String
     
     mutating func incresedExperience(_ amount: Int){

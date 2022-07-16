@@ -10,8 +10,9 @@ import SwiftUI
 struct FutureOfMeView: View {
     @State private var shouldShowImagineFormView = false
     @State private var shouldShowAlert = false
+    @State private var imagines: [Imagine] = []
     @EnvironmentObject private var viewModel: FutureOfMeViewModel
-    
+    @Environment(\.scenePhase) var scensPhase
     init(){
         UIScrollView.appearance().bounces = false
     }
@@ -27,7 +28,7 @@ struct FutureOfMeView: View {
                 HStack{
                     Text("상상하기")
                         .font(.system(size: 16,weight: .bold))
-
+                    
                     Spacer()
                     Button{
                         if viewModel.imagines.count == 6{
@@ -47,20 +48,17 @@ struct FutureOfMeView: View {
                 Divider().padding(.bottom, 21)
                 
                 ScrollView(showsIndicators:false){
-                    if !viewModel.imagines.isEmpty{
+                    if !imagines.isEmpty{
                         VStack(alignment:.leading,spacing:20){
-                            ForEach(viewModel.imagines, id: \.id){index in
-                                    ImagineView(index)
-                                    
+                            ForEach(imagines, id: \.id){index in
+                                ImagineView(index)
+                                
                             }
                         }
                     }
-                    
                     else{
                         VStack(spacing:0){
                             Image("futureOfMe_image")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
                                 .frame(width: 208, height: 201)
                                 .padding(.bottom,5)
                             Text("미래의 나는 어떨지 상상해보세요:)")
@@ -74,7 +72,7 @@ struct FutureOfMeView: View {
                                     .frame(maxWidth:.infinity, minHeight: 50, maxHeight: 50)
                                     .foregroundColor(.white)
                             }.background(Color.mainColor)
-                            .cornerRadius(10)
+                                .cornerRadius(10)
                         }
                     }
                     
@@ -89,6 +87,10 @@ struct FutureOfMeView: View {
         .onAppear{
             viewModel.fetchImagines()
         }
+        .onReceive(viewModel.fetchImagineTrigger){
+            imagines = viewModel.imagines
+        }
+        .animation(.easeInOut, value: imagines)
         //MARK: - alert
         .maxContentAlert(isPresented: $shouldShowAlert)
     }

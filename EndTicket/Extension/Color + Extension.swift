@@ -43,8 +43,14 @@ extension Color{
     static let ticketPurple3 = Color(hex:"#9F7E99")
     
     static let ticketGray1 = Color(hex:"#C2C8CF")
-    static let ticketGray2 = Color(hex:"#A3A8B3")
+    static let ticketGray2 = Color(hex:"#98C4EA")
     static let ticketGray3 = Color(hex:"#616871")
+    
+    
+    //MARK: - 캐릭터 관련
+    static let kia = Color(hex: "#E7988C")
+    static let cheese = Color(hex: "#F1CE74")
+    static let vega = Color(hex: "#98C4EA")
     
     var hexString:String{
         let uiColor = UIColor(self)

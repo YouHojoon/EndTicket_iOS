@@ -11,6 +11,8 @@ import Combine
 final class FutureOfMeViewModel:ObservableObject{
     @Published public private(set) var imagines:[Imagine] = []
     @Published public private(set) var futureOfMe: FutureOfMe? = nil
+    
+    let fetchImagineTrigger = PassthroughSubject<Void, Never>()
     let isSuccessPostImagine = PassthroughSubject<Bool, Never>()
     let isSuccessModifyImagine = PassthroughSubject<Bool, Never>()
     let isSuccessDeleteImagine = PassthroughSubject<(Bool), Never>()
@@ -28,13 +30,9 @@ final class FutureOfMeViewModel:ObservableObject{
             }
         }, receiveValue: {
             if $0{
-                withAnimation{
-                    self.imagines.remove(at: index)
-                }
-                guard self.futureOfMe != nil else{
-                    return
-                }
-                self.futureOfMe!.incresedExperience(20)
+                self.imagines.remove(at: index)
+                self.fetchImagineTrigger.send(())
+                self.fetchFutureOfMe()
             }
         }).store(in: &subscriptions)
     }
@@ -48,6 +46,9 @@ final class FutureOfMeViewModel:ObservableObject{
             }
         }, receiveValue: {
             self.futureOfMe = $0
+            if let imageUrl = self.futureOfMe?.characterImageUrl{
+                EssentialToSignIn.imageUrl.save(data:imageUrl.path)
+            }
         }).store(in: &subscriptions)
     }
     
@@ -78,6 +79,7 @@ final class FutureOfMeViewModel:ObservableObject{
                     }
                 }, receiveValue: {
                     self.imagines = $0
+                    self.fetchImagineTrigger.send(())
                 }).store(in: &subscriptions)
         }
     }
@@ -95,8 +97,9 @@ final class FutureOfMeViewModel:ObservableObject{
                     self.isSuccessPostImagine.send(false)
                     return
                 }
-                self.isSuccessPostImagine.send(true)
                 self.imagines.append(imagine)
+                self.fetchImagineTrigger.send(())
+                self.isSuccessPostImagine.send(true)
             }).store(in: &subscriptions)
     }
     func modifyImagine(_ imagine: Imagine){
@@ -116,6 +119,7 @@ final class FutureOfMeViewModel:ObservableObject{
                 let index = self.imagines.firstIndex{$0.id == imagine.id}!
                 self.imagines[index] = imagine
                 self.isSuccessModifyImagine.send(true)
+                self.fetchImagineTrigger.send(())
             })
             .store(in: &subscriptions)
     }
@@ -133,6 +137,7 @@ final class FutureOfMeViewModel:ObservableObject{
                     let index = self.imagines.firstIndex{$0.id == id}!
                     self.imagines.remove(at: index)
                     self.isSuccessDeleteImagine.send(true)
+                    self.isSuccessPostImagine.send(true)
                 }
                 else{
                     self.isSuccessDeleteImagine.send(false)
