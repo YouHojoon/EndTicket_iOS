@@ -43,7 +43,9 @@ struct TicketFormView: View {
         VStack(spacing:0){
             HStack(spacing:0){
                 Image("arrow_left")
+                    .frame(width: 40, height: 40)
                     .contentShape(Rectangle())
+                    .padding(.leading,10)
                     .onTapGesture {
                         shouldShowAlert = true
                     }
@@ -56,7 +58,8 @@ struct TicketFormView: View {
                 addOrModifyButton
                     .disabled(!isEnabledButton)
                     .foregroundColor(isEnabledButton ? .black : .gray600)
-            }.padding(.horizontal, 20)
+                    .padding(.trailing, 13)
+            }
             .padding(.vertical,13)
             .background(Color.white)
             
