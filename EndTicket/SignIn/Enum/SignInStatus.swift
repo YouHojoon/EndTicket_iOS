@@ -10,4 +10,6 @@ enum SignInStaus{
     case success
     case fail
     case needSignUp
+    case logout
+    case emailNotFound
 }

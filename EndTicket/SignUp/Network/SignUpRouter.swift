@@ -11,7 +11,9 @@ import Alamofire
 enum SignUpRouter: BaseRouter{
     case signUpNickname(String)
     case signUpCharacter(Character)
+    case signUpEmail(String)
     case deleteUser(text:String)
+    case getUserEmail
     
     var endPoint: String{
         let baseEndPoint = "auth/"
@@ -22,6 +24,8 @@ enum SignUpRouter: BaseRouter{
             return "\(baseEndPoint)/character"
         case .deleteUser:
             return baseEndPoint
+        case .signUpEmail(_), .getUserEmail:
+            return "users/email"
         }
     }
     
@@ -39,17 +43,23 @@ enum SignUpRouter: BaseRouter{
             return [
                 "text": text
             ]
+        case .signUpEmail(let email):
+            return [
+                "email" : email
+            ]
+        default:
+            return Parameters()
         }
     }
     
     var method: HTTPMethod{
         switch self {
-        case .signUpNickname:
-            return .patch
         case .signUpCharacter:
             return .post
-        case .deleteUser:
+        case .deleteUser,.signUpEmail,.signUpNickname:
             return .patch
+        case .getUserEmail:
+            return .get
         }
     }
     

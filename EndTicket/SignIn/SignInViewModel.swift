@@ -15,12 +15,13 @@ import KakaoSDKCommon
 import AuthenticationServices
 import SwiftUI
 import UIKit
+import Alamofire
 final class SignInViewModel: NSObject, ObservableObject{
     @Published public private(set) var status: SignInStaus = .fail
     private let gidConfig: GIDConfiguration
     private var subscriptions = Set<AnyCancellable>()
     private var asAuthDelegate:ASAuthorizationControllerDelegate?
-  
+    
     init(googleClientId:String){
         gidConfig = GIDConfiguration(clientID: googleClientId)
     }
@@ -48,6 +49,16 @@ final class SignInViewModel: NSObject, ObservableObject{
     
     
     //MARK: - SNS 로그인
+    private func socialSignInReciveCompletion(_ subscribers: Subscribers.Completion<AFError>, completion: ((SignInStaus) -> Void)? = nil){
+        switch subscribers{
+        case .finished:
+            break
+        case .failure(let error):
+            print("로그인 실패 : \(error.localizedDescription)")
+            completion?(.fail)
+        }
+    }
+    
     private func kakaoSignIn(){
         UserApi.shared.loginWithKakaoTalk{
             guard $1 == nil else{
@@ -59,19 +70,18 @@ final class SignInViewModel: NSObject, ObservableObject{
                 self.status = .fail
                 return
             }
+            
             UserApi.shared.me{
                 guard $1 == nil else{
                     print($1!.localizedDescription)
                     self.status = .fail
                     return
                 }
-                guard let email = $0?.kakaoAccount?.email, EssentialToSignIn.email.save(data: email) else{
-                    self.status = .fail
-                    return
+        
+                let email = $0?.kakaoAccount?.email
+                self.serverSignIn(.kakao, idToken: idToken){
+                    self.handleSignInToServerResult($0,email: email ,socialType: .kakao)
                 }
-            }
-            self.serverSignIn(.kakao, idToken: idToken){
-                self.handleSignInToServerResult($0, socialType: .kakao)
             }
         }
     }
@@ -83,10 +93,12 @@ final class SignInViewModel: NSObject, ObservableObject{
                 self.status = .fail
                 return
             }
+            let email = $1
             self.serverSignIn(.apple, idToken: idToken){
-                self.handleSignInToServerResult($0, socialType: .apple)
+                self.handleSignInToServerResult($0, email: email,socialType: .apple)
             }
         }
+
         controller.delegate = asAuthDelegate
         controller.performRequests()
     }
@@ -102,16 +114,13 @@ final class SignInViewModel: NSObject, ObservableObject{
                 self.status = .fail
                 return
             }
-            guard let _ = $0 else{
+            guard let credential = $0 else{
                 self.status = .fail
                 return
             }
-            guard let email = $0?.profile?.email, EssentialToSignIn.email.save(data: email) else{
-                self.status = .fail
-                return
-            }
-            self.serverSignIn(.google, idToken: $0!.authentication.idToken!){
-                self.handleSignInToServerResult($0, socialType: .google)
+        
+            self.serverSignIn(.google, idToken: credential.authentication.idToken!){
+                self.handleSignInToServerResult($0, email: credential.profile?.email, socialType: .google)
             }
         }
     }
@@ -119,12 +128,7 @@ final class SignInViewModel: NSObject, ObservableObject{
         if !EssentialToSignIn.isCanSignIn(){
             SignInApi.shared.socialSignIn(type, token: idToken)
                 .sink(receiveCompletion: {
-                    switch $0{
-                    case .finished:
-                        break
-                    case .failure(let error):
-                        print("로그인 실패 : \(error.localizedDescription)")
-                    }
+                    self.socialSignInReciveCompletion($0,completion: completion)
                 }, receiveValue: {id, nickname,token in
                     guard let token = token, EssentialToSignIn.token.save(data: token) else{
                         completion?(.fail)
@@ -150,22 +154,36 @@ final class SignInViewModel: NSObject, ObservableObject{
             completion?(.success)
         }
     }
-    private func handleSignInToServerResult(_ status: SignInStaus, socialType: SocialType){
-        DispatchQueue.main.async {
+    private func handleSignInToServerResult(_ status: SignInStaus, email: String?, socialType: SocialType){
+        switch status {
+        case .success, .needSignUp:
+            fetchEmail{
+                if $0 == nil{
+                    guard let email = email else {
+                        self.status = .emailNotFound
+                        return
+                    }
+                    self.signUpEmail(email){
+                        if !$0{
+                            self.status = .fail
+                            return
+                        }
+                    }
+                }
+                
+                if self.status != .fail && self.status != .emailNotFound{
+                    self.status = status
+                    _ = EssentialToSignIn.socialType.save(data: socialType.rawValue)
+                }
+            }
+        default:
             self.status = status
-        }
-        
-        if status != .fail{
-            _ = EssentialToSignIn.socialType.save(data: socialType.rawValue)
         }
     }
     
     //MARK: - 자동 로그인 관련
     func restorePreviousSignIn(){
         if EssentialToSignIn.isCanSignIn(){
-            for sns in SocialType.allCases{
-                restorePreviousSocialSignIn(sns)
-            }
             DispatchQueue.main.async {
                 self.status = .success
             }
@@ -282,7 +300,7 @@ final class SignInViewModel: NSObject, ObservableObject{
     private func disconncetKakao(){
         UserApi.shared.unlink {(error) in
             if let error = error {
-                print(error)
+                print(error.localizedDescription)
             }
             else {
                 print("unlink() success.")
@@ -291,8 +309,37 @@ final class SignInViewModel: NSObject, ObservableObject{
     }
     private func disconnectServer(){
         EssentialToSignIn.removeAllOfSaved()
-        self.status = .fail
+        self.status = .logout
     }
     
+    
+    private func signUpEmail(_ email: String, completion: ((Bool) -> Void)? = nil){
+        SignUpApi.shared.signUpEmail(email).sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("이메일 등록 실패 \(error.localizedDescription)")
+                completion?(false)
+            }
+        }, receiveValue: {
+            _ = EssentialToSignIn.email.save(data: email)
+            completion?($0)
+        }).store(in: &subscriptions)
+    }
+    
+    private func fetchEmail(completion: ((String?) -> Void)? = nil){
+        SignUpApi.shared.getUserEmail().sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("이메일 조회 실패 \(error.localizedDescription)")
+                completion?(nil)
+            }
+        }, receiveValue: {
+            completion?($0)
+        }).store(in: &subscriptions)
+    }
 }
 
