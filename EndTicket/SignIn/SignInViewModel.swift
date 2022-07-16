@@ -155,30 +155,30 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
     }
     private func handleSignInToServerResult(_ status: SignInStaus, email: String?, socialType: SocialType){
+        var status = status
         switch status {
         case .success, .needSignUp:
             fetchEmail{
                 if $0 == nil{
                     guard let email = email else {
-                        self.status = .emailNotFound
+                        status = .emailNotFound
                         return
                     }
                     self.signUpEmail(email){
                         if !$0{
-                            self.status = .fail
+                            status = .fail
                             return
                         }
                     }
                 }
-                
-                if self.status != .fail && self.status != .emailNotFound{
-                    self.status = status
+                if status != .fail && status != .emailNotFound{
                     _ = EssentialToSignIn.socialType.save(data: socialType.rawValue)
                 }
             }
         default:
-            self.status = status
+            break
         }
+        self.status = status
     }
     
     //MARK: - 자동 로그인 관련

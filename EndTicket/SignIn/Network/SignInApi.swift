@@ -61,14 +61,4 @@ final class SignInApi:BaseApi{
             }.eraseToAnyPublisher()
     }
     
-    
-    func getUserEmail() -> AnyPublisher<String?,AFError>{
-        return session.request(SignUpRouter.getUserEmail)
-            .validate(statusCode:200..<300)
-            .publishDecodable(type:EmailResponse.self)
-            .value()
-            .map{
-                return $0.result?.email
-            }.eraseToAnyPublisher()
-    }
 }

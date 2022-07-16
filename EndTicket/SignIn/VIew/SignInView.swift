@@ -141,6 +141,7 @@ struct SignInView: View {
             .transition(.opacity)
              : nil)
         .animation(.easeInOut, value: shouldShowAlert)
+        
     }
 }
 
