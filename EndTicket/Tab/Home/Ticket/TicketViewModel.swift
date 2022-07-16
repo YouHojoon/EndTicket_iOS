@@ -14,25 +14,25 @@ final class TicketViewModel:ObservableObject{
     @Published public private(set) var othersTickets:[Ticket] = []
     @Published public private(set) var preferTicket:Ticket? = nil
     
+    let fetchTicketsTrigger = PassthroughSubject<Void,Never>()
     let isSuccessPostTicket = PassthroughSubject<Bool,Never>()
     let isSuccessModifyTicket = PassthroughSubject<Bool,Never>()
     let isSuccessDeleteTicket = PassthroughSubject<Bool,Never>()
     let touchOtherSubject = PassthroughSubject<Void,Never>()
     private var subscriptions = Set<AnyCancellable>()
- 
+    
     func fetchTickets(){
-        if tickets.isEmpty{
-            TicketApi.shared.getTickets().receive(on: DispatchQueue.main).sink(receiveCompletion: {
-                switch $0{
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("ticket 불러오기 실패 : \(error.localizedDescription)")
-                }
-            }, receiveValue: {
-                self.tickets = $0
-            }).store(in: &subscriptions)
-        }
+        TicketApi.shared.getTickets().receive(on: DispatchQueue.main).sink(receiveCompletion: {
+            switch $0{
+            case .finished:
+                break
+            case .failure(let error):
+                print("ticket 불러오기 실패 : \(error.localizedDescription)")
+            }
+        }, receiveValue: {
+            self.tickets = $0
+            self.fetchTicketsTrigger.send(())
+        }).store(in: &subscriptions)
     }
     func postTicket(_ ticket: Ticket){
         TicketApi.shared.postTicket(ticket).receive(on: DispatchQueue.main).sink(receiveCompletion: {
@@ -47,9 +47,8 @@ final class TicketViewModel:ObservableObject{
                 self.isSuccessPostTicket.send(false)
                 return
             }
-            
-            self.tickets.append($0!)
             self.isSuccessPostTicket.send(true)
+            self.fetchTickets()
         }).store(in: &subscriptions)
     }
     func deleteTicket(id: Int){
@@ -64,9 +63,8 @@ final class TicketViewModel:ObservableObject{
             self.isSuccessDeleteTicket.send($0)
             if $0{
                 let index = self.tickets.firstIndex(where: {$0.id == id})!
-                withAnimation{                    
-                    self.tickets.remove(at: index)
-                }
+                self.tickets.remove(at: index)
+                self.fetchTickets()
             }
         }).store(in: &subscriptions)
     }
@@ -86,6 +84,7 @@ final class TicketViewModel:ObservableObject{
             let index = self.tickets.firstIndex{$0.id == ticket.id}!
             self.tickets[index] = $0!
             self.isSuccessModifyTicket.send(true)
+            self.fetchTickets()
         }).store(in: &subscriptions)
     }
     func touchTicket(id: Int){
@@ -98,15 +97,7 @@ final class TicketViewModel:ObservableObject{
             }
         }, receiveValue: {
             if $0{
-                let index = self.tickets.firstIndex(where: {$0.id == id})!
-                if self.tickets[index].currentCount == self.tickets[index].touchCount {
-                    _ = withAnimation{
-                        self.tickets.remove(at: index)
-                    }
-                }
-                else{
-                    self.tickets[index].currentCount+=1
-                }
+                self.fetchTickets()
             }
         }).store(in: &subscriptions)
     }
@@ -123,6 +114,7 @@ final class TicketViewModel:ObservableObject{
                 let index = self.tickets.firstIndex(where: {$0.id == id})!
                 if self.tickets[index].currentCount != 0 {
                     self.tickets[index].currentCount-=1
+                    self.fetchTickets()
                 }
             }
         }).store(in: &subscriptions)

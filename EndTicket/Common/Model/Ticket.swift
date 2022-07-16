@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Ticket: Identifiable{
+struct Ticket: Identifiable, Equatable{
     let id:Int
     let category: Category
     let subject: String
