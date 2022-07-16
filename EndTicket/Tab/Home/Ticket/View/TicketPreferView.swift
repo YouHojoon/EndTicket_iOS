@@ -68,6 +68,6 @@ struct TicketPreferView: View {
 
 struct TicketPreferView_Previews: PreviewProvider {
     static var previews: some View {
-        EndTicketTabView()
+        EndTicketTabView(needSignUpCharacter: false)
     }
 }

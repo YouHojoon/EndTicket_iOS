@@ -13,10 +13,6 @@ struct SignInResponse:BaseResponse{
     let message: String
     let result: Result?
     
-    struct Result: Codable{
-        let accountId:String
-        let nickname: String?
-        let token:String
-    }
+    typealias Result = UserInfo
 }
 
