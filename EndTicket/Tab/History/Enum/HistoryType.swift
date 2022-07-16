@@ -60,27 +60,31 @@ enum HistoryType: String,CaseIterable{
     private func baseHeader(dismiss:DismissAction, isNotScrolled: Binding<Bool>) -> some View{
         Group{
             HStack{
-                Image(systemName: "arrow.backward")
+                Image("arrow_left")
                     .font(.system(size:15, weight: .medium))
-                    .padding(.trailing,13)
+                    .frame(width: 40, height: 40)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         dismiss()
                     }
+                    .padding(.leading,10)
                 Spacer()
                 Text("\(rawValue)")
                     .font(.system(size: 21,weight: .bold))
                     .offset(x:-20)
                 Spacer()
             }.padding(.top, 23.67)
-            .padding(.bottom, 43)
+            .padding(.bottom, 13)
             
             if isNotScrolled.wrappedValue{
                 Text("\(pepTalk)")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 22,weight: .bold))
                     .padding(.bottom,20)
+                    .padding(.top,30)
+                    .padding(.leading,20)
             }
             
-        }.padding(.leading,20)
+        }
     }
 }
