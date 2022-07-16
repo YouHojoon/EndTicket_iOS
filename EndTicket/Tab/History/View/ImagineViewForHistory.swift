@@ -13,9 +13,8 @@ struct ImagineViewForHistory: View {
         self.imagine = imagine
     }
     var body: some View {
-            TicketLeadingShape()
+            RoundedRectangle(cornerRadius: 5)
             .foregroundColor(.white)
-            .cornerRadius(5)
             .overlay(
                 RoundedCorner(radius: 5, corners: [.bottomLeft, .topLeft])
                     .frame(width:5)
