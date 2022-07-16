@@ -16,8 +16,8 @@ struct MainHistory: Codable{
         switch type {
         case .ticket:
             return ticketCount
-        case .mission:
-            return missionCount
+//        case .mission:
+//            return missionCount
         case .imagine:
             return dreamCount
         }

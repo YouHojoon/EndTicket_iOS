@@ -16,15 +16,6 @@ final class HistoryViewModel: ObservableObject{
     @Published public private(set) var missionHistories: [Mission] = []
     private var subscriptions = Set<AnyCancellable>()
     
-    
-    func getMainHistoryAmount(type:HistoryType) -> Int{
-        guard let mainHistory = self.mainHistory else {
-            return 0
-        }
-        
-        return mainHistory.getHistoryCount(type: type)
-    }
-    
     func fetchMainHistory(){
         HistoryApi.shared.getMainHistory().sink(receiveCompletion: {
             switch $0{
