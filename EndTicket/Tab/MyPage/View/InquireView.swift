@@ -61,6 +61,7 @@ struct InquireView: View {
                         .font(.system(size:15, weight: .medium))
                         .frame(width:40,height: 40)
                         .padding(.leading, 10)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             dismiss()
                         }
