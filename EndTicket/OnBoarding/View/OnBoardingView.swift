@@ -12,7 +12,6 @@ struct OnBoardingView: View {
     @State private var index = 0
     var body: some View {
         VStack{
-            Spacer()
             Text("건너뛰기")
                 .underline()
                 .foregroundColor(Color.gray500)
@@ -23,7 +22,7 @@ struct OnBoardingView: View {
                     withAnimation{
                         UserDefaults.standard.setValue(false, forKey: "isFirstStart")
                     }
-                }.padding(.trailing,20)
+                }.padding([.top,.trailing],20)
             
             ZStack{//opacity가 변하면서 바뀌는 것을 원해서 ZStack으로
                 ForEach(OnBoarding.allCases, id:\.self){onBoarding in
