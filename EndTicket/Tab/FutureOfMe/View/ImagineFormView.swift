@@ -53,8 +53,9 @@ struct ImagineFormView: View{
                 
                 addOrModifyButton
                     .disabled(!isEnabledButton)
+                    .frame(width:40,height: 40)
                     .foregroundColor(isEnabledButton ? .black : .gray600)
-                    .padding(.trailing, 13)
+                    .padding(.trailing, 18)
                     
             }
             .padding(.vertical,13)
