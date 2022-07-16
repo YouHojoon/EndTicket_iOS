@@ -31,7 +31,6 @@ struct EndTicketTabView: View {
             ZStack(alignment:.bottom){
                 VStack(alignment: .leading,spacing:0){
                     header.padding(.horizontal,20)
-                        .padding(.top, 23.67)
                     content
                 }
                 .fullScreenCover(isPresented: $shouldShowTicketFormView){
@@ -170,6 +169,7 @@ struct EndTicketTabView: View {
                     }
             }
             .padding(.bottom,7)
+            .padding(.top, 4)
         case .futureOfMe:
             HStack{
                 Text("미래의 나")
@@ -185,7 +185,8 @@ struct EndTicketTabView: View {
                     .onTapGesture{
                         shouldShowEditFutureOfMeAlert = true
                     }
-            }.padding(.bottom, 13)
+            }.padding(.vertical, 13)
+            
             //MARK: - Alert
                 .alert(isPresented: $shouldShowEditFutureOfMeAlert){
                     EndTicketAlertImpl{
@@ -213,17 +214,18 @@ struct EndTicketTabView: View {
             Text("기록")
                 .kerning(-0.5)
                 .font(.system(size: 21,weight: .bold))
-                .padding(.bottom,13)
+                .padding(.vertical,13)
         case .myPage:
             Text("설정")
                 .kerning(-0.5)
                 .font(.system(size: 21,weight: .bold))
-                .padding(.bottom,13)
+                .padding(.vertical,13)
             
         case .prefer:
             HStack(spacing:0){
                 Image("arrow_left")
-                    .font(.system(size: 16))
+                    .frame(width:40,height: 40)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         withAnimation{
                             tabIndex = .home
@@ -232,7 +234,8 @@ struct EndTicketTabView: View {
                 Spacer()
                 Text("추천티켓").font(.system(size: 21,weight: .bold))
                 Spacer()
-            }.padding(.bottom, 13)
+            }.padding(.vertical, 13)
+            .offset(x:-10)
             .background(Color.white)
         }
     }
