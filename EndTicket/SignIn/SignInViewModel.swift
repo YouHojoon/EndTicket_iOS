@@ -65,33 +65,46 @@ final class SignInViewModel: NSObject, ObservableObject{
     }
     
     private func kakaoSignIn(){
-        UserApi.shared.loginWithKakaoTalk{
+        if UserApi.isKakaoTalkLoginAvailable(){
+            UserApi.shared.loginWithKakaoTalk{
+                self.handleKakaoSignInResult(token: $0, error: $1)
+            }
+        }
+        else{
+            UserApi.shared.loginWithKakaoAccount{
+                self.handleKakaoSignInResult(token: $0, error: $1)
+            }
+        }
+        
+    }
+    
+    private func handleKakaoSignInResult(token: OAuthToken?, error: Error?){
+        guard error == nil else{
+            print(error!.localizedDescription)
+            self.status = .fail
+            return
+        }
+        guard let idToken = token?.idToken else{
+            self.status = .fail
+            return
+        }
+        
+        UserApi.shared.me{
             guard $1 == nil else{
                 print($1!.localizedDescription)
                 self.status = .fail
                 return
             }
-            guard let idToken = $0?.idToken else{
-                self.status = .fail
-                return
-            }
-            
-            UserApi.shared.me{
-                guard $1 == nil else{
-                    print($1!.localizedDescription)
-                    self.status = .fail
-                    return
-                }
-        
-                let email = $0?.kakaoAccount?.email
-                self.serverSignIn(.kakao, idToken: idToken){
-                    self.handleSignInToServerResult($0,email: email ,socialType: .kakao)
-                }
+    
+            let email = $0?.kakaoAccount?.email
+            self.serverSignIn(.kakao, idToken: idToken){
+                self.handleSignInToServerResult($0,email: email ,socialType: .kakao)
             }
         }
     }
     private func appleSignIn(){
         let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.email]
         let controller = ASAuthorizationController(authorizationRequests: [request])
         asAuthDelegate = ASAuthorizationControllerDelgateImpl{
             guard let idToken = $0 else{
@@ -169,33 +182,34 @@ final class SignInViewModel: NSObject, ObservableObject{
         }
     }
     private func handleSignInToServerResult(_ status: SignInStaus, email: String?, socialType: SocialType){
-        var status = status
-        
         switch status {
         case .success, .needSignUpNickName:
             fetchEmail{
                 if $0 == nil{
                     guard let email = email else {
-                        status = .emailNotFound
+                        self.status = .emailNotFound
                         return
                     }
                     
                     self.signUpEmail(email){
                         if !$0{
-                            status = .fail
+                            self.status = .fail
                             return
                         }
                     }
                 }
-                
                 if status != .fail && status != .emailNotFound{
                     _ = EssentialToSignIn.socialType.save(data: socialType.rawValue)
                 }
+                self.status = status
             }
+            
         default:
+            self.status = status
             break
         }
-        self.status = status
+     
+        
     }
     
     //MARK: - 자동 로그인 관련

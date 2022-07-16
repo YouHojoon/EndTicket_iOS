@@ -19,7 +19,6 @@ final class ASAuthorizationControllerDelgateImpl: NSObject, ASAuthorizationContr
                 completion?(nil,nil)
                 return
             }
-            
             completion?(String(data:idToken,encoding: .utf8), credential.email)
         }
         else{

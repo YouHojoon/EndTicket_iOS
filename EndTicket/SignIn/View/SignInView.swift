@@ -15,6 +15,7 @@ struct SignInView: View {
     @State private var shouldGoNextView = false
     @State private var shouldShowLaunchScreen = false
     @State private var shouldShowAlert = false
+    @State private var shouldShowEmailNotFoundAlert = false
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack(spacing:12){
@@ -99,11 +100,11 @@ struct SignInView: View {
         //MARK: - 온보딩, launch screen
         .overlay(isFirstStart ? OnBoardingView() : nil)
         .overlay(shouldShowLaunchScreen ? LaunchScreen().transition(.opacity) : nil)
-        .onReceive(viewModel.$status.dropFirst()){status in
+        .onReceive(viewModel.$status){status in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation{
                     shouldShowLaunchScreen = false
-                    shouldGoNextView = status != .fail
+                    shouldGoNextView = (status != .fail && status != .emailNotFound)
                 }
             }
         }
@@ -116,8 +117,9 @@ struct SignInView: View {
         }
         .onReceive(viewModel.$status.dropFirst(2)){status in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                shouldGoNextView = status != .fail
+                shouldGoNextView = (status != .fail && status != .emailNotFound)
                 shouldShowAlert = status == .fail
+                shouldShowEmailNotFoundAlert = status == .emailNotFound
             }
         }
         .fullScreenCover(isPresented: $shouldGoNextView){
@@ -131,6 +133,7 @@ struct SignInView: View {
                     }
             default:
                 Color.clear.onAppear{
+                    print(shouldGoNextView)
                     UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true)
                 }
             }
@@ -140,6 +143,11 @@ struct SignInView: View {
             NetworkErrorAlert(isPresented: $shouldShowAlert)
             .transition(.opacity)
              : nil)
+        .overlay(shouldShowEmailNotFoundAlert ?
+        EmailNotFoundAlert(isPresented: $shouldShowEmailNotFoundAlert)
+            .transition(.opacity)
+             : nil)
+        .animation(.easeInOut,value: shouldShowEmailNotFoundAlert)
         .animation(.easeInOut, value: shouldShowAlert)
         
     }
