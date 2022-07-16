@@ -28,7 +28,12 @@ final class SignInViewModel: NSObject, ObservableObject{
     
     func refreshStatus(){
         if EssentialToSignIn.isCanSignIn(){
-            status = .success
+            if EssentialToSignIn.imageUrl.saved == nil{
+                status = .needSignUpCharacter
+            }
+            else{
+                status = .success
+            }
         }
         else{
             status = .fail
