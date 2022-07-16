@@ -79,16 +79,16 @@ struct FutureOfMeProfileView: View {
             .padding(.leading, 16)
             
         }.padding(.horizontal,25)
-            .padding(.vertical)
-            .background(Color.white.edgesIgnoringSafeArea(.top))
-            .onAppear{
-                viewModel.fetchFutureOfMe()
+        .padding(.top,20)
+        .background(Color.white.edgesIgnoringSafeArea(.top))
+        .onAppear{
+            viewModel.fetchFutureOfMe()
+        }
+        .onReceive(viewModel.$futureOfMe){
+            if $0 != nil{
+                futureOfMe = $0
             }
-            .onReceive(viewModel.$futureOfMe){
-                if $0 != nil{
-                    futureOfMe = $0
-                }
-            }
+        }
     }
 }
 

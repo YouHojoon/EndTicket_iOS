@@ -21,7 +21,7 @@ struct FutureOfMeView: View {
         VStack(spacing:0){
             //MARK: - 상단 프로필
             FutureOfMeProfileView()
-                .padding(.bottom ,35)
+                .padding(.bottom ,30)
             
             //MARK: - 상상해보기
             Group{

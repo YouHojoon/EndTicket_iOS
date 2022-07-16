@@ -185,7 +185,7 @@ struct EndTicketTabView: View {
                     .onTapGesture{
                         shouldShowEditFutureOfMeAlert = true
                     }
-            }.padding(.bottom, 33)
+            }.padding(.bottom, 13)
             //MARK: - Alert
                 .alert(isPresented: $shouldShowEditFutureOfMeAlert){
                     EndTicketAlertImpl{
