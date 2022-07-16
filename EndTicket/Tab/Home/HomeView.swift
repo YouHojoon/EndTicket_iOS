@@ -20,22 +20,23 @@ struct HomeView: View {
                 if shouldShowPepTalk{
                     Text("\(EssentialToSignIn.nickname.saved ?? "")님\n오늘도 같이 도전해볼까요?")
                         .font(.interBold(size: 22))
+                        .padding(.bottom,21)
                 }
-                
-                HStack(spacing:0){
-                    Image(systemName: "clock")
-                        .font(.system(size: 13))
-                        .foregroundColor(.mainColor)
-                        .padding(.trailing,6.33)
-                    Text("02:00:12")
-                        .font(.interSemiBold(size: 12))
-                        .foregroundColor(.mainColor)
-                        .padding(.trailing,10)
-                    Text("\(missionViewModel.missions.count == 0 ? "" : missionViewModel.missions[0].mission)")
-                        .font(.interSemiBold(size: 14))
-                        .foregroundColor(.gray500)
-                }
-                .padding(.bottom,21)
+                //MARK: - 주간 미션
+//                HStack(spacing:0){
+//                    Image(systemName: "clock")
+//                        .font(.system(size: 13))
+//                        .foregroundColor(.mainColor)
+//                        .padding(.trailing,6.33)
+//                    Text("02:00:12")
+//                        .font(.interSemiBold(size: 12))
+//                        .foregroundColor(.mainColor)
+//                        .padding(.trailing,10)
+//                    Text("\(missionViewModel.missions.count == 0 ? "" : missionViewModel.missions[0].mission)")
+//                        .font(.interSemiBold(size: 14))
+//                        .foregroundColor(.gray500)
+//                }
+//                .padding(.bottom,21)
             }.background(Color.white.edgesIgnoringSafeArea([.horizontal,.top]))
             .padding(.horizontal,20)
             .padding(.top, 12)
@@ -49,10 +50,9 @@ struct HomeView: View {
                 if viewModel.tickets.isEmpty{
                     VStack(spacing:0){
                         Image("ticket_flag")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
                             .frame(width: 230, height: 230)
                             .padding(.bottom, 5)
+                            .padding(.top, 20)
                         Text("새로운 종착지를 설정해주세요!")
                             .font(.interSemiBold(size: 14))
                             .padding(.bottom, 20)
@@ -68,7 +68,7 @@ struct HomeView: View {
                         .cornerRadius(10)
                     }
                     .padding(.horizontal,20)
-                    .padding(.top,30)
+                    
                 }
                 else{
                     EndTicketScrollView(isNotScrolled: $shouldShowPepTalk){

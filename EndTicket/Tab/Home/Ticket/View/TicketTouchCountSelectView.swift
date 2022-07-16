@@ -19,13 +19,15 @@ struct TicketTouchCountSelectView: View {
     
     var body: some View {
         VStack(alignment:.leading,spacing:4){
-            HStack(spacing:1){
+            HStack(alignment:.top,spacing:1){
                 Text("스와이프 횟수")
                 if isEssential{
-                    Text("*").foregroundColor(.red)
+                    Image("essential_mark")
+                        .padding([.leading,.top],2)
                 }
-            }.font(.interSemiBold(size: 16))
-                .padding(.bottom,10)
+            }.font(.interBold(size: 16))
+            .padding(.bottom,10)
+            
             LazyVGrid(columns:Array.init(repeating: GridItem(.flexible()), count: touchCounts.count)){
                 ForEach(0..<touchCounts.count){index in
                     VStack(spacing:8.94){
@@ -53,6 +55,10 @@ struct TicketTouchCountSelectView: View {
 
 struct TicketTouchCountSelectView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketFormView().environmentObject(TicketViewModel())
+        HStack(alignment:.top,spacing:1){
+            Text("스와이프 횟수")
+            Image("essential_mark")
+                .padding([.leading,.top],2)
+        }.font(.interBold(size: 16))
     }
 }
