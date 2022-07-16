@@ -13,8 +13,6 @@ struct HomeView: View {
     @State private var shouldShowTicketFormView = false
     @State private var shouldShowPepTalk = true
     @State private var tickets:[Ticket] = []
-    @Environment(\.scenePhase) var scenePhase
-    
     
     var body: some View {
         //MARK: - 위에 뷰
@@ -94,12 +92,11 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $shouldShowTicketFormView){
             TicketFormView()
         }
-        .onReceive(viewModel.$tickets){
+        .onReceive(viewModel.fetchTicketsTrigger){
             //app이 백그라운드로가면 0으로 날라와서 0이 아닐때만 초기화
-            if $0.count != 0{
-                tickets = $0
-            }
+            tickets = viewModel.tickets 
         }
+        .animation(.easeInOut, value: tickets)
     }
 }
 

@@ -153,7 +153,7 @@ struct TicketView: View {
                 let dragWidth = round(abs($0.translation.width))
                 //offset이 음수면 왼쪽
                 let ticket = viewModel.tickets.first{$0.id == self.ticket.id}!
-                let operation = offset < 0  ?     viewModel.cancelTouchTicket : viewModel.touchTicket
+                let operation = offset < 0  ? viewModel.cancelTouchTicket : viewModel.touchTicket
                 if dragWidth > 335 / 2{
                     operation(ticket.id)
                 }
