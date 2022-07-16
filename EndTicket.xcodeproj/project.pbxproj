@@ -101,6 +101,7 @@
 		06D94A1428827A2700C27602 /* NetworkErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A1328827A2700C27602 /* NetworkErrorAlert.swift */; };
 		06D94A1628827E5B00C27602 /* EmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A1528827E5B00C27602 /* EmailResponse.swift */; };
 		06D94A18288290CA00C27602 /* EmailNotFoundAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A17288290CA00C27602 /* EmailNotFoundAlert.swift */; };
+		06D94A1A2882A33100C27602 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A192882A33100C27602 /* UserInfo.swift */; };
 		06DC287C287DDBC5004F29DF /* ImagineHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */; };
 		06DC287E287DDC4D004F29DF /* ImagineViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */; };
 		06DC2880287DE0C6004F29DF /* MainHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287F287DE0C6004F29DF /* MainHistory.swift */; };
@@ -251,6 +252,7 @@
 		06D94A1328827A2700C27602 /* NetworkErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorAlert.swift; sourceTree = "<group>"; };
 		06D94A1528827E5B00C27602 /* EmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmailResponse.swift; path = EndTicket/SIgnUp/Network/EmailResponse.swift; sourceTree = SOURCE_ROOT; };
 		06D94A17288290CA00C27602 /* EmailNotFoundAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailNotFoundAlert.swift; sourceTree = "<group>"; };
+		06D94A192882A33100C27602 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineHistoryView.swift; path = EndTicket/Tab/History/View/ImagineHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineViewForHistory.swift; path = EndTicket/Tab/HIstory/View/ImagineViewForHistory.swift; sourceTree = SOURCE_ROOT; };
 		06DC287F287DE0C6004F29DF /* MainHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHistory.swift; sourceTree = "<group>"; };
@@ -316,13 +318,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		061F79DA2844B4720095AEAD /* VIew */ = {
+		061F79DA2844B4720095AEAD /* View */ = {
 			isa = PBXGroup;
 			children = (
 				06717E0B2840AE0700FEB138 /* SignInView.swift */,
 				06DC2889287F0FB4004F29DF /* LaunchScreen.swift */,
 			);
-			path = VIew;
+			path = View;
 			sourceTree = "<group>";
 		};
 		061F79DE2844B7D90095AEAD /* SignUp */ = {
@@ -416,6 +418,7 @@
 				0658B1E828772B2E00465938 /* FutureOfMe.swift */,
 				06DC287F287DE0C6004F29DF /* MainHistory.swift */,
 				06DC2882287DE2E2004F29DF /* Mission.swift */,
+				06D94A192882A33100C27602 /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -560,7 +563,7 @@
 			children = (
 				06B262B5286404FE00722A52 /* Enum */,
 				06B262AE286402F000722A52 /* Network */,
-				061F79DA2844B4720095AEAD /* VIew */,
+				061F79DA2844B4720095AEAD /* View */,
 				067E6F95287BC22800D404EF /* SignInViewModel.swift */,
 			);
 			path = SignIn;
@@ -1183,6 +1186,7 @@
 				06D94A1428827A2700C27602 /* NetworkErrorAlert.swift in Sources */,
 				06DC288C28806860004F29DF /* EssentialToSignIn.swift in Sources */,
 				06DC287E287DDC4D004F29DF /* ImagineViewForHistory.swift in Sources */,
+				06D94A1A2882A33100C27602 /* UserInfo.swift in Sources */,
 				063634E82852119600856928 /* SignUpRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

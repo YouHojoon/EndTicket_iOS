@@ -99,10 +99,11 @@ struct SignInView: View {
         //MARK: - 온보딩, launch screen
         .overlay(isFirstStart ? OnBoardingView() : nil)
         .overlay(shouldShowLaunchScreen ? LaunchScreen().transition(.opacity) : nil)
-        .onReceive(viewModel.$status.dropFirst()){_ in
+        .onReceive(viewModel.$status.dropFirst()){status in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation{
                     shouldShowLaunchScreen = false
+                    shouldGoNextView = status != .fail
                 }
             }
         }
@@ -121,16 +122,15 @@ struct SignInView: View {
         }
         .fullScreenCover(isPresented: $shouldGoNextView){
             switch viewModel.status{
-            case .success:
-                EndTicketTabView()
-                    .environmentObject(FutureOfMeViewModel())
-            case .needSignUp:
+            case .success, .needSignUpCharacter:
+                EndTicketTabView(needSignUpCharacter: viewModel.status == .success ? false : true)
+            case .needSignUpNickName:
                 SignUpView()
                     .environmentObject(SignUpViewModel()).onDisappear{
                         viewModel.refreshStatus()
                     }
             default:
-                EmptyView().onAppear{
+                Color.clear.onAppear{
                     UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true)
                 }
             }

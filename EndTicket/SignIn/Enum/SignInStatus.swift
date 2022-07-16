@@ -9,7 +9,8 @@ import Foundation
 enum SignInStaus{
     case success
     case fail
-    case needSignUp
+    case needSignUpNickName
     case logout
     case emailNotFound
+    case needSignUpCharacter
 }

@@ -129,35 +129,45 @@ final class SignInViewModel: NSObject, ObservableObject{
             SignInApi.shared.socialSignIn(type, token: idToken)
                 .sink(receiveCompletion: {
                     self.socialSignInReciveCompletion($0,completion: completion)
-                }, receiveValue: {id, nickname,token in
-                    guard let token = token, EssentialToSignIn.token.save(data: token) else{
+                }, receiveValue: {
+                    guard let token = $0?.token, EssentialToSignIn.token.save(data: token) else{
                         completion?(.fail)
                         return
                     }
                     
-                    guard let id = id, EssentialToSignIn.id.save(data: id) else{
+                    guard let id = $0?.accountId, EssentialToSignIn.id.save(data: id) else{
                         completion?(.fail)
                         return
                     }
                     
                     
-                    guard let nickname = nickname, EssentialToSignIn.nickname.save(data: nickname) else{
-                        completion?(.needSignUp)
+                    guard let nickname = $0?.nickname, EssentialToSignIn.nickname.save(data: nickname) else{
+                        completion?(.needSignUpNickName)
                         return
                     }
                     
+                    guard let imageUrl = $0?.characterImageUrl, EssentialToSignIn.imageUrl.save(data: imageUrl) else{
+                        completion?(.needSignUpCharacter)
+                        return
+                    }
                     completion?(.success)
                 })
                 .store(in: &self.subscriptions)
         }
         else{
-            completion?(.success)
+            if EssentialToSignIn.imageUrl.saved == nil{
+                completion?(.needSignUpCharacter)
+            }
+            else{
+                completion?(.success)
+            }
         }
     }
     private func handleSignInToServerResult(_ status: SignInStaus, email: String?, socialType: SocialType){
         var status = status
+        
         switch status {
-        case .success, .needSignUp:
+        case .success, .needSignUpNickName:
             fetchEmail{
                 if $0 == nil{
                     guard let email = email else {
@@ -185,7 +195,12 @@ final class SignInViewModel: NSObject, ObservableObject{
     func restorePreviousSignIn(){
         if EssentialToSignIn.isCanSignIn(){
             DispatchQueue.main.async {
-                self.status = .success
+                if EssentialToSignIn.imageUrl.saved == nil{
+                    self.status = .needSignUpCharacter
+                }
+                else{
+                    self.status = .success
+                }
             }
         }
         else{
@@ -257,7 +272,7 @@ final class SignInViewModel: NSObject, ObservableObject{
                         print(sdkError.localizedDescription)
                     }
                     else {
-                        //기타 에러
+                        //기타 에러 
                         print(error.localizedDescription)
                     }
                     completion?(false)

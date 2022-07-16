@@ -12,6 +12,7 @@ enum EssentialToSignIn: CaseIterable{
     case socialType
     case id
     case email
+    case imageUrl
     
     var saved:String?{
         switch self {
@@ -33,7 +34,8 @@ enum EssentialToSignIn: CaseIterable{
     }
     
     static func isCanSignIn() -> Bool{
-        return Self.allCases.reduce(true){$0 && $1.saved != nil}
+        return Self.allCases.filter{$0 != imageUrl}
+            .reduce(true){$0 && $1.saved != nil}
     }
     
     static func removeAllOfSaved(){
@@ -60,7 +62,9 @@ enum EssentialToSignIn: CaseIterable{
         case .id:
             return "id"
         case .email:
-            return "remail"
+            return "email"
+        case .imageUrl:
+            return "imageUrl"
         }
     }
 }
