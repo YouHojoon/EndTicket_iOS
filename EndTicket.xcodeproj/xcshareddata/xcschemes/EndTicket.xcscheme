@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "06717DC928408B6A00FEB138"
                BuildableName = "EndTicket.app"
-               BlueprintName = "EndTicket"
+               BlueprintName = "&#xb9c8;&#xce68;.&#xd45c;"
                ReferencedContainer = "container:EndTicket.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "06717DC928408B6A00FEB138"
             BuildableName = "EndTicket.app"
-            BlueprintName = "EndTicket"
+            BlueprintName = "&#xb9c8;&#xce68;.&#xd45c;"
             ReferencedContainer = "container:EndTicket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -83,7 +83,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "06717DC928408B6A00FEB138"
             BuildableName = "EndTicket.app"
-            BlueprintName = "EndTicket"
+            BlueprintName = "&#xb9c8;&#xce68;.&#xd45c;"
             ReferencedContainer = "container:EndTicket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

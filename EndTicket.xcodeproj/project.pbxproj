@@ -183,7 +183,7 @@
 		0658B1F62879836700465938 /* TouchImagineResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchImagineResponse.swift; sourceTree = "<group>"; };
 		0658B1F9287B257900465938 /* DeleteImagineResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteImagineResponse.swift; sourceTree = "<group>"; };
 		0670ACB42866FA1700E4D091 /* SignInStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStatus.swift; sourceTree = "<group>"; };
-		06717DCA28408B6A00FEB138 /* EndTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06717DCA28408B6A00FEB138 /* 마침.표.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "마침.표.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06717DCD28408B6A00FEB138 /* EndTicketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketApp.swift; sourceTree = "<group>"; };
 		06717DD128408B6C00FEB138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06717DD428408B6C00FEB138 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -463,7 +463,7 @@
 		06717DCB28408B6A00FEB138 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				06717DCA28408B6A00FEB138 /* EndTicket.app */,
+				06717DCA28408B6A00FEB138 /* 마침.표.app */,
 				06717DDA28408B6D00FEB138 /* EndTicketTests.xctest */,
 				06717DE428408B6D00FEB138 /* EndTicketUITests.xctest */,
 			);
@@ -831,9 +831,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		06717DC928408B6A00FEB138 /* EndTicket */ = {
+		06717DC928408B6A00FEB138 /* 마침.표 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 06717DEE28408B6D00FEB138 /* Build configuration list for PBXNativeTarget "EndTicket" */;
+			buildConfigurationList = 06717DEE28408B6D00FEB138 /* Build configuration list for PBXNativeTarget "마침.표" */;
 			buildPhases = (
 				08E8B53E5A67FFBBE2175B6C /* [CP] Check Pods Manifest.lock */,
 				06717DC628408B6A00FEB138 /* Sources */,
@@ -845,11 +845,11 @@
 			);
 			dependencies = (
 			);
-			name = EndTicket;
+			name = "마침.표";
 			packageProductDependencies = (
 			);
 			productName = EndTicket;
-			productReference = 06717DCA28408B6A00FEB138 /* EndTicket.app */;
+			productReference = 06717DCA28408B6A00FEB138 /* 마침.표.app */;
 			productType = "com.apple.product-type.application";
 		};
 		06717DD928408B6D00FEB138 /* EndTicketTests */ = {
@@ -929,7 +929,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				06717DC928408B6A00FEB138 /* EndTicket */,
+				06717DC928408B6A00FEB138 /* 마침.표 */,
 				06717DD928408B6D00FEB138 /* EndTicketTests */,
 				06717DE328408B6D00FEB138 /* EndTicketUITests */,
 			);
@@ -1213,12 +1213,12 @@
 /* Begin PBXTargetDependency section */
 		06717DDC28408B6D00FEB138 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 06717DC928408B6A00FEB138 /* EndTicket */;
+			target = 06717DC928408B6A00FEB138 /* 마침.표 */;
 			targetProxy = 06717DDB28408B6D00FEB138 /* PBXContainerItemProxy */;
 		};
 		06717DE628408B6D00FEB138 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 06717DC928408B6A00FEB138 /* EndTicket */;
+			target = 06717DC928408B6A00FEB138 /* 마침.표 */;
 			targetProxy = 06717DE528408B6D00FEB138 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1351,10 +1351,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EndTicket/Preview Content\"";
-				DEVELOPMENT_TEAM = 69F5355JYF;
+				DEVELOPMENT_TEAM = 687R8W5T99;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EndTicket/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "마침.표";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1365,7 +1366,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1387,6 +1388,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EndTicket/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "마침.표";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1497,7 +1499,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		06717DEE28408B6D00FEB138 /* Build configuration list for PBXNativeTarget "EndTicket" */ = {
+		06717DEE28408B6D00FEB138 /* Build configuration list for PBXNativeTarget "마침.표" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				06717DEF28408B6D00FEB138 /* Debug */,

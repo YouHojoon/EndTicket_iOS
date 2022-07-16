@@ -133,7 +133,6 @@ struct SignInView: View {
                     }
             default:
                 Color.clear.onAppear{
-                    print(shouldGoNextView)
                     UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true)
                 }
             }
