@@ -26,7 +26,8 @@ struct FutureOfMeView: View {
             Group{
                 HStack{
                     Text("상상하기")
-                        .font(.appleSDGothicBold(size: 16))
+                        .font(.system(size: 16,weight: .bold))
+
                     Spacer()
                     Button{
                         if viewModel.imagines.count == 6{
