@@ -38,9 +38,9 @@ struct ImagineFormView: View{
     var body: some View{
         VStack(spacing:0){
             HStack(spacing:0){
-                Image(systemName: "arrow.backward")
+                Image("arrow_left")
                     .font(.system(size:15, weight: .medium))
-                    .padding(.trailing,13)
+                    .padding(.leading,13)
                     .onTapGesture {
                         shouldShowAlert = true
                     }
@@ -54,7 +54,7 @@ struct ImagineFormView: View{
                     .foregroundColor(isEnabledButton ? .black : .gray600)
                     
             }.padding(.horizontal, 20)
-                .padding(.vertical,18)
+                .padding(.vertical,13)
                 .background(Color.white)
             
             ScrollView(showsIndicators:false){

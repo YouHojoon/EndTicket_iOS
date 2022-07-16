@@ -45,4 +45,26 @@ enum Character: String,CaseIterable{
             return "긍정에너지를 가지고 있는 별 같은 친구라 많은 사람들과 잘 지내요. 하지만 요즘에는 관계에 대한 고민이 많아지고 있어요."
         }
     }
+    
+    var color: Color{
+        switch self {
+        case .kia:
+            return Color.kia
+        case .cheese:
+            return Color.cheese
+        case .vega:
+            return Color.vega
+        }
+    }
+    
+    static func getCharaterType(id:Int) -> Character{
+        if id < 6{
+            return .kia
+        }else if id < 11{
+            return .cheese
+        }
+        else{
+            return .vega
+        }
+    }
 }

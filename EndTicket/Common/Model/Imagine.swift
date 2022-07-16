@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Imagine: Identifiable{
+struct Imagine: Identifiable, Equatable{
     let id: Int
     let subject: String
     let purpose: String
