@@ -39,20 +39,24 @@ struct FormTextField: View {
                 if let titleImage = self.titleImage {
                     titleImage
                         .renderingMode(.template)
-                        .resizable().aspectRatio(contentMode: .fit)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .frame(width:15,height: 15)
                         .foregroundColor(.black)
                         .padding(.trailing,5)
                 }
                 if let title = self.title{
-                    Text(title)
-                        .padding(.trailing,1)
+                    HStack(alignment:.top,spacing:2){
+                        Text(title)
+                            .font(.interBold(size: 16))
+                            .padding(.trailing,1)
+                         if isEssential{
+                             Image("essential_mark")
+                                 .padding(.top,2)
+                         }
+                    }
                 }
-                if title != nil && isEssential{
-                    Text("*")
-                        .foregroundColor(.red)
-                }
-            }.font(.interSemiBold(size: 16))
+            }
             .padding(.bottom, title != nil || titleImage != nil ? 8 : 0)
             
             TextField(placeholder ?? "", text: $text, onCommit: {
@@ -60,7 +64,7 @@ struct FormTextField: View {
             })
             .disableAutocorrection(true)
             .textInputAutocapitalization(.never)
-            .font(.interSemiBold(size: 14))
+            .font(.interBold(size: 14))
             .focused($focus)
             .padding()
             .frame(height:height)
