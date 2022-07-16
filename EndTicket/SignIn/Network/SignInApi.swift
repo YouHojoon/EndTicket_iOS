@@ -15,7 +15,6 @@ final class SignInApi:BaseApi{
         super.init(needInterceptor: false)
     }
     
-    
     func socialSignIn(_ socialType: SocialType, token: String) -> AnyPublisher<(String?,String?,String?),AFError>{
         switch socialType {
         case .google:
@@ -31,9 +30,17 @@ final class SignInApi:BaseApi{
         return session.request(SignInRouter.signIn(.google, idToken:token))
             .validate(statusCode: 200..<300)
             .publishDecodable(type:SignInResponse.self)
-            .value().map{
+            .value()
+            .tryMap{
+                if !$0.isSuccess{
+                    throw AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: $0.code))
+                }
                 return ($0.result?.accountId, $0.result?.nickname, $0.result?.token)
-            }.eraseToAnyPublisher()
+            }
+            .mapError{
+                $0.asAFError ?? AFError.responseValidationFailed(reason: .customValidationFailed(error: $0))
+            }
+            .eraseToAnyPublisher()
     }
     
     private func kakaoSignIn(token:String) -> AnyPublisher<(String?,String?,String?),AFError>{
@@ -53,6 +60,5 @@ final class SignInApi:BaseApi{
                 return ($0.result?.accountId, $0.result?.nickname, $0.result?.token)
             }.eraseToAnyPublisher()
     }
-    
     
 }

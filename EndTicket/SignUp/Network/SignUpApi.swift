@@ -15,7 +15,6 @@ final class SignUpApi: BaseApi{
         super.init()
     }
     
-    
     func signUpNickname(_ nickname: String) ->AnyPublisher<Bool,AFError>{
         return session.request(SignUpRouter.signUpNickname(nickname))
             .validate(statusCode: 200..<300)
@@ -43,4 +42,25 @@ final class SignUpApi: BaseApi{
                 return $0.isSuccess
             }.eraseToAnyPublisher()
     }
+    
+    func signUpEmail(_ email:String) -> AnyPublisher<Bool,AFError>{
+        return session.request(SignUpRouter.signUpEmail(email))
+            .validate(statusCode:200..<300)
+            .publishDecodable(type:EmailResponse.self)
+            .value()
+            .map{
+                return $0.isSuccess
+            }.eraseToAnyPublisher()
+    }
+    
+    func getUserEmail() -> AnyPublisher<String?,AFError>{
+        return session.request(SignUpRouter.getUserEmail)
+            .validate(statusCode:200..<300)
+            .publishDecodable(type:EmailResponse.self)
+            .value()
+            .map{
+                return $0.result?.email
+            }.eraseToAnyPublisher()
+    }
+    
 }

@@ -33,11 +33,7 @@ enum EssentialToSignIn: CaseIterable{
     }
     
     static func isCanSignIn() -> Bool{
-        let index = EssentialToSignIn.allCases.firstIndex(of: .socialType)!
-        var cases = EssentialToSignIn.allCases
-        cases.remove(at: index)
-        
-        return cases.reduce(true){$0 && $1.saved != nil}
+        return Self.allCases.reduce(true){$0 && $1.saved != nil}
     }
     
     static func removeAllOfSaved(){

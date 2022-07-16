@@ -98,6 +98,9 @@
 		06B262D62869DEE500722A52 /* EndTicketAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262D52869DEE500722A52 /* EndTicketAlertButton.swift */; };
 		06B262DA286B164900722A52 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B262D9286B164900722A52 /* UIViewController + Extension.swift */; };
 		06D94A122881DA5100C27602 /* EndTicketScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A112881DA5100C27602 /* EndTicketScrollView.swift */; };
+		06D94A1428827A2700C27602 /* NetworkErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A1328827A2700C27602 /* NetworkErrorAlert.swift */; };
+		06D94A1628827E5B00C27602 /* EmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A1528827E5B00C27602 /* EmailResponse.swift */; };
+		06D94A18288290CA00C27602 /* EmailNotFoundAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D94A17288290CA00C27602 /* EmailNotFoundAlert.swift */; };
 		06DC287C287DDBC5004F29DF /* ImagineHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */; };
 		06DC287E287DDC4D004F29DF /* ImagineViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */; };
 		06DC2880287DE0C6004F29DF /* MainHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC287F287DE0C6004F29DF /* MainHistory.swift */; };
@@ -245,6 +248,9 @@
 		06B262D52869DEE500722A52 /* EndTicketAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketAlertButton.swift; sourceTree = "<group>"; };
 		06B262D9286B164900722A52 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		06D94A112881DA5100C27602 /* EndTicketScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTicketScrollView.swift; sourceTree = "<group>"; };
+		06D94A1328827A2700C27602 /* NetworkErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorAlert.swift; sourceTree = "<group>"; };
+		06D94A1528827E5B00C27602 /* EmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmailResponse.swift; path = EndTicket/SIgnUp/Network/EmailResponse.swift; sourceTree = SOURCE_ROOT; };
+		06D94A17288290CA00C27602 /* EmailNotFoundAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailNotFoundAlert.swift; sourceTree = "<group>"; };
 		06DC287B287DDBC5004F29DF /* ImagineHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineHistoryView.swift; path = EndTicket/Tab/History/View/ImagineHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		06DC287D287DDC4D004F29DF /* ImagineViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagineViewForHistory.swift; path = EndTicket/Tab/HIstory/View/ImagineViewForHistory.swift; sourceTree = SOURCE_ROOT; };
 		06DC287F287DE0C6004F29DF /* MainHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHistory.swift; sourceTree = "<group>"; };
@@ -348,6 +354,7 @@
 				063634F12858B85C00856928 /* SignUpNicknameResponse.swift */,
 				06EBADC628802D7C002A4B31 /* SignUpCharacterResponse.swift */,
 				06EBADC8288030ED002A4B31 /* DeleteUserResponse.swift */,
+				06D94A1528827E5B00C27602 /* EmailResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -752,6 +759,8 @@
 				06B262D32869D96500722A52 /* EndTicketAlertImpl.swift */,
 				06B262D52869DEE500722A52 /* EndTicketAlertButton.swift */,
 				06EBADC1288027C9002A4B31 /* CharacterSelectedAlert.swift */,
+				06D94A1328827A2700C27602 /* NetworkErrorAlert.swift */,
+				06D94A17288290CA00C27602 /* EmailNotFoundAlert.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -1068,6 +1077,7 @@
 			files = (
 				06DC288A287F0FB4004F29DF /* LaunchScreen.swift in Sources */,
 				06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */,
+				06D94A18288290CA00C27602 /* EmailNotFoundAlert.swift in Sources */,
 				06717E392851DBFD00FEB138 /* HistoryHomeView.swift in Sources */,
 				06717E412851FC4000FEB138 /* Color + Extension.swift in Sources */,
 				068B5C26287D38CC001C9154 /* HistoryApi.swift in Sources */,
@@ -1153,6 +1163,7 @@
 				063634EE2858B49F00856928 /* BaseApi.swift in Sources */,
 				064B50E5284E3A1B000EEF62 /* TicketView.swift in Sources */,
 				061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */,
+				06D94A1628827E5B00C27602 /* EmailResponse.swift in Sources */,
 				06EBADC728802D7C002A4B31 /* SignUpCharacterResponse.swift in Sources */,
 				06B262AD2861AF6E00722A52 /* DeleteTicketResponse.swift in Sources */,
 				06EBADBA287EBDEC002A4B31 /* MissionApi.swift in Sources */,
@@ -1169,6 +1180,7 @@
 				068B5C21287D3769001C9154 /* HistoryRouter.swift in Sources */,
 				06B262D42869D96600722A52 /* EndTicketAlertImpl.swift in Sources */,
 				068B5C2C287D58CD001C9154 /* TicketHistoryView.swift in Sources */,
+				06D94A1428827A2700C27602 /* NetworkErrorAlert.swift in Sources */,
 				06DC288C28806860004F29DF /* EssentialToSignIn.swift in Sources */,
 				06DC287E287DDC4D004F29DF /* ImagineViewForHistory.swift in Sources */,
 				063634E82852119600856928 /* SignUpRouter.swift in Sources */,

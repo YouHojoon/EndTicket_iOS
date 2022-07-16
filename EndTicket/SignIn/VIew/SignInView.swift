@@ -14,9 +14,11 @@ struct SignInView: View {
     @EnvironmentObject private var viewModel:SignInViewModel
     @State private var shouldGoNextView = false
     @State private var shouldShowLaunchScreen = false
+    @State private var shouldShowAlert = false
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack(spacing:12){
+            Spacer()
             Image("logo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -28,8 +30,9 @@ struct SignInView: View {
                         .frame(width:78,height: 41)
                         .offset(y:21)
                     ,alignment: .bottom)
-                .padding(.bottom, 130)
-            
+//                .padding(.bottom, 130)
+//                .padding(.top,165)
+            Spacer()
             //MARK: - 로그인 버튼
             Group{
                 Button{
@@ -50,8 +53,8 @@ struct SignInView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray300,lineWidth: 1))
                 .padding(.horizontal,20)
-//
-
+                //
+                
                 Button{
                     viewModel.socialSignIn(.kakao)
                 }label: {
@@ -66,9 +69,9 @@ struct SignInView: View {
                             .frame(width:18)
                     }.frame(maxWidth:.infinity, maxHeight: 50)
                 }.background(Color(#colorLiteral(red: 0.9983025193, green: 0.9065476656, blue: 0, alpha: 1)))
-                .cornerRadius(10)
-                .padding(.horizontal,20)
-
+                    .cornerRadius(10)
+                    .padding(.horizontal,20)
+                
                 Button{
                     viewModel.socialSignIn(.apple)
                 }label: {
@@ -82,13 +85,13 @@ struct SignInView: View {
                         //애플 기본 로고 크기가 24
                     }.frame(maxWidth:.infinity, maxHeight: 50)
                 }
-
+                
                 .background(.black)
                 .cornerRadius(10)
                 .padding(.horizontal,20)
-//
+                //
             }
-            
+            Spacer()
         }
         .font(.system(size: 15,weight: .bold))
         .frame(maxWidth:.infinity, maxHeight: .infinity)
@@ -96,25 +99,28 @@ struct SignInView: View {
         //MARK: - 온보딩, launch screen
         .overlay(isFirstStart ? OnBoardingView() : nil)
         .overlay(shouldShowLaunchScreen ? LaunchScreen().transition(.opacity) : nil)
+        .onReceive(viewModel.$status.dropFirst()){_ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation{
+                    shouldShowLaunchScreen = false
+                }
+            }
+        }
+        
         //MARK: - 로그인 이후 처리
         .animation(.easeInOut, value: viewModel.status)
         .onAppear{
             shouldShowLaunchScreen = true
             viewModel.restorePreviousSignIn()
         }
-        .onReceive(viewModel.$status.dropFirst()){status in
-            shouldShowLaunchScreen  = false
+        .onReceive(viewModel.$status.dropFirst(2)){status in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                 shouldGoNextView = status != .fail
+                shouldShowAlert = status == .fail
             }
-            
         }
         .fullScreenCover(isPresented: $shouldGoNextView){
             switch viewModel.status{
-            case .fail:
-                Color.clear.onAppear{
-                    UIApplication.shared.keyWindow?.rootViewController!.dismiss(animated: true)
-                }
             case .success:
                 EndTicketTabView()
                     .environmentObject(FutureOfMeViewModel())
@@ -123,8 +129,19 @@ struct SignInView: View {
                     .environmentObject(SignUpViewModel()).onDisappear{
                         viewModel.refreshStatus()
                     }
+            default:
+                EmptyView().onAppear{
+                    UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true)
+                }
             }
-         } 
+        }
+        //MARK: -Alert
+        .overlay(shouldShowAlert ?
+            NetworkErrorAlert(isPresented: $shouldShowAlert)
+            .transition(.opacity)
+             : nil)
+        .animation(.easeInOut, value: shouldShowAlert)
+        
     }
 }
 
