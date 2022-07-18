@@ -14,7 +14,7 @@ struct NetworkErrorAlert:View{
     }
     var body: some EndTicketAlert{
         EndTicketAlertImpl{
-            Text("서버의 오류가 발생했습니다.")
+            Text("로그인 과정 중 오류가 발생했습니다.")
                 .font(.system(size:16,weight: .bold))
         }primaryButton: {
             EndTicketAlertButton(label:Text("확인")){

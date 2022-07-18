@@ -78,7 +78,7 @@ struct MyHomeView: View {
                     shouldShowDeleteUserView = true
                 }
             Spacer()
-            Text("0.0.1")
+            Text("1.0.0")
                 .font(.system(size:16,weight: .medium))
                 .foregroundColor(.gray300)
                 .padding(.bottom,20)
