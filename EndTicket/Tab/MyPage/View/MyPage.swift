@@ -78,7 +78,7 @@ struct MyHomeView: View {
                     shouldShowDeleteUserView = true
                 }
             Spacer()
-            Text("1.0.0")
+            Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")")
                 .font(.system(size:16,weight: .medium))
                 .foregroundColor(.gray300)
                 .padding(.bottom,20)
