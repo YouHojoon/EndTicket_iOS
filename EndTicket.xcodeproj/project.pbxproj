@@ -283,16 +283,16 @@
 		06EBADDC288042E2002A4B31 /* PersonalInformationProcessingPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationProcessingPolicyView.swift; sourceTree = "<group>"; };
 		06EBADDE28815C6F002A4B31 /* UIApplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extension.swift"; sourceTree = "<group>"; };
 		0A8B67962B36732FF0544733 /* Pods-EndTicket-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		262BBD76FD846724ACA1227E /* Pods-마침.표-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-마침.표-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-마침.표-EndTicketUITests/Pods-마침.표-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		262BBD76FD846724ACA1227E /* Pods-마침.표-EndTicketUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-마침.표-EndTicketUITests.debug.xcconfig"; path = "Target Support Files/Pods-마침.표-EndTicketUITests/Pods-마침.표-EndTicketUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-EndTicket-EndTicketUITests/Pods-EndTicket-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		367512B6F186AE73549F80B0 /* Pods_EndTicket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B0F7524EDAF0D669E0F0F78 /* Pods-마침.표-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-마침.표-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-마침.표-EndTicketUITests/Pods-마침.표-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3B0F7524EDAF0D669E0F0F78 /* Pods-마침.표-EndTicketUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-마침.표-EndTicketUITests.release.xcconfig"; path = "Target Support Files/Pods-마침.표-EndTicketUITests/Pods-마침.표-EndTicketUITests.release.xcconfig"; sourceTree = "<group>"; };
 		73D12A6DBD0152E8ECFAB59D /* Pods_EndTicketTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicketTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC5AEE1C969D5592CF69F96 /* Pods_EndTicket_EndTicketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndTicket_EndTicketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA11A7A6BDE91D2AE8CE4E4 /* Pods-EndTicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket.debug.xcconfig"; path = "Target Support Files/Pods-EndTicket/Pods-EndTicket.debug.xcconfig"; sourceTree = "<group>"; };
-		A0B68C3A7EB47E86CCCACBDD /* Pods-마침.표.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-마침.표.debug.xcconfig"; path = "Target Support Files/Pods-마침.표/Pods-마침.표.debug.xcconfig"; sourceTree = "<group>"; };
+		A0B68C3A7EB47E86CCCACBDD /* Pods-마침.표.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-마침.표.debug.xcconfig"; path = "Target Support Files/Pods-마침.표/Pods-마침.표.debug.xcconfig"; sourceTree = "<group>"; };
 		A424A128C7CBF7BE5918C0BE /* Pods-EndTicketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicketTests.debug.xcconfig"; path = "Target Support Files/Pods-EndTicketTests/Pods-EndTicketTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E9D2875FFEB489DF31F5A6AA /* Pods-마침.표.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-마침.표.release.xcconfig"; path = "Target Support Files/Pods-마침.표/Pods-마침.표.release.xcconfig"; sourceTree = "<group>"; };
+		E9D2875FFEB489DF31F5A6AA /* Pods-마침.표.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-마침.표.release.xcconfig"; path = "Target Support Files/Pods-마침.표/Pods-마침.표.release.xcconfig"; sourceTree = "<group>"; };
 		FA7F12F4C1300E17F747FABB /* Pods-EndTicketTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicketTests.release.xcconfig"; path = "Target Support Files/Pods-EndTicketTests/Pods-EndTicketTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -821,10 +821,10 @@
 				2862612B63490F35F64795D6 /* Pods-EndTicket-EndTicketUITests.release.xcconfig */,
 				A424A128C7CBF7BE5918C0BE /* Pods-EndTicketTests.debug.xcconfig */,
 				FA7F12F4C1300E17F747FABB /* Pods-EndTicketTests.release.xcconfig */,
-				A0B68C3A7EB47E86CCCACBDD /* Pods-마침.표.debug.xcconfig */,
-				E9D2875FFEB489DF31F5A6AA /* Pods-마침.표.release.xcconfig */,
-				262BBD76FD846724ACA1227E /* Pods-마침.표-EndTicketUITests.debug.xcconfig */,
-				3B0F7524EDAF0D669E0F0F78 /* Pods-마침.표-EndTicketUITests.release.xcconfig */,
+				A0B68C3A7EB47E86CCCACBDD /* Pods-마침.표.debug.xcconfig */,
+				E9D2875FFEB489DF31F5A6AA /* Pods-마침.표.release.xcconfig */,
+				262BBD76FD846724ACA1227E /* Pods-마침.표-EndTicketUITests.debug.xcconfig */,
+				3B0F7524EDAF0D669E0F0F78 /* Pods-마침.표-EndTicketUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1373,7 +1373,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1406,7 +1406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreaming.EndTicket2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
