@@ -142,7 +142,7 @@ struct TicketView: View {
             }
         )
         .animation(.easeInOut,value:shouldShowModifyOrDeleteAlert)
-        .gesture(DragGesture()
+        .highPriorityGesture(DragGesture()
                  //MARK: - 티켓 스와이프 관련 제스쳐
             .onChanged{value in
                 withAnimation{
