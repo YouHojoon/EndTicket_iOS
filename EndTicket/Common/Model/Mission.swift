@@ -9,6 +9,6 @@ import Foundation
 struct Mission: Codable{
     let id: Int
     let mission: String
-    let isSuccess: Int
-    let updatedAt: String?
+    let isSuccess: String
+    let remainTime: String?
 }

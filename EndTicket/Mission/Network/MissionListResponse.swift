@@ -6,13 +6,11 @@
 //
 
 import Foundation
-struct MissionListResponse: BaseResponse{
+struct MissionResponse: BaseResponse{
     let isSuccess: Bool
     let code: Int
     let message: String
     let result: Result?
         
-    struct Result:Codable{
-        let mission: [Mission]
-    }
+    typealias Result = Mission
 }
