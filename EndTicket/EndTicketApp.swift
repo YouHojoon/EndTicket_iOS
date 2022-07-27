@@ -15,7 +15,17 @@ import KakaoSDKUser
 @main
 struct EndTicketApp: App {
     private let googleClientId: String
-    static let baseUrl = "https://dev.endticket.shop/"
+    static var baseUrl:String{
+        get{
+            var url: String
+            #if DEBUG
+            url = "http://test.endticket.shop/"
+            #else
+            url = "https://dev.endticket.shop/"
+            #endif
+            return url
+        }
+    }
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     init(){

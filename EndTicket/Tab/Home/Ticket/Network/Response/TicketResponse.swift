@@ -20,6 +20,6 @@ struct TicketResponse:Codable{
     
     func ticketResponseToTicket() -> Ticket{
         let color = Color(hex: color)
-        return Ticket(category: Ticket.Category.init(rawValue: category)!, subject: subject, purpose: purpose, color: color, touchCount: touchCount, currentCount: Int(currentCount ?? "0")!, id: id)
+        return Ticket(category: Ticket.Category.init(rawValue: category) ?? Ticket.Category.health, subject: subject, purpose: purpose, color: color, touchCount: touchCount, currentCount: Int(currentCount ?? "0")!, id: id)
     }
 }

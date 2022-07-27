@@ -34,7 +34,7 @@ enum TicketRouter: BaseRouter{
         case .getPreferTicket:
             return "\(baseEndPoint)/\(UserDefaults.standard.string(forKey: "id")!)" // 임시로 userId
         case .getOthersTickets:
-            return "\(baseEndPoint)/other"
+            return "\(baseEndPoint)/other/1"
         }
     }
     
