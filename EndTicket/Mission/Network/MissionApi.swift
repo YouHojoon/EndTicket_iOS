@@ -8,18 +8,18 @@
 import Foundation
 import Combine
 import Alamofire
-//final class MissionApi: BaseApi{
-//    static let shared = MissionApi()
-//    private init() {
-//        super.init(needInterceptor: true)
-//    }
-//    
-//    func getMission() -> AnyPublisher<[Mission], AFError>{
-//        return session.request(MissionRouter.getMission)
-//            .publishDecodable(type:MissionListResponse.self)
-//            .value()
-//            .map{
-//                $0.result?.mission ?? []
-//            }.eraseToAnyPublisher()
-//    }
-//}
+final class MissionApi: BaseApi{
+    static let shared = MissionApi()
+    private init() {
+        super.init(needInterceptor: true)
+    }
+    
+    func getMission() -> AnyPublisher<Mission?, AFError>{
+        return session.request(MissionRouter.getMission)
+            .publishDecodable(type:GetMissionResponse.self)
+            .value()
+            .map{
+                $0.result?.missionResponseToMission() ?? nil
+            }.eraseToAnyPublisher()
+    }
+}

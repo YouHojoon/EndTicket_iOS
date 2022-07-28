@@ -9,10 +9,11 @@ import SwiftUI
 import Combine
 struct HomeView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
-//    @EnvironmentObject private var missionViewModel: MissionViewModel
+    @EnvironmentObject private var missionViewModel: MissionViewModel
     @State private var shouldShowTicketFormView = false
     @State private var shouldShowPepTalk = true
     @State private var tickets:[Ticket] = []
+    @State private var mission:Mission? = nil
     
     var body: some View {
         //MARK: - 위에 뷰
@@ -21,27 +22,27 @@ struct HomeView: View {
                 if shouldShowPepTalk{
                     Text("\(EssentialToSignIn.nickname.saved ?? "")님\n오늘도 같이 도전해볼까요?")
                         .font(.interBold(size: 22))
-                        .padding(.bottom,21)
+                        .padding(.bottom,18)
+                        .padding(.top, 31)
                 }
                 //MARK: - 주간 미션
-//                HStack(spacing:0){
-//                    Image(systemName: "clock")
-//                        .font(.system(size: 13))
-//                        .foregroundColor(.mainColor)
-//                        .padding(.trailing,6.33)
-//                    Text("02:00:12")
-//                        .font(.interSemiBold(size: 12))
-//                        .foregroundColor(.mainColor)
-//                        .padding(.trailing,10)
-//                    Text("\(missionViewModel.missions.count == 0 ? "" : missionViewModel.missions[0].mission)")
-//                        .font(.interSemiBold(size: 14))
-//                        .foregroundColor(.gray500)
-//                }
-//                .padding(.bottom,21)
+                HStack(spacing:0){
+                    Image("clock")
+                        .renderingMode(.template)
+                        .foregroundColor(mission?.isSuccess ?? false ? .gray300 : .mainColor)
+                        .padding(.trailing,6.33)
+                    Text("\(mission?.remainTimeString() ?? "")")
+                        .font(.interSemiBold(size: 12))
+                        .foregroundColor(mission?.isSuccess ?? false ? .gray300 : .mainColor)
+                        .padding(.trailing,10)
+                    Text("이번주는 \(mission?.mission ?? "")")
+                        .strikethrough(mission?.isSuccess ?? false ? true : false)
+                        .font(.interSemiBold(size: 14))
+                        .foregroundColor(mission?.isSuccess ?? false ? .gray500: .gray600)
+                }
+                .padding(.bottom,21)
             }.background(Color.white.edgesIgnoringSafeArea([.horizontal,.top]))
             .padding(.horizontal,20)
-            .padding(.top, 31)
-            
             
             //MARK: - 티켓 리스트
             ZStack(alignment:.top){
@@ -86,14 +87,18 @@ struct HomeView: View {
         }
         .onAppear{
             viewModel.fetchTickets()
-//            missionViewModel.fetchMission()
+            missionViewModel.fetchMission()
             UIScrollView.appearance().bounces = true
         }
         .fullScreenCover(isPresented: $shouldShowTicketFormView){
             TicketFormView()
         }
+        .onReceive(missionViewModel.$mission){
+            if $0 != nil{
+                self.mission = $0
+            }
+        }
         .onReceive(viewModel.fetchTicketsTrigger){
-            //app이 백그라운드로가면 0으로 날라와서 0이 아닐때만 초기화
             tickets = viewModel.tickets 
         }
         .animation(.easeInOut, value: tickets)

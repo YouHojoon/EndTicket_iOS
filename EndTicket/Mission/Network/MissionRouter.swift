@@ -17,7 +17,7 @@ enum MissionRouter: BaseRouter{
         return Parameters()
     }
     var endPoint: String{
-        return "users/mission"
+        return "mission"
     }
     func asURLRequest() throws -> URLRequest {
         let url = URL(string: EndTicketApp.baseUrl)!.appendingPathComponent(endPoint)
