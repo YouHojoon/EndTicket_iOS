@@ -39,7 +39,7 @@ final class HistoryApi: BaseApi{
                 $0.result?.dream.map{$0.imagineResponseToImagine()} ?? []
             }.eraseToAnyPublisher()
     }
-    func getMissionHistory() -> AnyPublisher<[Mission], AFError>{
+    func getMissionHistory() -> AnyPublisher<[MissionHistoryResponse], AFError>{
         return session.request(HistoryRouter.mission)
             .publishDecodable(type:GetMissionHistoryResponse.self)
             .value()

@@ -13,6 +13,6 @@ struct GetMissionHistoryResponse: BaseResponse{
     let result: Result?
     
     struct Result: Codable{
-        let mission: [Mission]
+        let mission: [MissionHistoryResponse]
     }
 }

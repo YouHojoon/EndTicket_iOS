@@ -26,7 +26,7 @@ struct EndTicketApp: App {
             return url
         }
     }
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     init(){
         guard let cetentialListFile = Bundle.main.url(forResource: "Credential", withExtension: "plist"), let credentialList = NSDictionary(contentsOf: cetentialListFile) else{
