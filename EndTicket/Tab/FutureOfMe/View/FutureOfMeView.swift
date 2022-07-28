@@ -85,7 +85,6 @@ struct FutureOfMeView: View {
             ImagineFormView()
         }
         .onAppear{
-            print(EssentialToSignIn.token.saved)
             viewModel.fetchImagines()
         }
         .onReceive(viewModel.fetchImagineTrigger){

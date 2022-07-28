@@ -52,16 +52,16 @@ final class HistoryViewModel: ObservableObject{
             self.imagineHistories = $0
         }).store(in: &subscriptions)
     }
-    func fetchMissionHistory(){
-        HistoryApi.shared.getMissionHistory().sink(receiveCompletion: {
-            switch $0{
-            case .finished:
-                break
-            case .failure(let error):
-                print("주간 미션 기록 조회 실패 : \(error.localizedDescription)")
-            }
-        }, receiveValue: {
-            self.missionHistories = $0
-        }).store(in: &subscriptions)
-    }
+//    func fetchMissionHistory(){
+//        HistoryApi.shared.getMissionHistory().sink(receiveCompletion: {
+//            switch $0{
+//            case .finished:
+//                break
+//            case .failure(let error):
+//                print("주간 미션 기록 조회 실패 : \(error.localizedDescription)")
+//            }
+//        }, receiveValue: {
+//            self.missionHistories = $0
+//        }).store(in: &subscriptions)
+//    }
 }

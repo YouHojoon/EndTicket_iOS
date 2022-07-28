@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		060AB9E928925C3F0061485D /* MissionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060AB9E828925C3F0061485D /* MissionResponse.swift */; };
+		060AB9EB289270AA0061485D /* MissonHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060AB9EA289270AA0061485D /* MissonHistoryResponse.swift */; };
 		061F79D92844B4220095AEAD /* Credential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 061F79D82844B4220095AEAD /* Credential.plist */; };
 		061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DF2844B7E70095AEAD /* SignUpView.swift */; };
 		061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E528478BCC0095AEAD /* KeyChainManager.swift */; };
@@ -156,6 +157,7 @@
 /* Begin PBXFileReference section */
 		02F79F4514709AAE5461FDC5 /* Pods-EndTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket.release.xcconfig"; path = "Target Support Files/Pods-EndTicket/Pods-EndTicket.release.xcconfig"; sourceTree = "<group>"; };
 		060AB9E828925C3F0061485D /* MissionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionResponse.swift; sourceTree = "<group>"; };
+		060AB9EA289270AA0061485D /* MissonHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissonHistoryResponse.swift; sourceTree = "<group>"; };
 		061F79D82844B4220095AEAD /* Credential.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credential.plist; sourceTree = "<group>"; };
 		061F79DF2844B7E70095AEAD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		061F79E12844BA040095AEAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				068B5C25287D38CC001C9154 /* HistoryApi.swift */,
 				068B5C27287D3929001C9154 /* GetMainHistoryResponse.swift */,
 				06DC2884287DE36F004F29DF /* GetMissionHistoryResponse.swift */,
+				060AB9EA289270AA0061485D /* MissonHistoryResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1089,6 +1092,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				060AB9EB289270AA0061485D /* MissonHistoryResponse.swift in Sources */,
 				06DC288A287F0FB4004F29DF /* LaunchScreen.swift in Sources */,
 				06B2628A285B14AE00722A52 /* TicketRouter.swift in Sources */,
 				06D94A18288290CA00C27602 /* EmailNotFoundAlert.swift in Sources */,
