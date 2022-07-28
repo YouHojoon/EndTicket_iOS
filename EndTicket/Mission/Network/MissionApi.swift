@@ -16,10 +16,10 @@ final class MissionApi: BaseApi{
     
     func getMission() -> AnyPublisher<Mission?, AFError>{
         return session.request(MissionRouter.getMission)
-            .publishDecodable(type:MissionResponse.self)
+            .publishDecodable(type:GetMissionResponse.self)
             .value()
             .map{
-                $0.result
+                $0.result?.missionResponseToMission() ?? nil
             }.eraseToAnyPublisher()
     }
 }

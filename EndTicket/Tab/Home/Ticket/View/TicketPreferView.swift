@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TicketPreferView: View {
     @EnvironmentObject private var viewModel: TicketViewModel
-
+    @State private var othersTickets:[Ticket] = []
+    @State private var preferTicket: Ticket? = nil
     var body: some View {
         VStack(alignment:.leading, spacing:0){
             ZStack{
@@ -36,11 +37,11 @@ struct TicketPreferView: View {
                         .padding(.bottom, 10)
                     HStack{
                         Spacer()
-                        if viewModel.preferTicket == nil{
+                        if preferTicket == nil{
                             EmptyView()
                         }
                         else{
-                            TicketViewForPrefer(viewModel.preferTicket!)
+                            TicketViewForPrefer(preferTicket!)
                         }
                         Spacer()
                     }
@@ -50,7 +51,7 @@ struct TicketPreferView: View {
                         .padding(.bottom, 10)
                     ScrollView(showsIndicators:false){
                         LazyVStack(spacing:10){
-                            ForEach(viewModel.othersTickets, id: \.id){
+                            ForEach(othersTickets, id: \.id){
                                 TicketViewForPrefer($0)
                             }
                         }.padding(.vertical)
@@ -58,7 +59,16 @@ struct TicketPreferView: View {
                 }.padding(.horizontal, 20)
             }
         }
-
+        .onReceive(viewModel.$preferTicket){
+            if $0 != nil{
+                self.preferTicket = $0
+            }
+        }
+        .onReceive(viewModel.$othersTickets){
+            if $0.count != 0{
+                self.othersTickets = $0
+            }
+        }
         .onAppear{
             viewModel.fetchPreferTicket()
             viewModel.fetchOthersTickets()

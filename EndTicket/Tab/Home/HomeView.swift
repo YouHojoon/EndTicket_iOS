@@ -13,6 +13,7 @@ struct HomeView: View {
     @State private var shouldShowTicketFormView = false
     @State private var shouldShowPepTalk = true
     @State private var tickets:[Ticket] = []
+    @State private var mission:Mission? = nil
     
     var body: some View {
         //MARK: - 위에 뷰
@@ -28,21 +29,20 @@ struct HomeView: View {
                 HStack(spacing:0){
                     Image("clock")
                         .renderingMode(.template)
-                        .foregroundColor(.mainColor)
+                        .foregroundColor(mission?.isSuccess ?? false ? .gray300 : .mainColor)
                         .padding(.trailing,6.33)
-                    Text("\(missionViewModel.mission?.remainTime ?? "")")
+                    Text("\(mission?.remainTimeString() ?? "")")
                         .font(.interSemiBold(size: 12))
-                        .foregroundColor(.mainColor)
+                        .foregroundColor(mission?.isSuccess ?? false ? .gray300 : .mainColor)
                         .padding(.trailing,10)
-                    Text("\(missionViewModel.mission?.mission ?? "")")
+                    Text("이번주는 \(mission?.mission ?? "")")
+                        .strikethrough(mission?.isSuccess ?? false ? true : false)
                         .font(.interSemiBold(size: 14))
-                        .foregroundColor(.gray500)
+                        .foregroundColor(mission?.isSuccess ?? false ? .gray500: .gray600)
                 }
                 .padding(.bottom,21)
             }.background(Color.white.edgesIgnoringSafeArea([.horizontal,.top]))
             .padding(.horizontal,20)
-            
-            
             
             //MARK: - 티켓 리스트
             ZStack(alignment:.top){
@@ -93,8 +93,12 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $shouldShowTicketFormView){
             TicketFormView()
         }
+        .onReceive(missionViewModel.$mission){
+            if $0 != nil{
+                self.mission = $0
+            }
+        }
         .onReceive(viewModel.fetchTicketsTrigger){
-            //app이 백그라운드로가면 0으로 날라와서 0이 아닐때만 초기화
             tickets = viewModel.tickets 
         }
         .animation(.easeInOut, value: tickets)

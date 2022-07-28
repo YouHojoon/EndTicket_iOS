@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060AB9E928925C3F0061485D /* MissionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060AB9E828925C3F0061485D /* MissionResponse.swift */; };
 		061F79D92844B4220095AEAD /* Credential.plist in Resources */ = {isa = PBXBuildFile; fileRef = 061F79D82844B4220095AEAD /* Credential.plist */; };
 		061F79E02844B7E70095AEAD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79DF2844B7E70095AEAD /* SignUpView.swift */; };
 		061F79E628478BCC0095AEAD /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F79E528478BCC0095AEAD /* KeyChainManager.swift */; };
@@ -113,7 +114,7 @@
 		06DC288C28806860004F29DF /* EssentialToSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC288B28806860004F29DF /* EssentialToSignIn.swift */; };
 		06EBADAB287D66BD002A4B31 /* TicketViewForHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */; };
 		06EBADB2287EBC55002A4B31 /* MissionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB1287EBC55002A4B31 /* MissionRouter.swift */; };
-		06EBADB5287EBD24002A4B31 /* MissionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */; };
+		06EBADB5287EBD24002A4B31 /* GetMissionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB4287EBD24002A4B31 /* GetMissionResponse.swift */; };
 		06EBADB8287EBDB5002A4B31 /* MissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB7287EBDB5002A4B31 /* MissionViewModel.swift */; };
 		06EBADBA287EBDEC002A4B31 /* MissionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADB9287EBDEC002A4B31 /* MissionApi.swift */; };
 		06EBADC02880105D002A4B31 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EBADBF2880105D002A4B31 /* Character.swift */; };
@@ -154,6 +155,7 @@
 
 /* Begin PBXFileReference section */
 		02F79F4514709AAE5461FDC5 /* Pods-EndTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndTicket.release.xcconfig"; path = "Target Support Files/Pods-EndTicket/Pods-EndTicket.release.xcconfig"; sourceTree = "<group>"; };
+		060AB9E828925C3F0061485D /* MissionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionResponse.swift; sourceTree = "<group>"; };
 		061F79D82844B4220095AEAD /* Credential.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credential.plist; sourceTree = "<group>"; };
 		061F79DF2844B7E70095AEAD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		061F79E12844BA040095AEAD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -265,7 +267,7 @@
 		06DC288B28806860004F29DF /* EssentialToSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialToSignIn.swift; sourceTree = "<group>"; };
 		06EBADAA287D66BD002A4B31 /* TicketViewForHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewForHistory.swift; sourceTree = "<group>"; };
 		06EBADB1287EBC55002A4B31 /* MissionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRouter.swift; sourceTree = "<group>"; };
-		06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListResponse.swift; sourceTree = "<group>"; };
+		06EBADB4287EBD24002A4B31 /* GetMissionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMissionResponse.swift; sourceTree = "<group>"; };
 		06EBADB7287EBDB5002A4B31 /* MissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewModel.swift; sourceTree = "<group>"; };
 		06EBADB9287EBDEC002A4B31 /* MissionApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionApi.swift; sourceTree = "<group>"; };
 		06EBADBF2880105D002A4B31 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -788,8 +790,9 @@
 			isa = PBXGroup;
 			children = (
 				06EBADB1287EBC55002A4B31 /* MissionRouter.swift */,
-				06EBADB4287EBD24002A4B31 /* MissionListResponse.swift */,
+				06EBADB4287EBD24002A4B31 /* GetMissionResponse.swift */,
 				06EBADB9287EBDEC002A4B31 /* MissionApi.swift */,
+				060AB9E828925C3F0061485D /* MissionResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1101,6 +1104,7 @@
 				06717E332851BF3400FEB138 /* FutureOfMeViewModel.swift in Sources */,
 				06717E3F2851E78600FEB138 /* MyPage.swift in Sources */,
 				06EBADC02880105D002A4B31 /* Character.swift in Sources */,
+				060AB9E928925C3F0061485D /* MissionResponse.swift in Sources */,
 				06DC2885287DE36F004F29DF /* GetMissionHistoryResponse.swift in Sources */,
 				06717E0628409F6D00FEB138 /* OnBoarding.swift in Sources */,
 				06B262B72864082700722A52 /* SignInResponse.swift in Sources */,
@@ -1111,7 +1115,7 @@
 				061F79E828478F230095AEAD /* ASAuthorizationControllerDelgateImpl.swift in Sources */,
 				064B50E7284E43E9000EEF62 /* HomeView.swift in Sources */,
 				06B26293285B26BB00722A52 /* TicketViewModel.swift in Sources */,
-				06EBADB5287EBD24002A4B31 /* MissionListResponse.swift in Sources */,
+				06EBADB5287EBD24002A4B31 /* GetMissionResponse.swift in Sources */,
 				06717E192849BEE200FEB138 /* OnBoardingButtonModifier.swift in Sources */,
 				06717E132840B86D00FEB138 /* Font + Extension.swift in Sources */,
 				06717E2E2851A2EE00FEB138 /* FutureOfMeProfileView.swift in Sources */,

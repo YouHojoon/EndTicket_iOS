@@ -21,6 +21,16 @@ final class MissionViewModel: ObservableObject{
             }
         }, receiveValue: {
             self.mission = $0
+            if $0 != nil{
+                Timer.scheduledTimer(withTimeInterval: 60, repeats: true){_ in
+                    self.refreshMission()
+                }
+            }
         }).store(in: &subscriptions)
+    }
+    
+    func refreshMission(){
+        let mission = mission
+        self.mission = mission
     }
 }
