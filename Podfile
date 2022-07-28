@@ -7,11 +7,13 @@ target 'EndTicket' do
 
   # Pods for EndTicket
   pod 'Alamofire'
-  pod 'GoogleSignIn'
+  pod 'GoogleSignIn','6.2.1'
   pod 'GoogleSignInSwiftSupport'
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
-  #pod 'SwiftyJSON'
+  pod 'SwiftyJSON'
+  pod 'Kingfisher', '~> 7.0'
+  pod 'FirebaseMessaging'
 
   target 'EndTicketTests' do
     inherit! :search_paths
