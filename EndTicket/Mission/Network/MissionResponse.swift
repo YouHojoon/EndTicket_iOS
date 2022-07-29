@@ -9,13 +9,13 @@ struct MissionResponse: Codable{
     
 //    
     func missionResponseToMission() -> Mission{
-        let dayIndex = remainTime.firstIndex(of: "일")
-        let hourIndex = remainTime.firstIndex(of: "시")
-        let minuteIndex = remainTime.firstIndex(of: "분")
+        let dayIndex = remainTime.firstIndex(of: "일")!
+        let hourIndex = remainTime.firstIndex(of: "시")!
+        let minuteIndex = remainTime.firstIndex(of: "분")!
         
-        let day = dayIndex != nil ? Int(String(remainTime[remainTime.index(before: dayIndex!)]))! : 0
-        let hour = hourIndex != nil ? Int(String(remainTime[remainTime.index(before: hourIndex!)]))! : 0
-        let minute = minuteIndex != nil ? Int(String(remainTime[remainTime.index(before: minuteIndex!)]))! : 0
+        let day = Int(String(remainTime[remainTime.index(before: dayIndex)]))!
+        let hour = Int(String(remainTime[remainTime.index(after: dayIndex) ..< hourIndex]))!
+        let minute = Int(String(remainTime[remainTime.index(after: hourIndex) ..< minuteIndex]))!
             
         let timeInterval = TimeInterval(day * 60 * 60 * 24 + hour * 60 * 60 + minute * 60)
         let due = Date(timeIntervalSinceNow:timeInterval)
