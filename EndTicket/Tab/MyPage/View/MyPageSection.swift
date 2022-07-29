@@ -14,17 +14,18 @@ struct MyPageSection: View{
     }
     
     var body: some View{
-        HStack{
-            Text("\(title)")
-                .font(.system(size: 16,weight: .medium))
-            Spacer()
-            Image(systemName:"chevron.forward")
-                .foregroundColor(.gray300)
-                .font(.system(size: 10.5))
-        }.foregroundColor(.black)
-        .padding(.vertical,20)
-        .contentShape(Rectangle())
-                          
-        Divider()
+        VStack(spacing:0){
+            HStack{
+                Text("\(title)")
+                    .font(.system(size: 16,weight: .medium))
+                Spacer()
+                Image(systemName:"chevron.forward")
+                    .foregroundColor(.gray300)
+                    .font(.system(size: 10.5))
+            }.foregroundColor(.black)
+            .padding(.vertical,20)
+            .contentShape(Rectangle())
+            Divider()
+        }
     }
 }
