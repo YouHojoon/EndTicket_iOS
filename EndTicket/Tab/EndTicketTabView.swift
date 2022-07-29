@@ -43,17 +43,13 @@ struct EndTicketTabView: View {
                 
                 //MARK: - 탭바
                 HStack(spacing:0){
-                    Image("home_icon")
-                        .renderingMode(.template)
-                        .frame(width:proxy.size.width / 5,height: 40)
-                        .overlay(Text("홈")
-                            .offset(y:5.5), alignment: .bottom)
-                        .onTapGesture {
-                            tabIndex = .home
-                        }
-                        .foregroundColor(tabIndex == .home ? .black : .gray300)
+                    tabButton(image: "home_icon", label: "홈", width: proxy.size.width / 5)
+                    .onTapGesture {
+                        tabIndex = .home
+                    }
+                    .foregroundColor(tabIndex == .home ? .black : .gray300)
                     
-                    tapButton(image: "futureOfMe_icon", title: "미래의 나", width: proxy.size.width / 5)
+                    tabButton(image: "futureOfMe_icon", label: "미래의 나", width: proxy.size.width / 5)
                         .onTapGesture {
                             tabIndex = .futureOfMe
                         }
@@ -74,15 +70,16 @@ struct EndTicketTabView: View {
                                     shouldShowTicketFormView = true
                                 }
                             }
-                        }.maxContentAlert(isPresented: $shouldMaxContentShowAlert)
+                        }
+                        .maxContentAlert(isPresented: $shouldMaxContentShowAlert)
                     
-                    tapButton(image: "history_icon", title: "기록", width: proxy.size.width / 5)
+                    tabButton(image: "history_icon", label: "기록", width: proxy.size.width / 5)
                         .onTapGesture {
                             tabIndex = .history
                         }
                         .foregroundColor(tabIndex == .history ? .black : .gray300)
                     
-                    tapButton(image: "my_page_icon", title: "마이페이지", width: proxy.size.width / 5)
+                    tabButton(image: "my_page_icon", label: "마이페이지", width: proxy.size.width / 5, spacing: 1)
                         .onTapGesture {
                             tabIndex = .myPage
                         }
@@ -116,14 +113,15 @@ struct EndTicketTabView: View {
     }
     
     @ViewBuilder
-    private func tapButton(image:String, title:String, width:CGFloat) -> some View{
-        Image(image)
-            .renderingMode(.template)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width:width,height: 40)
-            .overlay(Text(title)
-                .offset(y: 5.5), alignment: .bottom)
+    private func tabButton(image:String, label:String, width:CGFloat, spacing: CGFloat = 7.95) -> some View{
+        VStack(spacing:spacing){
+            Image(image)
+                .renderingMode(.template)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(width: 40, height: 40)
+            Text(label)
+        }.frame(width:width)
     }
     @ViewBuilder
     private var content:some View{
@@ -225,6 +223,7 @@ struct EndTicketTabView: View {
             HStack(spacing:0){
                 Image("arrow_left")
                     .frame(width:40,height: 40)
+                    .offset(x:-10)
                     .contentShape(Rectangle())
                     .onTapGesture {
                         withAnimation{
@@ -233,7 +232,6 @@ struct EndTicketTabView: View {
                     }
                 Spacer()
                 Text("추천티켓").font(.system(size: 21,weight: .bold))
-                
                 Spacer()
                 Rectangle().foregroundColor(.clear).frame(width:40,height: 40)
             }.padding(.vertical, 13)
