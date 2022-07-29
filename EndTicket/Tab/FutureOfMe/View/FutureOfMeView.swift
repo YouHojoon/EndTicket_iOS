@@ -69,11 +69,10 @@ struct FutureOfMeView: View {
                                 .foregroundColor(.white)
                         }.background(Color.mainColor)
                         .cornerRadius(10)
-//                        .padding(.bottom,20)
+                        Spacer()
                     }
                 }
             }.padding(.horizontal, 25)
-            Spacer()
         }
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .background(Color(#colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).ignoresSafeArea())
