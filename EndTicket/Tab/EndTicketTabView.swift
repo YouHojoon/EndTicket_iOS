@@ -32,6 +32,7 @@ struct EndTicketTabView: View {
                 VStack(alignment: .leading,spacing:0){
                     header.padding(.horizontal,20)
                     content
+                    Spacer()
                 }
                 .fullScreenCover(isPresented: $shouldShowTicketFormView){
                     TicketFormView()
