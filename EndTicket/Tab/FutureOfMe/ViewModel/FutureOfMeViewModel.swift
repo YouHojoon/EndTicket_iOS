@@ -135,7 +135,7 @@ final class FutureOfMeViewModel:ObservableObject{
                     let index = self.imagines.firstIndex{$0.id == id}!
                     self.imagines.remove(at: index)
                     self.isSuccessDeleteImagine.send(true)
-                    self.isSuccessPostImagine.send(true)
+                    self.fetchImagineTrigger.send(())
                 }
                 else{
                     self.isSuccessDeleteImagine.send(false)
